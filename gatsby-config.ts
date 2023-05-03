@@ -14,7 +14,8 @@ const config: GatsbyConfig = {
     resolve: 'gatsby-source-contentful',
     options: {
       "accessToken": process.env.accessToken,
-      "spaceId": process.env.spaceId
+      "spaceId": process.env.spaceId,
+      enableTags: true,
     }
   }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-emotion"]
 };
