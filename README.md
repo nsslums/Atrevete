@@ -14,7 +14,11 @@ $ npm list storybook
 storybook@7.0.7
 ```
 
-
+.env
+```
+accessToken="xxxxxxxxxxxxxxxxxxxxxx"
+spaceId="xxxxxxxxxxxxxxx"
+```
 
 ### Gatsby
 develop
