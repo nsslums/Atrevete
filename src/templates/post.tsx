@@ -11,14 +11,14 @@ const PostPage: React.FC<PageProps> = ({data}) => {
         <div>{renderRichText(data.contentfulPost.content)}</div>
         <h2>タグ</h2>
         <div>
-          {data.contentfulPost.metadata.tags.map(tag => (
-            <p>{tag.name}</p>
+          {data.contentfulPost.metadata.tags?.map(tag => (
+            <p key={tag.contentful_id}>{tag.name}</p>
           ))}
         </div>
         <h2>関連イベント</h2>
         <div>
-          {data.contentfulPost.related_event.map(event => (
-            <p>{event.title}</p>
+          {data.contentfulPost.related_event?.map(event => (
+            <p key={event.contentful_id}>{event.title}</p>
           ))}
         </div>
       </main>
@@ -34,7 +34,8 @@ const PostPage: React.FC<PageProps> = ({data}) => {
         }
         metadata {
           tags {
-            id
+            contentful_id
+            name
           }
         }
         related_event {
