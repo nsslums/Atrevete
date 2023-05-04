@@ -13,9 +13,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 19
-      - run: |
+      - name: setting environment
+        run: |
           touch .env
           echo accessToken=${{secrets.ACCESS_TOKEN}} >> .env
           echo spaceId=${{secrets.SPACE_ID}} >> .env
       - run: npm ci
-      - run: gatsby build
+      - run: npm run build
