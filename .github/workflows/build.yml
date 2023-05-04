@@ -6,6 +6,7 @@ on:
       - 'develop'
     paths:
       - 'build.txt'
+      -  '/.github/workflows/build.yml'
 
 jobs:
   build:
