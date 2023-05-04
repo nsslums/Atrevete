@@ -1,0 +1,21 @@
+name: gatsby-build
+
+on: 
+  push:
+    branches:
+      - 'develop'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 19
+      - run: |
+          touch .env
+          echo accessToken=${{secrets.ACCESS_TOKEN}} >> .env
+          echo spaceId=${{secrets.SPACE_ID}} >> .env
+      - run: npm ci
+      - run: gatsby build
