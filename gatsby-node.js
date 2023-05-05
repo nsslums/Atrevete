@@ -6,13 +6,13 @@ exports.createPages = async ({ graphql, actions }) => {
     const EventTemplate = path.resolve(`src/templates/event.tsx`)
     const result = await graphql(`
         query {
-            allContentfulPost {
+            allContentfulPost(filter: {hidden: {ne: true}}) {
                 nodes {
                     title
                     contentful_id
                 }
             }
-            allContentfulEvent {
+            allContentfulEvent(filter: {hidden: {ne: true}}) {
                 nodes {
                     title
                     contentful_id

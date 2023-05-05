@@ -87,7 +87,10 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
 
 export const query = graphql`
     query ($contentful_id: String!) {
-      contentfulPost(contentful_id: {eq: $contentful_id}) {
+      contentfulPost(
+        contentful_id: {eq: $contentful_id}
+        hidden: {ne: true}
+      ) {
         title
         content {
           raw

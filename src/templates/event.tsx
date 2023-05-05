@@ -78,7 +78,10 @@ const EventPage: React.FC<PageProps> = ({data}) => {
 
 export const query = graphql`
   query($contentful_id: String!) {
-    contentfulEvent(contentful_id: {eq: $contentful_id}) {
+    contentfulEvent(
+      contentful_id: {eq: $contentful_id}
+      hidden: {ne: true}
+    ) {
       title
       event_date
       overview {
