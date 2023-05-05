@@ -19,7 +19,7 @@ jobs:
       - name: setting environment
         run: |
           touch .env
-          echo accessToken=${{secrets.ACCESS_TOKEN}} >> .env
-          echo spaceId=${{secrets.SPACE_ID}} >> .env
+          echo accessToken=${{secrets.DEBUG_ACCESS_TOKEN}} >> .env
+          echo spaceId=${{secrets.DEBUG_SPACE_ID}} >> .env
       - run: npm ci
       - run: npm run build
