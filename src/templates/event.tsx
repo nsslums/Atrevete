@@ -1,5 +1,5 @@
 import * as React from "react"
-import { HeadFC, PageProps, graphql } from "gatsby"
+import { HeadFC, Link, PageProps, graphql } from "gatsby"
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { GatsbyImage } from "gatsby-plugin-image"
 import { BLOCKS, INLINES } from "@contentful/rich-text-types"
@@ -72,6 +72,12 @@ const EventPage: React.FC<PageProps> = ({data}) => {
       <div>{renderRichText(data.contentfulEvent.requirements, options)}</div>
       <h2>開催日</h2>
       <p>{data.contentfulEvent.event_date}</p>
+      <h2>関連投稿</h2>
+      <div>
+        {data.contentfulEvent.post?.map(post => (
+          <Link to={'/post/' + post.title} key={post.contentful_id}>{post.title}</Link>
+        ))}
+      </div>
     </main>
   )
 }
@@ -127,6 +133,10 @@ export const query = graphql`
             title
           }
         }
+      }
+      post {
+        contentful_id
+        title
       }
     }
   }
