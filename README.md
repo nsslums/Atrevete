@@ -34,3 +34,29 @@ gatsby develop -H 0.0.0.0
 ```
 npm run storybook
 ```
+
+### ローカル開発環境の構築
+
+#### npmの準備
+```
+nvm install 19
+nvm use 19
+```
+##### nvmのインストール方法
+https://github.com/nvm-sh/nvm#installing-and-updating
+
+
+#### プロジェクトのclone
+```
+git clone https://github.com/nsslums/Atrevete.git
+```
+
+
+#### Gatsbyとパッケージのインストール
+```
+npm install
+npm install -g gatsby-cli
+```
+##### 注意
+- npmはcloneしたディレクトリで実行
+- -gオプションでグローバル(マシン)にインストール
