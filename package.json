@@ -30,7 +30,8 @@
     "joi": "^17.9.2",
     "nodemailer": "^6.9.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.21.5",
@@ -46,6 +47,7 @@
     "@types/node": "^18.16.3",
     "@types/react": "^18.2.4",
     "@types/react-dom": "^18.2.3",
+    "@types/react-modal": "^3.16.0",
     "prop-types": "^15.8.1",
     "storybook": "^7.0.8",
     "typescript": "^5.0.4"

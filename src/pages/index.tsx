@@ -1,6 +1,7 @@
 import * as React from "react"
 import { HeadFC, PageProps, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
+import ModalSearch from '../components/modalsearch';
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
   return (
@@ -11,6 +12,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
           <a href={sponsor.url} target="_blank" rel="noopener noreferrer"><GatsbyImage image={sponsor.logo.gatsbyImageData} alt={sponsor.name} /></a>
         ))}
       </ul>
+      <ModalSearch />
     </div>
   )
 }
