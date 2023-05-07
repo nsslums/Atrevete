@@ -51,7 +51,7 @@ export class Mail{
             to: this.mail_to,
             subject: `【${this.mailType}】確認メール`,
             text: this.mail_plain + mail_common.Note_plain(),
-            html: mail_common.render_html("内容確認メール", this.html + mail_common.Note_html()) 
+            html: mail_common.render_html(`【${this.mailType}】確認メール`, this.html + mail_common.Note_html()) 
         }
     
         const adminData = {
@@ -60,7 +60,7 @@ export class Mail{
             replyTo : this.mail_to,
             subject: `【新規${this.mailType}】${this.mail_subject}`,
             text: this.mail_plain,
-            html: mail_common.render_html("【新規】" + this.mail_subject ,this.html)
+            html: mail_common.render_html(`【新規${this.mailType}】${this.mail_subject}` ,this.html)
         }
     
         let response = {
@@ -107,44 +107,3 @@ export class Mail{
         return response
     }
 }
-
-// const formHandler = (req, res) =>{
-    
-//     if (!req.body.email) {
-//         return res.status(422).json("Email is required")
-//     }
-//     if (!req.body.subject) {
-//         return res.status(422).json("subject is required")
-//     }
-    
-//     const transporter = nodemailer.createTransport({
-//         service: 'Gmail',
-//         auth: {
-//           user: process.env.SMTPUSER,
-//           pass: process.env.SMTPPASS,
-//         },
-//     });
-
-//     const userData = {
-//         from: process.env.SMTPUSER,
-//         to: req.body.email ? req.body.email : '',
-//         subject: "try nodemailer",
-//         text: "sending mail by nodemailer",
-//     }
-
-//     const adminData = {
-//         from: process.env.SMTPUSER,
-//         to: process.env.ADMINMAIL,
-//         replyTo : process.env.REPLYTO,
-//         subject: "try nodemailer",
-//         text: "sending mail by nodemailer",
-//     }
-
-//     transporter.sendMail(adminData)
-//     .then(result => res.status(200).json(JSON.stringify(result)))
-//         .catch(error => res.status(500).json(JSON.stringify(error)))
-
-//     transporter.sendMail(userData)
-//     .then(result => res.status(200).json(JSON.stringify(result)))
-//         .catch(error => res.status(500).json(JSON.stringify(error)))
-// }
