@@ -3,6 +3,7 @@ import type { HeadFC, PageProps } from "gatsby"
 
 const FormPage: React.FC<PageProps> = () => {
     const [formValue, setFormValue] = React.useState({name: '', email: '', phone: '', subject: '' ,content: ''})
+    const [submitdis, setSubmitdis] = React.useState(false)
 
     const changeHandle = (e) =>{
         console.log(formValue)
@@ -10,6 +11,7 @@ const FormPage: React.FC<PageProps> = () => {
     }
 
     const onSubmit = async (e) =>{
+        setSubmitdis(true)
         e.preventDefault()  // デフォルトの動作のキャンセル
         const response = await window.fetch('/api/contact', {
             method: 'POST',
@@ -20,6 +22,7 @@ const FormPage: React.FC<PageProps> = () => {
         })
         .then(res => res.json())
         console.log(response)
+        setSubmitdis(false)
     }
 
     return (
@@ -45,7 +48,7 @@ const FormPage: React.FC<PageProps> = () => {
                 <textarea name="content" id="content" value={formValue.content} onChange={changeHandle} required/>
             </div>
             <div>
-                <input type="submit" />
+                <input type="submit" disabled={submitdis}/>
             </div>
         </form>
     )
