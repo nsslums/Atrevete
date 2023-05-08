@@ -1,4 +1,4 @@
-name: gatsby-build
+name: deploy develop
 
 on: 
   push:
@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: gatsby build
+        uses: actions/setup-node@v3
         with:
           node-version: 19
       - name: setting environment
@@ -23,3 +24,6 @@ jobs:
           echo spaceId=${{secrets.DEBUG_SPACE_ID}} >> .env
       - run: npm ci
       - run: npm run build
+      - run: |
+          pwd
+          ls
