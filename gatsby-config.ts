@@ -13,8 +13,8 @@ const config: GatsbyConfig = {
   plugins: [{
     resolve: 'gatsby-source-contentful',
     options: {
-      "accessToken": process.env.DEBUG_ACCESSTOKEN,
-      "spaceId": process.env.DEBUG_SPACEID,
+      "accessToken": process.env.ACCESSTOKEN,
+      "spaceId": process.env.SPACEID,
       enableTags: true,
     }
   }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-emotion"]
