@@ -36,4 +36,4 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
-            **/~partytown/
+            **/~partytown/**
