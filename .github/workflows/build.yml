@@ -31,4 +31,4 @@ jobs:
           username: ${{secrets.XSERVER_FTP_USERNAME}}
           password: ${{secrets.XSERVER_FTP_PASSWORD}}
           local-dir: /home/runner/work/Atrevete/Atrevete/public/
-          server-dir: ./nss/atrevete/
+          server-dir: ${{secrets.XSERVER_SERVER_DIR}}
