@@ -24,6 +24,11 @@ jobs:
           echo DEBUG_SPACEID=${{secrets.DEBUG_SPACE_ID}} >> .env
       - run: npm ci
       - run: npm run build
-      - run: |
-          pwd
-          ls
+      - name: ftp upload
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{secrets.XSERVER_FTP_ADDRESS}}
+          username: ${{secrets.XSERVER_FTP_USERNAME}}
+          password: ${{secrets.XSERVER_FTP_PASSWORD}}
+          local-dir: /home/runner/work/Atrevete/Atrevete/public
+          server-dir: /public_html/atrevete
