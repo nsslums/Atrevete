@@ -32,3 +32,8 @@ jobs:
           password: ${{secrets.XSERVER_FTP_PASSWORD}}
           local-dir: ./public/
           server-dir: ${{secrets.XSERVER_SERVER_DIR}}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/~partytown/
