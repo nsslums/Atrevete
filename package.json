@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.8",
-    "@emotion/styled": "^11.10.8",
+    "@emotion/styled": "^11.11.0",
     "@sideway/address": "^5.0.0",
     "gatsby": "^5.9.0",
     "gatsby-plugin-emotion": "^8.9.0",
