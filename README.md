@@ -1,33 +1,20 @@
-## Verisons
+
+## first setup
 ```
-$ node -v
-v19.7.0
-
-$ npm -v
-9.6.5
-
-$ gatsby -v
-Gatsby CLI version: 5.9.0
-Gatsby version: 5.9.0
-
-$ npm list storybook
-storybook@7.0.7
+git clone https://github.com/nsslums/Atrevete.git
+cd Atrevete
+npm install
+echo DEBUG_ACCESSTOKEN= >> .env
+echo DEBUG_SPACEID= >> .env
 ```
-
-.env
+.envファイルの中身(必須)
 ```
-accessToken="xxxxxxxxxxxxxxxxxxxxxx"
-spaceId="xxxxxxxxxxxxxxx"
+DEBUG_ACCESSTOKEN="xxxxxxxxxxxxxxxxxxxxxx"
+DEBUG_SPACEID="xxxxxxxxxxxxxxx"
 ```
-
 ### Gatsby
-develop
 ```
-gatsby develop
-```
-ローカル内の他端末からアクセス
-```
-gatsby develop -H 0.0.0.0
+npm run develop
 ```
 
 ### Storybook
@@ -36,7 +23,6 @@ npm run storybook
 ```
 
 ### ローカル開発環境の構築
-
 #### npmの準備
 ```
 nvm install 19
@@ -51,12 +37,20 @@ https://github.com/nvm-sh/nvm#installing-and-updating
 git clone https://github.com/nsslums/Atrevete.git
 ```
 
-
-#### Gatsbyとパッケージのインストール
-```
-npm install
-npm install -g gatsby-cli
-```
 ##### 注意
 - npmはcloneしたディレクトリで実行
-- -gオプションでグローバル(マシン)にインストール
+
+## Verisons
+```
+$ node -v
+v19.7.0
+
+$ npm -v
+9.6.5
+
+$ gatsby -v
+Gatsby version: 5.9.0
+
+$ npm list storybook
+storybook@7.0.7
+```
