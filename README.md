@@ -7,7 +7,7 @@ npm install
 echo DEBUG_ACCESSTOKEN= >> .env
 echo DEBUG_SPACEID= >> .env
 ```
-.envファイルの中身(必須)
+.envファイルの中身(Gatsby使用時必須)
 ```
 DEBUG_ACCESSTOKEN="xxxxxxxxxxxxxxxxxxxxxx"
 DEBUG_SPACEID="xxxxxxxxxxxxxxx"
