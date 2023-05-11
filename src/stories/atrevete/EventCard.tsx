@@ -1,10 +1,10 @@
 import { css } from '@emotion/react';
 import React from 'react';
-import { GatsbyImage,  IGatsbyImageData } from 'gatsby-plugin-image';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { Link } from 'gatsby-link';
 
 interface EventCardProps {
-  
+
   isActive?: boolean;
   title: string;
   date?: string,
@@ -18,17 +18,15 @@ const rootStyle = css({
   borderRadius: "5px",
   overflow: 'hidden',
   backgroundColor: "gray",
-  position: "relative", 
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  position: "relative",
   color: "white",
   fontSize: "17px",
   borderWidth: "1px 0px 0px 1px",
   borderStyle: "solid",
   borderColor: "rgba(255, 255, 255, 0.25)",
+  boxSizing: "content-box",
 
-  "&:hover":{
+  "&:hover": {
     border: "solid 1px white",
   }
 })
@@ -58,26 +56,35 @@ export const EventCard = ({
 }: EventCardProps) => {
   const status = isActive ? '募集中' : '募集終了';
   return (
-    <Link to={url} css={rootStyle} {...props}>
-          <GatsbyImage alt='' image={undefined}/>
-          <div css={status_css}>
-              <span>{status}</span>
-          </div>
-          <div css={{
-            width: "80%"
+    <div css={rootStyle}>
+      <Link to={url} css={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }} >
+        <GatsbyImage alt='' image={undefined} />
+        <div css={status_css}>
+          <span>{status}</span>
+        </div>
+        <div css={{
+          width: "80%",
+        }}>
+          <p css={{
+            marginBottom: "10px"
           }}>
-            <p css={{
-              marginBottom: "10px"
-            }}>
-              開催日 <span>{date}</span>
-            </p>
-            <p css={{
-              fontWeight: "700",
-              fontSize: "35px",
-            }}>
-              {title}
-            </p>
-          </div>
+            開催日 <span>{date}</span>
+          </p>
+          <p css={{
+            fontWeight: "700",
+            fontSize: "35px",
+          }}>
+            {title}
+          </p>
+        </div>
       </Link>
+
+    </div>
   );
 };
