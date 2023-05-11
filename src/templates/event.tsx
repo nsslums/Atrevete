@@ -71,7 +71,7 @@ const EventPage: React.FC<PageProps> = ({data}) => {
       <h2>要項</h2>
       <div>{renderRichText(data.contentfulEvent.requirements, options)}</div>
       <h2>開催日</h2>
-      <p>{data.contentfulEvent.event_date}</p>
+      <p>{data.contentfulEvent.date}</p>
       <h2>関連投稿</h2>
       <div>
         {data.contentfulEvent.post?.map(post => (
@@ -89,7 +89,7 @@ export const query = graphql`
       hidden: {ne: true}
     ) {
       title
-      event_date
+      date
       overview {
         raw
         references {
