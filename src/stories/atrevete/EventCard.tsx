@@ -21,26 +21,26 @@ export const EventCard = ({
 }: EventCardProps) => {
   const status = isActive ? '募集中' : '募集終了';
   return (
-    <div css={css`
-        width: 395px;
-        height: 207px;
-        border-radius: 5px;
-        overflow: hidden;
-        background-color: red;
-        position: relative;
-    `}>
+    <div css={{
+      width: "395px",
+      height: "207px",
+      borderRadius: "5px",
+      overflow: 'hidden',
+      backgroundColor: "red",
+      position: "relative",
+    }}>
         <GatsbyImage alt='' image={undefined}/>
-        <div css={css`
-            background-color: blue;
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5px 20px;
-            border-bottom-right-radius: 5px;
-        `}>
+        <div css={{
+            backgroundColor: "blue",
+            position: "absolute",
+            top: "0",
+            left: "0",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "5px 20px",
+            borderBottomRightRadius: "5px",
+          }}>
             <span>{status}</span>
         </div>
         <p>開催日 <span>{date}</span></p>
