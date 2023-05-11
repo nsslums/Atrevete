@@ -19,10 +19,11 @@
   },
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^11.11.0",
-    "@emotion/react": "^11.10.8",
+    "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.10.8",
     "@sideway/address": "^5.0.0",
     "@storybook/addon-styling": "^1.0.6",
+    "babel-preset-react-app": "^10.0.1",
     "gatsby": "^5.9.0",
     "gatsby-plugin-emotion": "^8.9.0",
     "gatsby-plugin-image": "^3.9.0",
