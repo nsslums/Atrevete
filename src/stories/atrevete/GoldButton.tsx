@@ -46,6 +46,28 @@ const Style = css({
       opacity: '25%',
     },
   },
+  '&:active': {
+    transform: 'scale(1)',
+    boxShadow: 'none',
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      top:0,
+      left:0,
+      width: '100%',
+      height: '100%',
+      color: 'blue',
+      background: 'url(assets/noise.png)',
+      backgroundRepeat: 'repeat',
+      backgroundSize: '20%',
+      borderTop: 'solid 1px rgba(255,255,255,1)!important',
+      borderBottom: 'solid 1px transparent',
+      borderLeft: 'solid 1px rgba(255,255,255,1)!important',
+      borderRight: 'solid 1px transparent',
+      borderRadius: '3px',
+      opacity: '25%',
+    },
+  }
 })
 
 
