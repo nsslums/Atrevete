@@ -6,23 +6,47 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-const Style = css`
-  color: white;
-  background: linear-gradient(20deg,#C5B286,#6A3B05);
-  padding: 20px 60px;
-  border-radius: 3px;
-  &::before {
-    content: "";
-    background-color: blue;
-    width: 100px;
-    height: 100px;
-  }
-  &:hover {
-    background: orange;
-    box-shadow: 0 0 20px 0 black;
-    border: solid 1px rgba(255,255,255,10);
-  }
-`
+const Style = css({
+  position: 'relative',
+  padding: '15px 50px',
+  minWidth: '250px',
+  minHeight: '70',
+  fontSize: '32px',
+  color: 'black',
+  background: 'white',
+  backgroundImage: 'none',
+  outline: 'none',
+  borderRadius: '3px',
+  overflow: 'hidden',
+  transition: 'ease .2s',
+  '&:hover': {
+    color: 'white',
+    backgroundImage: 'linear-gradient(20deg,#ccb37e,#7e4d16)',
+    backgroundRepeat: 'none',
+    boxShadow: '0 0 20px 0 black',
+    border: 'none',
+    transform: 'scale(1.05)',
+    // ↓ add noise
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      top:0,
+      left:0,
+      width: '100%',
+      height: '100%',
+      color: 'blue',
+      background: 'url(assets/noise.png)',
+      backgroundRepeat: 'repeat',
+      backgroundSize: '20%',
+      borderTop: 'solid 1px rgba(255,255,255,1)!important',
+      borderBottom: 'solid 1px transparent',
+      borderLeft: 'solid 1px rgba(255,255,255,1)!important',
+      borderRight: 'solid 1px transparent',
+      borderRadius: '3px',
+      opacity: '25%',
+    },
+  },
+})
 
 
 export const GoldButton = ({
@@ -31,6 +55,5 @@ export const GoldButton = ({
 }: ButtonProps) => {
   return (
     <button type='button' css={Style} {...props}>{text}</button>
-
   )
 }
