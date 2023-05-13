@@ -8,8 +8,8 @@ interface EventCardProps {
   isActive?: boolean;
   title: string;
   date?: string,
-  image?: IGatsbyImageData,
-  url?: string
+  image?: any,
+  url?: string,
 }
 
 const rootStyle = css({
@@ -21,10 +21,10 @@ const rootStyle = css({
   position: "relative",
   color: "white",
   fontSize: "17px",
-  borderWidth: "1px 0px 0px 1px",
+  borderWidth: "1px",
   borderStyle: "solid",
   borderColor: "rgba(255, 255, 255, 0.25)",
-  boxSizing: "content-box",
+  margin: "auto",
 
   "&:hover": {
     border: "solid 1px white",
@@ -43,6 +43,14 @@ const status_css = css({
   borderBottomRightRadius: "5px",
 })
 
+const image_css = css({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+})
 /**
  * Primary UI component for user interaction
  */
@@ -63,13 +71,14 @@ export const EventCard = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-      }} >
-        <GatsbyImage alt='' image={undefined} />
+      }} draggable={false}>
+        {!image ? false :<GatsbyImage alt='' image={image.gatsbyImageData} css={image_css}/>}
         <div css={status_css}>
           <span>{status}</span>
         </div>
         <div css={{
-          width: "80%",
+          width: "85%",
+          zIndex: 10
         }}>
           <p css={{
             marginBottom: "10px"
