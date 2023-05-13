@@ -21,6 +21,7 @@
     "@emotion/babel-preset-css-prop": "^11.11.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.10.8",
+    "@react-icons/all-files": "^4.1.0",
     "@sideway/address": "^5.0.0",
     "@storybook/addon-styling": "^1.0.6",
     "babel-preset-react-app": "^10.0.1",
