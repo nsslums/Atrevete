@@ -163,6 +163,16 @@ const GlobalStyle = () => (
         -webkit-appearance: none;
         margin: 0;
       }
+
+      /* Atrevete Style */
+
+      body{
+        background-color: #121212;
+      }
+
+      *{
+        color: #fff
+      }
     `}
   />
 );
