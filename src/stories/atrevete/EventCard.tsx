@@ -17,7 +17,7 @@ const rootStyle = css({
   height: "207px",
   borderRadius: "5px",
   overflow: 'hidden',
-  backgroundColor: "gray",
+  background: "gray",
   position: "relative",
   color: "white",
   fontSize: "17px",
@@ -28,11 +28,22 @@ const rootStyle = css({
 
   "&:hover": {
     border: "solid 1px white",
+  },
+
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    background: "linear-gradient(90.24deg, #000000 0.23%, rgba(0, 0, 0, 0.82) 39.72%, rgba(0, 0, 0, 0) 78.39%)",
+    zIndex: 10,
   }
 })
 
 const status_css = css({
-  backgroundColor: "#C5B286",
+  backgroundColor: "#906D3B",
   position: "absolute",
   top: "0",
   left: "0",
@@ -41,6 +52,7 @@ const status_css = css({
   justifyContent: "center",
   padding: "5px 20px",
   borderBottomRightRadius: "5px",
+  zIndex: 20
 })
 
 const image_css = css({
