@@ -4,6 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import ModalSearch from '../components/modalsearch';
 import { Events } from "../components/eventSlide";
 import {Common} from "../components/common"
+import { GoldButton } from "../stories/atrevete/GoldButton";
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
   return (
@@ -17,6 +18,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
         </ul>
         <ModalSearch />
         <Events/>
+        <GoldButton />
       </div>
     </Common>
   )
