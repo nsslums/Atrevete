@@ -4,7 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import ModalSearch from '../components/modalsearch';
 import { EventCard } from "../stories/atrevete/EventCard";
 import GlobalStyle from "../GlobalStyle";
-import { Events } from "../components/events";
+import { Events } from "../components/eventSlide";
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
   return (
