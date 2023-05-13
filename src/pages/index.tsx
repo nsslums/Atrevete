@@ -2,14 +2,12 @@ import * as React from "react"
 import { HeadFC, Link, PageProps, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import ModalSearch from '../components/modalsearch';
-import { EventCard } from "../stories/atrevete/EventCard";
-import GlobalStyle from "../GlobalStyle";
 import { Events } from "../components/eventSlide";
+import {Common} from "../components/common"
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
   return (
-    <>
-      <GlobalStyle />
+    <Common>
       <div>
         <h2>協賛企業</h2>
         <ul>
@@ -20,7 +18,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
         <ModalSearch />
         <Events/>
       </div>
-    </>
+    </Common>
   )
 }
 
