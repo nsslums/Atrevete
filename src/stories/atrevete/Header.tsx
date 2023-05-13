@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import React, { useState } from 'react';
 import {CgMenuRightAlt} from "@react-icons/all-files/cg/CgMenuRightAlt"
+import { StaticImage } from 'gatsby-plugin-image';
 
 interface HeaderProps {
 }
@@ -33,7 +34,7 @@ export const Header = ({
                 <div css={{
 
                 }}>
-                    logo
+                    <StaticImage src="../../images/Atrevete.svg" alt='' />
                 </div>
                 <div css={{
                         width: "30px",
