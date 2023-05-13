@@ -166,12 +166,33 @@ const GlobalStyle = () => (
 
       /* Atrevete Style */
 
+      html {
+        width: 100%;
+        height: 100%;
+      }
       body{
+        width: 100%;
+        height: 100%;
+        position: relative;
         background-color: #121212;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url(src/images/noise.png);
+          background-repeat: 'repeat';
+          background-size: 40%;
+          background-blend-mode: color-dodge;
+          opacity: 3%;
+        }
       }
 
       *{
-        color: #fff
+        color: white;
       }
     `}
   />
