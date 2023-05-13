@@ -90,7 +90,16 @@ export const EventCard = ({
         </div>
         <div css={{
           width: "85%",
-          zIndex: 10
+          zIndex: 10,
+
+          "&::after": {
+            content: '""',
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            top: 0,
+            left: 0,
+          }
         }}>
           <p css={{
             marginBottom: "10px"
