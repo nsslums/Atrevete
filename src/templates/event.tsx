@@ -67,9 +67,9 @@ const EventPage: React.FC<PageProps> = ({data}) => {
     <main>
       <h1>{data.contentfulEvent.title}</h1>
       <h2>概要</h2>
-      <div>{renderRichText(data.contentfulEvent.overview, options)}</div>
+      <div>{!data.contentfulEvent.overview ? false : renderRichText(data.contentfulEvent.overview, options)}</div>
       <h2>要項</h2>
-      <div>{renderRichText(data.contentfulEvent.requirements, options)}</div>
+      <div>{!data.contentfulEvent.contentfulEvent ? false : renderRichText(data.contentfulEvent.requirements, options)}</div>
       <h2>開催日</h2>
       <p>{data.contentfulEvent.date}</p>
       <h2>関連投稿</h2>

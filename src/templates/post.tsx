@@ -68,7 +68,7 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
     <main>
       <h1>{data.contentfulPost.title}</h1>
       <h2>内容</h2>
-      <div>{renderRichText(data.contentfulPost.content, options)}</div>
+      <div>{!data.contentfulPost.content ? false :renderRichText(data.contentfulPost.content, options)}</div>
       <h2>タグ</h2>
       <div>
         {data.contentfulPost.metadata.tags?.map(tag => (
