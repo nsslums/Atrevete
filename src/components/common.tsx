@@ -6,8 +6,8 @@ import GlobalStyle from "../GlobalStyle";
 export const Common = ({children}: any) => {
     return(
         <>
-            <Header/>
             <GlobalStyle/>
+            <Header/>
             {children}
             <Footer/>
         </>
