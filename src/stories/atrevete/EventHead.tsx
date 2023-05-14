@@ -1,6 +1,7 @@
 import React from 'react';
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import { Head1 } from "./Head1"
+import { EventStatus } from './EventStatus';
 import {FaBullhorn} from "@react-icons/all-files/fa/FaBullhorn"
 
 interface EventHeadProps{
@@ -31,7 +32,7 @@ export const EventHead = ({
                 <div css={{width: "40%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                     <Head1 text={title}/>
                     <div css={{display: "flex", flexDirection: "row",}}>
-                        <p>募集終了</p>
+                        <EventStatus isActive={isActive} />
                         <p>開催日 <span>{date.getFullYear()}/{date.getMonth()+1}/{date.getDate()}</span></p>
                     </div>
                 </div>
