@@ -1,6 +1,6 @@
 import React from 'react';
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
-import { Head1 } from "./Head1"
+import { Head1 } from "../Head1"
 import { EventStatus } from './EventStatus';
 import {FaBullhorn} from "@react-icons/all-files/fa/FaBullhorn"
 
