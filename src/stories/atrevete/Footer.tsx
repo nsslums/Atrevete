@@ -16,7 +16,7 @@ export const Footer = ({
             left: 0,
         }}>
             <div>
-                <img src="src/images/Atrevete.svg" alt='' />
+                <img src="src/images/Atrevete.svg" alt='Logo' />
             </div>
             <div css={{
                 textAlign: 'center',

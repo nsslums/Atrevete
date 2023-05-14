@@ -22,6 +22,7 @@ export const Header = ({
             position: "relative",
             top: 0,
             left: 0,
+            zIndex: 10,
         }}>
             <div css={{
                 height: "98px",
@@ -34,7 +35,7 @@ export const Header = ({
                 <div css={{
 
                 }}>
-                    <img src="src/images/Atrevete.svg" alt='' />
+                    <img src="src/images/Atrevete.svg" alt='Logo' />
                 </div>
                 <div css={{
                         width: "30px",
