@@ -1,11 +1,11 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import Slider from "react-slick"
-import { EventCard } from "../stories/atrevete/EventCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
+import { EventCard } from "../stories/atrevete/EventCard";
 import {FaChevronLeft} from "@react-icons/all-files/fa/FaChevronLeft"
 import {FaChevronRight} from "@react-icons/all-files/fa/FaChevronRight"
 
@@ -115,7 +115,7 @@ export const Events: React.FC = () => {
          <div>
              <Slider {...settings} css={sleeveCurtain}>
                  {result.allContentfulEvent.nodes?.map((event: any) => (
-                    <div><EventCard key={event.contentful_id} title={event.title} url={"/event/" + event.title} date={event.date} image={event.eye_catch}/></div>
+                    <div key={event.contentful_id}><EventCard title={event.title} url={"/event/" + event.title} date={event.date} image={event.eye_catch}/></div>
                  ))}
              </Slider>
          </div>
