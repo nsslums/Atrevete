@@ -189,9 +189,25 @@ const GlobalStyle = () => (
           background-blend-mode: color-dodge;
           opacity: 3%;
         }
+
       }
 
-      *{
+      .bg_noise{
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url(src/images/noise.png);
+          background-repeat: 'repeat';
+          background-size: 40%;
+          background-blend-mode: color-dodge;
+          opacity: 3%;
+        }
+
+      *
+      {
         color: white;
       }
     `}
