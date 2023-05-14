@@ -193,6 +193,9 @@ const GlobalStyle = () => (
       }
 
       .bg_noise{
+        position: relative;
+        
+        &:before {
           content: "";
           position: absolute;
           top: 0;
@@ -205,6 +208,7 @@ const GlobalStyle = () => (
           background-blend-mode: color-dodge;
           opacity: 3%;
         }
+      }
 
       *
       {
