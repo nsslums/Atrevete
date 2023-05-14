@@ -34,7 +34,7 @@ export const Header = ({
                 <div css={{
 
                 }}>
-                    <StaticImage src="../../images/Atrevete.svg" alt='' />
+                    <img src="src/images/Atrevete.svg" alt='' />
                 </div>
                 <div css={{
                         width: "30px",
