@@ -15,5 +15,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    menuOpen: false
+  }
+}
+
+export const MenuOpen: Story = {
+  args: {
+    menuOpen: true
   }
 }
