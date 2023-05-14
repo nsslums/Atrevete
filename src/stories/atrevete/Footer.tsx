@@ -7,11 +7,22 @@ interface FooterProps {
 export const Footer = ({
     
 }: FooterProps) =>{
+    const year = new Date().getUTCFullYear()
     return(
         <footer css={{
-            width: "100vw"
+            width: "100%",
+            position: "relative",
+            top: 0,
+            left: 0,
         }}>
-            logo
+            <div>
+                <img src="src/images/Atrevete.svg" alt='' />
+            </div>
+            <div css={{
+                textAlign: 'center',
+            }}>
+                <small>Copyright &copy; {year} Atrevete. All rights reserved.</small>
+            </div>
         </footer>
     )
 }
