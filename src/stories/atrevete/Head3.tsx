@@ -11,7 +11,8 @@ const Style = css({
   minWidth: "125px",
   textAlign: 'center',
   display: 'inline-block',
-
+  margin: "2em 0",
+  
   "&::after": {
     content: '""',
     position: "absolute",
