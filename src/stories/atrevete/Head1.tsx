@@ -7,14 +7,29 @@ interface Head1Props {
 
 const Style = css({
   position: 'relative',
+  fontSize: '50px',
   '&:before': {
     content: '""',
     position: 'absolute',
-    backgroundColor: 'blue',
-    width: '100%',
-    height: '5px',
-    left: 0,
-    bottom: '-20px',
+    backgroundImage: 'linear-gradient(20deg,#ccb37e,#7e4d16)',
+    width: 'calc(100% + 8px)',
+    height: '0.12em',
+    left: '-4px',
+    bottom: '-0.4em',
+    transform: 'skewX(-20deg)',
+  },
+  '&:after': {
+    content: '""',
+    position: 'absolute',
+    background: 'url(src/images/noise.png)',
+    backgroundRepeat: 'repeat',
+    backgroundSize: '40%',
+    width: 'calc(100% + 8px)',
+    height: '0.12em',
+    left: '-4px',
+    bottom: '-0.4em',
+    transform: 'skewX(-20deg)',
+    opacity: '20%',
   }
 })
 
