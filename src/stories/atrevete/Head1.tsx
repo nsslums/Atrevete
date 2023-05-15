@@ -7,7 +7,9 @@ interface Head1Props {
 
 const Style = css({
   position: 'relative',
+  margin: '5px 5px 0.5em 5px',
   fontSize: '50px',
+  display: 'inline-block',
   '&:before': {
     content: '""',
     position: 'absolute',
