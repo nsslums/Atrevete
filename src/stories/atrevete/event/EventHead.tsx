@@ -22,12 +22,15 @@ export const EventHead = ({
     isActive = new Date().getTime() < date.getTime()
 }: EventHeadProps) =>{
     return(
-        <>
+        <div css={{
+            margin: "50px auto",
+        }}>
             <div css={{
                 position: "relative",
                 display: "flex",
                 flexDirection: "row",
-                height: HeadHeight+"px"
+                height: HeadHeight,
+                width: 770,
             }}>
                 <div css={{width: "40%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                     <Head1 text={title}/>
@@ -44,7 +47,7 @@ export const EventHead = ({
 
             {!isActive ? 
                 <div css={{
-                    marginTop: (HeadHeight/3) + "px",
+                    marginTop: (HeadHeight/3),
                 }}>
                     <div css={{
                         width: "80%",
@@ -73,6 +76,6 @@ export const EventHead = ({
                     </div>
                 </div>
             : false}
-        </>
+        </div>
     )
 }
