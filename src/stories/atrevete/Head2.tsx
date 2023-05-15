@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
-interface Head3Props {
+interface Head2Props {
   text: string;
 }
 
@@ -13,22 +13,24 @@ const Style = css({
   display: 'inline-block',
   margin: "2em 0",
   
-  "&::after": {
+  "&::before": {
     content: '""',
     position: "absolute",
     top: 0,
     left: 0,
     width: "100%",
     height: "100%",
-    background: "linear-gradient(264.42deg, rgba(106, 59, 5, 0.89) 0%, rgba(106, 59, 5, 0.54) 61.46%, rgba(106, 59, 5, 0.37) 100%), #C5B286",
-    transform: "matrix(1, 0, -0.25, 0.97, 0, 0)",
-    zIndex: 0,
+    backgroundImage: 'linear-gradient(20deg,#ccb37e,#7e4d16)',
+    transform: "skewX(-20deg)",
+  },
+  "&:after": {
+    transform: 'skewX(-20deg)',
   }
 })
 
 
-export const Head3 = ({
+export const Head2 = ({
   text,
-}: Head3Props) => {
+}: Head2Props) => {
   return <h3 css={Style} className='bg_noise'><div css={{zIndex: 10, position: "relative"}}>{text}</div></h3>
 }

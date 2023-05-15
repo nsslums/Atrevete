@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { BLOCKS, INLINES } from "@contentful/rich-text-types"
 import { Common } from "../components/common"
 import { EventHead } from "../stories/atrevete/event/EventHead"
-import { Head3 } from "../stories/atrevete/Head3"
+import { Head3 } from "../stories/atrevete/Head2"
 import { css } from "@emotion/react"
 
 

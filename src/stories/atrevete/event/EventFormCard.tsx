@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import React from 'react';
-import { Head3 } from '../Head3';
+import { Head3 } from '../Head2';
 import { GoldButton } from '../GoldButton';
 import { Transform } from 'stream';
 

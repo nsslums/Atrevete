@@ -195,7 +195,7 @@ const GlobalStyle = () => (
       .bg_noise{
         position: relative;
         
-        &:before {
+        &:after {
           content: "";
           position: absolute;
           top: 0;
@@ -206,7 +206,7 @@ const GlobalStyle = () => (
           background-repeat: 'repeat';
           background-size: 40%;
           background-blend-mode: color-dodge;
-          opacity: 3%;
+          opacity: 20%;
         }
       }
 
