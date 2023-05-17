@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
-import React from 'react';
+import { motion } from 'framer-motion';
+import { relative } from 'path';
 
 interface Head1Props {
   text: string;
@@ -10,27 +11,26 @@ const Style = css({
   margin: '5px 5px 0.5em 5px',
   fontSize: '50px',
   display: 'inline-block',
-  '&:before': {
-    content: '""',
-    position: 'absolute',
-    backgroundImage: 'linear-gradient(20deg,#ccb37e,#7e4d16)',
-    width: 'calc(100% + 8px)',
-    height: '0.12em',
-    left: '-4px',
-    bottom: '-0.4em',
-    transform: 'skewX(-20deg)',
-  },
+})
+
+const bgStyle = css({
+  position: 'absolute',
+  backgroundImage: 'linear-gradient(20deg,#ccb37e,#7e4d16)',
+  width: 'calc(100% + 8px)',
+  height: '0.12em',
+  left: '-4px',
+  bottom: '-0.4em',
+  transform: 'skewX(-20deg)',
   '&:after': {
     content: '""',
     position: 'absolute',
     background: 'url(src/images/noise.png)',
     backgroundRepeat: 'repeat',
     backgroundSize: '40%',
-    width: 'calc(100% + 8px)',
+    width: '100%',
     height: '0.12em',
-    left: '-4px',
-    bottom: '-0.4em',
-    transform: 'skewX(-20deg)',
+    left: 0,
+    bottom: 0,
     opacity: '20%',
   }
 })
@@ -40,8 +40,8 @@ export const Head1 = ({
   text,
 }: Head1Props) => {
   return (
-    <>
-      <h1 css={Style}>{text}</h1>
-    </>
+    <div css={{position:'relative'}}>
+      <motion.h1 initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}} css={Style}>{text}<motion.span initial={{width:0}} animate={{width: 'calc(100% + 8px)'}} css={bgStyle} ></motion.span></motion.h1>
+    </div>
   )
 }
