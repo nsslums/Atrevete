@@ -20,7 +20,7 @@ const Style = css({
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundImage: 'linear-gradient(20deg,#ccb37e,#7e4d16)',
+    backgroundImage: 'var(--gold-gradient)',
     transform: "skewX(-20deg)",
   },
   "&:after": {

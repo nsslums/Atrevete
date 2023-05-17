@@ -21,7 +21,7 @@ const Style = css({
   transition: 'ease .2s',
   '&:hover': {
     color: 'white',
-    backgroundImage: 'linear-gradient(20deg,#ccb37e,#7e4d16)',
+    backgroundImage: 'var(--glod-gradient)',
     backgroundRepeat: 'none',
     boxShadow: '0 0 20px 0 black',
     border: 'none',

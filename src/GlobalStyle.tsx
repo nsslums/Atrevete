@@ -3,10 +3,6 @@ import { Global, css } from "@emotion/react";
 const GlobalStyle = () => (
   <Global
     styles={css`
-      * {
-        box-sizing: border-box;
-      }
-
       html,
       body,
       div,
@@ -175,6 +171,7 @@ const GlobalStyle = () => (
         height: 100%;
         position: relative;
         background-color: #121212;
+        color: white;
 
         &:before {
           content: "";
@@ -194,7 +191,6 @@ const GlobalStyle = () => (
 
       .bg_noise{
         position: relative;
-        
         &:after {
           content: "";
           position: absolute;
@@ -210,9 +206,8 @@ const GlobalStyle = () => (
         }
       }
 
-      *
-      {
-        color: white;
+      :root {
+        --gold-gradient: linear-gradient(20deg,#ccb37e,#7e4d16);
       }
     `}
   />

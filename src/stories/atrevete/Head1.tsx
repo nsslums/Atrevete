@@ -15,7 +15,7 @@ const Style = css({
 
 const bgStyle = css({
   position: 'absolute',
-  backgroundImage: 'linear-gradient(20deg,#ccb37e,#7e4d16)',
+  backgroundImage: 'var(--gold-gradient)',
   width: 'calc(100% + 8px)',
   height: '0.12em',
   left: '-4px',
