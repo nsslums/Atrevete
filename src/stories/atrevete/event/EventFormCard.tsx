@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import React from 'react';
-import { Head3 } from '../Head2';
+import { Head2 } from '../Head2';
 import { GoldButton } from '../GoldButton';
 import { Transform } from 'stream';
 
@@ -66,7 +66,7 @@ export const EventFormCard = ({
                 justifyContent: 'center',
                 alignItems: 'center',
             }}>
-                <Head3 text='応募期間' />
+                <Head2 text='応募期間' />
                 <p css={{marginTop: "10px"}}>{start_date.getFullYear()}年{start_date.getMonth()+1}月{start_date.getDate()}日 ~ {end_date.getFullYear()}年{end_date.getMonth()+1}月{end_date.getDate()}日</p>
             </div>
             <div css={{
