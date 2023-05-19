@@ -6,6 +6,7 @@ import { Input } from "../stories/atrevete/form/Input"
 import { TextArea } from "../stories/atrevete/form/TextArea"
 import { UploadFile } from "../stories/atrevete/form/UploadFile"
 import { Certifications } from "../stories/atrevete/form/Certifications"
+import { Common } from "../components/common"
 
 const FormPage: React.FC<PageProps> = () => {
     const [submitdis, setSubmitdis] = React.useState(false)
@@ -18,15 +19,9 @@ const FormPage: React.FC<PageProps> = () => {
     ]
 
     const onSubmit = async (e: any) => {
+        console.log('submit')
         setSubmitdis(true)
         e.preventDefault()  // デフォルトの動作のキャンセル
-
-        const input = {
-
-
-        }
-        console.log(input)
-        console.log(e.target.file.files[0])
 
         const formData = new FormData()
         formData.append("event", e.target.event.value,)
@@ -42,7 +37,6 @@ const FormPage: React.FC<PageProps> = () => {
         formData.append("twitter", e.target.twitter.value)
 
         formData.append("file", e.target.file.files[0])
-        console.log(formData.get("file"))
 
         const response = await window.fetch('/api/event', {
             method: 'POST',
@@ -54,21 +48,23 @@ const FormPage: React.FC<PageProps> = () => {
     }
 
     return (
-        <form action="/api/event" method="post" onSubmit={onSubmit}>
-            <Pulldown label="イベント" name="event" id="event" options={options} required={true} />
-            <Input label="お名前" type="text" name="name" id="name" required={true} />
-            <Input label="誕生日" type="date" name="birthday" id="birthday" required={true} />
-            <Input label="大学名" type="text" name="university" id="university" required={true} />
-            <Input label="メール" type="email" name="email" id="email" required={true} />
-            <Certifications label="資格" name="certifications_hiddn" id="certifications" />
-            <TextArea label="経歴・学外活動" name="career" id="career" required={true} />
-            <TextArea label="自己PR" name="pr" id="pr" required={true} />
-            <UploadFile required={true} />
-            <Input label="Instagram ID" type="text" name="instagram" id="instagram" />
-            <Input label="TikTok ID" type="text" name="tiktok" id="tiktok" />
-            <Input label="Twitter ID" type="text" name="twitter" id="twitter" />
-            <Input type="submit" name="submit" id="submit" disabled={submitdis} />
-        </form>
+        <Common>
+            <form action="/api/event" method="post" onSubmit={onSubmit}>
+                <Pulldown label="イベント" name="event" id="event" options={options} required={true} />
+                <Input label="お名前" type="text" name="name" id="name" required={true} />
+                <Input label="誕生日" type="date" name="birthday" id="birthday" required={true} />
+                <Input label="メール" type="email" name="email" id="email" required={true} />
+                <TextArea label="自己PR" name="pr" id="pr" required={true} />
+                <UploadFile required={true} />
+                <Input label="大学名" type="text" name="university" id="university" />
+                <Certifications label="資格" name="certifications_hiddn" id="certifications" />
+                <TextArea label="経歴・学外活動" name="career" id="career" />
+                <Input label="Instagram ID" type="text" name="instagram" id="instagram" />
+                <Input label="TikTok ID" type="text" name="tiktok" id="tiktok" />
+                <Input label="Twitter ID" type="text" name="twitter" id="twitter" />
+                <Input type="submit" name="submit" id="submit" disabled={submitdis} />
+            </form>
+        </Common>
     )
 }
 
