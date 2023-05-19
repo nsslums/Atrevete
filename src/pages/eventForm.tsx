@@ -1,5 +1,5 @@
 import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
+import { HeadFC, PageProps, navigate } from "gatsby"
 import Select from 'react-select'
 import { Pulldown } from "../stories/atrevete/form/Pulldown"
 import { Input } from "../stories/atrevete/form/Input"
@@ -44,6 +44,12 @@ const FormPage: React.FC<PageProps> = () => {
         })
             .then(res => res.json())
         console.log(response)
+
+        if(response.status === "success"){
+            await navigate('/thanks')
+        }else{
+            alert("エラーが発生しました．")
+        }
         setSubmitdis(false)
     }
 

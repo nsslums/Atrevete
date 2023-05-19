@@ -1,5 +1,5 @@
 import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
+import { HeadFC, PageProps, navigate } from "gatsby"
 import { Common } from "../components/common"
 import { Input } from "../stories/atrevete/form/Input"
 import { TextArea } from "../stories/atrevete/form/TextArea"
@@ -25,6 +25,12 @@ const FormPage: React.FC<PageProps> = () => {
         })
         .then(res => res.json())
         console.log(response)
+        
+        if(response.status === "success"){
+            await navigate('/thanks')
+        }else{
+            alert("エラーが発生しました．")
+        }
         setSubmitdis(false)
     }
 
