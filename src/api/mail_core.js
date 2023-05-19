@@ -33,58 +33,47 @@ export class MailCore{
             })
             .catch(error => {
                 response.status = "error"
-                console.log(error)
             })
         return response
     }
 
-    /**
-     * メールを送る
-     * 値が違ければエラーを返す
-     */
-    // send = async () =>{
-    
-    //     let response = {
-    //         "status": "init",
-    //         "admin_sendedMail": false,
-    //         "user_sendedMail": false
-    //     }
+    send = async (udata, adata) =>{
+        let response = new Response().res
 
-    //     // 運営に送信
-    //     await transporter.sendMail(adminData)
-    //         .then(result =>{
-    //             response.admin_sendedMail = true
-    //             response.status = "success"
-    //         })
-    //         .catch(error => {
-    //             response.status = "error"
-    //             console.log(error)
-    //         })
-    //     if(response.status == "error"){
-    //         return response
-    //     }
+        // 運営に送信
+        await this.transporter.sendMail(adata)
+            .then(result =>{
+                response.admin_sendedMail = true
+                response.status = "success"
+            })
+            .catch(error => {
+                response.admin_sendedMail = false
+                response.status = "error"
+            })
+        if(response.status == "error"){
+            return response
+        }
 
-    //     // userに送信
-    //     await transporter.sendMail(userData)
-    //         .then(result =>{
-    //             response.user_sendedMail = true
-    //             response.status = "success"
-    //         })
-    //         .catch(error => {
-    //             response.status = "error"
-    //             console.log(error)
-    //         })
+        // userに送信
+        await this.transporter.sendMail(udata)
+            .then(result =>{
+                response.user_sendedMail = true
+                response.status = "success"
+            })
+            .catch(error => {
+                response.user_sendedMail = false
+                response.status = "error"
+            })
 
-    //     if(response.status == "error"){
-    //         const erroEmail = {
-    //             from: process.env.SMTPUSER,
-    //             to: process.env.ADMINMAIL,
-    //             subject: `【送信エラー】お客様のメールアドレスに送信出来ませんでした`,
-    //             text: this.mail_plain,
-    //             html: mail_common.render_html("【送信エラー】" + this.mail_subject ,this.html)
-    //         }
-    //         await transporter.sendMail(erroEmail)
-    //     }
-    //     return response
-    // }
+        if(response.status == "error"){
+            const erroEmail = {
+                from: process.env.SMTPUSER,
+                to: process.env.ADMIN_MAIL,
+                subject: `【送信エラー】お客様のメールアドレスに送信出来ませんでした`,
+                text: adata.text
+            }
+            await this.transporter.sendMail(erroEmail)
+        }
+        return response
+    }
 }
