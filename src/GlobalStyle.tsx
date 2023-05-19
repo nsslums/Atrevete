@@ -123,6 +123,7 @@ const GlobalStyle = () => (
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
+        color: white;
       }
 
       textarea {
@@ -204,6 +205,11 @@ const GlobalStyle = () => (
           background-blend-mode: color-dodge;
           opacity: 20%;
         }
+      }
+
+      #___gatsby{
+        z-index: 10;
+        position: relative;
       }
 
       :root {
