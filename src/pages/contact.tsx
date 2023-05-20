@@ -3,14 +3,23 @@ import { HeadFC, PageProps, navigate } from "gatsby"
 import { Common } from "../components/common"
 import { Input } from "../stories/atrevete/form/Input"
 import { TextArea } from "../stories/atrevete/form/TextArea"
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 
 const FormPage: React.FC<PageProps> = () => {
     const [submitdis, setSubmitdis] = React.useState(false)
+    const { executeRecaptcha } = useGoogleReCaptcha()
 
     const onSubmit = async (e: any) =>{
+        e.preventDefault()  // デフォルトの動作のキャンセル
         console.log("submit")
         setSubmitdis(true)
-        e.preventDefault()  // デフォルトの動作のキャンセル
+
+        if(!executeRecaptcha){
+            setSubmitdis(false)
+            return
+        }
+
+        const token = await executeRecaptcha('contact')
 
         const formData = new FormData()
         formData.append("name", e.target.name.value,)
@@ -18,6 +27,7 @@ const FormPage: React.FC<PageProps> = () => {
         formData.append("subject", e.target.subject.value)
         formData.append("phone", e.target.phone.value)
         formData.append("content", e.target.content.value)
+        formData.append("token", token)
 
         const response = await window.fetch('/api/contact', {
             method: 'POST',
