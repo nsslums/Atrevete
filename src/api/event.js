@@ -79,7 +79,14 @@ export default async function sendMail(req, res){
     certifications_enc.map(certification =>{
       certifications += certification.text + "\n"
     });
-const plain = `
+const plain = `※このメールはシステムからの自動送信です
+
+イベントにご応募頂きありがとうございます。
+以下の内容で受け付けいたしました。
+
+詳細はメールにてご連絡させていただきます。
+
+━━━━━━━━━━━━━━━ ご入力内容 ━━━━━━━━━━━━━━
 イベント名: ${req.body.event}
 お名前: ${req.body.name}
 誕生日: ${req.body.birthday}
@@ -91,6 +98,14 @@ const plain = `
 Instagram ID: ${req.body.instagram}
 TikTok ID: ${req.body.tiktok}
 Twitter ID: ${req.body.twitter}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+———————————————
+Atrevete
+web: xxxxxxxxxxxx.xxxxxxxxx
+電話番号: 00-0000-0000
+メール: xxxxxx@xxxxxxxxxxxxxxxxxx.xxxxxx
+———————————————
 `
     const admData = {
       from: process.env.SMTPUSER,

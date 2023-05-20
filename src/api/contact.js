@@ -38,19 +38,34 @@ export default async function sendMail(req, res){
         return res.status(422).json({status: "error", error: {code: 442, message: 'need content'}})
     }
 
-    const plain = `
+    const plain = `※このメールはシステムからの自動送信です
+
+お問い合わせ頂きありがとうございます。
+以下の内容でお問い合わせを受け付けいたしました。
+
+xxxxxxx営業日以内にご連絡させていただきます。
+
+━━━━━━━━━━━━ お問い合わせ内容 ━━━━━━━━━━━━
 お名前: ${req.body.name}
 メールアドレス: ${req.body.email}
 件名: ${req.body.subject}
 電話番号: ${req.body.phone}
 お問い合わせ内容: ${req.body.content}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+———————————————
+Atrevete
+web: xxxxxxxxxxxx.xxxxxxxxx
+電話番号: 00-0000-0000
+メール: xxxxxx@xxxxxxxxxxxxxxxxxx.xxxxxx
+———————————————
 `
 
     const admData = {
         from: process.env.SMTPUSER,
         to: process.env.ADMIN_MAIL,
         replyTo: req.body.email,
-        subject: `【新規】お問い合わせ`,
+        subject: `【Atrevete】お問い合わせ受け付けのお知らせ`,
         text: plain,
     }
 
@@ -58,7 +73,7 @@ export default async function sendMail(req, res){
     const userData = {
         from: process.env.SMTPUSER,
         to: req.body.email,
-        subject: `【新規】お問い合わせ`,
+        subject: `【新規】お問い合わせ受け付けのお知らせ`,
         text: plain,
     }
 
