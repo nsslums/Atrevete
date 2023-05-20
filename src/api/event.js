@@ -1,4 +1,5 @@
 import { MailCore } from "./mail_core";
+import request from "request";
 
 export const config = {
   bodyParser: {
@@ -24,26 +25,49 @@ export const config = {
 
 
 export default async function sendMail(req, res){
+
+    if(!req.body.token){
+        return res.status(422).json({status: "error", error: {code: 442, message: 'need reCAPTCHA'}})
+    }
+
+    const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRETKEY}&response=${req.body.token}`
+    
+    request(verificationUrl, (err, response, body) => {
+        if (err) {
+            return res.status(401).json({
+                status: "error",
+                error: {code: 401, message: 'reCAPTCHA request error.'}
+            })
+        }
+        const { success, score } = JSON.parse(body)
+        if (!success || score <= 0.5) {
+            return res.status(400).json({
+                status: "error",
+                error: {code: 400, message: 'reCAPTCHA judge failed. Are you robot..?'}
+            })
+        }
+    })
+
     if(!req.body.event){
       return res.status(422).json("{status: error, error: {code: 442, message: 'need event'}}")
     }
     if(!req.body.name){
-      return res.status(422).json("{status: error, error: {code: 442, message: 'need name'}}")
+      return res.status(422).json({status: "error", error: {code: 442, message: 'need name'}})
     }
     if(!req.body.birthday){
-      return res.status(422).json("{status: error, error: {code: 442, message: 'need birthday'}}")
+      return res.status(422).json({status: "error", error: {code: 442, message: 'need birthday'}})
     }
     if(!req.body.university){
-      return res.status(422).json("{status: error, error: {code: 442, message: 'need university'}}")
+      return res.status(422).json({status: "error", error: {code: 442, message: 'need university'}})
     }
     if(!req.body.email){
-      return res.status(422).json("{status: error, error: {code: 442, message: 'need email'}}")
+      return res.status(422).json({status: "error", error: {code: 442, message: 'need email'}})
     }
     if(!req.body.pr){
-      return res.status(422).json("{status: error, error: {code: 442, message: 'need pr'}}")
+      return res.status(422).json({status: "error", error: {code: 442, message: 'need pr'}})
     }
     if(!req.files){
-      return res.status(422).json("{status: error, error: {code: 442, message: 'need file'}}")
+      return res.status(422).json({status: "error", error: {code: 442, message: 'need file'}})
     }
 
     console.log(req.body.event)

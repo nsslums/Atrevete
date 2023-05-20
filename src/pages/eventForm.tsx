@@ -7,10 +7,11 @@ import { TextArea } from "../stories/atrevete/form/TextArea"
 import { UploadFile } from "../stories/atrevete/form/UploadFile"
 import { Certifications } from "../stories/atrevete/form/Certifications"
 import { Common } from "../components/common"
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 
 const FormPage: React.FC<PageProps> = () => {
     const [submitdis, setSubmitdis] = React.useState(false)
-
+    const { executeRecaptcha } = useGoogleReCaptcha()
 
     const options = [
         { value: 'value1', label: '値1' },
@@ -19,10 +20,16 @@ const FormPage: React.FC<PageProps> = () => {
     ]
 
     const onSubmit = async (e: any) => {
+        e.preventDefault()  // デフォルトの動作のキャンセル
         console.log('submit')
         setSubmitdis(true)
-        e.preventDefault()  // デフォルトの動作のキャンセル
 
+        if(!executeRecaptcha){
+            setSubmitdis(false)
+            return
+        }
+        const token = await executeRecaptcha('contact')
+        
         const formData = new FormData()
         formData.append("event", e.target.event.value,)
         formData.append("name", e.target.name.value)
@@ -35,7 +42,8 @@ const FormPage: React.FC<PageProps> = () => {
         formData.append("instagram", e.target.instagram.value)
         formData.append("tiktok", e.target.tiktok.value)
         formData.append("twitter", e.target.twitter.value)
-
+        formData.append("token", token)
+        
         formData.append("file", e.target.file.files[0])
 
         const response = await window.fetch('/api/event', {
