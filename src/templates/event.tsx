@@ -7,6 +7,7 @@ import { Common } from "../components/common"
 import { EventHead } from "../stories/atrevete/event/EventHead"
 import { Head2 } from "../stories/atrevete/Head2"
 import { css } from "@emotion/react"
+import { EventFormCard } from "../stories/atrevete/event/EventFormCard"
 
 
 const block = css({
@@ -107,6 +108,9 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
           <Head2 text="日時" />
           <p>{data.contentfulEvent.date}</p>
         </div>
+      </div>
+      <div css={[block, {maxWidth: 770}]}>
+        <EventFormCard />
       </div>
       <h2>関連投稿</h2>
       <div>
