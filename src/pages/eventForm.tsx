@@ -9,9 +9,12 @@ import { Certifications } from "../stories/atrevete/form/Certifications"
 import { Common } from "../components/common"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 
-const FormPage: React.FC<PageProps> = ({data}) => {
+const FormPage: React.FC<PageProps> = (props) => {
     const [submitdis, setSubmitdis] = React.useState(false)
     const { executeRecaptcha } = useGoogleReCaptcha()
+
+    const data = props.data
+    const propsEvent = props.location.state?.event || ""
 
     const events = data.allContentfulEvent.nodes?.filter((event: any) => {
         if(!event.start_reception)   // 受け付け開始 未入力
@@ -31,7 +34,7 @@ const FormPage: React.FC<PageProps> = ({data}) => {
         return {value: event.title, label: event.title}
     })
 
-    console.log(options)
+    const default_value = {value: propsEvent, label: propsEvent};
 
     const onSubmit = async (e: any) => {
         e.preventDefault()  // デフォルトの動作のキャンセル
@@ -78,7 +81,7 @@ const FormPage: React.FC<PageProps> = ({data}) => {
     return (
         <Common>
             <form action="/api/event" method="post" onSubmit={onSubmit}>
-                <Pulldown label="イベント" name="event" id="event" options={options} required={true} />
+                <Pulldown label="イベント" name="event" id="event" options={options} default_val={default_value} required={true} />
                 <Input label="お名前" type="text" name="name" id="name" required={true} />
                 <Input label="誕生日" type="date" name="birthday" id="birthday" required={true} />
                 <Input label="メール" type="email" name="email" id="email" required={true} />
