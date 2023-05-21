@@ -8,6 +8,7 @@ interface PulldownProps {
   name: string,
   id: string,
   required?: boolean,
+  default_val?:any,
 }
 
 const Style = css({
@@ -20,11 +21,12 @@ export const Pulldown = ({
     name,
     id,
     required = false,
+    default_val,
 }: PulldownProps) => {
   return (
     <div>
       {label ? <label htmlFor={id}>{label}</label> : false}
-      <Select options={options} name={name} id={id} required={required} css={Style}/>
+      <Select options={options} name={name} id={id} required={required} defaultValue={default_val} css={Style}/>
     </div>
   )
 }
