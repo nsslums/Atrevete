@@ -207,9 +207,14 @@ const GlobalStyle = () => (
         }
       }
 
-      #___gatsby{
+      #___gatsby,
+      #storybook-root{
         z-index: 10;
         position: relative;
+      }
+
+      .grecaptcha-badge{
+        z-index: 1000000
       }
 
       :root {
