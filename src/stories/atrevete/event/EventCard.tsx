@@ -7,7 +7,7 @@ interface EventCardProps {
 
   isActive?: boolean;
   title: string;
-  date?: string,
+  date: string,
   image?: any,
   url?: string,
 }
@@ -68,7 +68,7 @@ const image_css = css({
  */
 export const EventCard = ({
   title,
-  date = '2020/10/10',
+  date,
   image,
   url = "/event/",
   isActive = new Date().getTime() < new Date(date).getTime(),
@@ -105,7 +105,7 @@ export const EventCard = ({
           <p css={{
             marginBottom: "10px"
           }}>
-            開催日 <span>{date}</span>
+            開催日 {date ? <span>{date}</span> : <span>未定</span>}
           </p>
           <p css={{
             fontWeight: "700",

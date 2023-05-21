@@ -6,8 +6,8 @@ import { Transform } from 'stream';
 
 interface EventFormCardProps {
   isActive?: boolean;
-  start_date?: Date,
-  end_date?: Date,
+  start_date: string,
+  end_date: string,
 }
 
 const base = css({
@@ -48,14 +48,38 @@ const disable = css({
     }    
 })
 
+const commingsoon = css({
+    "&::before":{
+        content: '""',
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0,0,0,.6)",
+        zIndex: 10
+    },
+
+    "&::after":{
+        content: '"受付をお待ちください"',
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)", 
+        zIndex: 10,
+        fontSize: 20,
+    }    
+})
+
 export const EventFormCard = ({
-  isActive = false,
-  start_date = new Date(),
-  end_date = new Date(),
+    start_date,
+    end_date,
+    isActive = new Date().getTime() < new Date(end_date).getTime(),
   ...props
 }: EventFormCardProps) => {
 
-    const style = isActive ? base : [base, disable]
+    let style = isActive ? base : [base, disable]
+    style = ((!start_date && !end_date) ||  new Date(start_date).getTime() > new Date().getTime()) ? [base, commingsoon] : style
   return (
     <>
         <div css={style}>
@@ -67,7 +91,11 @@ export const EventFormCard = ({
                 alignItems: 'center',
             }}>
                 <Head2 text='応募期間' />
-                <p>{start_date.getFullYear()}年{start_date.getMonth()+1}月{start_date.getDate()}日 ~ {end_date.getFullYear()}年{end_date.getMonth()+1}月{end_date.getDate()}日</p>
+                {(!start_date && !end_date) ?
+                    <p>未定</p>
+                    :
+                     <p>{start_date} ~ {end_date}</p>
+                 }
             </div>
             <div css={{
                 widht: "50%",

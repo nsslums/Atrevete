@@ -16,8 +16,19 @@ type Story = StoryObj<typeof meta>;
 export const Active: Story = {
   args: {
     isActive: true,
+    start_date: "2023/5/1",
+    end_date: "2024/10/11"
   },
 };
 
 export const Disable: Story = {
+  args: {
+    start_date: "2022/1/1",
+    end_date: "2022/7/30"
+  },
+}
+
+export const CommingSoon: Story = {
+  args: {
+  },
 }
