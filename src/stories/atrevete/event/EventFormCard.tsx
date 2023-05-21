@@ -74,12 +74,12 @@ const commingsoon = css({
 export const EventFormCard = ({
     start_date,
     end_date,
-    isActive = new Date().getTime() < new Date(end_date).getTime(),
+    isActive = !end_date ? true : new Date().getTime() < new Date(end_date).getTime(),
   ...props
 }: EventFormCardProps) => {
 
     let style = isActive ? base : [base, disable]
-    style = ((!start_date && !end_date) ||  new Date(start_date).getTime() > new Date().getTime()) ? [base, commingsoon] : style
+    style = (!start_date ||  new Date(start_date).getTime() > new Date().getTime()) ? [base, commingsoon] : style
   return (
     <>
         <div css={style}>
