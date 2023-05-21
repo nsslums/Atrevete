@@ -67,13 +67,14 @@ const image_css = css({
  * Primary UI component for user interaction
  */
 export const EventCard = ({
-  isActive = false,
   title,
   date = '2020/10/10',
   image,
   url = "/event/",
+  isActive = new Date().getTime() < new Date(date).getTime(),
   ...props
 }: EventCardProps) => {
+
   const status = isActive ? '募集中' : '募集終了';
   return (
     <div css={rootStyle}>

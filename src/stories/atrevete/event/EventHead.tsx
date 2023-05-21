@@ -6,7 +6,7 @@ import {FaBullhorn} from "@react-icons/all-files/fa/FaBullhorn"
 
 interface EventHeadProps{
     title?: string,
-    date?: Date,
+    date?: string,
     imageURL?: string,
     GatsbyImageData?: IGatsbyImageData,
     HeadHeight?: Number,
@@ -15,11 +15,11 @@ interface EventHeadProps{
 
 export const EventHead = ({
     title = "イベント名",
-    date = new Date(2023, 10 - 1, 10),
+    date = '2020/10/10',
     imageURL,
     GatsbyImageData,
     HeadHeight = 200,
-    isActive = new Date().getTime() < date.getTime()
+    isActive = new Date().getTime() < new Date(date).getTime(),
 }: EventHeadProps) =>{
     return(
         <div css={{
@@ -36,7 +36,7 @@ export const EventHead = ({
                     <Head1 text={title}/>
                     <div css={{display: "flex", flexDirection: "row",}}>
                         <EventStatus isActive={isActive} />
-                        <p>開催日 <span>{date.getFullYear()}/{date.getMonth()+1}/{date.getDate()}</span></p>
+                        <p>開催日 <span>{date}</span></p>
                     </div>
                 </div>
                 <div css={{width: "60%", borderRadius: "5px", overflow: "hidden"}}>

@@ -22,6 +22,13 @@ export const Active: Story = {
 
 export const Disable: Story = {
     args: {
+        isActive: false,
         title: 'イベント名'
     }
+}
+
+export const DateCustom: Story = {
+  args: {
+      title: 'イベント名'
+  }
 }
