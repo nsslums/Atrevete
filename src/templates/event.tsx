@@ -78,6 +78,9 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
     },
   }
 
+  const start_reception = data.contentfulEvent.start_reception || ""
+  const end_reception = data.contentfulEvent.end_reception || ""
+  const date = data.contentfulEvent.date || ""
   return (
     <Common>
       <div css={[block, {maxWidth: 770}]}>
@@ -106,11 +109,11 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
         </div>
         <div css={[block, {width: "50%"}]}>
           <Head2 text="日時" />
-          <p>{data.contentfulEvent.date}</p>
+          {date ? <p>{date}</p> : <p>未定</p>}
         </div>
       </div>
       <div css={[block, {maxWidth: 770}]}>
-        <EventFormCard />
+        <EventFormCard start_date={start_reception} end_date={end_reception} />
       </div>
       <h2>関連投稿</h2>
       <div>
@@ -129,6 +132,8 @@ export const query = graphql`
       hidden: {ne: true}
     ) {
       title
+      end_reception(formatString: "yyyy/M/D")
+      start_reception(formatString: "yyyy/M/D")
       date(formatString: "yyyy/M/D")
       overview {
         raw
