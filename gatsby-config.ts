@@ -17,7 +17,75 @@ const config: GatsbyConfig = {
       "spaceId": process.env.DEBUG_SPACEID,
       enableTags: true,
     }
-  }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-emotion"]
+  }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-emotion", {
+    resolve: 'gatsby-plugin-sitemap',
+    options: {
+      query: `
+      {
+        site {
+          siteMetadata {
+            siteUrl
+          }
+        }
+        allSitePage {
+          nodes {
+            path
+          }
+        }
+        allContentfulPost {
+          nodes {
+            title
+            updatedAt(formatString: "YYYY-MM-DDTHH:mm:ssZ")
+          }
+        }
+        allContentfulEvent {
+          nodes {
+            title
+            updatedAt(formatString: "YYYY-MM-DDTHH:mm:ssZ")
+          }
+        }
+      }
+    `,
+      resolveSiteUrl: ({site: { siteMetadata: {siteUrl} }}) => siteUrl,
+      resolvePages: ({
+        allSitePage: { nodes: allPages },
+        allContentfulPost: { nodes: posts },
+        allContentfulEvent: { nodes: events },
+      }) => {
+        let postMap = posts.reduce((acc, post) => {
+          const { title, updatedAt } = post
+          acc[`/post/${title}/`] = {updatedAt}
+
+          return acc
+        }, {})
+
+        const allMap = events.reduce((acc, post) => {
+          const { title, updatedAt } = post
+          acc[`/event/${title}/`] = {updatedAt}
+
+          return acc
+        }, postMap)
+
+        return allPages.map(page => {
+          return { ...page, ...allMap[page.path] }
+        })
+      },
+      excludes: ['/404?(.*)', '/**/privacy', '/event', '/post', '/eventForm', '/contact', '/thanks'],
+      serialize: ({ path, updatedAt }) =>  {
+        const site = {
+          url: path,
+          changefreq: `daily`,
+          priority: updatedAt ? 0.7 : 0.5,
+        }
+        if (!updatedAt) return site
+
+        return {
+          url: path,
+          lastmod: updatedAt,
+        }
+      },
+    },
+  }]
 };
 
 export default config;
