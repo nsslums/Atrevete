@@ -1,5 +1,5 @@
 import * as React from "react"
-import { HeadFC, Link, PageProps, graphql } from "gatsby"
+import { HeadFC, Link, PageProps, graphql, navigate } from "gatsby"
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { GatsbyImage } from "gatsby-plugin-image"
 import { BLOCKS, INLINES } from "@contentful/rich-text-types"
@@ -8,7 +8,6 @@ import { EventHead } from "../stories/atrevete/event/EventHead"
 import { Head2 } from "../stories/atrevete/Head2"
 import { css } from "@emotion/react"
 import { EventFormCard } from "../stories/atrevete/event/EventFormCard"
-
 
 const block = css({
   position: "relative",
@@ -77,6 +76,12 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       ,
     },
   }
+  
+  const title = data.contentfulEvent.title
+
+  const  navigation = async (e:any) =>{
+    await navigate("/eventForm", { state: { event: title } })
+  }
 
   const start_reception = data.contentfulEvent.start_reception || ""
   const end_reception = data.contentfulEvent.end_reception || ""
@@ -84,7 +89,7 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
   return (
     <Common>
       <div css={[block, {maxWidth: 770}]}>
-        <EventHead title={data.contentfulEvent.title} imageURL="src/images/event.jpg" date={data.contentfulEvent.date} />
+        <EventHead title={title} imageURL="src/images/event.jpg" date={data.contentfulEvent.date} />
       </div>
       <div css={[block, {maxWidth: 770}]}>
         <Head2 text="概要"/>
@@ -113,7 +118,7 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
         </div>
       </div>
       <div css={[block, {maxWidth: 770}]}>
-        <EventFormCard start_date={start_reception} end_date={end_reception} />
+        <EventFormCard start_date={start_reception} end_date={end_reception} onClick={navigation}/>
       </div>
       <h2>関連投稿</h2>
       <div>
