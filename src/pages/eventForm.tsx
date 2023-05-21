@@ -1,5 +1,5 @@
 import * as React from "react"
-import { HeadFC, PageProps, navigate } from "gatsby"
+import { HeadFC, PageProps, graphql, navigate } from "gatsby"
 import Select from 'react-select'
 import { Pulldown } from "../stories/atrevete/form/Pulldown"
 import { Input } from "../stories/atrevete/form/Input"
@@ -9,15 +9,29 @@ import { Certifications } from "../stories/atrevete/form/Certifications"
 import { Common } from "../components/common"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 
-const FormPage: React.FC<PageProps> = () => {
+const FormPage: React.FC<PageProps> = ({data}) => {
     const [submitdis, setSubmitdis] = React.useState(false)
     const { executeRecaptcha } = useGoogleReCaptcha()
 
-    const options = [
-        { value: 'value1', label: '値1' },
-        { value: 'value2', label: '値2' },
-        { value: 'value3', label: '値3' },
-    ]
+    const events = data.allContentfulEvent.nodes?.filter((event: any) => {
+        if(!event.start_reception)   // 受け付け開始 未入力
+            return false
+        
+        const startDate = new Date(event.start_reception)   // 受け付け開始 前
+        if(startDate.getTime() > new Date().getTime())
+            return false
+        
+        if(event.end_reception && new Date(event.end_reception).getTime() < new Date().getTime())// 受け付け終了後
+            return false
+
+        return true
+    })
+
+    const options = events.map((event: any) => {
+        return {value: event.title, label: event.title}
+    })
+
+    console.log(options)
 
     const onSubmit = async (e: any) => {
         e.preventDefault()  // デフォルトの動作のキャンセル
@@ -81,6 +95,18 @@ const FormPage: React.FC<PageProps> = () => {
         </Common>
     )
 }
+
+export const query = graphql`
+  query {
+  allContentfulEvent(filter: {hidden: {ne: true}}) {
+    nodes {
+      title
+      end_reception(formatString: "yyyy/M/D")
+      start_reception(formatString: "yyyy/M/D")
+    }
+  }
+}
+`
 
 export default FormPage
 
