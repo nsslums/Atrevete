@@ -8,6 +8,7 @@ interface EventFormCardProps {
   isActive?: boolean;
   start_date: string,
   end_date: string,
+  onClick?: () => void;
 }
 
 const base = css({
@@ -100,7 +101,7 @@ export const EventFormCard = ({
             <div css={{
                 widht: "50%",
             }}>
-                <GoldButton text='応募はこちら' />
+                <GoldButton text='応募はこちら' {...props}/>
             </div>
         </div>
     </>
