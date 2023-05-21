@@ -80,7 +80,7 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
   return (
     <Common>
       <div css={[block, {maxWidth: 770}]}>
-        <EventHead title={data.contentfulEvent.title} imageURL="src/images/event.jpg"/>
+        <EventHead title={data.contentfulEvent.title} imageURL="src/images/event.jpg" date={data.contentfulEvent.date} />
       </div>
       <div css={[block, {maxWidth: 770}]}>
         <Head2 text="概要"/>
@@ -125,7 +125,7 @@ export const query = graphql`
       hidden: {ne: true}
     ) {
       title
-      date
+      date(formatString: "yyyy/M/D")
       overview {
         raw
         references {
