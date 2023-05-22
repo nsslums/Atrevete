@@ -16,8 +16,8 @@ const rootCss = css({
 
 const labelBase = css({
   position: "absolute",
-  top: 35,
-  left: 5,
+  top: 40,
+  left: 15,
   transition: "0.4s cubic-bezier(0,.5,.5,1)",
   fontSize: "1em",
 })

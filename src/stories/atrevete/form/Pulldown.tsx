@@ -20,7 +20,7 @@ const rootCss = css({
 const labelBase = css({
   position: "absolute",
   top: 36,
-  left: 10,
+  left: 15,
   transition: "0.4s cubic-bezier(0,.5,.5,1)",
   fontSize: "1em",
   zIndex: 10,
@@ -34,6 +34,7 @@ const label_up = css({
 
 const pullDownCss = css({
   width: 700,
+  height: 40,
   marginTop: 30,
   backgroundColor: "#202020",
   borderRadius: "5px 5px 0 0",

@@ -19,9 +19,10 @@ const rootCss = css({
 const labelBase = css({
   position: "absolute",
   top: 35,
-  left: 5,
+  left: 15,
   transition: "0.4s cubic-bezier(0,.5,.5,1)",
   fontSize: "1em",
+  zIndex: 10
 })
 const InputCss = ({
   width: 700,
@@ -33,7 +34,6 @@ const InputCss = ({
   borderRadius: "5px 5px 0 0",
   boxSizing: "border-box",
 })
-
 
 const label_up = css({
   top: 5,
@@ -65,6 +65,11 @@ export const Input = ({
   }
 
   const labelStyle = isSelect || value ? [labelBase, label_up] :labelBase
+  const InputStyle = isSelect || value ? InputCss : [InputCss, css({
+    "&::-webkit-datetime-edit-fields-wrapper":{
+      display: "none"
+    }
+  })]
 
   return (
     <div css={rootCss}>
@@ -72,7 +77,7 @@ export const Input = ({
       {type == 'submit' ? 
         <input type="submit" disabled={disabled}/>
         :  
-        <input type={type} name={name} id={id} value={value} required={required} css={InputCss} onBlur={onBlurHandel} onSelect={onSelectHandel} onChange={changeHandle} autoComplete="off"/>
+        <input type={type} name={name} id={id} value={value} required={required} css={InputStyle} onBlur={onBlurHandel} onSelect={onSelectHandel} onChange={changeHandle} autoComplete="off"/>
       }
     </div>
   )

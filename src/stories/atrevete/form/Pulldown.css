@@ -6,6 +6,7 @@
     border-left-width: 0 !important;
     border-bottom-width: 1px !important;
     border-radius: 5px 5px 0 0 !important;
+    height: 40px;
 }
 .react-select__single-value{
     color: white !important;
@@ -13,4 +14,5 @@
 
 .react-select__menu{
     background-color: #202020 !important;
+    z-index: 15;
 }
