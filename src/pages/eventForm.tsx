@@ -80,21 +80,27 @@ const FormPage: React.FC<PageProps> = (props) => {
 
     return (
         <Common>
-            <form action="/api/event" method="post" onSubmit={onSubmit}>
-                <Pulldown label="イベント" name="event" id="event" options={options} default_val={default_value} required={true} />
-                <Input label="お名前" type="text" name="name" id="name" required={true} />
-                <Input label="誕生日" type="date" name="birthday" id="birthday" required={true} />
-                <Input label="メール" type="email" name="email" id="email" required={true} />
-                <TextArea label="自己PR" name="pr" id="pr" required={true} />
-                <UploadFile required={true} />
-                <Input label="大学名" type="text" name="university" id="university" />
-                <Certifications label="資格" name="certifications_hiddn" id="certifications" />
-                <TextArea label="経歴・学外活動" name="career" id="career" />
-                <Input label="Instagram ID" type="text" name="instagram" id="instagram" />
-                <Input label="TikTok ID" type="text" name="tiktok" id="tiktok" />
-                <Input label="Twitter ID" type="text" name="twitter" id="twitter" />
-                <Input type="submit" name="submit" id="submit" disabled={submitdis} />
-            </form>
+            <div css={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+            }}>
+                <form action="/api/event" method="post" onSubmit={onSubmit}>
+                    <Pulldown label="イベント" name="event" id="event" options={options} default_val={default_value} required={true} />
+                    <Input label="お名前" type="text" name="name" id="name" required={true} />
+                    <Input label="誕生日" type="date" name="birthday" id="birthday" required={true} />
+                    <Input label="メール" type="email" name="email" id="email" required={true} />
+                    <TextArea label="自己PR" name="pr" id="pr" required={true} />
+                    <UploadFile required={true} />
+                    <Input label="大学名" type="text" name="university" id="university" />
+                    <Certifications label="資格" name="certifications_hiddn" id="certifications" />
+                    <TextArea label="経歴・学外活動" name="career" id="career" />
+                    <Input label="Instagram ID" type="text" name="instagram" id="instagram" />
+                    <Input label="TikTok ID" type="text" name="tiktok" id="tiktok" />
+                    <Input label="Twitter ID" type="text" name="twitter" id="twitter" />
+                    <Input type="submit" name="submit" id="submit" disabled={submitdis} />
+                </form>
+            </div>
         </Common>
     )
 }
