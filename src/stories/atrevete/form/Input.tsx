@@ -25,12 +25,13 @@ const labelBase = css({
 })
 const InputCss = ({
   width: 700,
-  height: 30,
+  height: 40,
   borderBottom: "1px white solid",
   padding: "7px 10px",
   marginTop: 30,
   backgroundColor: "#202020",
-  borderRadius: "5px 5px 0 0"
+  borderRadius: "5px 5px 0 0",
+  boxSizing: "border-box",
 })
 
 

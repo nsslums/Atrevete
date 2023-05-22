@@ -29,7 +29,8 @@ const textAreaCss = css({
     padding: "7px 10px",
     marginTop: 30,
     backgroundColor: "#202020",
-    borderRadius: "5px 5px 0 0"
+    borderRadius: "5px 5px 0 0",
+    boxSizing: "border-box",
 })
 
 const label_up = css({

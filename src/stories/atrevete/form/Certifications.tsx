@@ -18,7 +18,8 @@ interface CertificationsProps {
 
 const rootCss = css({
   position: "relative",
-  fontSize: 16
+  fontSize: 16,
+  width: 700
 })
 
 const labelBase = css({

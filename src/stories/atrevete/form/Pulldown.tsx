@@ -38,6 +38,7 @@ const pullDownCss = css({
   backgroundColor: "#202020",
   borderRadius: "5px 5px 0 0",
   display: "inline-block",
+  boxSizing: "border-box",
 })
 
 export const Pulldown = ({
