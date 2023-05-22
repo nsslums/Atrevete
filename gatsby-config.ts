@@ -4,7 +4,7 @@ require('dotenv').config();
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Atrevete`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://testatrevete.netlify.app`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -85,7 +85,12 @@ const config: GatsbyConfig = {
         }
       },
     },
-  }]
+  }, 'gatsby-plugin-robots-txt',{
+    resolve: `gatsby-plugin-canonical-urls`,
+    options: {
+      siteUrl: `https://testatrevete.netlify.app`,
+    },
+  },]
 };
 
 export default config;
