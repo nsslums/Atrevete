@@ -135,6 +135,17 @@ const GlobalStyle = () => (
         display: none;
       }
 
+      input[type="date"]{
+        position: relative;
+      }
+
+      input[type=date]::-webkit-calendar-picker-indicator {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+      }
+
       input[type="submit"],
       input[type="button"],
       label,
