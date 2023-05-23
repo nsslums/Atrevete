@@ -1,8 +1,7 @@
 import { css } from '@emotion/react';
 import React from 'react';
 import { Link } from 'gatsby-link';
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
-
+import { GatsbyImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
 
 const rootCss = css({
     width: 320,
@@ -20,7 +19,7 @@ const linkCss = css({
 
 const imageCss = css({
     width: "100%",
-    height: "45%",
+    height: "100%",
     objectFit: "cover",
 })
 
@@ -47,8 +46,12 @@ export const PostCard = ({
   return (
     <div css={rootCss}>
       <Link to={url} css={linkCss} draggable={false}>
-        <div css={imageCss}>
-            <GatsbyImage image={image} alt='eyecatch'/>
+        <div css={{height:"45%"}}>
+            {image ? 
+              <GatsbyImage css={imageCss} image={image} alt='eyecatch'/>
+            :
+              <StaticImage src='../../../images/noimage.svg' css={imageCss} alt='eyecatch'/>
+            }
         </div>
         <div css={textCss}>
             <p>{title}</p>

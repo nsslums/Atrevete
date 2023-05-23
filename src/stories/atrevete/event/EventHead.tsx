@@ -1,8 +1,9 @@
 import React from 'react';
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
+import { GatsbyImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
 import { Head1 } from "../Head1"
 import { EventStatus } from './EventStatus';
 import {FaBullhorn} from "@react-icons/all-files/fa/FaBullhorn"
+import { css } from '@emotion/react';
 
 interface EventHeadProps{
     title?: string,
@@ -12,6 +13,12 @@ interface EventHeadProps{
     HeadHeight?: Number,
     isActive?: boolean,
 }
+
+const imageCss = css({
+    height: "100%",
+    width: "100%",
+    objectFit: "cover",
+})
 
 export const EventHead = ({
     title = "イベント名",
@@ -33,15 +40,19 @@ export const EventHead = ({
                 width: 770,
             }}>
                 <div css={{width: "50%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
-                    <Head1 text={title}/>
+                    <Head1 text={title} />
                     <div css={{display: "flex", flexDirection: "row", alignItems: "center", marginTop: 5}}>
                         <EventStatus isActive={isActive} />
                         <p css={{marginLeft: 10}}>開催日 {date ? <span>{date}</span> : <span>未定</span>}</p>
                     </div>
                 </div>
                 <div css={{width: "50%", borderRadius: "5px", overflow: "hidden"}}>
+                    {GatsbyImageData ? 
+                        <GatsbyImage image={GatsbyImageData} alt='eyecatch' css={imageCss}/>
+                        :
+                        <StaticImage src='../../../images/noimage.svg' alt='eyecatch' css={imageCss}/>
+                    }
                     <img src={imageURL} css={{width: "100%", height: "100%", objectFit: "cover"}} />
-                    <GatsbyImage image={GatsbyImageData} alt=""/> 
                 </div>
             </div>
 
