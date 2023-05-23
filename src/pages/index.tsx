@@ -1,12 +1,13 @@
 import * as React from "react"
 import { HeadFC, Link, PageProps, graphql } from "gatsby"
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
 import ModalSearch from '../components/modalsearch';
 import { Events } from "../components/eventSlide";
 import {Common} from "../components/common"
 import { GoldButton } from "../stories/atrevete/GoldButton";
 import { css } from "@emotion/react";
 import { Head1 } from "../stories/atrevete/Head1";
+import { PostCard } from "../stories/atrevete/event/PostCard";
 
 
 const topImage = css({
@@ -38,6 +39,8 @@ const categoryBlock = css({
 })
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
+
+
   return (
     <Common>
       <>
@@ -66,13 +69,20 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
         </div>
         <div css={categoryBlock}>
           <div><Head1 text="ニュース"/></div>
-          <div></div>
+          <div>
+            {data.allContentfulPost.nodes?.map((post: any) => {
+              return post.eye_catch ? 
+                    <PostCard title={post.title} key={post.contentful_id} image={post.eye_catch.gatsbyImageData}/>
+                  :
+                    <PostCard title={post.title} key={post.contentful_id} />
+              })}
+          </div>
         </div>
         <div css={categoryBlock}>
           <div><Head1 text="協賛企業"/></div>
           <ul>
-            {data.allContentfulSponsor.nodes?.map(sponsor => (
-              <a href={sponsor.url} target="_blank" rel="noopener noreferrer"><GatsbyImage image={sponsor.logo.gatsbyImageData} alt={sponsor.name} /></a>
+            {data.allContentfulSponsor.nodes?.map((sponsor:any) => (
+              <a key={sponsor.contentful_id} href={sponsor.url} target="_blank" rel="noopener noreferrer"><GatsbyImage image={sponsor.logo.gatsbyImageData} alt={sponsor.name} /></a>
             ))}
           </ul>
         </div>
@@ -88,11 +98,21 @@ export const query = graphql`
   query {
     allContentfulSponsor(filter: {hidden: {ne: true}}) {
       nodes {
+        contentful_id
         url
         logo {
           gatsbyImageData
         }
         name
+      }
+    }
+    allContentfulPost(filter: {hidden: {ne: true}}) {
+      nodes {
+        contentful_id
+        title
+        eye_catch{
+          gatsbyImageData
+        }
       }
     }
   }
