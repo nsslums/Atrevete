@@ -1,7 +1,6 @@
 import * as React from "react"
 import { HeadFC, Link, PageProps, graphql, navigate } from "gatsby"
 import { GatsbyImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
-import ModalSearch from '../components/modalsearch';
 import { Events } from "../components/eventSlide";
 import {Common} from "../components/common"
 import { GoldButton } from "../stories/atrevete/GoldButton";
@@ -90,9 +89,6 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
             ))}
           </ul>
         </div>
-        
-        <ModalSearch />
-
       </>
     </Common>
   )
