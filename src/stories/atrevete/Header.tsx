@@ -53,7 +53,7 @@ export const Header = ({
                 <div css={{
 
                 }}>
-                    <img src="src/images/Atrevete.svg" alt='Logo' />
+                    <Link to="/" ><img src="src/images/Atrevete.svg" alt='Logo' /></Link>
                 </div>
                 <div css={{
                         width: "30px",
