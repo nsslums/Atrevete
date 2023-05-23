@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import React from 'react';
+
 
 interface ButtonProps {
   text?: string;
@@ -35,7 +35,7 @@ const Style = css({
       width: '100%',
       height: '100%',
       color: 'blue',
-      background: 'url(src/images/noise.png)',
+      background: 'url(/noise.png)',
       backgroundRepeat: 'repeat',
       backgroundSize: '20%',
       borderTop: 'solid 1px rgba(255,255,255,1)!important',
@@ -57,7 +57,7 @@ const Style = css({
       width: '100%',
       height: '100%',
       color: 'blue',
-      background: 'url(src/images/noise.png)',
+      background: 'url(/noise.png)',
       backgroundRepeat: 'repeat',
       backgroundSize: '20%',
       borderTop: 'solid 1px rgba(255,255,255,1)',
