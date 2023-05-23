@@ -37,7 +37,7 @@ export const Header = ({
     return(
         <header css={{
             width: "100%",
-            position: "relative",
+            position: "fixed",
             top: 0,
             left: 0,
             zIndex: 10,
@@ -53,7 +53,7 @@ export const Header = ({
                 <div css={{
 
                 }}>
-                    <Link to="/" ><img src="src/images/Atrevete.svg" alt='Logo' /></Link>
+                    <Link to="/" ><img src="/Atrevete.svg" alt='Logo' /></Link>
                 </div>
                 <div css={{
                         width: "30px",

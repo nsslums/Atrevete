@@ -24,7 +24,7 @@ const bgStyle = css({
   '&:after': {
     content: '""',
     position: 'absolute',
-    background: 'url(src/images/noise.png)',
+    background: 'url(/noise.png)',
     backgroundRepeat: 'repeat',
     backgroundSize: '40%',
     width: '100%',

@@ -25,7 +25,7 @@ const noiseOverlay = css({
   width: '100%',
   height: '100%',
   color: 'transparent',
-  backgroundImage: 'url(src/images/noise.png)',
+  backgroundImage: 'url(/noise.png)',
   backgroundRepeat: 'repeat',
   backgroundSize: '40%',
   backgroundBlendMode: 'color-dodge',
