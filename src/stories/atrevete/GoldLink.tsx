@@ -1,8 +1,10 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
+import { Link } from 'gatsby-link';
 
-interface MenuLinkProps {
+interface GoldLinkProps {
   text: string;
+  to: string;
 }
 
 const Style = css({
@@ -18,7 +20,7 @@ const Style = css({
 
 const noiseOverlay = css({
   position: 'absolute',
-  top: 1,
+  // top: 0,
   left: 0,
   width: '100%',
   height: '100%',
@@ -32,11 +34,11 @@ const noiseOverlay = css({
 })
 
 
-export const MenuLink = ({
+export const GoldLink = ({
   text,
-  ...props
-}: MenuLinkProps) => {
+  to,
+}: GoldLinkProps) => {
   return (
-    <button css={Style} {...props}>{text}<span css={noiseOverlay}>{text}</span></button>
+    <Link css={Style} to={to}>{text}<span css={noiseOverlay}>{text}</span></Link>
   )
 }
