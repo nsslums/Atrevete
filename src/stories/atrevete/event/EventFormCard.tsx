@@ -22,11 +22,12 @@ const base = css({
     borderRadius: "15px",
     overflow: "hidden",
 
-    border: "1px dashed white",
+    border: "1px dashed transparent",
 
 })
 
 const disable = css({
+    border: "1px dashed white",
     "&::before":{
         content: '""',
         position: "absolute",
@@ -50,6 +51,7 @@ const disable = css({
 })
 
 const commingsoon = css({
+    border: "1px dashed white",
     "&::before":{
         content: '""',
         position: "absolute",
