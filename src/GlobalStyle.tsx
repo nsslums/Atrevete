@@ -228,6 +228,11 @@ const GlobalStyle = () => (
         z-index: 1000000
       }
 
+      .ReactModal__Overlay{
+        z-index: 100;
+        background-color: rgba(255,255,255,.5) !important;
+      }
+
       :root {
         --gold-gradient: linear-gradient(20deg,#ccb37e,#7e4d16);
       }
