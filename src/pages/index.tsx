@@ -73,9 +73,9 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
           <div css={{marginTop: "5em", display: "flex", flexDirection: "row", justifyContent: "center"}}>
             {data.allContentfulPost.nodes?.map((post: any) => {
               return post.eye_catch ? 
-                    <div css={postCss}><PostCard title={post.title} key={post.contentful_id} image={post.eye_catch.gatsbyImageData}/></div>
+                    <div css={postCss} key={post.contentful_id}><PostCard title={post.title} image={post.eye_catch.gatsbyImageData}/></div>
                   :
-                    <div css={postCss}><PostCard title={post.title} key={post.contentful_id} /></div>
+                    <div css={postCss} key={post.contentful_id}><PostCard title={post.title} /></div>
               })}
           </div>
           <div css={{textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: 300}}>
