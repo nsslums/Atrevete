@@ -32,14 +32,14 @@ export const EventHead = ({
                 height: HeadHeight,
                 width: 770,
             }}>
-                <div css={{width: "40%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+                <div css={{width: "50%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                     <Head1 text={title}/>
-                    <div css={{display: "flex", flexDirection: "row",}}>
+                    <div css={{display: "flex", flexDirection: "row", alignItems: "center", marginTop: 5}}>
                         <EventStatus isActive={isActive} />
-                        <p>開催日 {date ? <span>{date}</span> : <span>未定</span>}</p>
+                        <p css={{marginLeft: 10}}>開催日 {date ? <span>{date}</span> : <span>未定</span>}</p>
                     </div>
                 </div>
-                <div css={{width: "60%", borderRadius: "5px", overflow: "hidden"}}>
+                <div css={{width: "50%", borderRadius: "5px", overflow: "hidden"}}>
                     <img src={imageURL} css={{width: "100%", height: "100%", objectFit: "cover"}} />
                     <GatsbyImage image={GatsbyImageData} alt=""/> 
                 </div>
