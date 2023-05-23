@@ -1,5 +1,5 @@
 import * as React from "react"
-import { HeadFC, Link, PageProps, graphql } from "gatsby"
+import { HeadFC, Link, PageProps, graphql, navigate } from "gatsby"
 import { GatsbyImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
 import ModalSearch from '../components/modalsearch';
 import { Events } from "../components/eventSlide";
@@ -30,16 +30,15 @@ const topPhrase = css({
 
 const categoryBlock = css({
   width: "100%",
-  height: "60vh",
-  display:"flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
+  minHeight: "60vh",
   position: "relative"
 })
 
-const IndexPage: React.FC<PageProps> = ({data}) => {
+const postCss = css({
+  margin: "5px 20px"
+})
 
+const IndexPage: React.FC<PageProps> = ({data}) => {
 
   return (
     <Common>
@@ -61,25 +60,30 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
             <span>吾輩はネコである。名前はまだない。</span>
             <span>どこで生まれたかとんと見当がつかぬ。</span>
           </p>
-          <div css={{marginTop: "5%"}}><GoldButton text="More"/></div>
+          <div css={{marginTop: "5%"}}><GoldButton text="More" onClick={async (e:any) => await navigate("/about")}/></div>
         </div>
         <div css={categoryBlock}>
-          <div><Head1 text="イベント"/></div>
-          <Events/>
-        </div>
-        <div css={categoryBlock}>
-          <div><Head1 text="ニュース"/></div>
-          <div>
-            {data.allContentfulPost.nodes?.map((post: any) => {
-              return post.eye_catch ? 
-                    <PostCard title={post.title} key={post.contentful_id} image={post.eye_catch.gatsbyImageData}/>
-                  :
-                    <PostCard title={post.title} key={post.contentful_id} />
-              })}
+          <div css={{textAlign: "center"}} ><Head1 text="イベント"/></div>
+          <div css={{marginTop: "5em"}}>
+            <Events/>
           </div>
         </div>
         <div css={categoryBlock}>
-          <div><Head1 text="協賛企業"/></div>
+          <div css={{textAlign: "center"}}><Head1 text="ニュース"/></div>
+          <div css={{marginTop: "5em", display: "flex", flexDirection: "row", justifyContent: "center"}}>
+            {data.allContentfulPost.nodes?.map((post: any) => {
+              return post.eye_catch ? 
+                    <div css={postCss}><PostCard title={post.title} key={post.contentful_id} image={post.eye_catch.gatsbyImageData}/></div>
+                  :
+                    <div css={postCss}><PostCard title={post.title} key={post.contentful_id} /></div>
+              })}
+          </div>
+          <div css={{textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: 300}}>
+            <GoldButton text="MORE" onClick={async (e:any) => await navigate("/post")}/>
+          </div>
+        </div>
+        <div css={categoryBlock}>
+          <div css={{textAlign: "center"}} ><Head1 text="協賛企業"/></div>
           <ul>
             {data.allContentfulSponsor.nodes?.map((sponsor:any) => (
               <a key={sponsor.contentful_id} href={sponsor.url} target="_blank" rel="noopener noreferrer"><GatsbyImage image={sponsor.logo.gatsbyImageData} alt={sponsor.name} /></a>
@@ -106,7 +110,11 @@ export const query = graphql`
         name
       }
     }
-    allContentfulPost(filter: {hidden: {ne: true}}) {
+    allContentfulPost(
+      sort: {createdAt: DESC}
+      limit: 3
+      filter: {hidden: {ne: true}}
+    ) {
       nodes {
         contentful_id
         title
