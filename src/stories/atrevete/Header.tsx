@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import {CgMenuRightAlt} from "@react-icons/all-files/cg/CgMenuRightAlt"
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby-link';
+import { GoldLink } from './GoldLink';
 
 interface HeaderProps {
     menuOpen?: boolean
@@ -81,10 +82,10 @@ export const Header = ({
                             height: "30px",
                         }} />
                     </div>
-                    <div css={block}><Link to='/'>トップページ</Link></div>
-                    <div css={block}><Link to='/about'>Atreveteとは</Link></div>
-                    <div css={block}><Link to='/post'>投稿</Link></div>
-                    <div css={block}><Link to='/contact'>お問い合わせ</Link></div>
+                    <div css={block}><GoldLink to='/' text='トップページ' /></div>
+                    <div css={block}><GoldLink to='/about' text='Atreveteとは' /></div>
+                    <div css={block}><GoldLink to='/post' text='投稿' /></div>
+                    <div css={block}><GoldLink to='/contact' text='お問い合わせ' /></div>
                 </div>
             </div>
             : false }
