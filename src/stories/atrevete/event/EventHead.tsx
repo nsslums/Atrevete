@@ -51,26 +51,28 @@ export const EventHead = ({
                 }}>
                     <div css={{
                         width: "80%",
-                        maxWidth: "778px",
-                        height: "88px",
-                        borderRadius: "10px",
+                        maxWidth: 778,
+                        height: 88,
+                        borderRadius: 10,
                         margin: "auto",
                         display: "flex",
                         justifyContent: 'center',
                         alignItems: 'center',
                         backgroundColor: "#6B624C",
+                        padding: "5px 10px",
+                        boxSizing: 'border-box',
                     }}>
                         <div css={{
-                            width: "35px",
-                            height: "35px",
-                            borderRadius: '90px',
+                            minWidth: 35,
+                            minHeight: 35,
+                            borderRadius: 90,
                             backgroundColor: "#C5B286",
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            marginRight: "15px"
+                            marginRight: 15,
                         }}>
-                            <FaBullhorn css={{width: "15px", height: "15px"}}/>
+                            <FaBullhorn css={{width: 15, height: 15}}/>
                         </div>
                         <p>本イベントの募集は終了しました。たくさんのご応募、ありがとうございました。</p>
                     </div>
