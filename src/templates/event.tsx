@@ -105,7 +105,7 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       </div>
       <div css={[block, {maxWidth: 770}]}>
         <Head2 text="募集要件" />
-        <div>{!data.contentfulEvent.contentfulEvent ? false : renderRichText(data.contentfulEvent.requirements, options)}</div>
+        <div>{!data.contentfulEvent.requirements ? false : renderRichText(data.contentfulEvent.requirements, options)}</div>
       </div>
       <div css={{
         position: "relative",
