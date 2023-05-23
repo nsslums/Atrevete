@@ -32,5 +32,5 @@ const Style = css({
 export const Head2 = ({
   text,
 }: Head2Props) => {
-  return <h3 css={Style} className='bg_noise'><div css={{zIndex: 10, position: "relative"}}>{text}</div></h3>
+  return <h3 css={Style} className='bg_noise'><div css={{zIndex: 5, position: "relative"}}>{text}</div></h3>
 }
