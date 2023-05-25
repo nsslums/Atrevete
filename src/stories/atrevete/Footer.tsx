@@ -14,14 +14,21 @@ export const Footer = ({
             position: "relative",
             top: 0,
             left: 0,
+            background: 'black',
+            borderTop: 'solid 0.5px rgb(50,50,50)',
         }}>
             <div>
                 <img src="/Atrevete.svg" alt='Logo' />
             </div>
             <div css={{
                 textAlign: 'center',
+                paddingBottom: '0.7em',
+                fontFamily: 'sans-serif',
+                color: 'rgb(100,100,100)',
             }}>
-                <small>Copyright &copy; {year} Atrevete. All rights reserved.</small>
+                <small css={{
+                    fontSize: '0.7em',
+                    }}>Copyright &copy; {year} Atrevete. All rights reserved.</small>
             </div>
         </footer>
     )
