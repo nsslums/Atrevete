@@ -38,6 +38,7 @@ export const Header = ({
         <header css={{
             width: "100%",
             position: "fixed",
+            background: "linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0));",
             top: 0,
             left: 0,
             zIndex: 10,
