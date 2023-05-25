@@ -14,7 +14,7 @@ const Style = css({
 
 const btnStyle = css({
   marginRight: '10px',
-  padding: '10px',
+  padding: '7px 10px',
   width: 'fit-content',
   border: 'solid 1px white',
   borderRadius: '3px',
