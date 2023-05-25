@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import React from 'react';
 
 interface UploadFileProps {
@@ -7,7 +6,22 @@ interface UploadFileProps {
 }
 
 const Style = css({
-    borderBottom: "1px solid white"
+  display: 'flex',
+  alignItems: 'center',
+  paddingBottom: '10px',
+  borderBottom: 'solid 1px white',
+})
+
+const btnStyle = css({
+  marginRight: '10px',
+  padding: '10px',
+  width: 'fit-content',
+  border: 'solid 1px white',
+  borderRadius: '3px',
+  '&:hover': {
+    color: '#121212',
+    background: 'white',
+  },
 })
 
 
@@ -24,13 +38,18 @@ export const UploadFile = ({
   return (
 
     <div>
+      <label css={Style}>
+        <div css={btnStyle}>ファイルを選択</div>
         <input
+            css={{display:'none'}}
             type="file"
             name="file"
             id='file'
             accept="image/png, image/jpeg"
             onChange={onChangeFile}
         />
+      <p css={{width:'fit-content'}}>ここに選択したファイル名を表示したい...</p>
+      </label>
     </div>
   )
 }
