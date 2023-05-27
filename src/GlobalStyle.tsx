@@ -230,7 +230,7 @@ const GlobalStyle = () => (
 
       .ReactModal__Overlay{
         z-index: 100;
-        background-color: rgba(255,255,255,.5) !important;
+        background-color: rgba(0,0,0,.5) !important;
       }
 
       :root {

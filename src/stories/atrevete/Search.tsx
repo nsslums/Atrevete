@@ -56,10 +56,38 @@ const resultCss = css({
   maxHeight: 300,
   backgroundColor: 'white',
   marginTop: ".5em",
-  borderRadius: 5,
+  borderRadius: 10,
   color: 'black',
   boxSizing: "border-box",
-  padding: "0 10px"
+  padding: 10,
+})
+
+const resultBlock = css({
+  position: "relative",
+
+  "&:not(:last-child)": {
+    marginBottom: ".8em",
+    
+    "&:after":{
+      content: '""',
+      position: "absolute",
+      width: "95%",
+      height: 1,
+      backgroundColor: "#cfcfcf",
+      bottom: -5,
+      left: "2.5%",
+    }
+  }
+})
+
+const resultfield = css({
+  padding: "5px",
+  borderRadius: 5,
+  fontSize: "1em",
+
+  "&:hover":{
+    backgroundColor: "#efefef"
+  }
 })
 
 export const Search = ({
@@ -143,7 +171,7 @@ export const Search = ({
   }
 
   const { posts, events } = result
-
+  console.log(result)
   return (
     <>
       <button css={rootCss} onClick={(e:any) => setIsOpen(true)}>
@@ -159,14 +187,24 @@ export const Search = ({
             <label htmlFor='search' css={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><GrSearch /></label>
             <input autoFocus={true} value={value} id='search' onChange={onChange} css={{color: 'black', marginLeft: 10, width: "100%"}} placeholder='キーワードを入力...' autoComplete='off'/>
           </div>
+          {posts.length > 0 || events.length > 0 ?
           <div css={resultCss}>
-            {posts?.map(post =>(
-              <p><Link to={"/post/"+ post.title}>{post.title}</Link></p>
-            ))}
-            {events?.map(event =>(
-              <p><Link to={"/event/"+ event.title}>{event.title}</Link></p>
-            ))}
+            {posts.length > 0 ? 
+            <div css={resultBlock}><p css={{fontSize: ".8em"}}>投稿</p>
+              {posts.map(post =>(
+                <p key={post.title} css={resultfield}><Link to={"/post/"+ post.title} css={{display: "block"}}>{post.title}</Link></p>
+              ))}
+              </div> 
+            : false}
+            {events.length > 0  ?
+              <div css={resultBlock}><p css={{fontSize: ".8em"}}>イベント</p>
+              {events.map(event =>(
+                <p key={event.title} css={resultfield}><Link to={"/event/"+ event.title} css={{display: "block"}}>{event.title}</Link></p>
+              ))}
+              </div> 
+            : false}
           </div>
+          : false}
         </div>
       </Modal>
     </>
