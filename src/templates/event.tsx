@@ -8,6 +8,7 @@ import { EventHead } from "../stories/atrevete/event/EventHead"
 import { Head2 } from "../stories/atrevete/Head2"
 import { css } from "@emotion/react"
 import { EventFormCard } from "../stories/atrevete/event/EventFormCard"
+import { Connection } from "../stories/atrevete/event/Connection"
 
 const block = css({
   position: "relative",
@@ -128,12 +129,20 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       <div css={[block, {maxWidth: 770}]}>
         <EventFormCard start_date={start_reception} end_date={end_reception} onClick={navigation}/>
       </div>
-      <h2>関連投稿</h2>
-      <div>
-        {data.contentfulEvent.post?.map(post => (
-          <Link to={'/post/' + post.title} key={post.contentful_id}>{post.title}</Link>
-        ))}
-      </div>
+      {data.contentfulEvent.post ? 
+        <div css={[block, {maxWidth: 770}]}>
+          <Head2 text="イベントに関連する記事" />
+          <div css={{border: "1px solid white", borderRadius: 15}}>
+            {data.contentfulEvent.post?.map(post => (
+              post.eye_catch ? 
+                <Connection key={post.contentful_id} title={post.title} mode="post" image={post.eye_catch.gatsbyImageData}/>
+              :
+                <Connection key={post.contentful_id} title={post.title} mode="post" />
+            ))}
+          </div>
+        </div>
+      : false  
+      }
     </Common>
   )
 }
@@ -195,6 +204,9 @@ export const query = graphql`
       post {
         contentful_id
         title
+        eye_catch{
+          gatsbyImageData
+        }
       }
       eye_catch {
         gatsbyImageData
