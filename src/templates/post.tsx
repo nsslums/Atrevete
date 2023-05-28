@@ -3,6 +3,19 @@ import { HeadFC, Link, PageProps, graphql } from "gatsby"
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { GatsbyImage } from "gatsby-plugin-image"
 import { BLOCKS, INLINES } from "@contentful/rich-text-types"
+import { Common } from "../components/common"
+import { css } from "@emotion/react"
+import { PostHead } from "../stories/atrevete/PostHead"
+
+
+const block = css({
+  position: "relative",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  margin: "3em auto"
+})
 
 const PostPage: React.FC<PageProps> = ({ data }) => {
 
@@ -65,23 +78,28 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
   }
 
   return (
-    <main>
-      <h1>{data.contentfulPost.title}</h1>
-      <h2>内容</h2>
-      <div>{!data.contentfulPost.content ? false :renderRichText(data.contentfulPost.content, options)}</div>
-      <h2>タグ</h2>
-      <div>
-        {data.contentfulPost.metadata.tags?.map(tag => (
-          <p key={tag.contentful_id}>{tag.name}</p>
-        ))}
+    <Common>
+      <div css={[block, {maxWidth: 770}]}>
+        {data.contentfulPost.eye_catch ?
+          <PostHead title={data.contentfulPost.title} date={data.contentfulPost.createdAt} GatsbyImageData={data.contentfulPost.eye_catch.gatsbyImageData}/>
+        :
+          <PostHead title={data.contentfulPost.title} date={data.contentfulPost.createdAt} />
+        }
+        <div>{!data.contentfulPost.content ? false :renderRichText(data.contentfulPost.content, options)}</div>
+        <h2>タグ</h2>
+        <div>
+          {data.contentfulPost.metadata.tags?.map(tag => (
+            <p key={tag.contentful_id}>{tag.name}</p>
+          ))}
+        </div>
+        <h2>関連イベント</h2>
+        <div>
+          {data.contentfulPost.related_event?.map(event => (
+            <Link to={'/event/' + event.title} key={event.contentful_id}>{event.title}</Link>
+          ))}
+        </div>
       </div>
-      <h2>関連イベント</h2>
-      <div>
-        {data.contentfulPost.related_event?.map(event => (
-          <Link to={'/event/' + event.title} key={event.contentful_id}>{event.title}</Link>
-        ))}
-      </div>
-    </main>
+    </Common>
   )
 }
 
@@ -92,6 +110,7 @@ export const query = graphql`
         hidden: {ne: true}
       ) {
         title
+        createdAt(formatString: "yyyy/MM/DD")
         content {
           raw
           references {
@@ -123,6 +142,9 @@ export const query = graphql`
         related_event {
           contentful_id
           title
+        }
+        eye_catch{
+          gatsbyImageData
         }
       }
     }
