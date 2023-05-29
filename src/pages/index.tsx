@@ -41,7 +41,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
 
   return (
     <Common>
-      <>
+      <div css={{top: -98, position: "relative"}}>
         <div css={{
           width: "100%",
           height: "100vh",
@@ -88,7 +88,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
             ))}
           </ul>
         </div>
-      </>
+      </div>
     </Common>
   )
 }

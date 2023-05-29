@@ -4,6 +4,14 @@ import { Footer } from "../stories/atrevete/Footer";
 import GlobalStyle from "../GlobalStyle";
 import { Search } from "../stories/atrevete/Search";
 import { graphql, useStaticQuery } from "gatsby";
+import { css } from "@emotion/react";
+
+
+const warpper = css({
+    display: "flex",
+    flexFlow: "column",
+    minHeight: "100vh",
+})
 
 export const Common = ({ children }: any) => {
 
@@ -35,13 +43,15 @@ export const Common = ({ children }: any) => {
     `)
 
     return (
-        <>
+        <div css={warpper}>
             <GlobalStyle />
             <Header />
-            {children}
+            <div css={{marginTop: 98, flexGrow: 1}}>
+                {children}
+            </div>
             <Search data={data}/>
             <Footer />
-        </>
+        </div>
     )
 }
 

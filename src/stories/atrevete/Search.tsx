@@ -13,7 +13,7 @@ interface SearchProps {
   data: any
 }
 
-const rootCss = css({
+const buttonCss = css({
     position: "fixed",
     right: 25,
     bottom: 25,
@@ -24,6 +24,7 @@ const rootCss = css({
     alignItems: "center",
     width: 45,
     height: 45,
+    zIndex: 10,
 })
 
 const content = css({
@@ -174,7 +175,7 @@ export const Search = ({
   console.log(result)
   return (
     <>
-      <button css={rootCss} onClick={(e:any) => setIsOpen(true)}>
+      <button css={buttonCss} onClick={(e:any) => setIsOpen(true)}>
           <GrSearch />
       </button>
       <Modal 
