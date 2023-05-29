@@ -4,7 +4,12 @@ import {GrSearch} from '@react-icons/all-files/gr/GrSearch'
 import Modal from 'react-modal'
 import { Link } from 'gatsby-link';
 
-const root = document.getElementById('storybook-root') ||  document.getElementById('___gatsby') || ""
+let root
+if(typeof document !== `undefined`){
+  root = document.getElementById('storybook-root') ||  document.getElementById('___gatsby')
+}
+if(!root) root =  "";
+
 console.log(root)
 Modal.setAppElement(root)
 
