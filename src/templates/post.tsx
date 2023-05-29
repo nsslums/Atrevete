@@ -6,6 +6,7 @@ import { BLOCKS, INLINES } from "@contentful/rich-text-types"
 import { Common } from "../components/common"
 import { css } from "@emotion/react"
 import { PostHead } from "../stories/atrevete/PostHead"
+import { Connection } from "../stories/atrevete/event/Connection"
 
 
 const block = css({
@@ -81,23 +82,20 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
     <Common>
       <div css={[block, {maxWidth: 770}]}>
         {data.contentfulPost.eye_catch ?
-          <PostHead title={data.contentfulPost.title} date={data.contentfulPost.createdAt} GatsbyImageData={data.contentfulPost.eye_catch.gatsbyImageData}/>
+          <PostHead title={data.contentfulPost.title} date={data.contentfulPost.createdAt} GatsbyImageData={data.contentfulPost.eye_catch.gatsbyImageData} tags={data.contentfulPost.metadata.tags || []}/>
         :
-          <PostHead title={data.contentfulPost.title} date={data.contentfulPost.createdAt} />
+          <PostHead title={data.contentfulPost.title} date={data.contentfulPost.createdAt} tags={data.contentfulPost.metadata.tags || []}/>
         }
         <div>{!data.contentfulPost.content ? false :renderRichText(data.contentfulPost.content, options)}</div>
-        <h2>タグ</h2>
-        <div>
-          {data.contentfulPost.metadata.tags?.map(tag => (
-            <p key={tag.contentful_id}>{tag.name}</p>
-          ))}
-        </div>
         <h2>関連イベント</h2>
-        <div>
-          {data.contentfulPost.related_event?.map(event => (
-            <Link to={'/event/' + event.title} key={event.contentful_id}>{event.title}</Link>
-          ))}
-        </div>
+        <div css={{border: "1px solid white", borderRadius: 15}}>
+            {data.contentfulPost.related_event?.map(event => (
+              event.eye_catch ? 
+                <Connection key={event.contentful_id} title={event.title} mode="event" image={event.eye_catch.gatsbyImageData}/>
+              :
+                <Connection key={event.contentful_id} title={event.title} mode="event" />
+            ))}
+          </div>
       </div>
     </Common>
   )
