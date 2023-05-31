@@ -7,6 +7,7 @@ import { Common } from "../components/common"
 import { css } from "@emotion/react"
 import { PostHead } from "../stories/atrevete/PostHead"
 import { Connection } from "../stories/atrevete/event/Connection"
+import { Head2 } from "../stories/atrevete/Head2"
 
 
 const block = css({
@@ -87,15 +88,20 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
           <PostHead title={data.contentfulPost.title} date={data.contentfulPost.createdAt} tags={data.contentfulPost.metadata.tags || []}/>
         }
         <div>{!data.contentfulPost.content ? false :renderRichText(data.contentfulPost.content, options)}</div>
-        <h2>関連イベント</h2>
-        <div css={{border: "1px solid white", borderRadius: 15}}>
-            {data.contentfulPost.related_event?.map(event => (
-              event.eye_catch ? 
-                <Connection key={event.contentful_id} title={event.title} mode="event" image={event.eye_catch.gatsbyImageData}/>
-              :
-                <Connection key={event.contentful_id} title={event.title} mode="event" />
-            ))}
+        {data.contentfulPost.related_event?
+        <>
+          <Head2 text="関連するイベント" />
+          <div css={{border: "1px solid white", borderRadius: 15}}>
+              {data.contentfulPost.related_event?.map(event => (
+                event.eye_catch ? 
+                  <Connection key={event.contentful_id} title={event.title} mode="event" image={event.eye_catch.gatsbyImageData}/>
+                :
+                  <Connection key={event.contentful_id} title={event.title} mode="event" />
+              ))}
           </div>
+        </>
+          : false
+        }
       </div>
     </Common>
   )
