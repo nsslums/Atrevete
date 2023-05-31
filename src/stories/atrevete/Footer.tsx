@@ -17,8 +17,20 @@ export const Footer = ({
             background: 'black',
             borderTop: 'solid 0.5px rgb(50,50,50)',
         }}>
+            <div css={{
+                width: "95%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "start",
+                height: 98,
+                margin: "auto",
+            }}>
+                <div>
+                    <img src="/Atrevete.svg" alt='Logo' />
+                </div>
+            </div>
             <div>
-                <img src="/Atrevete.svg" alt='Logo' />
+                
             </div>
             <div css={{
                 textAlign: 'center',
@@ -26,9 +38,9 @@ export const Footer = ({
                 fontFamily: 'sans-serif',
                 color: 'rgb(100,100,100)',
             }}>
-                <small css={{
-                    fontSize: '0.7em',
-                    }}>Copyright &copy; {year} Atrevete. All rights reserved.</small>
+            <small css={{
+                fontSize: '0.7em',
+                }}>Copyright &copy; {year} Atrevete. All rights reserved.</small>
             </div>
         </footer>
     )
