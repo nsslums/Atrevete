@@ -14,5 +14,5 @@
 
 .react-select__menu{
     background-color: #202020 !important;
-    z-index: 15;
+    z-index: 20;
 }
