@@ -93,12 +93,13 @@ export const Events: React.FC = () => {
     `)
 
     const settings = {
-        infinite: true,
+        infinite: false,
+        initialSlide: 1,
         speed: 500,
         dots: false,
         arrows: true,
         slidesToShow: 2,
-        slidesToScroll: 1,
+        slidesToScroll: 2,
         centerMode: true,
         centerPadding: "50px",
         nextArrow: <NextArrow />,
