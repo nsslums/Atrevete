@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import React, { useState } from 'react';
 import {CgMenuRightAlt} from "@react-icons/all-files/cg/CgMenuRightAlt"
+import {RiCloseLine} from "@react-icons/all-files/ri/RiCloseLine"
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby-link';
 import { GoldLink } from './GoldLink';
@@ -41,7 +42,7 @@ export const Header = ({
             background: "linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0));",
             top: 0,
             left: 0,
-            zIndex: 10,
+            zIndex: 100,
         }}>
             <div css={{
                 height: "98px",
@@ -74,14 +75,23 @@ export const Header = ({
                     alignItems: 'end',
                 }}>
                     <div css={{
-                            width: "30px",
-                            height: "30px",
-                            cursor: "pointer",
-                        }} onClick={onClick}>
-                            <CgMenuRightAlt css={{
-                            width: "30px",
-                            height: "30px",
-                        }} />
+                        height: "98px",
+                        width: "95%",
+                        margin: "auto",
+                        display: "flex",
+                        justifyContent: "end",
+                        alignItems: 'center',
+                    }}>
+                        <div css={{
+                                width: "30px",
+                                height: "30px",
+                                cursor: "pointer",
+                            }} onClick={onClick}>
+                                <RiCloseLine css={{
+                                width: "30px",
+                                height: "30px",
+                            }} />
+                        </div>
                     </div>
                     <div css={block}><GoldLink to='/' text='トップページ' /></div>
                     <div css={block}><GoldLink to='/about' text='Atreveteとは' /></div>
