@@ -90,10 +90,6 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
   return (
     <Common>
       <div css={[block, {maxWidth: 770}]}>
-        {/* post.eye_catch ? 
-                    <div css={postCss}><PostCard title={post.title} key={post.contentful_id} image={post.eye_catch.gatsbyImageData}/></div>
-                  :
-                    <div css={postCss}><PostCard title={post.title} key={post.contentful_id} /></div> */}
         {data.contentfulEvent.eye_catch ?
           <EventHead title={title} imageURL="src/images/event.jpg" date={data.contentfulEvent.date} GatsbyImageData={data.contentfulEvent.eye_catch.gatsbyImageData}/>      
         :
