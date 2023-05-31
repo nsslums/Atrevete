@@ -82,11 +82,11 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
         </div>
         <div css={categoryBlock}>
           <div css={{textAlign: "center"}} ><Head1 text="協賛企業"/></div>
-          <ul>
+          <div css={{maxWidth: 1200, display: 'flex', flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", margin: "auto", marginTop: "5em"}}>
             {data.allContentfulSponsor.nodes?.map((sponsor:any) => (
-              <a key={sponsor.contentful_id} href={sponsor.url} target="_blank" rel="noopener noreferrer"><GatsbyImage image={sponsor.logo.gatsbyImageData} alt={sponsor.name} /></a>
+              <div key={sponsor.contentful_id} css={{padding: "1em"}}><a href={sponsor.url} target="_blank" rel="noopener noreferrer"><GatsbyImage css={{width: 350, height: 225, objectFit: "cover"}} image={sponsor.logo.gatsbyImageData} alt={sponsor.name}/></a></div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </Common>
