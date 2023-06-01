@@ -7,6 +7,7 @@ on:
     paths:
       - 'build.txt'
       -  '.github/workflows/build.yml'
+
 env:
   ACCESSTOKEN: ${{secrets.DEVELOP_ACCESSTOKEN}}
   SPACEID: ${{secrets.DEVELOP_SPACEID}}
@@ -23,3 +24,11 @@ jobs:
           node-version: 19
       - run: npm ci
       - run: npm run build
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          projectName: atrevete
+          directory: ./public
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
