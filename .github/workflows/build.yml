@@ -7,6 +7,10 @@ on:
     paths:
       - 'build.txt'
       -  '.github/workflows/build.yml'
+env:
+  ACCESSTOKEN: ${{secrets.DEVELOP_ACCESSTOKEN}}
+  SPACEID: ${{secrets.DEVELOP_SPACEID}}
+  SITEURL: ${{secrets.DEVELOP_SITEURL}}
 
 jobs:
   build:
@@ -17,23 +21,5 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 19
-      - name: setting environment
-        run: |
-          touch .env
-          echo DEBUG_ACCESSTOKEN=${{secrets.DEBUG_ACCESS_TOKEN}} >> .env
-          echo DEBUG_SPACEID=${{secrets.DEBUG_SPACE_ID}} >> .env
       - run: npm ci
       - run: npm run build
-      - name: ftp upload
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{secrets.XSERVER_FTP_ADDRESS}}
-          username: ${{secrets.XSERVER_FTP_USERNAME}}
-          password: ${{secrets.XSERVER_FTP_PASSWORD}}
-          local-dir: ./public/
-          server-dir: ${{secrets.XSERVER_SERVER_DIR}}
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            **/~partytown/**
