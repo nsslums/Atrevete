@@ -4,13 +4,13 @@
 git clone https://github.com/nsslums/Atrevete.git
 cd Atrevete
 npm install
-echo DEBUG_ACCESSTOKEN= >> .env
-echo DEBUG_SPACEID= >> .env
+echo > .env
 ```
 .envファイルの中身(Gatsby使用時必須)
 ```
-DEBUG_ACCESSTOKEN="xxxxxxxxxxxxxxxxxxxxxx"
-DEBUG_SPACEID="xxxxxxxxxxxxxxx"
+ACCESSTOKEN="xxxxxxxxxxxxxxxxxxxxxx"
+SPACEID="xxxxxxxxxxxxxxx"
+SITEURL="https://your.domain"
 ```
 ### Gatsby
 ```
@@ -43,14 +43,14 @@ git clone https://github.com/nsslums/Atrevete.git
 ## Verisons
 ```
 $ node -v
-v19.7.0
+v20.2.0
 
 $ npm -v
-9.6.5
+9.6.6
 
-$ gatsby -v
-Gatsby version: 5.9.0
+$ npm list gatsby
+Gatsby version: 5.10.0
 
 $ npm list storybook
-storybook@7.0.7
+storybook@7.0.18
 ```
