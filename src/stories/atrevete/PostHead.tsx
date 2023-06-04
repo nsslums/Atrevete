@@ -10,6 +10,10 @@ interface PostHeadProps{
     tags: any
 }
 
+const eyeCatch = css({
+    height: 350,           
+})
+
 const imageCss = css({
     height: "100%",
     width: "100%",
@@ -43,13 +47,13 @@ export const PostHead = ({
                  : false}
             </p>
             <h1>{title}</h1>
-            <div>
+            <div css={eyeCatch}>
                 {GatsbyImageData ? 
                     <GatsbyImage image={GatsbyImageData} alt='eyecatch' css={imageCss}/>
                     :
                     <StaticImage src='../../images/noimage.png' alt='eyecatch' css={imageCss}/>
                 }
-                <img src={imageURL} css={{width: "100%", height: "100%", objectFit: "cover"}} />
+                {/* <img src={imageURL} css={{width: "100%", height: "100%", objectFit: "cover"}} /> */}
             </div>
         </div>
     )
