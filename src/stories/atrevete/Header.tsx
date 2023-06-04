@@ -16,7 +16,7 @@ const menu = css({
     left: 0,
     width: "100%",
     height: "100vh",
-    backgroundColor: "#1E1E1E;"
+    backgroundColor: "rgba(0, 0, 0, .85)"
 })
 
 const block = css({
@@ -93,10 +93,10 @@ export const Header = ({
                             }} />
                         </div>
                     </div>
-                    <div css={block}><GoldLink to='/' text='トップページ' /></div>
-                    <div css={block}><GoldLink to='/about' text='Atreveteとは' /></div>
-                    <div css={block}><GoldLink to='/post' text='投稿' /></div>
-                    <div css={block}><GoldLink to='/contact' text='お問い合わせ' /></div>
+                    <div css={block} onClick={onClick}><GoldLink to='/' text='トップページ'/></div>
+                    <div css={block} onClick={onClick}><GoldLink to='/about' text='Atreveteとは' /></div>
+                    <div css={block} onClick={onClick}><GoldLink to='/post' text='投稿' /></div>
+                    <div css={block} onClick={onClick}><GoldLink to='/contact' text='お問い合わせ' /></div>
                 </div>
             </div>
             : false }
