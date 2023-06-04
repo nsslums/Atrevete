@@ -20,8 +20,8 @@ interface SearchProps {
 
 const buttonCss = css({
     position: "fixed",
-    right: 25,
-    bottom: 25,
+    right: 15,
+    bottom: 90,
     backgroundColor: "white",
     borderRadius: 30,
     display: "flex",
@@ -49,7 +49,7 @@ const modalRoot = css({
 const searchInputRoot = css({
   backgroundColor: 'white',
   height: 40,
-  borderRadius: 30,
+  borderRadius: 5 ,
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
@@ -61,11 +61,11 @@ const resultCss = css({
   width: "100%",
   maxHeight: 300,
   backgroundColor: 'white',
-  marginTop: ".5em",
-  borderRadius: 10,
+  borderRadius: "0 0 5px 5px",
   color: 'black',
   boxSizing: "border-box",
   padding: 10,
+  borderTop: "1px solid #cfcfcf",
 })
 
 const resultBlock = css({
@@ -77,11 +77,11 @@ const resultBlock = css({
     "&:after":{
       content: '""',
       position: "absolute",
-      width: "95%",
+      width: "100%",
       height: 1,
       backgroundColor: "#cfcfcf",
       bottom: -5,
-      left: "2.5%",
+      left: "0",
     }
   }
 })
@@ -90,7 +90,9 @@ const resultfield = css({
   padding: "5px",
   borderRadius: 5,
   fontSize: "1em",
+})
 
+const hover = css({
   "&:hover":{
     backgroundColor: "#efefef"
   }
@@ -177,7 +179,9 @@ export const Search = ({
   }
 
   const { posts, events } = result
-  console.log(result)
+
+  const inputCss = value ? [searchInputRoot, css({borderRadius: "5px 5px 0 0"})] : searchInputRoot
+
   return (
     <>
       <button css={buttonCss} onClick={(e:any) => setIsOpen(true)}>
@@ -189,28 +193,41 @@ export const Search = ({
         css={content}
       >
         <div css={modalRoot}>
-          <div css={searchInputRoot}>
+          <div css={inputCss}>
             <label htmlFor='search' css={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><GrSearch /></label>
             <input autoFocus={true} value={value} id='search' onChange={onChange} css={{color: 'black', marginLeft: 10, width: "100%"}} placeholder='キーワードを入力...' autoComplete='off'/>
           </div>
-          {posts.length > 0 || events.length > 0 ?
-          <div css={resultCss}>
-            {posts.length > 0 ? 
-            <div css={resultBlock}><p css={{fontSize: ".8em"}}>投稿</p>
-              {posts.map(post =>(
-                <p key={post.title} css={resultfield}><Link to={"/post/"+ post.title} css={{display: "block"}}>{post.title}</Link></p>
-              ))}
-              </div> 
-            : false}
-            {events.length > 0  ?
-              <div css={resultBlock}><p css={{fontSize: ".8em"}}>イベント</p>
-              {events.map(event =>(
-                <p key={event.title} css={resultfield}><Link to={"/event/"+ event.title} css={{display: "block"}}>{event.title}</Link></p>
-              ))}
-              </div> 
-            : false}
-          </div>
-          : false}
+          {value ? 
+            <div css={resultCss}>
+              {posts.length > 0 && events.length > 0 ?
+                <>
+                  {posts.length > 0 ? 
+                  <div css={resultBlock}><p css={{fontSize: ".8em"}}>投稿</p>
+                    {posts.map(post =>(
+                      <p key={post.title} css={[resultfield, hover]}><Link to={"/post/"+ post.title} css={{display: "block"}}>{post.title}</Link></p>
+                    ))}
+                  </div> 
+                  :
+                  false}
+                  {events.length > 0 ? 
+                  <div css={resultBlock}><p css={{fontSize: ".8em"}}>イベント</p>
+                    {events.map(event =>(
+                      <p key={event.title} css={[resultfield, hover]}><Link to={"/event/"+ event.title} css={{display: "block"}}>{event.title}</Link></p>
+                    ))}
+                  </div> 
+                  :
+                  false
+                  }
+                </>
+                :
+                <div css={resultBlock}>
+                  <p css={[resultfield, css({color: "#cfcfcf"})]}>no result...</p>
+                </div>
+              }
+            </div>
+          :
+            false
+          }
         </div>
       </Modal>
     </>
