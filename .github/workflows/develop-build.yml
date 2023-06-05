@@ -13,7 +13,6 @@ env:
 
 jobs:
   build:
-    if: startsWith(github.ref, 'refs/heads/develop')
     runs-on: ubuntu-latest
     permissions:
       contents: read
