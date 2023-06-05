@@ -8,6 +8,7 @@ import { UploadFile } from "../stories/atrevete/form/UploadFile"
 import { Certifications } from "../stories/atrevete/form/Certifications"
 import { Common } from "../components/common"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
+import { css } from "@emotion/react"
 
 const FormPage: React.FC<PageProps> = (props) => {
     const [submitdis, setSubmitdis] = React.useState(false)
@@ -84,6 +85,7 @@ const FormPage: React.FC<PageProps> = (props) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                marginBottom: "5em",
             }}>
                 <form action="/api/event" method="post" onSubmit={onSubmit}>
                     <Pulldown label="イベント" name="event" id="event" options={options} default_val={default_value} required={true} />
@@ -91,14 +93,24 @@ const FormPage: React.FC<PageProps> = (props) => {
                     <Input label="誕生日" type="date" name="birthday" id="birthday" required={true} />
                     <Input label="メール" type="email" name="email" id="email" required={true} />
                     <TextArea label="自己PR" name="pr" id="pr" required={true} />
-                    <UploadFile required={true} />
+                    <div css={css({
+                        marginTop: 30,
+                    })}>
+                        <UploadFile required={true} />
+                    </div>
                     <Input label="大学名" type="text" name="university" id="university" />
                     <Certifications label="資格" name="certifications_hiddn" id="certifications" />
                     <TextArea label="経歴・学外活動" name="career" id="career" />
                     <Input label="Instagram ID" type="text" name="instagram" id="instagram" />
                     <Input label="TikTok ID" type="text" name="tiktok" id="tiktok" />
                     <Input label="Twitter ID" type="text" name="twitter" id="twitter" />
-                    <Input type="submit" name="submit" id="submit" disabled={submitdis} />
+                    <div css={css({
+                        marginTop: 30,
+                        display: "flex",
+                        justifyContent: "center",
+                    })}>
+                        <Input type="submit" name="submit" id="submit" disabled={submitdis} />
+                    </div>
                 </form>
             </div>
         </Common>

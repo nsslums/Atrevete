@@ -4,6 +4,7 @@ import { Common } from "../components/common"
 import { Input } from "../stories/atrevete/form/Input"
 import { TextArea } from "../stories/atrevete/form/TextArea"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
+import { css } from "@emotion/react"
 
 const FormPage: React.FC<PageProps> = () => {
     const [submitdis, setSubmitdis] = React.useState(false)
@@ -46,14 +47,27 @@ const FormPage: React.FC<PageProps> = () => {
 
     return (
         <Common>
-            <form action="/api/contact" method="post" onSubmit={onSubmit}>
-                <Input label="お名前" type="text" name="name" id="name" required={true} />
-                <Input label="メール" type="email" name="email" id="email" required={true} />
-                <Input label="件名" type="text" name="subject" id="subject" required={true} />
-                <Input label="電話" type="tel" name="phone" id="phone"/>
-                <TextArea label="ご内容" name="content" id="content" required={true} />
-                <Input type="submit" name="submit" id="submit" disabled={submitdis} />
-            </form>
+            <div css={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginBottom: "5em",
+            }}>
+                <form action="/api/contact" method="post" onSubmit={onSubmit}>
+                    <Input label="お名前" type="text" name="name" id="name" required={true} />
+                    <Input label="メール" type="email" name="email" id="email" required={true} />
+                    <Input label="件名" type="text" name="subject" id="subject" required={true} />
+                    <Input label="電話" type="tel" name="phone" id="phone"/>
+                    <TextArea label="ご内容" name="content" id="content" required={true} />
+                    <div css={css({
+                        marginTop: 30,
+                        display: "flex",
+                        justifyContent: "center",
+                    })}>
+                        <Input type="submit" name="submit" id="submit" disabled={submitdis} />
+                    </div>
+                </form>
+            </div>
         </Common>
     )
 }
