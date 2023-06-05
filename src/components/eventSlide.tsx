@@ -63,7 +63,7 @@ function NextArrow(props: any) {
   }
 
   function PrevArrow(props: any) {
-    const { className, style, onClick } = props;
+    const { className, style, onClick } = props
     return (
       <div
         css={[arrow_css, { left: "-20px",}]}
