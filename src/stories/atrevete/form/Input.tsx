@@ -41,6 +41,21 @@ const label_up = css({
   fonrSize: "0.8em",
 })
 
+
+const submitCss = css({
+  position: 'relative',
+  padding: '15px 50px',
+  minWidth: 200,
+  minHeight: 50,
+  fontSize: 20,
+  color: 'black',
+  background: 'white',
+  backgroundImage: 'none',
+  outline: 'none',
+  borderRadius: '3px',
+  overflow: 'hidden',
+})
+
 export const Input = ({
     label,
     type,
@@ -75,7 +90,7 @@ export const Input = ({
     <div css={rootCss}>
       {label ? <label htmlFor={id} css={labelStyle}>{label}</label> : false}
       {type == 'submit' ? 
-        <input type="submit" disabled={disabled}/>
+        <input type="submit" disabled={disabled} css={submitCss}/>
         :  
         <input type={type} name={name} id={id} value={value} required={required} css={InputStyle} onBlur={onBlurHandel} onSelect={onSelectHandel} onChange={changeHandle} autoComplete="off"/>
       }
