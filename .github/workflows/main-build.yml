@@ -10,6 +10,8 @@ env:
   SPACEID: ${{secrets.SPACEID}}
   SITEURL: ${{secrets.SITEURL}}
   GOOGLE_ANALYTICS: ${{secrets.GOOGLE_ANALYTICS}}
+  GATSBY_RECAPTCHA_SITEKEY: ${{secrets.RECAPTCHA_SITEKEY}}
+  RECAPTCHA_SECRETKEY: ${{secrets.RECAPTCHA_SECRETKEY}}
 
 jobs:
   build:

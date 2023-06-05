@@ -10,7 +10,10 @@ env:
   SPACEID: ${{secrets.DEVELOP_SPACEID}}
   SITEURL: ${{secrets.DEVELOP_SITEURL}}
   GOOGLE_ANALYTICS: ${{secrets.DEVELOP_GOOGLE_ANALYTICS}}
+  GATSBY_RECAPTCHA_SITEKEY: ${{secrets.RECAPTCHA_SITEKEY}}
+  RECAPTCHA_SECRETKEY: ${{secrets.RECAPTCHA_SECRETKEY}}
 
+  
 jobs:
   build:
     runs-on: ubuntu-latest
