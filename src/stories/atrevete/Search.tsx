@@ -10,7 +10,6 @@ if(typeof document !== `undefined`){
 }
 if(!root) root =  "";
 
-console.log(root)
 Modal.setAppElement(root)
 
 interface SearchProps {

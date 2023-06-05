@@ -90,7 +90,17 @@ const config: GatsbyConfig = {
     options: {
       siteUrl: process.env.SITEURL,
     },
-  },]
+  },
+  {
+    resolve: `gatsby-plugin-google-gtag`,
+    options: {
+      trackingIds: [process.env.GOOGLE_ANALYTICS], 
+      pluginConfig: {
+        head: true,  // headタグに記載されるように
+      }
+    }
+  },
+]
 };
 
 export default config;
