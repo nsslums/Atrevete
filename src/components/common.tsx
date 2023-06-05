@@ -54,28 +54,3 @@ export const Common = ({ children }: any) => {
         </div>
     )
 }
-
-// query MyQuery {
-//     allContentfulPost(filter: {hidden: {ne: true}}) {
-//       nodes {
-//         title
-//         content {
-//           raw
-//         }
-//       }
-//     }
-//     allContentfulEvent(filter: {hidden: {ne: true}}) {
-//       nodes {
-//         title
-//         date
-//         end_reception
-//         start_reception
-//         requirements {
-//           raw
-//         }
-//         overview {
-//           raw
-//         }
-//       }
-//     }
-//   }

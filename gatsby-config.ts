@@ -4,6 +4,7 @@ require('dotenv').config();
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Atrevete`,
+    description: '',
     siteUrl: process.env.SITEURL
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
