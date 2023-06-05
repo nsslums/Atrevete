@@ -184,21 +184,6 @@ const GlobalStyle = () => (
         position: relative;
         background-color: #121212;
         color: white;
-
-        &:before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-image: url(/noise.png);
-          background-repeat: 'repeat';
-          background-size: 40%;
-          background-blend-mode: color-dodge;
-          opacity: 3%;
-        }
-
       }
 
       .bg_noise{
@@ -222,6 +207,22 @@ const GlobalStyle = () => (
       #storybook-root{
         z-index: 10;
         position: relative;
+      }
+
+      #___gatsby{
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url(/noise.png);
+          background-repeat: 'repeat';
+          background-size: 40%;
+          background-blend-mode: color-dodge;
+          opacity: 3%;
+        }
       }
 
       .grecaptcha-badge{
