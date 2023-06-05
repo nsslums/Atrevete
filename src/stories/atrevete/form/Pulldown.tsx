@@ -14,7 +14,9 @@ interface PulldownProps {
 
 const rootCss = css({
   position: "relative",
-  fontSize: 16
+  fontSize: 16,
+  marginTop: '1.5em',
+  zIndex: 100,
 })
 
 const labelBase = css({
@@ -40,7 +42,11 @@ const pullDownCss = css({
   borderRadius: "5px 5px 0 0",
   display: "inline-block",
   boxSizing: "border-box",
+  "&.inner": {
+    background:'red!inportant',
+  }
 })
+
 
 export const Pulldown = ({
     label,
@@ -70,7 +76,7 @@ export const Pulldown = ({
   return (
     <div css={rootCss}>
       {label ? <label htmlFor={id} css={labelStyle}>{label}</label> : false}
-      <Select options={options} name={name} id={id} required={required} defaultValue={default_val} css={pullDownCss} classNamePrefix="react-select" placeholder='' components={{IndicatorSeparator: () => null,}}
+      <Select options={options} name={name} id={id} required={required} defaultValue={default_val} css={pullDownCss} className="inner" classNamePrefix="react-select" placeholder='' components={{IndicatorSeparator: () => null,}}
         onBlur={onBlurHandle} onMenuOpen={menuOpenHandle} onChange={changeHandole}
       />
     </div>

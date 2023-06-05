@@ -7,6 +7,7 @@ const rootCss = css({
     width: 320,
     height: 370,
     border: "1px #C5B286 solid",
+    borderRadius: '5px',
     padding: 10,
     position: "relative",
 })

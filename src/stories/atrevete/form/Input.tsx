@@ -12,7 +12,8 @@ interface inputProps {
 
 const rootCss = css({
     position: "relative",
-    fontSize: 16
+    fontSize: 16,
+    marginTop: '1.5em',
 })
 
 

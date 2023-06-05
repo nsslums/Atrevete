@@ -9,6 +9,7 @@ const Style = css({
   display: 'flex',
   alignItems: 'center',
   paddingBottom: '10px',
+  marginTop: '1.5em',
   borderBottom: 'solid 1px white',
 })
 
