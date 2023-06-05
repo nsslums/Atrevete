@@ -44,6 +44,7 @@ const FormPage: React.FC<PageProps> = (props) => {
 
         if(!executeRecaptcha){
             setSubmitdis(false)
+            alert("reCAPTCHA init err.")
             return
         }
         const token = await executeRecaptcha('contact')

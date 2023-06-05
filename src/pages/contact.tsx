@@ -17,6 +17,7 @@ const FormPage: React.FC<PageProps> = () => {
 
         if(!executeRecaptcha){
             setSubmitdis(false)
+            alert("reCAPTCHA init err.")
             return
         }
 
