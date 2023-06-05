@@ -3,10 +3,9 @@ name: deploy develop
 on: 
   push:
     branches:
-      - 'develop'
-    paths:
-      - 'build.txt'
-      -  '.github/workflows/build.yml'
+      - develop
+    tags:
+      - build
 
 env:
   ACCESSTOKEN: ${{secrets.DEVELOP_ACCESSTOKEN}}
