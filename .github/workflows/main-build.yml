@@ -33,3 +33,4 @@ jobs:
           projectName: atrevete
           directory: ./public
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
