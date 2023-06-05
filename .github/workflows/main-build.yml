@@ -1,0 +1,35 @@
+name: deploy main
+
+on: 
+  push:
+    tags:
+      - 'main*'
+
+env:
+  ACCESSTOKEN: ${{secrets.ACCESSTOKEN}}
+  SPACEID: ${{secrets.SPACEID}}
+  SITEURL: ${{secrets.SITEURL}}
+  GOOGLE_ANALYTICS: ${{secrets.GOOGLE_ANALYTICS}}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: gatsby build
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19
+      - run: npm ci
+      - run: npm run build
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          projectName: atrevete
+          directory: ./public
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
