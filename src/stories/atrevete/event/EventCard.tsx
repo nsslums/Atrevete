@@ -17,17 +17,23 @@ const rootStyle = css({
   height: "207px",
   borderRadius: "5px",
   overflow: 'hidden',
-  background: "gray",
+  background: "black",
   position: "relative",
   color: "white",
   fontSize: "17px",
   borderWidth: "1px",
   borderStyle: "solid",
-  borderColor: "rgba(255, 255, 255, 0.25)",
+  borderLeftColor: "rgba(255,255,255,0.25)",
+  borderTopColor: "rgba(255,255,255,0.25)",
+  borderRightColor: "transparent",
+  borderBottomColor: "transparent",
   margin: "auto",
 
   "&:hover": {
-    border: "solid 1px white",
+    border: "solid 1px rgba(255,2555,255,0.7)",
+    "&:active": {
+      borderColor: "rgba(255,255,255,0.4)",
+    }
   },
 
   "&::before": {
