@@ -1,5 +1,6 @@
 import * as React from "react"
-import { Link, HeadFC, PageProps } from "gatsby"
+import { Link, HeadFC, PageProps, graphql } from "gatsby"
+import { Html_Head } from "../components/html-head"
 
 const pageStyles = {
   color: "#232129",
@@ -44,6 +45,24 @@ const NotFoundPage: React.FC<PageProps> = () => {
   )
 }
 
+export const query = graphql`
+  query {
+    site {
+        siteMetadata {
+            title
+            description
+            siteUrl
+            social{
+                twitter
+            }
+        }
+    }
+  }
+`
+
 export default NotFoundPage
 
-export const Head: HeadFC = () => <title>Not found</title>
+export const Head: HeadFC = ({data}) => (
+  <Html_Head title={data.site.siteMetadata.title + " | Thanks"} type="article" url={data.site.siteMetadata.siteURL + "/thanks"}>
+  </Html_Head>
+)

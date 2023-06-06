@@ -3,6 +3,7 @@ import * as React from "react"
 import { HeadFC, Link, PageProps, graphql } from "gatsby"
 import { Common } from "../components/common"
 import { Head1 } from "../stories/atrevete/Head1"
+import { Html_Head } from '../components/html-head'
 
 const rootStyle = css({
     display: 'flex',
@@ -38,6 +39,24 @@ const Aboutage: React.FC<PageProps> = () => {
     )
 }
 
+export const query = graphql`
+  query {
+    site {
+        siteMetadata {
+            title
+            description
+            siteUrl
+            social{
+                twitter
+            }
+        }
+    }
+}
+`
+
 export default Aboutage
 
-export const Head: HeadFC = () => <title>Event title</title>
+export const Head: HeadFC =  ({data}) => (
+    <Html_Head title={data.site.siteMetadata.title + " | About"} type="article" url={data.site.siteMetadata.siteURL + "/about"}>
+    </Html_Head>
+  )

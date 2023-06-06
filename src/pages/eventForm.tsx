@@ -9,6 +9,7 @@ import { Certifications } from "../stories/atrevete/form/Certifications"
 import { Common } from "../components/common"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { css } from "@emotion/react"
+import { Html_Head } from "../components/html-head"
 
 const FormPage: React.FC<PageProps> = (props) => {
     const [submitdis, setSubmitdis] = React.useState(false)
@@ -120,6 +121,16 @@ const FormPage: React.FC<PageProps> = (props) => {
 
 export const query = graphql`
   query {
+    site {
+        siteMetadata {
+            title
+            description
+            siteUrl
+            social{
+                twitter
+            }
+        }
+    }
   allContentfulEvent(filter: {hidden: {ne: true}}) {
     nodes {
       title
@@ -132,4 +143,7 @@ export const query = graphql`
 
 export default FormPage
 
-export const Head: HeadFC = () => <title>Form Page</title>
+export const Head: HeadFC =  ({data}) => (
+    <Html_Head title={data.site.siteMetadata.title + " | イベント応募"} type="article" url={data.site.siteMetadata.siteURL + "/eventForm"}>
+    </Html_Head>
+  )

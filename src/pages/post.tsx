@@ -6,6 +6,7 @@ import { Common } from "../components/common"
 import { PostCard } from "../stories/atrevete/event/PostCard"
 import { css } from "@emotion/react"
 import { Head1 } from "../stories/atrevete/Head1"
+import { Html_Head } from "../components/html-head"
 
 const rootCss = css({
   display: "flex",
@@ -27,7 +28,7 @@ const postCss = css({
   margin: ".5em 1em"
 })
 
-const EventPage: React.FC<PageProps> = ({ data }) => {
+const PostsPage: React.FC<PageProps> = ({ data }) => {
 
     const posts = data.allContentfulPost.nodes
 
@@ -50,6 +51,16 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
 
 export const query = graphql`
 query {
+  site {
+      siteMetadata {
+          title
+          description
+          siteUrl
+          social{
+              twitter
+          }
+      }
+  }
   allContentfulPost(filter: {hidden: {ne: true}}) {
     nodes {
       contentful_id
@@ -61,6 +72,9 @@ query {
   }
 }
 `
-export default EventPage
+export default PostsPage
 
-export const Head: HeadFC = () => <title>Event title</title>
+export const Head: HeadFC = ({data}) => (
+  <Html_Head title={data.site.siteMetadata.title + " | 投稿"} type="article" url={data.site.siteMetadata.siteURL + "/post"}>
+  </Html_Head>
+)

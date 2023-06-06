@@ -7,7 +7,7 @@ import { GoldButton } from "../stories/atrevete/GoldButton";
 import { css } from "@emotion/react";
 import { Head1 } from "../stories/atrevete/Head1";
 import { PostCard } from "../stories/atrevete/event/PostCard";
-
+import {Html_Head} from '../components/html-head'
 
 const topImage = css({
   width: "100%",
@@ -95,6 +95,16 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
 
 export const query = graphql`
   query {
+    site {
+        siteMetadata {
+            title
+            description
+            siteUrl
+            social{
+                twitter
+            }
+        }
+    }
     allContentfulSponsor(filter: {hidden: {ne: true}}) {
       nodes {
         contentful_id
@@ -123,4 +133,7 @@ export const query = graphql`
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = ({data}) => (
+  <Html_Head type="website" url={data.site.siteMetadata.siteURL}>
+  </Html_Head>
+)
