@@ -23,12 +23,12 @@ const rootStyle = css({
   fontSize: "17px",
   borderWidth: "1px",
   borderStyle: "solid",
-  borderLeftColor: "rgba(255,255,255,0.25)",
-  borderTopColor: "rgba(255,255,255,0.25)",
-  borderRightColor: "transparent",
-  borderBottomColor: "transparent",
+  borderTopColor: 'rgba(255,255,255,0.25)',
+  borderLeftColor: 'rgba(255,255,255,0.25)',
+  borderRightColor: 'rgba(255,255,255,0.1)',
+  borderBottomColor: 'rgba(255,255,255,0.1)',
+  boxShadow: '0 0 20px rgba(0,0,0,0.5)',
   margin: "auto",
-
   "&:hover": {
     border: "solid 1px rgba(255,2555,255,0.7)",
     "&:active": {
