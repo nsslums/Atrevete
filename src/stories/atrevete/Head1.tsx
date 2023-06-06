@@ -44,7 +44,19 @@ export const Head1 = ({
 }: Head1Props) => {
   return (
     <div css={{position:'relative'}}>
-      <motion.h1 initial={{'--p1': '0%','--p2':'0%'} as any} animate={{'--p1': '100%','--p2':'110%'} as any} transition={{duration:1}} css={Style}>{text}<motion.span initial={{width:0}} animate={{width: 'calc(100% + 8px)'}} css={bgStyle} ></motion.span></motion.h1>
+      <motion.h1
+        initial={{'--p1': '0%','--p2':'0%'} as any}
+        whileInView={{'--p1': '100%','--p2':'110%'} as any}
+        viewport={{ once: true }}
+        transition={{duration:1}}
+        css={Style}
+      >{text}<motion.span
+        initial={{width:0}}
+        whileInView={{width: 'calc(100% + 8px)'}}
+        viewport={{ once: true }}
+        transition={{duration:1}}
+        css={bgStyle}
+      ></motion.span></motion.h1>
     </div>
   )
 }
