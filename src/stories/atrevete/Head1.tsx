@@ -11,6 +11,9 @@ const Style = css({
   margin: '5px 5px 0.5em 5px',
   fontSize: '50px',
   display: 'inline-block',
+  background: 'linear-gradient(120deg, white 0%, white var(--p1), orange var(--p1), orange var(--p2), transparent var(--p2), transparent 100%)',
+  backgroundClip: 'text',
+  color: 'transparent',
 })
 
 const bgStyle = css({
@@ -41,7 +44,7 @@ export const Head1 = ({
 }: Head1Props) => {
   return (
     <div css={{position:'relative'}}>
-      <motion.h1 initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}} css={Style}>{text}<motion.span initial={{width:0}} animate={{width: 'calc(100% + 8px)'}} css={bgStyle} ></motion.span></motion.h1>
+      <motion.h1 initial={{'--p1': '0%','--p2':'0%'} as any} animate={{'--p1': '100%','--p2':'110%'} as any} transition={{duration:1}} css={Style}>{text}<motion.span initial={{width:0}} animate={{width: 'calc(100% + 8px)'}} css={bgStyle} ></motion.span></motion.h1>
     </div>
   )
 }
