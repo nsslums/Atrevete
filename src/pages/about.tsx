@@ -17,7 +17,7 @@ const rootStyle = css({
 const Wrap = css({
     margin: '10em 0em',
     width: '90%',
-    maxWidth: '1200px',
+    maxWidth: '900px',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
