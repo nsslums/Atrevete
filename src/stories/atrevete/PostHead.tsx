@@ -1,6 +1,7 @@
 import React from 'react';
 import { GatsbyImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
 import { css } from '@emotion/react';
+import { Head1 } from './Head1';
 
 interface PostHeadProps{
     title?: string,
@@ -11,7 +12,8 @@ interface PostHeadProps{
 }
 
 const eyeCatch = css({
-    height: 350,           
+    margin: '2em 0',
+    height: "200px",
 })
 
 const imageCss = css({
@@ -36,7 +38,8 @@ export const PostHead = ({
 }: PostHeadProps) =>{
     return(
         <div css={rootCss}>
-            <p>
+            <Head1 text={title}></Head1>
+            <p css={{marginTop: '1em'}}>
                 {date}
                 {tags ? 
                 <div>
@@ -46,7 +49,7 @@ export const PostHead = ({
                 </div>
                  : false}
             </p>
-            <h1>{title}</h1>
+            
             <div css={eyeCatch}>
                 {GatsbyImageData ? 
                     <GatsbyImage image={GatsbyImageData} alt='eyecatch' css={imageCss}/>
