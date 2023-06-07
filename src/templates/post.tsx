@@ -20,6 +20,12 @@ const block = css({
   margin: "3em auto"
 })
 
+const contentStyle = css({
+  margin:'2em',
+  fontSize: '1.1em',
+  letterSpacing: '0.05em',
+})
+
 const PostPage: React.FC<PageProps> = ({ data }) => {
 
   const options = {
@@ -88,7 +94,7 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
         :
           <PostHead title={data.contentfulPost.title} date={data.contentfulPost.createdAt} tags={data.contentfulPost.metadata.tags || []}/>
         }
-        <div>{!data.contentfulPost.content ? false :renderRichText(data.contentfulPost.content, options)}</div>
+        <div css={contentStyle}>{!data.contentfulPost.content ? false :renderRichText(data.contentfulPost.content, options)}</div>
         {data.contentfulPost.related_event?
         <>
           <Head2 text="関連するイベント" />
