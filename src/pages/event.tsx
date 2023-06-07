@@ -6,6 +6,7 @@ import { Common } from "../components/common"
 import { EventCard } from "../stories/atrevete/event/EventCard"
 import { css } from "@emotion/react"
 import { Head1 } from "../stories/atrevete/Head1"
+import { Html_Head } from "../components/html-head"
 
 const rootCss = css({
   display: "flex",
@@ -53,6 +54,16 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
 
 export const query = graphql`
 query{
+  site {
+        siteMetadata {
+            title
+            description
+            siteUrl
+            social{
+                twitter
+            }
+        }
+    }
   allContentfulEvent(filter: {hidden: {ne: true}}) {
       nodes {
         date(formatString: "yyyy/M/D")
@@ -62,6 +73,10 @@ query{
     }
 }
 `
+
 export default EventPage
 
-export const Head: HeadFC = () => <title>Event title</title>
+export const Head: HeadFC =  ({data}) => (
+  <Html_Head title={data.site.siteMetadata.title + " | イベント"} type="article" url={data.site.siteMetadata.siteURL + "/event"}>
+  </Html_Head>
+)

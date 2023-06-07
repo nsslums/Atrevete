@@ -9,6 +9,7 @@ import { Head2 } from "../stories/atrevete/Head2"
 import { css } from "@emotion/react"
 import { EventFormCard } from "../stories/atrevete/event/EventFormCard"
 import { Connection } from "../stories/atrevete/event/Connection"
+import { Html_Head } from "../components/html-head"
 
 const block = css({
   position: "relative",
@@ -145,6 +146,16 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
 
 export const query = graphql`
   query($contentful_id: String!) {
+    site {
+        siteMetadata {
+            title
+            description
+            siteUrl
+            social{
+                twitter
+            }
+        }
+    }
     contentfulEvent(
       contentful_id: {eq: $contentful_id}
       hidden: {ne: true}
@@ -213,4 +224,7 @@ export const query = graphql`
 
 export default EventPage
 
-export const Head: HeadFC = () => <title>Event title</title>
+export const Head: HeadFC = ({data}) => (
+  <Html_Head title={data.site.siteMetadata.title + " | " + data.contentfulEvent.title} type="article" url={data.site.siteMetadata.siteURL + "/event/" + data.contentfulEvent.title}>
+  </Html_Head>
+)

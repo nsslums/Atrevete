@@ -25,7 +25,7 @@
     "@sideway/address": "^5.0.0",
     "@storybook/addon-styling": "^1.0.8",
     "babel-preset-react-app": "^10.0.1",
-    "framer-motion": "^10.12.12",
+    "framer-motion": "^10.12.16",
     "gatsby": "^5.10.0",
     "gatsby-plugin-canonical-urls": "^5.10.0",
     "gatsby-plugin-emotion": "^8.10.0",
@@ -42,7 +42,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-recaptcha-v3": "^1.10.1",
-    "react-icons": "^4.8.0",
+    "react-icons": "^4.9.0",
     "react-modal": "^3.16.1",
     "react-select": "^5.7.3",
     "react-slick": "^0.29.0",
@@ -62,13 +62,13 @@
     "@storybook/react": "^7.0.18",
     "@storybook/react-webpack5": "^7.0.18",
     "@storybook/testing-library": "^0.1.0",
-    "@types/node": "^20.2.1",
-    "@types/react": "^18.2.7",
+    "@types/node": "^20.2.5",
+    "@types/react": "^18.2.8",
     "@types/react-dom": "^18.2.4",
     "@types/react-modal": "^3.16.0",
     "@types/react-slick": "^0.23.10",
     "prop-types": "^15.8.1",
     "storybook": "^7.0.18",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.3"
   }
 }

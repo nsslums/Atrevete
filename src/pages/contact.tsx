@@ -1,10 +1,11 @@
 import * as React from "react"
-import { HeadFC, PageProps, navigate } from "gatsby"
+import { HeadFC, PageProps, graphql, navigate } from "gatsby"
 import { Common } from "../components/common"
 import { Input } from "../stories/atrevete/form/Input"
 import { TextArea } from "../stories/atrevete/form/TextArea"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { css } from "@emotion/react"
+import { Html_Head } from "../components/html-head"
 
 const FormPage: React.FC<PageProps> = () => {
     const [submitdis, setSubmitdis] = React.useState(false)
@@ -73,6 +74,24 @@ const FormPage: React.FC<PageProps> = () => {
     )
 }
 
+export const query = graphql`
+  query {
+    site {
+        siteMetadata {
+            title
+            description
+            siteUrl
+            social{
+                twitter
+            }
+        }
+    }
+  }
+`
+
 export default FormPage
 
-export const Head: HeadFC = () => <title>Form Page</title>
+export const Head: HeadFC = ({data}) => (
+    <Html_Head title={data.site.siteMetadata.title + " | お問い合わせ"} type="article" url={data.site.siteMetadata.siteURL + "/contact"}>
+    </Html_Head>
+  )

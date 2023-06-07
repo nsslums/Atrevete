@@ -8,6 +8,7 @@ import { css } from "@emotion/react"
 import { PostHead } from "../stories/atrevete/PostHead"
 import { Connection } from "../stories/atrevete/event/Connection"
 import { Head2 } from "../stories/atrevete/Head2"
+import { Html_Head } from "../components/html-head"
 
 
 const block = css({
@@ -109,6 +110,16 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
 
 export const query = graphql`
     query ($contentful_id: String!) {
+      site {
+        siteMetadata {
+            title
+            description
+            siteUrl
+            social{
+                twitter
+            }
+        }
+    }
       contentfulPost(
         contentful_id: {eq: $contentful_id}
         hidden: {ne: true}
@@ -156,4 +167,7 @@ export const query = graphql`
 
 export default PostPage
 
-export const Head: HeadFC = () => <title>Post title</title>
+export const Head: HeadFC  = ({data}) => (
+  <Html_Head title={data.site.siteMetadata.title + " | " + data.contentfulPost.title} type="article" url={data.site.siteMetadata.siteURL + "/event/" + data.contentfulPost.title}>
+  </Html_Head>
+)
