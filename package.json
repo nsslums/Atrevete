@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^11.11.0",
-    "@emotion/react": "^11.11.0",
+    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@react-icons/all-files": "^4.1.0",
     "@sideway/address": "^5.0.0",
