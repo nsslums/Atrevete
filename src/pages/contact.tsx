@@ -50,7 +50,6 @@ const FormPage: React.FC<PageProps> = () => {
 
     return (
         <Common>
-            <div css={{textAlign: 'center'}}><Head1 text="お問い合わせ" /></div>
             <div css={{
                 display: "flex",
                 flexDirection: "column",
