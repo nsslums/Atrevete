@@ -10,7 +10,6 @@ import { Html_Head } from "../components/html-head"
 
 const rootCss = css({
   display: "flex",
-  width: 990,
   flexDirection: 'column',
   justifyContent: "center",
   margin: "auto",
@@ -20,8 +19,12 @@ const rootCss = css({
 
 const postsCss = css({
   display: "flex",
-  boxSizing: "border-box",
   marginTop: "5em",
+  width: '100%',
+  maxWidth: '1200px',
+  justifyContent: 'center',
+  flexWrap: 'wrap',
+  boxSizing: "border-box",
 })
 
 const postCss = css({
