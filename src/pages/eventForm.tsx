@@ -10,6 +10,7 @@ import { Common } from "../components/common"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { css } from "@emotion/react"
 import { Html_Head } from "../components/html-head"
+import { Head1 } from "../stories/atrevete/Head1"
 
 const FormPage: React.FC<PageProps> = (props) => {
     const [submitdis, setSubmitdis] = React.useState(false)
@@ -83,6 +84,7 @@ const FormPage: React.FC<PageProps> = (props) => {
 
     return (
         <Common>
+            <div css={{textAlign: 'center'}}><Head1 text="お申し込み" /></div>
             <div css={{
                 display: "flex",
                 flexDirection: "column",
