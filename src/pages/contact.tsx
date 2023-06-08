@@ -38,14 +38,15 @@ const FormPage: React.FC<PageProps> = () => {
         formData.append("content", e.target.content.value)
         formData.append("token", token)
 
-        const response = await window.fetch('/api/contact', {
+        const response = await window.fetch('/api/aaa', {
             method: 'POST',
             body: formData,
         })
         .then(res => res.json())
+        .catch(err => alert("通信に失敗しました."))
         console.log(response)
         
-        if(response.status === "success"){
+        if(response?.status === "success"){
             await navigate('/thanks')
         }else{
             alert("エラーが発生しました．")

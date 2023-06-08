@@ -38,8 +38,9 @@ export const EventHead = ({
                 flexDirection: "row",
                 height: HeadHeight,
                 width: 770,
+                justifyContent: "space-between",
             }}>
-                <div css={{width: "50%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+                <div css={{width: "48%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                     <Head1 text={title} />
                     <div css={{display: "flex", flexDirection: "row", alignItems: "center", marginTop: 5}}>
                         <EventStatus isActive={isActive} />

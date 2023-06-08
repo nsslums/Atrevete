@@ -76,10 +76,11 @@ const FormPage: React.FC<PageProps> = (props) => {
             method: 'POST',
             body: formData,
         })
-            .then(res => res.json())
+        .then(res => res.json())
+        .catch(err => alert("通信に失敗しました."))
         console.log(response)
 
-        if(response.status === "success"){
+        if(response?.status === "success"){
             await navigate('/thanks')
         }else{
             alert("エラーが発生しました．")
