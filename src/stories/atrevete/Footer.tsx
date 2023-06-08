@@ -22,7 +22,7 @@ export const Footer = ({
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "start",
-                height: 98,
+                // height: 98,
                 margin: "auto",
             }}>
                 <div>

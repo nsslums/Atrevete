@@ -1,5 +1,5 @@
 import * as React from "react"
-import { HeadFC, PageProps, graphql, navigate } from "gatsby"
+import { HeadFC, Link, PageProps, graphql, navigate } from "gatsby"
 import Select from 'react-select'
 import { Pulldown } from "../stories/atrevete/form/Pulldown"
 import { Input } from "../stories/atrevete/form/Input"
@@ -10,6 +10,12 @@ import { Common } from "../components/common"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { css } from "@emotion/react"
 import { Html_Head } from "../components/html-head"
+import { Head1 } from "../stories/atrevete/Head1"
+
+const linkStyle = css({
+    padding: '0.5em',
+    color: 'skyblue',
+})
 
 const FormPage: React.FC<PageProps> = (props) => {
     const [submitdis, setSubmitdis] = React.useState(false)
@@ -70,10 +76,11 @@ const FormPage: React.FC<PageProps> = (props) => {
             method: 'POST',
             body: formData,
         })
-            .then(res => res.json())
+        .then(res => res.json())
+        .catch(err => alert("通信に失敗しました."))
         console.log(response)
 
-        if(response.status === "success"){
+        if(response?.status === "success"){
             await navigate('/thanks')
         }else{
             alert("エラーが発生しました．")
@@ -89,6 +96,7 @@ const FormPage: React.FC<PageProps> = (props) => {
                 alignItems: "center",
                 marginBottom: "5em",
             }}>
+                <Head1 text="イベント申込"/>
                 <form action="/api/event" method="post" onSubmit={onSubmit}>
                     <Pulldown label="イベント" name="event" id="event" options={options} default_val={default_value} required={true} />
                     <Input label="お名前" type="text" name="name" id="name" required={true} />
@@ -107,10 +115,13 @@ const FormPage: React.FC<PageProps> = (props) => {
                     <Input label="TikTok ID" type="text" name="tiktok" id="tiktok" />
                     <Input label="Twitter ID" type="text" name="twitter" id="twitter" />
                     <div css={css({
-                        marginTop: 30,
                         display: "flex",
-                        justifyContent: "center",
+                        marginTop: 30,
+                        flexDirection: "column",
+                        alignItems: "center",
+                        marginBottom: "5em",
                     })}>
+                        <p css={{fontSize:'13px'}}>「Submit」を押す前に<Link css={linkStyle} to="/privacy">プライバシーポリシー</Link>に同意する必要があります。</p>
                         <Input type="submit" name="submit" id="submit" disabled={submitdis} />
                     </div>
                 </form>

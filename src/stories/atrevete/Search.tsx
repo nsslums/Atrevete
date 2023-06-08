@@ -198,7 +198,7 @@ export const Search = ({
           </div>
           {value ? 
             <div css={resultCss}>
-              {posts.length > 0 && events.length > 0 ?
+              {posts.length > 0 || events.length > 0 ?
                 <>
                   {posts.length > 0 ? 
                   <div css={resultBlock}><p css={{fontSize: ".8em"}}>投稿</p>

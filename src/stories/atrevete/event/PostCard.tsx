@@ -6,7 +6,7 @@ import { GatsbyImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image'
 const rootCss = css({
     position: "relative",
     width: 320,
-    height: 370,
+    height: 200,
     padding: 10,
     border: '1px solid',
     borderTopColor: 'rgba(255,255,255,0.25)',
@@ -37,8 +37,11 @@ const imageCss = css({
 
 const textCss = css({
     width: "100%",
+    position: 'absolute',
+    bottom: 0,
     textAlign: 'center',
-    marginTop: "1em"
+    fontSize: '20px',
+    marginBottom: "1em"
 })
 
 interface EventCardProps {
@@ -58,7 +61,7 @@ export const PostCard = ({
   return (
     <div css={rootCss}>
       <Link to={url} css={linkCss} draggable={false}>
-        <div css={{height:"45%"}}>
+        <div css={{height:"70%"}}>
             {image ? 
               <GatsbyImage css={imageCss} image={image} alt='eyecatch'/>
             :
