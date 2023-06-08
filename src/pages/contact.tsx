@@ -1,5 +1,5 @@
 import * as React from "react"
-import { HeadFC, PageProps, graphql, navigate } from "gatsby"
+import { HeadFC, Link, PageProps, graphql, navigate } from "gatsby"
 import { Common } from "../components/common"
 import { Input } from "../stories/atrevete/form/Input"
 import { TextArea } from "../stories/atrevete/form/TextArea"
@@ -7,6 +7,11 @@ import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { css } from "@emotion/react"
 import { Html_Head } from "../components/html-head"
 import { Head1 } from "../stories/atrevete/Head1"
+
+const linkStyle = css({
+    margin: '0 0.5em',
+    color: 'skyblue',
+})
 
 const FormPage: React.FC<PageProps> = () => {
     const [submitdis, setSubmitdis] = React.useState(false)
@@ -67,7 +72,10 @@ const FormPage: React.FC<PageProps> = () => {
                         marginTop: 30,
                         display: "flex",
                         justifyContent: "center",
+                        alignItems: 'center',
+                        flexDirection: 'column',
                     })}>
+                        <p css={{fontSize:'13px'}}>「Submit」を押す前に<Link css={linkStyle} to="/privacy">プライバシーポリシー</Link>に同意する必要があります。</p>
                         <Input type="submit" name="submit" id="submit" disabled={submitdis} />
                     </div>
                 </form>

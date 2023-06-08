@@ -1,5 +1,5 @@
 import * as React from "react"
-import { HeadFC, PageProps, graphql, navigate } from "gatsby"
+import { HeadFC, Link, PageProps, graphql, navigate } from "gatsby"
 import Select from 'react-select'
 import { Pulldown } from "../stories/atrevete/form/Pulldown"
 import { Input } from "../stories/atrevete/form/Input"
@@ -11,6 +11,11 @@ import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { css } from "@emotion/react"
 import { Html_Head } from "../components/html-head"
 import { Head1 } from "../stories/atrevete/Head1"
+
+const linkStyle = css({
+    margin: '0 0.5em',
+    color: 'skyblue',
+})
 
 const FormPage: React.FC<PageProps> = (props) => {
     const [submitdis, setSubmitdis] = React.useState(false)
@@ -84,7 +89,6 @@ const FormPage: React.FC<PageProps> = (props) => {
 
     return (
         <Common>
-            <div css={{textAlign: 'center'}}><Head1 text="お申し込み" /></div>
             <div css={{
                 display: "flex",
                 flexDirection: "column",
@@ -110,10 +114,13 @@ const FormPage: React.FC<PageProps> = (props) => {
                     <Input label="TikTok ID" type="text" name="tiktok" id="tiktok" />
                     <Input label="Twitter ID" type="text" name="twitter" id="twitter" />
                     <div css={css({
-                        marginTop: 30,
                         display: "flex",
-                        justifyContent: "center",
+                        marginTop: 30,
+                        flexDirection: "column",
+                        alignItems: "center",
+                        marginBottom: "5em",
                     })}>
+                        <p css={{fontSize:'13px'}}>「Submit」を押す前に<Link css={linkStyle} to="/privacy">プライバシーポリシー</Link>に同意する必要があります。</p>
                         <Input type="submit" name="submit" id="submit" disabled={submitdis} />
                     </div>
                 </form>
