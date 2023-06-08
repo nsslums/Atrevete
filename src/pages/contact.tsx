@@ -6,6 +6,7 @@ import { TextArea } from "../stories/atrevete/form/TextArea"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { css } from "@emotion/react"
 import { Html_Head } from "../components/html-head"
+import { Head1 } from "../stories/atrevete/Head1"
 
 const FormPage: React.FC<PageProps> = () => {
     const [submitdis, setSubmitdis] = React.useState(false)
@@ -55,6 +56,7 @@ const FormPage: React.FC<PageProps> = () => {
                 alignItems: "center",
                 marginBottom: "5em",
             }}>
+                <Head1 text="お問い合わせ"/>
                 <form action="/api/contact" method="post" onSubmit={onSubmit}>
                     <Input label="お名前" type="text" name="name" id="name" required={true} />
                     <Input label="メール" type="email" name="email" id="email" required={true} />

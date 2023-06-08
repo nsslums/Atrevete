@@ -10,6 +10,7 @@ import { Common } from "../components/common"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { css } from "@emotion/react"
 import { Html_Head } from "../components/html-head"
+import { Head1 } from "../stories/atrevete/Head1"
 
 const FormPage: React.FC<PageProps> = (props) => {
     const [submitdis, setSubmitdis] = React.useState(false)
@@ -89,6 +90,7 @@ const FormPage: React.FC<PageProps> = (props) => {
                 alignItems: "center",
                 marginBottom: "5em",
             }}>
+                <Head1 text="イベント申込"/>
                 <form action="/api/event" method="post" onSubmit={onSubmit}>
                     <Pulldown label="イベント" name="event" id="event" options={options} default_val={default_value} required={true} />
                     <Input label="お名前" type="text" name="name" id="name" required={true} />
