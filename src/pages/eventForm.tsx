@@ -13,7 +13,7 @@ import { Html_Head } from "../components/html-head"
 import { Head1 } from "../stories/atrevete/Head1"
 
 const linkStyle = css({
-    margin: '0 0.5em',
+    padding: '0.5em',
     color: 'skyblue',
 })
 
