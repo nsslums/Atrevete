@@ -57,6 +57,7 @@ const FormPage: React.FC<PageProps> = () => {
                 alignItems: "center",
                 marginBottom: "5em",
             }}>
+                <Head1 text="お問い合わせ"/>
                 <form action="/api/contact" method="post" onSubmit={onSubmit}>
                     <Input label="お名前" type="text" name="name" id="name" required={true} />
                     <Input label="メール" type="email" name="email" id="email" required={true} />
