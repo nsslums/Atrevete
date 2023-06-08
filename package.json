@@ -61,7 +61,7 @@
     "@storybook/addon-mdx-gfm": "^7.0.18",
     "@storybook/blocks": "^7.0.18",
     "@storybook/react": "^7.0.18",
-    "@storybook/react-webpack5": "^7.0.18",
+    "@storybook/react-webpack5": "^7.0.20",
     "@storybook/testing-library": "^0.1.0",
     "@types/node": "^20.2.5",
     "@types/react": "^18.2.8",
