@@ -27,6 +27,15 @@ const topPhrase = css({
   zIndex: 10,
 })
 
+const typoStyle = css({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  fontSize: "40px",
+  fontWeight: 700,
+  lineHeight: "66px"
+})
+
 const categoryBlock = css({
   width: "100%",
   minHeight: "60vh",
@@ -54,7 +63,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
           </div>
         </div>
         <div css={{height: "80vh", display:"flex", flexDirection: "column", alignItems: "center", justifyContent: "center", position: "relative"}}>
-          <p css={{display: "flex", flexDirection: "column", alignItems: "center", fontSize: "40px", fontWeight: 700, lineHeight: "66px"}}>
+          <p css={typoStyle}>
             <span>吾輩はネコである。名前はまだない。</span>
             <span>どこで生まれたかとんと見当がつかぬ。</span>
           </p>
