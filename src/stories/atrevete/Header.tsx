@@ -74,14 +74,14 @@ export const Header = ({
                 <div css={{
                     display: 'flex',
                     flexDirection: "column",
-                    alignItems: 'end',
+                    alignItems: 'flex-end',
                 }}>
                     <div css={{
                         height: "98px",
                         width: "95%",
                         margin: "auto",
                         display: "flex",
-                        justifyContent: "end",
+                        justifyContent: "flex-end",
                         alignItems: 'center',
                     }}>
                         <div css={{

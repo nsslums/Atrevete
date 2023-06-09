@@ -82,7 +82,7 @@ export const EventCard = ({
   date,
   image,
   url = "/event/",
-  isActive = new Date().getTime() < new Date(date).getTime(),
+  isActive = new Date().getTime() < new Date(date).getTime() || date==null,
   ...props
 }: EventCardProps) => {
 
