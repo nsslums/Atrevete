@@ -237,6 +237,7 @@ const GlobalStyle = () => (
       :root {
         --gold-gradient: linear-gradient(20deg,#ccb37e,#7e4d16);
       }
+      .grecaptcha-badge { visibility: hidden; }
     `}
   />
 );
