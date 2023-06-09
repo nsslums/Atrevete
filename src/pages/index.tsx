@@ -8,7 +8,7 @@ import { css } from "@emotion/react";
 import { Head1 } from "../stories/atrevete/Head1";
 import { PostCard } from "../stories/atrevete/event/PostCard";
 import {Html_Head} from '../components/html-head'
-
+import facepaint from 'facepaint',
 const topImage = css({
   width: "100%",
   height: "100%",
