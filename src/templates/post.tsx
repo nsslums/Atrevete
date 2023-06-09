@@ -10,7 +10,6 @@ import { Connection } from "../stories/atrevete/event/Connection"
 import { Head2 } from "../stories/atrevete/Head2"
 import { Html_Head } from "../components/html-head"
 
-
 const block = css({
   position: "relative",
   display: "flex",
@@ -19,12 +18,38 @@ const block = css({
   alignItems: "center",
   margin: "3em auto"
 })
-
 const contentStyle = css({
   margin:'2em',
   fontSize: '1.1em',
-  letterSpacing: '0.05em',
+  letterSpacing: '0.1em',
+  fontSize: '1.1em',
+  fontFamily: "'Zen Kaku Gothic New', sans-serif",
+  'h1': {
+      fontSize: '30px',
+  },
+  'h2': {
+      marginTop: '1em',
+      fontSize: '20px',
+  },
+  'p': {
+      marginTop: '0.5em',
+  },
+  'table': {
+      marginTop: '1em',
+      borderCollapse:  'collapse',
+  },
+  'td': {
+      padding: '4px 15px',
+      borderBottom: 'solid 1px rgba(255,255,255,0.5)',
+  },
+  'ul, li': {
+      marginLeft: '1.2em',
+      marginTop: '0.5em',
+  }
+
 })
+
+
 
 const PostPage: React.FC<PageProps> = ({ data }) => {
 
