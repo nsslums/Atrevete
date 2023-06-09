@@ -28,7 +28,7 @@ const postsCss = css({
 })
 
 const postCss = css({
-  margin: ".5em 1em"
+  margin: "10px"
 })
 
 const PostsPage: React.FC<PageProps> = ({ data }) => {

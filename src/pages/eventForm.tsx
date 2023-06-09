@@ -97,7 +97,7 @@ const FormPage: React.FC<PageProps> = (props) => {
                 marginBottom: "5em",
             }}>
                 <Head1 text="イベント申込"/>
-                <form action="/api/event" method="post" onSubmit={onSubmit}>
+                <form css={{width: '85%',maxWidth: 600}} action="/api/event" method="post" onSubmit={onSubmit}>
                     <Pulldown label="イベント" name="event" id="event" options={options} default_val={default_value} required={true} />
                     <Input label="お名前" type="text" name="name" id="name" required={true} />
                     <Input label="誕生日" type="date" name="birthday" id="birthday" required={true} />
