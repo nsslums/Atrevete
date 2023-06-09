@@ -93,7 +93,7 @@ export const Events: React.FC = () => {
     `)
 
     const settings = {
-        infinite: false,
+        infinite: true,
         initialSlide: 1,
         speed: 500,
         dots: false,
