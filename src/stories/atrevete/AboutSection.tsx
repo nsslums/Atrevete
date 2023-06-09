@@ -1,12 +1,13 @@
 import { css } from '@emotion/react';
-import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
+import { GatsbyImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
 import { Head1 } from './Head1';
+import { graphql } from 'gatsby';
 
 interface AboutSectionProps {
   title?: string;
   text: string;
   oneWord?: string;
-  image: string;
+  image: IGatsbyImageData;
   reverse?: 'row' | 'row-reverse';
 }
 
@@ -26,6 +27,8 @@ const WrapStyle = css({
 
 const imageStyle = css({
   display: 'box',
+  // width: '60%',
+  aspectRatio: '16/9',
   height: '230px',
   margin: '0 60px',
   borderRadius: '3px',
@@ -45,7 +48,7 @@ export const AboutSection = ({
   text = '',
   oneWord,
   reverse = 'row',
-  image = '/top.jpg',
+  image,
   ...props
 }: AboutSectionProps) => {
   return (
@@ -61,12 +64,8 @@ export const AboutSection = ({
         <div css={{margin: '70px'}}></div>
       }
       <div css={[WrapStyle,{flexDirection: `${reverse}`}]}>
-        <img css={imageStyle} alt='image' src='/top.jpg'/>
-        <div css={typoStyle} {...props}
-          dangerouslySetInnerHTML={{
-            __html: text
-          }}
-        ></div>
+        <GatsbyImage css={imageStyle} alt='image' image={image}/>
+        <div css={typoStyle} {...props} dangerouslySetInnerHTML={{__html: text}}></div>
       </div>
     </div>
   )

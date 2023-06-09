@@ -46,7 +46,7 @@ const messageText = css({
 
 
 
-const Aboutage: React.FC<PageProps> = () => {
+const Aboutage: React.FC<PageProps> = ({ data }) => {
 
     return (
         <Common>
@@ -56,7 +56,7 @@ const Aboutage: React.FC<PageProps> = () => {
             text="
                 <p style='font-size:1.7em; line-height:70px; letter-spacing:0.2em'>迷いを確信に。<br/>夢を現実に。</p>
             "
-            image=''
+            image={data.img1.childImageSharp.gatsbyImageData}
             reverse='row-reverse'></AboutSection>
 
             <p css={messageText}>日本の課題でもある「若者の育成をどうしていくか」に着目し、<br/>
@@ -74,8 +74,9 @@ const Aboutage: React.FC<PageProps> = () => {
                 若者の夢と可能性を最大化することが、私たちのミッションです。
                 日本の未来に貢献できる人材を育成するために、必要なサポートを提供します。</p>
             '
-            image=''></AboutSection>
-            
+            image={data.img2.childImageSharp.gatsbyImageData}
+            ></AboutSection>
+
             <AboutSection 
             title='ビジョン'
             oneWord='人と人を繋ぎ、特別な価値を提供します。'
@@ -85,7 +86,7 @@ const Aboutage: React.FC<PageProps> = () => {
                 アドバイスをもらったり、投資を受けたり、対等にお話をし、
                 夢ある若者の育成を図ります。</p>
             '
-            image=''
+            image={data.img3.childImageSharp.gatsbyImageData}
             reverse='row-reverse'></AboutSection>
         </Common>
     )
@@ -101,6 +102,21 @@ export const query = graphql`
             social{
                 twitter
             }
+        }
+    }
+    img1: file(relativePath: {eq: "top.jpg"}) {
+        childImageSharp {
+          gatsbyImageData(formats: WEBP, placeholder: BLURRED)
+        }
+    }
+    img2: file(relativePath: {eq: "top.jpg"}) {
+        childImageSharp {
+          gatsbyImageData(formats: WEBP, placeholder: BLURRED)
+        }
+    }
+    img3: file(relativePath: {eq: "top.jpg"}) {
+        childImageSharp {
+          gatsbyImageData(formats: WEBP, placeholder: BLURRED)
         }
     }
 }

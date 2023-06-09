@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     text: '<p>Text</p>',
-    image: '/top.jpg',
+    image: 'top.jpg',
     oneWord:'ここに一言'
   }
 }
