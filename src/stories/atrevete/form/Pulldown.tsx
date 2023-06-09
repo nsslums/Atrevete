@@ -35,7 +35,7 @@ const label_up = css({
 })
 
 const pullDownCss = css({
-  width: 700,
+  width: '100%',
   height: 40,
   marginTop: 30,
   backgroundColor: "#202020",

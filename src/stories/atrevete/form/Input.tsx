@@ -26,7 +26,7 @@ const labelBase = css({
   zIndex: 10
 })
 const InputCss = ({
-  width: 700,
+  width: '100%',
   height: 40,
   borderBottom: "1px white solid",
   padding: "7px 10px",
