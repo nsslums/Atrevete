@@ -165,7 +165,7 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
             {date ? <p css={textStyle}>{date}</p> : <p css={textStyle}>未定</p>}
           </div>
         </div>
-        <div css={[block, {maxWidth: 770}]}>
+        <div css={[block]}>
           <EventFormCard start_date={start_reception} end_date={end_reception} onClick={navigation}/>
         </div>
         {data.contentfulEvent.post ? 
