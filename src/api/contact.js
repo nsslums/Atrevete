@@ -53,12 +53,11 @@ xxxxxxx営業日以内にご連絡させていただきます。
 お問い合わせ内容: ${req.body.content}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-———————————————
+——————————————————————————————
 Atrevete
-web: xxxxxxxxxxxx.xxxxxxxxx
-電話番号: 00-0000-0000
-メール: xxxxxx@xxxxxxxxxxxxxxxxxx.xxxxxx
-———————————————
+web: atrvt2022.com
+メール: contact@atrvt2022.com
+——————————————————————————————
 `
 
     const admData = {
