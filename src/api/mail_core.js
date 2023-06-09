@@ -67,7 +67,7 @@ export class MailCore{
 
         if(response.status == "error"){
             const erroEmail = {
-                from: process.env.SMTPUSER,
+                from: process.env.ADMIN_MAIL,
                 to: process.env.ADMIN_MAIL,
                 subject: `【送信エラー】お客様のメールアドレスに送信出来ませんでした`,
                 text: adata.text

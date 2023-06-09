@@ -62,7 +62,7 @@ web: xxxxxxxxxxxx.xxxxxxxxx
 `
 
     const admData = {
-        from: process.env.SMTPUSER,
+        from: process.env.ADMIN_MAIL,
         to: process.env.ADMIN_MAIL,
         replyTo: req.body.email,
         subject: `【Atrevete】お問い合わせ受け付けのお知らせ`,
@@ -71,11 +71,13 @@ web: xxxxxxxxxxxx.xxxxxxxxx
 
 
     const userData = {
-        from: process.env.SMTPUSER,
+        from: process.env.ADMIN_MAIL,
         to: req.body.email,
         subject: `【新規】お問い合わせ受け付けのお知らせ`,
         text: plain,
     }
+
+    console.log(admData)
 
     const mail = new MailCore()
     // const response = await mail.send_single(testData)

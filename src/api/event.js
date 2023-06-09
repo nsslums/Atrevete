@@ -108,7 +108,7 @@ web: xxxxxxxxxxxx.xxxxxxxxx
 ———————————————
 `
     const admData = {
-      from: process.env.SMTPUSER,
+      from: process.env.ADMIN_MAIL,
       to: process.env.ADMIN_MAIL,
       replyTo: req.body.email,
       subject: `【新規】イベントお申し込み`,
@@ -120,7 +120,7 @@ web: xxxxxxxxxxxx.xxxxxxxxx
     }
 
     const userData = {
-      from: process.env.SMTPUSER,
+      from: process.env.ADMIN_MAIL,
       to: req.body.email,
       subject: `【新規】イベントお申し込み`,
       text: plain,
