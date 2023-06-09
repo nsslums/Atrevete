@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import React from 'react';
+import { Logo } from './Logo';
 
 interface FooterProps {
 }
@@ -25,8 +26,8 @@ export const Footer = ({
                 // height: 98,
                 margin: "auto",
             }}>
-                <div>
-                    <img src="/Atrevete.svg" alt='Logo' />
+                <div css={{margin: '20px'}}>
+                    <Logo isHome='true' width='150px'/>
                 </div>
             </div>
             <div>
