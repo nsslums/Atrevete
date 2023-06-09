@@ -41,10 +41,8 @@ const typoWrap = css(mq({
 }))
 
 const typoStyle = css(mq({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  fontSize: ['20px','30px','35px'],
+  textAlign: 'center',
+  fontSize: ['15px','25px','30px'],
   fontWeight: 700,
   lineHeight: ['45px','55px','65px']
 }))
@@ -77,8 +75,8 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
         </div>
         <div css={typoWrap}>
           <p css={typoStyle}>
-            <span>吾輩はネコである。名前はまだない。</span>
-            <span>どこで生まれたかとんと見当がつかぬ。</span>
+          未来を切り開く若者に、最高の仲間とメンターを。<br/>
+          あなたの可能性を広げるプラットフォーム
           </p>
           <div css={{marginTop: "5%"}}><GoldButton text="More" onClick={async (e:any) => await navigate("/about")}/></div>
         </div>
