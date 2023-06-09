@@ -4,7 +4,7 @@ require('dotenv').config();
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Atrevete`,
-    description: '',
+    description: "日本の課題でもある若者の育成をどうしていくか。に着目し、夢ある者、迷いながらも進もうとする者、何をしたらいいかわからない者をサポートします。",
     siteUrl: process.env.SITEURL,
     social: {
       twitter: "",
@@ -110,10 +110,27 @@ const config: GatsbyConfig = {
       name: `markdown`,
       path: `${__dirname}/src/markdown`,
     },
-    
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: 'images',
+      path: `${__dirname}/static`,
+    },
   },
   `gatsby-transformer-remark`,
   `gatsby-plugin-netlify`,
+  {
+    resolve: `gatsby-plugin-manifest`,
+    options: {
+      name: `Atrevete`,
+      short_name: `Atrevete`,
+      lang: `ja`,
+      start_url: `/`,
+      display: `standalone`,
+      icon: `static/Atrevete_e.svg`
+    },
+  },
 ]
 };
 

@@ -17,16 +17,24 @@ const linkStyle = css({
     color: 'skyblue',
 })
 
+const recapcha = css({
+    fontFamily: "'Zen Kaku Gothic New', sans-serif",
+    marginTop: "20px",
+    textAlign: "center",
+    fontSize: "0.75rem",
+    color: "gray",
+})
+
 const FormPage: React.FC<PageProps> = () => {
     const [submitdis, setSubmitdis] = React.useState(false)
     const { executeRecaptcha } = useGoogleReCaptcha()
 
-    const onSubmit = async (e: any) =>{
+    const onSubmit = async (e: any) => {
         e.preventDefault()  // デフォルトの動作のキャンセル
         console.log("submit")
         setSubmitdis(true)
 
-        if(!executeRecaptcha){
+        if (!executeRecaptcha) {
             setSubmitdis(false)
             alert("reCAPTCHA init err.")
             return
@@ -46,13 +54,13 @@ const FormPage: React.FC<PageProps> = () => {
             method: 'POST',
             body: formData,
         })
-        .then(res => res.json())
-        .catch(err => alert("通信に失敗しました."))
+            .then(res => res.json())
+            .catch(err => alert("通信に失敗しました."))
         console.log(response)
-        
-        if(response?.status === "success"){
+
+        if (response?.status === "success") {
             await navigate('/thanks')
-        }else{
+        } else {
             alert("エラーが発生しました．")
         }
         setSubmitdis(false)
@@ -66,12 +74,12 @@ const FormPage: React.FC<PageProps> = () => {
                 alignItems: "center",
                 marginBottom: "5em",
             }}>
-                <Head1 text="お問い合わせ"/>
-                <form css={{width: '85%',maxWidth: 600}} action="/api/contact" method="post" onSubmit={onSubmit}>
+                <Head1 text="お問い合わせ" />
+                <form css={{ width: '85%', maxWidth: 600 }} action="/api/contact" method="post" onSubmit={onSubmit}>
                     <Input label="お名前" type="text" name="name" id="name" required={true} />
                     <Input label="メール" type="email" name="email" id="email" required={true} />
                     <Input label="件名" type="text" name="subject" id="subject" required={true} />
-                    <Input label="電話" type="tel" name="phone" id="phone"/>
+                    <Input label="電話" type="tel" name="phone" id="phone" />
                     <TextArea label="内容" name="content" id="content" required={true} />
                     <div css={css({
                         marginTop: 30,
@@ -80,7 +88,12 @@ const FormPage: React.FC<PageProps> = () => {
                         alignItems: 'center',
                         flexDirection: 'column',
                     })}>
-                        <p css={{fontSize:'13px'}}>「Submit」を押す前に<Link css={linkStyle} to="/privacy">プライバシーポリシー</Link>に同意する必要があります。</p>
+
+                        <p css={{ fontSize: '13px', fontFamily: "'Zen Kaku Gothic New', sans-serif"}}>「Submit」を押す前に<Link css={linkStyle} to="/privacy">プライバシーポリシー</Link>に同意する必要があります。</p>
+                        <div css={recapcha}>
+                            <p>This site is protected by reCAPTCHA and the Google</p>
+                            <p><a css={linkStyle} href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and<a css={linkStyle} href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.</p>
+                        </div>
                         <Input type="submit" name="submit" id="submit" disabled={submitdis} />
                     </div>
                 </form>
@@ -106,7 +119,7 @@ export const query = graphql`
 
 export default FormPage
 
-export const Head: HeadFC = ({data}) => (
+export const Head: HeadFC = ({ data }) => (
     <Html_Head title={data.site.siteMetadata.title + " | お問い合わせ"} type="article" url={data.site.siteMetadata.siteURL + "/contact"}>
     </Html_Head>
-  )
+)

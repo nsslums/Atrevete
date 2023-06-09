@@ -13,7 +13,8 @@ interface CertificationsProps {
   label?: string,
   name: string,
   id: string,
-  initData?: any;
+  initData?: any,
+  required: boolean,
 }
 
 const rootCss = css({
@@ -72,7 +73,8 @@ export const Certifications = ({
   label = "",
   name,
   id,
-  initData = []
+  initData = [],
+  required = false,
 }: CertificationsProps) => {
   const [value, setValue] = React.useState('')
   const [datas, setDatas] = React.useState(initData)
@@ -107,7 +109,13 @@ export const Certifications = ({
     );
   }
 
-  const labelStyle = isSelect || value ? [labelBase, label_up] :labelBase
+  const labelreq = required ? [labelBase, css({
+    "&:after": {
+      content: '"*"',
+      marginLeft: ".2em"
+    }
+  })] : labelBase
+  const labelStyle = isSelect || value ? [labelreq, label_up] :labelreq
 
   return (
     <div css={rootCss}>

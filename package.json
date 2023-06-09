@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -21,6 +21,8 @@
     "@emotion/babel-preset-css-prop": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@fontsource/zen-kaku-gothic-new": "^5.0.2",
+    "@fontsource/zen-old-mincho": "^5.0.2",
     "@react-icons/all-files": "^4.1.0",
     "@sideway/address": "^5.0.0",
     "@storybook/addon-styling": "^1.0.8",
@@ -32,6 +34,7 @@
     "gatsby-plugin-emotion": "^8.10.0",
     "gatsby-plugin-google-gtag": "^5.10.0",
     "gatsby-plugin-image": "^3.10.0",
+    "gatsby-plugin-manifest": "^5.10.0",
     "gatsby-plugin-netlify": "^5.1.0",
     "gatsby-plugin-robots-txt": "^1.8.0",
     "gatsby-plugin-sharp": "^5.10.0",

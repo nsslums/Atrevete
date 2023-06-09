@@ -91,10 +91,14 @@ export const Events: React.FC = () => {
             }
         }
     `)
-
-    const settings = {
+    
+    let width = 900
+    if (typeof window !== `undefined`) {
+        width = window.innerWidth
+    }
+    const settings = (width > 1000 ? {
         infinite: true,
-        initialSlide: 1,
+        initialSlide: 0,
         speed: 500,
         dots: false,
         arrows: true,
@@ -105,9 +109,23 @@ export const Events: React.FC = () => {
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
     }
+    : {
+        infinite: true,
+        initialSlide: 0,
+        speed: 500,
+        dots: false,
+        arrows: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: true,
+        centerPadding: "0px",
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
+    })
+
 
     const Contener = styled.div({
-        width: "980px",
+        width: "min(90vw, 980px)",
         margin: "auto",
     })
 

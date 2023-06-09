@@ -10,14 +10,63 @@ import { css } from "@emotion/react"
 import { EventFormCard } from "../stories/atrevete/event/EventFormCard"
 import { Connection } from "../stories/atrevete/event/Connection"
 import { Html_Head } from "../components/html-head"
+import facepaint from 'facepaint';
+
+const breakpoints = [520, 767, 1100];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
+
+const Wrap = css({
+  display: 'flex',
+  flexDirection:'column',
+  justifyContent: 'center',
+})
 
 const block = css({
   position: "relative",
   display: "flex",
+  maxWidth: '900px',
+  width: '80%',
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
   margin: "3em auto"
+})
+
+const horizon = css(mq({
+  display: 'flex',
+  flexDirection: ['column','row'],
+  alignItems: 'flex-start',
+  width: '80%',
+  margin: '0 auto',
+}))
+
+const textStyle = css({
+  letterSpacing: '0.1em',
+  fontSize: '1.1em',
+  fontFamily: "'Zen Kaku Gothic New', sans-serif",
+  'h1': {
+      fontSize: '30px',
+  },
+  'h2': {
+      marginTop: '1em',
+      fontSize: '20px',
+  },
+  'p': {
+      marginTop: '0.5em',
+  },
+  'table': {
+      marginTop: '1em',
+      borderCollapse:  'collapse',
+  },
+  'td': {
+      padding: '4px 15px',
+      borderBottom: 'solid 1px rgba(255,255,255,0.5)',
+  },
+  'ul, li': {
+      marginLeft: '1.2em',
+      marginTop: '0.5em',
+  }
+
 })
 
 const EventPage: React.FC<PageProps> = ({ data }) => {
@@ -90,56 +139,50 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
   const date = data.contentfulEvent.date || ""
   return (
     <Common>
-      <div css={[block, {maxWidth: 770}]}>
-        {data.contentfulEvent.eye_catch ?
-          <EventHead title={title} imageURL="src/images/event.jpg" date={data.contentfulEvent.date} GatsbyImageData={data.contentfulEvent.eye_catch.gatsbyImageData}/>      
-        :
-        <EventHead title={title} imageURL="src/images/event.jpg" date={data.contentfulEvent.date} />      
-        }
-      </div>
-      <div css={[block, {maxWidth: 770}]}>
-        <Head2 text="概要"/>
-        <div>{!data.contentfulEvent.overview ? false : renderRichText(data.contentfulEvent.overview, options)}</div>
-      </div>
-      <div css={[block, {maxWidth: 770}]}>
-        <Head2 text="募集要件" />
-        <div>{!data.contentfulEvent.requirements ? false : renderRichText(data.contentfulEvent.requirements, options)}</div>
-      </div>
-      <div css={{
-        position: "relative",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-around",
-        alignItems: "center",
-        maxWidth: 770,
-        margin:"3em auto",
-      }}>
-        <div css={[block, {width: "50%"}]}>
-          <Head2 text="場所" />
-          <p>該当者にメールにてご連絡いたします。</p>
+      <div css={Wrap}>
+        <div css={[block]}>
+          {data.contentfulEvent.eye_catch ?
+            <EventHead title={title} imageURL="src/images/event.jpg" date={data.contentfulEvent.date} GatsbyImageData={data.contentfulEvent.eye_catch.gatsbyImageData}/>      
+          :
+          <EventHead title={title} imageURL="src/images/event.jpg" date={data.contentfulEvent.date} />      
+          }
         </div>
-        <div css={[block, {width: "50%"}]}>
-          <Head2 text="日時" />
-          {date ? <p>{date}</p> : <p>未定</p>}
+        <div css={[block]}>
+          <Head2 text="概要"/>
+          <div css={textStyle}>{!data.contentfulEvent.overview ? false : renderRichText(data.contentfulEvent.overview, options)}</div>
         </div>
-      </div>
-      <div css={[block, {maxWidth: 770}]}>
-        <EventFormCard start_date={start_reception} end_date={end_reception} onClick={navigation}/>
-      </div>
-      {data.contentfulEvent.post ? 
-        <div css={[block, {maxWidth: 770}]}>
-          <Head2 text="イベントに関連する記事" />
-          <div css={{border: "1px solid white", borderRadius: 15}}>
-            {data.contentfulEvent.post?.map(post => (
-              post.eye_catch ? 
-                <Connection key={post.contentful_id} title={post.title} mode="post" image={post.eye_catch.gatsbyImageData}/>
-              :
-                <Connection key={post.contentful_id} title={post.title} mode="post" />
-            ))}
+        <div css={[block]}>
+          <Head2 text="募集要件" />
+          <div css={textStyle}>{!data.contentfulEvent.requirements ? false : renderRichText(data.contentfulEvent.requirements, options)}</div>
+        </div>
+        <div css={horizon}>
+          <div css={[block, {width: "50%"}]}>
+            <Head2 text="場所" />
+            <p css={textStyle}>該当者にメールにてご連絡いたします。</p>
+          </div>
+          <div css={[block, {width: "50%"}]}>
+            <Head2 text="日時" />
+            {date ? <p css={textStyle}>{date}</p> : <p css={textStyle}>未定</p>}
           </div>
         </div>
-      : false  
-      }
+        <div css={[block]}>
+          <EventFormCard start_date={start_reception} end_date={end_reception} onClick={navigation}/>
+        </div>
+        {data.contentfulEvent.post ? 
+          <div css={[block, {maxWidth: 770}]}>
+            <Head2 text="イベントに関連する記事" />
+            <div css={{border: "1px solid white", borderRadius: 15}}>
+              {data.contentfulEvent.post?.map(post => (
+                post.eye_catch ? 
+                  <Connection key={post.contentful_id} title={post.title} mode="post" image={post.eye_catch.gatsbyImageData}/>
+                :
+                  <Connection key={post.contentful_id} title={post.title} mode="post" />
+              ))}
+            </div>
+          </div>
+        : false  
+        }
+      </div>
     </Common>
   )
 }

@@ -1,5 +1,8 @@
 import { Global, css } from "@emotion/react";
-
+import '@fontsource/zen-kaku-gothic-new/400.css'
+import '@fontsource/zen-kaku-gothic-new/700.css'
+import '@fontsource/zen-old-mincho/400.css'
+import '@fontsource/zen-old-mincho/700.css'
 const GlobalStyle = () => (
   <Global
     styles={css`
@@ -93,11 +96,6 @@ const GlobalStyle = () => (
       nav,
       section {
         display: block;
-      }
-
-      ul,
-      li {
-        list-style: none;
       }
 
       a {
@@ -237,6 +235,7 @@ const GlobalStyle = () => (
       :root {
         --gold-gradient: linear-gradient(20deg,#ccb37e,#7e4d16);
       }
+      .grecaptcha-badge { visibility: hidden; }
     `}
   />
 );

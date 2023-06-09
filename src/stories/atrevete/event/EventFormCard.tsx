@@ -3,6 +3,10 @@ import React from 'react';
 import { Head2 } from '../Head2';
 import { GoldButton } from '../GoldButton';
 import { Transform } from 'stream';
+import facepaint from 'facepaint';
+
+const breakpoints = [520, 767, 1100];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
 
 interface EventFormCardProps {
   isActive?: boolean;
@@ -11,20 +15,19 @@ interface EventFormCardProps {
   onClick?: () => void;
 }
 
-const base = css({
+const base = css(mq({
     position: "relative",
     display: "flex",
-    flexDirection: "row",
+    flexDirection: ["column","column","row"],
     justifyContent: 'space-around',
     alignItems: 'center',
-    width: "777px",
-    height: "150px",
+    width: ['50%','70%','80%', '90%'],
+    padding: '2em 7em',
     borderRadius: "15px",
     overflow: "hidden",
-
     border: "1px dashed transparent",
 
-})
+}))
 
 const disable = css({
     border: "1px dashed white",
@@ -95,9 +98,9 @@ export const EventFormCard = ({
             }}>
                 <Head2 text='応募期間' />
                 {(!start_date && !end_date) ?
-                    <p>未定</p>
+                    <p css={{fontFamily: "'Zen Kaku Gothic New', sans-serif"}}>未定</p>
                     :
-                     <p>{start_date} ~ {end_date}</p>
+                     <p css={{fontFamily: "'Zen Kaku Gothic New', sans-serif"}}>{start_date} ~ {end_date}</p>
                  }
             </div>
             <div css={{
