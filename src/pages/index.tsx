@@ -8,6 +8,10 @@ import { css } from "@emotion/react";
 import { Head1 } from "../stories/atrevete/Head1";
 import { PostCard } from "../stories/atrevete/event/PostCard";
 import {Html_Head} from '../components/html-head'
+import facepaint from 'facepaint';
+
+const breakpoints = [520, 767, 1100];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
 
 const topImage = css({
   width: "100%",
@@ -27,6 +31,24 @@ const topPhrase = css({
   zIndex: 10,
 })
 
+const typoWrap = css(mq({
+  margin: ['90px 0','120px 0','240px 0'],
+  display:"flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  position: "relative"
+}))
+
+const typoStyle = css(mq({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  fontSize: ['20px','30px','35px'],
+  fontWeight: 700,
+  lineHeight: ['45px','55px','65px']
+}))
+
 const categoryBlock = css({
   width: "100%",
   minHeight: "60vh",
@@ -34,7 +56,7 @@ const categoryBlock = css({
 })
 
 const postCss = css({
-  margin: "5px 20px"
+  margin: "10px"
 })
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
@@ -53,8 +75,8 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
             <p css={{fontSize: "40px", fontWeight: 700}}>未来と今をつなぐ</p>
           </div>
         </div>
-        <div css={{height: "80vh", display:"flex", flexDirection: "column", alignItems: "center", justifyContent: "center", position: "relative"}}>
-          <p css={{display: "flex", flexDirection: "column", alignItems: "center", fontSize: "40px", fontWeight: 700, lineHeight: "66px"}}>
+        <div css={typoWrap}>
+          <p css={typoStyle}>
             <span>吾輩はネコである。名前はまだない。</span>
             <span>どこで生まれたかとんと見当がつかぬ。</span>
           </p>
@@ -68,7 +90,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
         </div>
         <div css={categoryBlock}>
           <div css={{textAlign: "center"}}><Head1 text="ニュース"/></div>
-          <div css={{marginTop: "5em", display: "flex", flexDirection: "row", justifyContent: "center"}}>
+          <div css={{marginTop: "5em", display: "flex", flexDirection: "row", flexWrap: 'wrap', justifyContent: "center"}}>
             {data.allContentfulPost.nodes?.map((post: any) => {
               return post.eye_catch ? 
                     <div css={postCss} key={post.contentful_id}><PostCard title={post.title} image={post.eye_catch.gatsbyImageData}/></div>

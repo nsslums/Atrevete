@@ -24,7 +24,7 @@ const labelBase = css({
 })
 
 const textAreaCss = css({
-    width: 700,
+    width: '100%',
     height: 350,
     borderBottom: "1px white solid",
     padding: "7px 10px",

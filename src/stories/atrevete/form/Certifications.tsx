@@ -19,7 +19,7 @@ interface CertificationsProps {
 const rootCss = css({
   position: "relative",
   fontSize: 16,
-  width: 700,
+  width: '100%',
   marginTop: '1.5em'
 })
 
