@@ -63,7 +63,14 @@ export const TextArea = ({
     setIsSelect(false)
   }
 
-  const labelStyle =  isSelect || value ? [labelBase, label_up] :labelBase
+
+  const labelreq = required ? [labelBase, css({
+    "&:after": {
+      content: '"*"',
+      marginLeft: ".2em"
+    }
+  })] : labelBase
+  const labelStyle =  isSelect || value ? [labelreq, label_up] :labelreq
 
   return (
     <div css={rootCss}>
