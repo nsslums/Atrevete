@@ -18,9 +18,10 @@ const linkStyle = css({
 })
 
 const recapcha = css({
+    fontFamily: "'Zen Kaku Gothic New', sans-serif",
     marginTop: "20px",
     textAlign: "center",
-    fontSize: "0.7rem",
+    fontSize: "0.75rem",
     color: "gray",
 })
 
@@ -88,10 +89,10 @@ const FormPage: React.FC<PageProps> = () => {
                         flexDirection: 'column',
                     })}>
 
-                        <p css={{ fontSize: '13px' }}>「Submit」を押す前に<Link css={linkStyle} to="/privacy">プライバシーポリシー</Link>に同意する必要があります。</p>
+                        <p css={{ fontSize: '13px', fontFamily: "'Zen Kaku Gothic New', sans-serif"}}>「Submit」を押す前に<Link css={linkStyle} to="/privacy">プライバシーポリシー</Link>に同意する必要があります。</p>
                         <div css={recapcha}>
                             <p>This site is protected by reCAPTCHA and the Google</p>
-                            <p><a href="https://policies.google.com/privacy">Privacy Policy</a> and<a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
+                            <p><a css={linkStyle} href="https://policies.google.com/privacy">Privacy Policy</a> and<a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
                         </div>
                         <Input type="submit" name="submit" id="submit" disabled={submitdis} />
                     </div>
