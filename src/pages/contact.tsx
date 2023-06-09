@@ -38,7 +38,7 @@ const FormPage: React.FC<PageProps> = () => {
         formData.append("content", e.target.content.value)
         formData.append("token", token)
 
-        const response = await window.fetch('/api/aaa', {
+        const response = await window.fetch('/api/contact', {
             method: 'POST',
             body: formData,
         })
