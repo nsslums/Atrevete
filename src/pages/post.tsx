@@ -42,7 +42,11 @@ const PostsPage: React.FC<PageProps> = ({ data }) => {
             <div css={postsCss}>
               {posts?.map(post => (
                 <div key={post.contentful_id} css={postCss}>
+                  {post.eye_catch ? 
+                  <PostCard title={post.title} image={post.eye_catch.gatsbyImageData}/>
+                  :  
                   <PostCard title={post.title}/>
+                  }
                 </div>
               ))}
             </div>
