@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -32,6 +32,7 @@
     "gatsby-plugin-emotion": "^8.10.0",
     "gatsby-plugin-google-gtag": "^5.10.0",
     "gatsby-plugin-image": "^3.10.0",
+    "gatsby-plugin-manifest": "^5.10.0",
     "gatsby-plugin-netlify": "^5.1.0",
     "gatsby-plugin-robots-txt": "^1.8.0",
     "gatsby-plugin-sharp": "^5.10.0",
