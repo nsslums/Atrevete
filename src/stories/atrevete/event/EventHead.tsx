@@ -51,7 +51,7 @@ export const EventHead = ({
                     {GatsbyImageData ? 
                         <GatsbyImage image={GatsbyImageData} alt='eyecatch' css={imageCss}/>
                         :
-                        <StaticImage src='../../../images/noimage.svg' alt='eyecatch' css={imageCss}/>
+                        <StaticImage src='../../../images/noimage.png' alt='eyecatch' css={imageCss}/>
                     }
                     <img src={imageURL} css={{width: "100%", height: "100%", objectFit: "cover"}} />
                 </div>

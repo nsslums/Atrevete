@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import React from 'react';
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import { GatsbyImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby-link';
 
 interface EventCardProps {
@@ -91,7 +91,11 @@ export const EventCard = ({
         alignItems: "center",
         justifyContent: "center",
       }} draggable={false}>
-        {!image ? false :<GatsbyImage alt='' image={image.gatsbyImageData} css={image_css}/>}
+        {image ? 
+          <GatsbyImage alt='' image={image.gatsbyImageData} css={image_css}/>
+          : 
+          <StaticImage alt='eyeCatch' src='../../../images/noImage.png' css={image_css}/>
+        }
         <div css={status_css}>
           <span>{status}</span>
         </div>

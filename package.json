@@ -53,11 +53,11 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.4",
-    "@babel/preset-react": "^7.22.3",
-    "@babel/preset-typescript": "^7.21.5",
-    "@storybook/addon-essentials": "^7.0.18",
+    "@babel/preset-react": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.5",
+    "@storybook/addon-essentials": "^7.0.20",
     "@storybook/addon-interactions": "^7.0.20",
-    "@storybook/addon-links": "^7.0.18",
+    "@storybook/addon-links": "^7.0.20",
     "@storybook/addon-mdx-gfm": "^7.0.20",
     "@storybook/blocks": "^7.0.20",
     "@storybook/react": "^7.0.18",
@@ -69,7 +69,7 @@
     "@types/react-modal": "^3.16.0",
     "@types/react-slick": "^0.23.10",
     "prop-types": "^15.8.1",
-    "storybook": "^7.0.18",
+    "storybook": "^7.0.20",
     "typescript": "^5.1.3"
   }
 }
