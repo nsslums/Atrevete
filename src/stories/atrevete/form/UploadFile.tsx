@@ -37,11 +37,18 @@ export const UploadFile = ({
           setFile(files[0])
         }
     }
+
+    const buttonReq = required ? [btnStyle, css({
+      "&:after": {
+        content: '"*"',
+        marginLeft: ".2em"
+      }
+    })] : btnStyle
   return (
 
     <div>
       <label css={Style}>
-        <div css={btnStyle}>ファイルを選択</div>
+        <div css={buttonReq}>ファイルを選択</div>
         <input
             css={{display:'none'}}
             type="file"

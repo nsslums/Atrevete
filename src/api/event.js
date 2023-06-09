@@ -84,7 +84,7 @@ const plain = `※このメールはシステムからの自動送信です
 イベントにご応募頂きありがとうございます。
 以下の内容で受け付けいたしました。
 
-詳細はメールにてご連絡させていただきます。
+詳細は改めてご連絡させていただきます。
 
 ━━━━━━━━━━━━━━━ ご入力内容 ━━━━━━━━━━━━━━
 イベント名: ${req.body.event}
@@ -100,12 +100,11 @@ TikTok ID: ${req.body.tiktok}
 Twitter ID: ${req.body.twitter}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-———————————————
+——————————————————————————————
 Atrevete
-web: xxxxxxxxxxxx.xxxxxxxxx
-電話番号: 00-0000-0000
-メール: xxxxxx@xxxxxxxxxxxxxxxxxx.xxxxxx
-———————————————
+web: atrvt2022.com
+メール: contact@atrvt2022.com
+——————————————————————————————
 `
     const admData = {
       from: process.env.ADMIN_MAIL,

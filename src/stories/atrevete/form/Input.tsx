@@ -80,7 +80,14 @@ export const Input = ({
     setIsSelect(false)
   }
 
-  const labelStyle = isSelect || value ? [labelBase, label_up] :labelBase
+
+  const labelreq = required ? [labelBase, css({
+    "&:after": {
+      content: '"*"',
+      marginLeft: ".2em"
+    }
+  })] : labelBase
+  const labelStyle = isSelect || value ? [labelreq, label_up] :labelreq
   const InputStyle = isSelect || value ? InputCss : [InputCss, css({
     "&::-webkit-datetime-edit-fields-wrapper":{
       display: "none"
