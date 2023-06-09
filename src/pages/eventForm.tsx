@@ -131,7 +131,7 @@ const FormPage: React.FC<PageProps> = (props) => {
                         <p css={{ fontSize: '13px' }}>「Submit」を押す前に<Link css={linkStyle} to="/privacy">プライバシーポリシー</Link>に同意する必要があります。</p>
                         <div css={recapcha}>
                             <p>This site is protected by reCAPTCHA and the Google</p>
-                            <p><a href="https://policies.google.com/privacy">Privacy Policy</a> and<a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
+                            <p><a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and<a href="https://policies.google.com/terms" starget="_blank">Terms of Service</a> apply.</p>
                         </div>
                         <Input type="submit" name="submit" id="submit" disabled={submitdis} />
                     </div>
