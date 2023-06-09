@@ -95,9 +95,9 @@ export const EventFormCard = ({
             }}>
                 <Head2 text='応募期間' />
                 {(!start_date && !end_date) ?
-                    <p>未定</p>
+                    <p css={{fontFamily: "'Zen Kaku Gothic New', sans-serif"}}>未定</p>
                     :
-                     <p>{start_date} ~ {end_date}</p>
+                     <p css={{fontFamily: "'Zen Kaku Gothic New', sans-serif"}}>{start_date} ~ {end_date}</p>
                  }
             </div>
             <div css={{

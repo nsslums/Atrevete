@@ -19,6 +19,34 @@ const block = css({
   alignItems: "center",
   margin: "3em auto"
 })
+const textStyle = css({
+  letterSpacing: '0.1em',
+  fontSize: '1.1em',
+  fontFamily: "'Zen Kaku Gothic New', sans-serif",
+  'h1': {
+      fontSize: '30px',
+  },
+  'h2': {
+      marginTop: '1em',
+      fontSize: '20px',
+  },
+  'p': {
+      marginTop: '0.5em',
+  },
+  'table': {
+      marginTop: '1em',
+      borderCollapse:  'collapse',
+  },
+  'td': {
+      padding: '4px 15px',
+      borderBottom: 'solid 1px rgba(255,255,255,0.5)',
+  },
+  'ul, li': {
+      marginLeft: '1.2em',
+      marginTop: '0.5em',
+  }
+
+})
 
 const EventPage: React.FC<PageProps> = ({ data }) => {
   const options = {
@@ -99,11 +127,11 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       </div>
       <div css={[block, {maxWidth: 770}]}>
         <Head2 text="概要"/>
-        <div>{!data.contentfulEvent.overview ? false : renderRichText(data.contentfulEvent.overview, options)}</div>
+        <div css={textStyle}>{!data.contentfulEvent.overview ? false : renderRichText(data.contentfulEvent.overview, options)}</div>
       </div>
       <div css={[block, {maxWidth: 770}]}>
         <Head2 text="募集要件" />
-        <div>{!data.contentfulEvent.requirements ? false : renderRichText(data.contentfulEvent.requirements, options)}</div>
+        <div css={textStyle}>{!data.contentfulEvent.requirements ? false : renderRichText(data.contentfulEvent.requirements, options)}</div>
       </div>
       <div css={{
         position: "relative",
@@ -116,11 +144,11 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       }}>
         <div css={[block, {width: "50%"}]}>
           <Head2 text="場所" />
-          <p>該当者にメールにてご連絡いたします。</p>
+          <p css={textStyle}>該当者にメールにてご連絡いたします。</p>
         </div>
         <div css={[block, {width: "50%"}]}>
           <Head2 text="日時" />
-          {date ? <p>{date}</p> : <p>未定</p>}
+          {date ? <p css={textStyle}>{date}</p> : <p css={textStyle}>未定</p>}
         </div>
       </div>
       <div css={[block, {maxWidth: 770}]}>

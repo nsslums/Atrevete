@@ -95,11 +95,6 @@ const GlobalStyle = () => (
         display: block;
       }
 
-      ul,
-      li {
-        list-style: none;
-      }
-
       a {
         color: inherit;
         text-decoration: none;
