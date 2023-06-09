@@ -32,6 +32,7 @@ export const UploadFile = ({
     const [file, setFile] = React.useState<File | null>(null)
     const onChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files
+        console.log(file)
         if (files && files[0]) {
           setFile(files[0])
         }
@@ -49,7 +50,7 @@ export const UploadFile = ({
             accept="image/png, image/jpeg"
             onChange={onChangeFile}
         />
-      <p css={{width:'fit-content'}}>ここに選択したファイル名を表示したい...</p>
+      <p css={{width:'fit-content'}}>{file?.name}</p>
       </label>
     </div>
   )
