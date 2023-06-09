@@ -1,12 +1,15 @@
 import { css } from '@emotion/react';
+import facepaint from 'facepaint';
 
+const breakpoints = [520, 767, 1100];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
 
 interface ButtonProps {
   text?: string;
   onClick?: () => void;
 }
 
-const Style = css({
+const Style = css(mq({
   position: 'relative',
   padding: '15px 50px',
   minWidth: '250px',
@@ -19,6 +22,7 @@ const Style = css({
   borderRadius: '3px',
   overflow: 'hidden',
   transition: 'ease .2s',
+  transform: ['scale(0.7)','scale(0.8)','scale(1)'],
   '&:hover': {
     color: 'white',
     backgroundImage: 'var(--gold-gradient)',
@@ -68,7 +72,7 @@ const Style = css({
       opacity: '25%',
     },
   }
-})
+}))
 
 
 export const GoldButton = ({

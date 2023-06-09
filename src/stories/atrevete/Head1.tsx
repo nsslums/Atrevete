@@ -1,12 +1,16 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 import { relative } from 'path';
+import facepaint from 'facepaint';
+
+const breakpoints = [520, 767, 1100];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
 
 interface Head1Props {
   text: string;
 }
 
-const Style = css({
+const Style = css(mq({
   position: 'relative',
   margin: '5px 5px 0.5em 5px',
   fontSize: '50px',
@@ -14,7 +18,8 @@ const Style = css({
   background: 'linear-gradient(120deg, white 0%, white var(--p1), #a18153 var(--p1), #a18153 var(--p2), transparent var(--p2), transparent 100%)',
   backgroundClip: 'text',
   color: 'transparent',
-})
+  transform: ['scale(0.7)', 'scale(0.8)', 'scale(1)'],
+}))
 
 const bgStyle = css({
   position: 'absolute',
