@@ -93,41 +93,49 @@ export const Events: React.FC = () => {
     `)
     
     const width = window.innerWidth
-
-    const settings = (width > 1000 ? {
-        infinite: true,
-        initialSlide: 0,
-        speed: 500,
-        dots: false,
-        arrows: true,
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        centerMode: true,
-        centerPadding: "50px",
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
+    let settings = null
+    if (typeof window !== `undefined`) {
+        settings = (width > 1000 ? {
+            infinite: true,
+            initialSlide: 0,
+            speed: 500,
+            dots: false,
+            arrows: true,
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            centerMode: true,
+            centerPadding: "50px",
+            nextArrow: <NextArrow />,
+            prevArrow: <PrevArrow />,
+        }
+        : {
+            infinite: true,
+            initialSlide: 0,
+            speed: 500,
+            dots: false,
+            arrows: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerMode: true,
+            centerPadding: "0px",
+            nextArrow: <NextArrow />,
+            prevArrow: <PrevArrow />,
+        })
     }
-    : {
-        infinite: true,
-        initialSlide: 0,
-        speed: 500,
-        dots: false,
-        arrows: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        centerMode: true,
-        centerPadding: "0px",
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
-    })
+
 
     const Contener = (width > 1000 ? styled.div({
         width: "980px",
         margin: "auto",
     })
-    :
+    : width > 767 ?
     styled.div({
         width: "600px",
+        margin: "auto",
+    })
+    :
+    styled.div({
+        width: "400px",
         margin: "auto",
     })
     )
