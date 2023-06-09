@@ -19,8 +19,8 @@ interface SearchProps {
 
 const buttonCss = css({
     position: "fixed",
-    right: 15,
-    bottom: 90,
+    right: 30,
+    bottom: 30,
     backgroundColor: "white",
     borderRadius: 30,
     display: "flex",
