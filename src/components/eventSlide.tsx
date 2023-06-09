@@ -124,21 +124,10 @@ export const Events: React.FC = () => {
     })
 
 
-    const Contener = (width > 1000 ? styled.div({
-        width: "980px",
+    const Contener = styled.div({
+        width: "min(90vw, 980px)",
         margin: "auto",
     })
-    : width > 767 ?
-    styled.div({
-        width: "600px",
-        margin: "auto",
-    })
-    :
-    styled.div({
-        width: "400px",
-        margin: "auto",
-    })
-    )
 
     return (
     <Contener>
