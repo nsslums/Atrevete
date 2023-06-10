@@ -94,11 +94,13 @@ export const Input = ({
     }
   })]
 
+  const submitStyle = disabled ? [submitCss, css({backgroundColor: "gray"})] : submitCss
+
   return (
     <div css={rootCss}>
       {label ? <label htmlFor={id} css={labelStyle}>{label}</label> : false}
       {type == 'submit' ? 
-        <input type="submit" disabled={disabled} css={submitCss}/>
+        <input type="submit" disabled={disabled} css={submitStyle}/>
         :  
         <input type={type} name={name} id={id} value={value} required={required} css={InputStyle} onBlur={onBlurHandel} onSelect={onSelectHandel} onChange={changeHandle} autoComplete="off"/>
       }
