@@ -91,6 +91,8 @@ export const Events: React.FC = () => {
             }
         }
     `)
+
+    const eventCount = result.allContentfulEvent.nodes?.length || 0
     
     let width = 900
     if (typeof window !== `undefined`) {
@@ -102,7 +104,7 @@ export const Events: React.FC = () => {
         speed: 500,
         dots: false,
         arrows: true,
-        slidesToShow: 2,
+        slidesToShow: eventCount >=2 ? 2 : 1,
         slidesToScroll: 2,
         centerMode: true,
         centerPadding: "50px",
