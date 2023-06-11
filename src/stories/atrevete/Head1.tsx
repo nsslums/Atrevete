@@ -32,7 +32,7 @@ const bgStyle = css({
   '&:after': {
     content: '""',
     position: 'absolute',
-    background: 'url(/noise.png)',
+    background: 'url(/noise.webp)',
     backgroundRepeat: 'repeat',
     backgroundSize: '40%',
     width: '100%',

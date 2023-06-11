@@ -182,6 +182,7 @@ const GlobalStyle = () => (
         position: relative;
         background-color: #121212;
         color: white;
+        font-display: swap;
         font-family: 'Zen Kaku Gothic New', sans-serif;
         font-family: 'Zen Old Mincho', serif;
         &:before {
@@ -191,7 +192,7 @@ const GlobalStyle = () => (
           left: 0;
           width: 100%;
           height: 100%;
-          background-image: url(/noise.png);
+          background-image: url(/noise.webp);
           background-repeat: 'repeat';
           background-size: 40%;
           background-blend-mode: color-dodge;
@@ -209,7 +210,7 @@ const GlobalStyle = () => (
           left: 0;
           width: 100%;
           height: 100%;
-          background-image: url(/noise.png);
+          background-image: url(/noise.webp);
           background-repeat: 'repeat';
           background-size: 40%;
           background-blend-mode: color-dodge;

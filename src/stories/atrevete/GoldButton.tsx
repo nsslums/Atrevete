@@ -61,7 +61,7 @@ const Style = css(mq({
       width: '100%',
       height: '100%',
       color: 'blue',
-      background: 'url(/noise.png)',
+      background: 'url(/noise.webp)',
       backgroundRepeat: 'repeat',
       backgroundSize: '20%',
       borderTop: 'solid 1px rgba(255,255,255,1)',
