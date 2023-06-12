@@ -99,7 +99,7 @@ export const EventCard = ({
         {image ? 
           <GatsbyImage alt='' image={image.gatsbyImageData} css={image_css}/>
           : 
-          <StaticImage alt='eyeCatch' src='../../../images/noImage.png' css={image_css}/>
+          <StaticImage alt='eyeCatch' src='../../../images/noimage.png' css={image_css}/>
         }
         <div css={status_css}>
           <span>{status}</span>
