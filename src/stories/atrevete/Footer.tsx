@@ -27,7 +27,7 @@ export const Footer = ({
                 margin: "auto",
             }}>
                 <div css={{margin: '20px'}}>
-                    <Logo isHome='true' width='150px'/>
+                    <Logo isHome={true} width='150px'/>
                 </div>
             </div>
             <div>
