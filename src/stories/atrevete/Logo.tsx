@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 import { Link } from 'gatsby-link';
 import logo from '../../../static/Atrevete.svg';
+import { StaticImage } from 'gatsby-plugin-image';
 
 interface LogoProps {
   isHome?: boolean;
@@ -16,9 +17,9 @@ export const Logo = ({
   return (
     <div>
       {isHome ?
-      <Link to='/' aria-label='go to top-page'><img css={{width: `${width}`}} width={width} src={logo} alt='logo'/></Link>
+      <Link to='/' aria-label='go to top-page'><StaticImage css={{width: `${width}`}} src= '../../../static/Atrevete.png' alt='logo'/></Link>
       :
-      <img css={{width: `${width}`}} src={logo} alt='logo'/>
+      <StaticImage css={{width: `${width}`}} src= '../../../static/Atrevete.png'  alt='logo'/>
       }
     </div>
   )
