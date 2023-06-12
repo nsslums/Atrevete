@@ -31,6 +31,9 @@ const topText = css({
     fontWeight: '400',
     letterSpacing: '0.1em',
     textAlign: 'center',
+    whiteSpace: 'nowrap',  // 追加
+    overflow: 'hidden',    // 追加
+    textOverflow: 'ellipsis',  // 追加
 })
 
 const messageText = css({
@@ -47,47 +50,90 @@ const messageText = css({
 
 
 const Aboutage: React.FC<PageProps> = ({ data }) => {
-
+    const [isSmallScreen, setIsSmallScreen] = React.useState(false);
+  
+    React.useEffect(() => {
+      const handleResize = () => {
+        setIsSmallScreen(window.innerWidth < 768);
+      };
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+  
     return (
-        <Common>
-            <div css={rootStyle}>
-            <AboutSection 
-            title='Atreveteとは'
-            text="
-                <p style='font-size:1.7em; line-height:70px; letter-spacing:0.2em'>迷いを確信に。<br/>夢を現実に。</p>
-            "
-            image={data.img1.childImageSharp.gatsbyImageData}
-            reverse='row-reverse'></AboutSection>
+      <Common>
+        <div css={rootStyle}>
+          {!isSmallScreen && (
+            <>
+              <AboutSection 
+                title='Atreveteとは'
+                text="
+                  <p style='font-size:1.7em; line-height:70px; letter-spacing:0.2em'>迷いを確信に。<br/>夢を現実に。</p>
+                "
+                image={data.img1.childImageSharp.gatsbyImageData}
+                reverse='row-reverse'
+              ></AboutSection>
+  
+              <p css={messageText}>
+                日本の課題でもある「若者の育成をどうしていくか」に着目し、<br/>
+                夢ある者、迷いながらも進もうとする者、何をしたらいいかわからない者をサポートします。<br/>
+                迷いがある者は、迷いを確信へ。<br/>
+                何も決まってない者は、話を聞き少しでも視野を広げます。<br/>
+                希望に満ち溢れる若者が世の中の理不尽に振り回されず、自分自身が主体でいれるように全身全霊で「人×人」の場所を提供します。
+              </p>
+            </>
+          )}
+  
+          {isSmallScreen && (
+            <>
+              <AboutSection 
+                title='Atreveteとは'
+                text="
+                  <p style='font-size:1em; line-height:70px; letter-spacing:0.2em'>迷いを確信に。<br/>夢を現実に。</p>
+                "
+                reverse='row-reverse'
+                image={data.img1.childImageSharp.gatsbyImageData}
+              ></AboutSection>
+              
+              <div css={Wrap}>
+                <p css={messageText}>
+                  日本の課題でもある「若者の育成を　　　どうしていくか」に着目し、<br/>
+                  夢ある者、迷いながらも進もうとする者、何をしたらいいかわからない者をサポートします。<br/>
+                  迷いがある者は、迷いを確信へ。<br/>
+                  何も決まってない者は、話を聞き少しでも視野を広げます。<br/>
+                  希望に満ち溢れる若者が世の中の理不尽に振り回されず、自分自身が主体でいれるように全身全霊で「人×人」の場所を提供します。
+                </p>
+              </div>
+            </>
+          )}
+        </div>
 
-            <p css={messageText}>日本の課題でもある「若者の育成をどうしていくか」に着目し、<br/>
-            夢ある者、迷いながらも進もうとする者、何をしたらいいかわからない者をサポートします。<br/>
-            迷いがある者は、迷いを確信へ。<br/>
-            何も決まってない者は、話を聞き少しでも視野を広げます。<br/>
-            希望に満ち溢れる若者が世の中の理不尽に振り回されず、自分自身が主体でいれるように全身全霊で「人×人」の場所を提供します。</p>
-            </div>
-
-            <AboutSection 
-            title='ミッション'
-            oneWord='人と人を繋ぎ、特別な価値を提供します。'
-            text='
+            <AboutSection
+                title='ミッション'
+                oneWord='人と人を繋ぎ、特別な価値を提供します。'
+                text='
                 <p>夢や希望を持って生きる若者を応援し、一人ひとりの可能性を最大限に引き出します。<br/>
                 若者の夢と可能性を最大化することが、私たちのミッションです。
                 日本の未来に貢献できる人材を育成するために、必要なサポートを提供します。</p>
             '
-            image={data.img2.childImageSharp.gatsbyImageData}
+                image={data.img2.childImageSharp.gatsbyImageData}
             ></AboutSection>
 
-            <AboutSection 
-            title='ビジョン'
-            oneWord='人と人を繋ぎ、特別な価値を提供します。'
-            text='
+            <AboutSection
+                title='ビジョン'
+                oneWord='人と人を繋ぎ、特別な価値を提供します。'
+                text='
                 <p>20歳前後で将来やりたいことに迷いがある。または夢がない。と答える割合は40%~50%というのが今の現状である。<br/>
                 そこで優秀な学生や、能力ある若者を起業家、投資家や社会人、様々な業種な方との交友する場所を提供します。<br/>
                 アドバイスをもらったり、投資を受けたり、対等にお話をし、
                 夢ある若者の育成を図ります。</p>
             '
-            image={data.img3.childImageSharp.gatsbyImageData}
-            reverse='row-reverse'></AboutSection>
+                image={data.img3.childImageSharp.gatsbyImageData}
+                reverse='row-reverse'></AboutSection>
         </Common>
     )
 }
@@ -124,7 +170,7 @@ export const query = graphql`
 
 export default Aboutage
 
-export const Head: HeadFC =  ({data}) => (
+export const Head: HeadFC = ({ data }) => (
     <Html_Head title={data.site.siteMetadata.title + " | About"} type="article" url={data.site.siteMetadata.siteURL + "/about"}>
     </Html_Head>
-  )
+)
