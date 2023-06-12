@@ -183,7 +183,7 @@ export const Search = ({
 
   return (
     <>
-      <button id="SearchButton" css={buttonCss} onClick={(e:any) => setIsOpen(true)}>
+      <button id="SearchButton" aria-label='SearchButton' css={buttonCss} onClick={(e:any) => setIsOpen(true)}>
           <GrSearch />
       </button>
       <Modal 

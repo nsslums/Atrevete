@@ -16,7 +16,7 @@ export const Logo = ({
   return (
     <div>
       {isHome ?
-      <Link to='/' aria-label='go to top-page'><img css={{width: `${width}`}} src={logo} alt='logo'/></Link>
+      <Link to='/' aria-label='go to top-page'><img css={{width: `${width}`}} width={width} src={logo} alt='logo'/></Link>
       :
       <img css={{width: `${width}`}} src={logo} alt='logo'/>
       }
