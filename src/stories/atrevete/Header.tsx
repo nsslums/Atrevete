@@ -1,11 +1,12 @@
 import { css } from '@emotion/react';
-import React, { useState } from 'react';
+import React, { lazy, useState } from 'react';
 import {CgMenuRightAlt} from "@react-icons/all-files/cg/CgMenuRightAlt"
 import {RiCloseLine} from "@react-icons/all-files/ri/RiCloseLine"
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby-link';
 import { GoldLink } from './GoldLink';
-import { Logo } from './Logo';
+
+const Logo = lazy(() => import("./Logo"));
 
 interface HeaderProps {
     menuOpen?: boolean
@@ -57,7 +58,7 @@ export const Header = ({
                 <div css={{
 
                 }}>
-                    <Logo width='100px' isHome='true'/>
+                    <Logo width='100px' isHome={true}/>
                 </div>
                 <div css={{
                         width: "30px",

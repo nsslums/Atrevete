@@ -1,11 +1,11 @@
-import React from "react";
+import { Suspense, lazy } from "react";
 import { Header } from "../stories/atrevete/Header";
-import { Footer } from "../stories/atrevete/Footer";
 import GlobalStyle from "../GlobalStyle";
-import { Search } from "../stories/atrevete/Search";
 import { graphql, useStaticQuery } from "gatsby";
 import { css } from "@emotion/react";
 
+const Footer = lazy(() => import('../stories/atrevete/Footer'));
+const Search = lazy(() => import('../stories/atrevete/Search'));
 
 const warpper = css({
     display: "flex",
@@ -49,8 +49,10 @@ export const Common = ({ children }: any) => {
             <div css={{marginTop: 98, flexGrow: 1}}>
                 {children}
             </div>
-            <Search data={data}/>
-            <Footer />
+            <Suspense fallback={null}>
+                <Search data={data}/>
+                <Footer />
+            </Suspense>
         </div>
     )
 }
