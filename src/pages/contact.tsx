@@ -89,7 +89,7 @@ const FormPage: React.FC<PageProps> = () => {
                         flexDirection: 'column',
                     })}>
 
-                        <p css={{ fontSize: '13px', fontFamily: "'Zen Kaku Gothic New', sans-serif"}}>「Submit」を押す前に<Link css={linkStyle} to="/privacy">プライバシーポリシー</Link>に同意する必要があります。</p>
+                        <p css={{ fontSize: '13px', textAlign: 'center', fontFamily: "'Zen Kaku Gothic New', sans-serif"}}>「Submit」を押す前に<Link css={linkStyle} to="/privacy">プライバシーポリシー</Link>に同意する必要があります。</p>
                         <div css={recapcha}>
                             <p>This site is protected by reCAPTCHA and the Google</p>
                             <p><a css={linkStyle} href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and<a css={linkStyle} href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.</p>
