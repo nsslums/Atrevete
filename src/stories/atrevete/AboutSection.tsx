@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import { GatsbyImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
 import { Head1 } from './Head1';
-import { graphql } from 'gatsby';
 import facepaint from 'facepaint';
 
 const breakpoints = [520, 767, 1100];
@@ -31,8 +30,9 @@ const WrapStyle = css(mq({
   alignItems: 'center',
   flexDirection: 'row',
   flexWrap: 'wrap',
+  gap: '20px 60px',
   width: '90%',
-  maxWidth: '900px',
+  maxWidth: '1200px',
 }))
 
 const imageStyle = css({
@@ -40,14 +40,15 @@ const imageStyle = css({
   // width: '60%',
   aspectRatio: '16/9',
   height: '230px',
-  margin: '0 60px',
+  // margin: '0 60px',
   borderRadius: '3px',
 })
 
 const oneWordStyle = css(mq({
   margin:'70px 0', 
+  maxWidth: '90%',
   textAlign: 'center',
-  fontSize:['30px','35px','40px'],
+  fontSize:['25px','30px','35px','40px'],
 }))
 
 const typoStyle = css(mq({
