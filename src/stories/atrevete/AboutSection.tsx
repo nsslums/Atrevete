@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { GatsbyImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
 import { Head1 } from './Head1';
 import facepaint from 'facepaint';
+import { motion } from 'framer-motion';
 
 const breakpoints = [520, 767, 1100];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
@@ -52,13 +53,22 @@ const oneWordStyle = css(mq({
 }))
 
 const typoStyle = css(mq({
-  display: 'box',
+  display: 'dlex',
+  justifyContent: 'center',
   width: ['80%','70%', '60%', '40%'],
   lineHeight: '40px',
   textAlign: 'center',
   height: 'fit-content',
+  // '-webkit-text-stroke': '0.3px white',
   fontSize: ['16px','18px','20px'],
 }))
+const typoChildStyle = css({
+  width: 'fit-content',
+  background: 'linear-gradient(120deg, white 0%, white var(--p1), #a18153 var(--p1), #a18153 var(--p2), transparent var(--p2), transparent 100%)',
+  color: 'transparent',
+  backgroundClip: 'text',
+  fontWeight: '700',
+})
 
 export const AboutSection = ({
   title,
@@ -77,13 +87,24 @@ export const AboutSection = ({
         <div></div>
       }
       {oneWord ?
-        <p css={oneWordStyle}>{oneWord}</p>
+        <motion.p css={oneWordStyle}
+          initial={{}}
+          animate={{}}
+        >{oneWord}</motion.p>
         :
         <div css={{margin: '70px'}}></div>
       }
       <div css={[WrapStyle,{flexDirection: `${reverse}`},]}>
         <GatsbyImage css={imageStyle} alt='image' image={image}/>
-        <div css={[typoStyle,{fontSize: `${fontSize}`}]} {...props} dangerouslySetInnerHTML={{__html: text}}></div>
+
+        <div css={typoStyle}>
+          <motion.div 
+          initial={{'--p1': '0%','--p2':'0%'} as any}
+          whileInView={{'--p1': '100%','--p2':'110%'} as any}
+          viewport={{ once: true }}
+          transition={{ease: 'anticipate', delay: 0.05, duration:2}}
+          css={[typoChildStyle,{fontSize: `${fontSize}`}]} {...props} dangerouslySetInnerHTML={{__html: text}}></motion.div>
+        </div>
       </div>
     </div>
   )
