@@ -21,7 +21,7 @@
     "@emotion/babel-preset-css-prop": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@fontsource/zen-kaku-gothic-new": "^5.0.2",
+    "@fontsource/zen-kaku-gothic-new": "^5.0.3",
     "@fontsource/zen-old-mincho": "^5.0.3",
     "@react-icons/all-files": "^4.1.0",
     "@sideway/address": "^5.0.0",
