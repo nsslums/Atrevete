@@ -29,7 +29,7 @@ const Style = css(mq({
     backgroundRepeat: 'none',
     boxShadow: '0 0 20px 0 black',
     border: 'none',
-    transform: 'scale(1.05)',
+    transform: ['scale(0.75)','scale(0.85)','scale(1.05)'],
     // ↓ add noise
     '&:before': {
       content: '""',
@@ -51,7 +51,7 @@ const Style = css(mq({
     },
   },
   '&:active': {
-    transform: 'scale(1)',
+    transform: ['scale(0.7)','scale(0.8)','scale(1)'],
     boxShadow: 'none',
     '&:before': {
       content: '""',
@@ -61,7 +61,7 @@ const Style = css(mq({
       width: '100%',
       height: '100%',
       color: 'blue',
-      background: 'url(/noise.png)',
+      background: 'url(/noise.webp)',
       backgroundRepeat: 'repeat',
       backgroundSize: '20%',
       borderTop: 'solid 1px rgba(255,255,255,1)',

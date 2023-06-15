@@ -70,7 +70,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
         }}>
           <StaticImage src="../images/top.jpg" alt="TopImage" css={topImage} />
           <div css={topPhrase}>
-            <p css={{ fontSize: "40px", fontWeight: 700 }}>未来と今をつなぐ</p>
+            <p css={{ fontSize: "40px", fontWeight: 700 }}>未来を創造する</p>
           </div>
         </div>
         <div css={typoWrap}>

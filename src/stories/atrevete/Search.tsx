@@ -26,9 +26,13 @@ const buttonCss = css({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    boxShadow: '0 0 20px rgba(0,0,0,0.4)',
     width: 45,
     height: 45,
     zIndex: 10,
+    '&:hover': {
+      background: 'rgba(255,255,255,0.8)'
+    }
 })
 
 const content = css({
@@ -183,7 +187,7 @@ export const Search = ({
 
   return (
     <>
-      <button id="SearchButton" css={buttonCss} onClick={(e:any) => setIsOpen(true)}>
+      <button id="SearchButton" aria-label='SearchButton' css={buttonCss} onClick={(e:any) => setIsOpen(true)}>
           <GrSearch />
       </button>
       <Modal 
@@ -232,3 +236,5 @@ export const Search = ({
     </>
   )
 }
+
+export default Search;
