@@ -30,7 +30,7 @@
     "facepaint": "^1.2.1",
     "framer-motion": "^10.12.16",
     "gatsby": "^5.10.0",
-    "gatsby-plugin-canonical-urls": "^5.10.0",
+    "gatsby-plugin-canonical-urls": "^5.11.0",
     "gatsby-plugin-emotion": "^8.10.0",
     "gatsby-plugin-google-gtag": "^5.10.0",
     "gatsby-plugin-image": "^3.10.0",
