@@ -21,7 +21,23 @@ const config: GatsbyConfig = {
       "spaceId": process.env.SPACEID,
       enableTags: true,
     }
-  }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-emotion", {
+  }, "gatsby-plugin-image", {
+    resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          quality: 50,
+          breakpoints: [750, 1080, 1366, 1920],
+          backgroundColor: `transparent`,
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        },
+      },
+    }, "gatsby-transformer-sharp", "gatsby-plugin-emotion", {
     resolve: 'gatsby-plugin-sitemap',
     options: {
       query: `
@@ -128,7 +144,7 @@ const config: GatsbyConfig = {
       lang: `ja`,
       start_url: `/`,
       display: `standalone`,
-      icon: `static/Atrevete_e.svg`
+      icon: `static/favicon.svg`
     },
   },
 ]

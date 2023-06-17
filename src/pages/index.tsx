@@ -1,6 +1,6 @@
 import * as React from "react"
-import { HeadFC, Link, PageProps, graphql, navigate } from "gatsby"
-import { GatsbyImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
+import { HeadFC, PageProps, graphql, navigate } from "gatsby"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import { Events } from "../components/eventSlide";
 import { Common } from "../components/common"
 import { GoldButton } from "../stories/atrevete/GoldButton";
@@ -68,7 +68,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
           position: "relative",
           zIndex: 0
         }}>
-          <StaticImage src="../images/top.jpg" alt="TopImage" css={topImage} />
+          <StaticImage src="../images/top.jpg" alt="TopImage" css={topImage} loading="eager"/>
           <div css={topPhrase}>
             <p css={{ fontSize: "40px", fontWeight: 700 }}>未来を創造する</p>
           </div>

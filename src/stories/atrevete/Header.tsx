@@ -58,7 +58,7 @@ export const Header = ({
                 <div css={{
 
                 }}>
-                    <Logo width='100px' isHome={true}/>
+                    <Logo width={100} isHome={true}/>
                 </div>
                 <div css={{
                         width: "30px",
