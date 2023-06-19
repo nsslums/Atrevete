@@ -25,7 +25,7 @@ const config: GatsbyConfig = {
     resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          formats: [`auto`, `webp`],
+          formats: [`webp`],
           placeholder: `blurred`,
           quality: 50,
           breakpoints: [750, 1080, 1366, 1920],

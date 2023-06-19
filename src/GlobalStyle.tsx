@@ -1,8 +1,8 @@
 import { Global, css } from "@emotion/react";
-import '@fontsource/zen-kaku-gothic-new/400.css'
-import '@fontsource/zen-kaku-gothic-new/700.css'
-import '@fontsource/zen-old-mincho/400.css'
-import '@fontsource/zen-old-mincho/700.css'
+// import '@fontsource/zen-kaku-gothic-new/400.css'
+// import '@fontsource/zen-kaku-gothic-new/700.css'
+// import '@fontsource/zen-old-mincho/400.css'
+// import '@fontsource/zen-old-mincho/700.css'
 const GlobalStyle = () => (
   <Global
     styles={css`

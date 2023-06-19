@@ -66,7 +66,8 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
           width: "100%",
           height: "100vh",
           position: "relative",
-          zIndex: 0
+          zIndex: 0,
+          backgroundColor: "#3e3e3e"
         }}>
           <StaticImage src="../images/top.jpg" alt="TopImage" css={topImage} loading="eager"/>
           <div css={topPhrase}>
