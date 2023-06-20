@@ -4,7 +4,7 @@ require('dotenv').config();
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Atrevete`,
-    description: "日本の課題でもある若者の育成をどうしていくか。に着目し、夢ある者、迷いながらも進もうとする者、何をしたらいいかわからない者をサポートします。",
+    description: "Atreveteは日本の課題でもある「若者の育成をどうしていくか」に着目し、「夢がある」「迷いながらも一歩を踏み出したい」そんなあなたのためのイベントを開催します。",
     siteUrl: process.env.SITEURL,
     social: {
       twitter: "",
@@ -90,7 +90,7 @@ const config: GatsbyConfig = {
           return { ...page, ...allMap[page.path] }
         })
       },
-      excludes: ['/404?(.*)', '/**/privacy', '/event', '/post', '/eventForm', '/contact', '/thanks'],
+      excludes: ['/404?(.*)', '/eventForm', '/thanks'],
       serialize: ({ path, updatedAt }) =>  {
         const site = {
           url: path,
@@ -109,6 +109,14 @@ const config: GatsbyConfig = {
     resolve: `gatsby-plugin-canonical-urls`,
     options: {
       siteUrl: process.env.SITEURL,
+      env: {
+        development: {
+          policy: [{userAgent: '*', disallow: ['/']}]
+        },
+        production: {
+          policy: [{userAgent: '*', allow: '/', disallow: ['/thanks','/404?(.*)']}]
+        }
+      }
     },
   },
   {
