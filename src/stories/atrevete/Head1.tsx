@@ -13,6 +13,7 @@ interface Head1Props {
 const Style = css(mq({
   position: 'relative',
   margin: '5px 5px 0.5em 5px',
+  textAlign: 'center',
   fontSize: '50px',
   display: 'inline-block',
   background: 'linear-gradient(120deg, white 0%, white var(--p1), #a18153 var(--p1), #a18153 var(--p2), transparent var(--p2), transparent 100%)',

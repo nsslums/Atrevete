@@ -1,6 +1,6 @@
 import * as React from "react"
-import { HeadFC, Link, PageProps, graphql, navigate } from "gatsby"
-import { GatsbyImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
+import { HeadFC, PageProps, graphql, navigate } from "gatsby"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import { Events } from "../components/eventSlide";
 import { Common } from "../components/common"
 import { GoldButton } from "../stories/atrevete/GoldButton";
@@ -66,9 +66,10 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
           width: "100%",
           height: "100vh",
           position: "relative",
-          zIndex: 0
+          zIndex: 0,
+          backgroundColor: "#3e3e3e"
         }}>
-          <StaticImage src="../images/top.jpg" alt="TopImage" css={topImage} />
+          <StaticImage src="../images/top.jpg" alt="TopImage" css={topImage} loading="eager"/>
           <div css={topPhrase}>
             <p css={{ fontSize: "40px", fontWeight: 700 }}>未来を創造する</p>
           </div>
@@ -78,7 +79,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
             未来を切り開く若者に、最高の仲間とメンターを。<br />
             あなたの可能性を広げるプラットフォーム
           </p>
-          <div css={{ marginTop: "5%" }}><GoldButton text="More" onClick={async (e: any) => await navigate("/about")} /></div>
+          <div css={{ marginTop: "5%" }}><GoldButton text="More" onClick={() => (async (e: any) => await navigate("/about"))} /></div>
         </div>
         <div css={categoryBlock}>
           <div css={{ textAlign: "center" }} ><Head1 text="イベント" /></div>
@@ -97,7 +98,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
             })}
           </div>
           <div css={{ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: 300 }}>
-            <GoldButton text="MORE" onClick={async (e: any) => await navigate("/post")} />
+            <GoldButton text="MORE" onClick={() => (async (e: any) => await navigate("/post"))} />
           </div>
         </div>
         <div css={categoryBlock}>
