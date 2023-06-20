@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 
 
@@ -14,3 +15,10 @@ export const wrapRootElement = ({ element }) => {
         </GoogleReCaptchaProvider>
     )
 }
+
+export const replaceHydrateFunction = () => {
+    return (element, container) => {
+      const root = ReactDOM.createRoot(container)
+      root.render(element)
+    }
+  }
