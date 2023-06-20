@@ -116,6 +116,7 @@ const config: GatsbyConfig = {
         production: {
           policy: [{userAgent: '*', allow: '/', disallow: ['/thanks','/404?(.*)']}]
         }
+      }
     },
   },
   {
