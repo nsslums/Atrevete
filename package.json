@@ -39,7 +39,7 @@
     "gatsby-plugin-robots-txt": "^1.8.0",
     "gatsby-plugin-sharp": "^5.11.0",
     "gatsby-plugin-sitemap": "^6.11.0",
-    "gatsby-source-contentful": "^8.10.0",
+    "gatsby-source-contentful": "^8.11.0",
     "gatsby-source-filesystem": "^5.10.0",
     "gatsby-transformer-remark": "^6.10.0",
     "gatsby-transformer-sharp": "^5.10.0",
