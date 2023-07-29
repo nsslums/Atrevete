@@ -6,6 +6,7 @@ import { Head1 } from "../stories/atrevete/Head1"
 import { Html_Head } from '../components/html-head'
 import { StaticImage } from 'gatsby-plugin-image'
 import { AboutSection } from '../stories/atrevete/AboutSection'
+import { motion } from 'framer-motion';
 
 const rootStyle = css({
     display: 'flex',
@@ -59,11 +60,18 @@ const Aboutage: React.FC<PageProps> = ({ data }) => {
             image={data.img1.childImageSharp.gatsbyImageData}
             reverse='row-reverse'></AboutSection>
 
-            <p css={messageText}>日本の課題でもある「若者の育成をどうしていくか」に着目し、<br/>
+            <motion.p 
+                css={messageText}
+                initial={{opacity: 0}}
+                whileInView={{opacity: 1}}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 2}}
+            >日本の課題でもある「若者の育成をどうしていくか」に着目し、<br/>
             夢ある者、迷いながらも進もうとする者、何をしたらいいかわからない者をサポートします。<br/>
             迷いがある者は、迷いを確信へ。<br/>
             何も決まってない者は、話を聞き少しでも視野を広げます。<br/>
-            希望に満ち溢れる若者が世の中の理不尽に振り回されず、自分自身が主体でいれるように全身全霊で「人×人」の場所を提供します。</p>
+            希望に満ち溢れる若者が世の中の理不尽に振り回されず、自分自身が主体でいれるように全身全霊で「人×人」の場所を提供します。
+            </motion.p>
             </div>
 
             <AboutSection 
