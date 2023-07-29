@@ -79,7 +79,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
             未来を切り開く若者に、最高の仲間とメンターを。<br />
             あなたの可能性を広げるプラットフォーム
           </p>
-          <div css={{ marginTop: "5%" }}><GoldButton text="More" onClick={() => (async (e: any) => await navigate("/about"))} /></div>
+          <div css={{ marginTop: "5%" }}><GoldButton text="More" onClick={() => navigate("/about")} /></div>
         </div>
         <div css={categoryBlock}>
           <div css={{ textAlign: "center" }} ><Head1 text="イベント" /></div>
@@ -98,7 +98,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
             })}
           </div>
           <div css={{ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: 300 }}>
-            <GoldButton text="MORE" onClick={() => (async (e: any) => await navigate("/post"))} />
+            <GoldButton text="MORE" onClick={() => navigate("/post")} />
           </div>
         </div>
         <div css={categoryBlock}>
