@@ -51,6 +51,11 @@ const oneWordStyle = css(mq({
   textAlign: 'center',
   fontSize:['25px','30px','35px','40px'],
 }))
+const oneWordChildStyle = css({
+  background: 'linear-gradient(120deg, white 0%, white var(--p1), #a18153 var(--p1), #a18153 var(--p2), transparent var(--p2), transparent 100%)',
+  color: 'transparent',
+  backgroundClip: 'text',
+})
 
 const typoStyle = css(mq({
   display: 'dlex',
@@ -87,10 +92,17 @@ export const AboutSection = ({
         <div></div>
       }
       {oneWord ?
-        <motion.p css={oneWordStyle}
-          initial={{}}
-          animate={{}}
-        >{oneWord}</motion.p>
+        <motion.div
+          css={oneWordStyle}
+          initial={{'--p1': '0%','--p2':'0%'} as any}
+          whileInView={{'--p1': '100%','--p2':'110%'} as any}
+          viewport={{ once: true }}
+          transition={{ease: 'anticipate', delay: 0.01, duration: 3}}
+        >
+          <motion.p
+            css={oneWordChildStyle}
+          >{oneWord}</motion.p>
+        </motion.div>
         :
         <div css={{margin: '70px'}}></div>
       }
@@ -102,7 +114,7 @@ export const AboutSection = ({
           initial={{'--p1': '0%','--p2':'0%'} as any}
           whileInView={{'--p1': '100%','--p2':'110%'} as any}
           viewport={{ once: true }}
-          transition={{ease: 'anticipate', delay: 0.05, duration:2}}
+          transition={{ease: 'anticipate', delay: 0.3, duration:3.5}}
           css={[typoChildStyle,{fontSize: `${fontSize}`}]} {...props} dangerouslySetInnerHTML={{__html: text}}></motion.div>
         </div>
       </div>
