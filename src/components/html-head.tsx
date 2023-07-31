@@ -43,7 +43,7 @@ export const Html_Head = ({
             <meta property="og:url" content={url} />
             <meta property="og:type" content={type} />
             <meta property="og:site_name" content={data.site.siteMetadata.title} />
-            <meta property="og:image" content={data.site.siteMetadata.siteUrl + '/Atrevete.svg'} />
+            <meta property="og:image" content={data.site.siteMetadata.siteUrl + '/Atrevete_ogp.png'} />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
