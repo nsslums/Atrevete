@@ -9,6 +9,7 @@ import { Head1 } from "../stories/atrevete/Head1";
 import { PostCard } from "../stories/atrevete/event/PostCard";
 import { Html_Head } from '../components/html-head'
 import facepaint from 'facepaint';
+import { motion } from 'framer-motion';
 
 const breakpoints = [520, 767, 1100];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
@@ -29,6 +30,16 @@ const topPhrase = css({
   justifyContent: "center",
   alignItems: "center",
   zIndex: 10,
+})
+
+const topPhraseText = css({
+  fontSize: "40px",
+  fontWeight: 700,
+  textShadow: "0 0 10px rgba(255, 242, 210, var(--t1))",
+  display: 'inline-block',
+  background: 'linear-gradient(90deg, white 0%, white var(--p1), transparent var(--p2), transparent 100%)',
+  backgroundClip: 'text',
+  color: 'transparent',
 })
 
 const typoWrap = css(mq({
@@ -70,8 +81,15 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
           backgroundColor: "#3e3e3e"
         }}>
           <StaticImage src="../images/top.jpg" alt="TopImage" css={topImage} loading="eager"/>
+          {/* --- top phrase --- */}
           <div css={topPhrase}>
-            <p css={{ fontSize: "40px", fontWeight: 700, textShadow: "0 0 10px #FFF2D2", }}>Special Value for Special  Person</p>
+            <motion.p
+              initial={{'--p1': '-20%', '--p2': '0%'} as any}
+              whileInView={{'--p1': ['-20%','100%'], '--p2': ['0%','120%'], '--t1': [0,0,1] } as any}
+              viewport={{ once: true }}
+              transition={{ duration:1.5, delay: 1 }}
+              css={topPhraseText}
+            >Special Value for Special  Person</motion.p>
           </div>
         </div>
         <div css={typoWrap}>
