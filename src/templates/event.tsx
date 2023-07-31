@@ -171,7 +171,11 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
         {data.contentfulEvent.post ? 
           <div css={[block, {maxWidth: 770}]}>
             <Head2 text="イベントに関連する記事" />
-            <div css={{border: "1px solid white", borderRadius: 15}}>
+            <div css={{
+              border: "1px solid white",
+              borderRadius: 15,
+              width: "100%"
+              }}>
               {data.contentfulEvent.post?.map(post => (
                 post.eye_catch ? 
                   <Connection key={post.contentful_id} title={post.title} mode="post" image={post.eye_catch.gatsbyImageData}/>

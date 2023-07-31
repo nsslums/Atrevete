@@ -14,12 +14,12 @@ const Style = css(mq({
   position: 'relative',
   margin: '5px 5px 0.5em 5px',
   textAlign: 'center',
-  fontSize: '50px',
+  fontSize: [30,30,45,50],
   display: 'inline-block',
   background: 'linear-gradient(120deg, white 0%, white var(--p1), #a18153 var(--p1), #a18153 var(--p2), transparent var(--p2), transparent 100%)',
   backgroundClip: 'text',
   color: 'transparent',
-  transform: ['scale(0.7)', 'scale(0.8)', 'scale(1)'],
+  // transform: ['scale(0.7)', 'scale(0.8)', 'scale(1)'],
 }))
 
 const bgStyle = css({
@@ -54,13 +54,13 @@ export const Head1 = ({
         initial={{'--p1': '0%','--p2':'0%'} as any}
         whileInView={{'--p1': '100%','--p2':'110%'} as any}
         viewport={{ once: true }}
-        transition={{duration:1}}
+        transition={{ ease: 'anticipate',  duration:3 }}
         css={Style}
       >{text}<motion.span
         initial={{width:0}}
         whileInView={{width: 'calc(100% + 8px)'}}
         viewport={{ once: true }}
-        transition={{duration:1}}
+        transition={{ ease: 'anticipate', duration:2 }}
         css={bgStyle}
       ></motion.span></motion.h1>
     </div>

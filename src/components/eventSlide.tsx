@@ -9,7 +9,6 @@ import { EventCard } from "../stories/atrevete/event/EventCard";
 import {FaChevronLeft} from "@react-icons/all-files/fa/FaChevronLeft"
 import {FaChevronRight} from "@react-icons/all-files/fa/FaChevronRight"
 
-
 const arrow_css = css({
     position: "absolute",
     width: "40px",
@@ -106,7 +105,7 @@ export const Events: React.FC = () => {
         arrows: true,
         slidesToShow: eventCount >=2 ? 2 : 1,
         slidesToScroll: 2,
-        centerMode: true,
+        centerMode: false,
         centerPadding: "50px",
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,

@@ -47,6 +47,7 @@ const disable = css({
         position: "absolute",
         top: "50%",
         left: "50%",
+        textShadow: '0 0 5px black',
         transform: "translate(-50%, -50%)", 
         zIndex: 10,
         fontSize: 20,
@@ -65,12 +66,13 @@ const commingsoon = css({
         backgroundColor: "rgba(0,0,0,.6)",
         zIndex: 10
     },
-
+    
     "&::after":{
-        content: '"受付をお待ちください"',
+        content: '"受付開始をお待ちください"',
         position: "absolute",
         top: "50%",
         left: "50%",
+        textShadow: '0 0 5px black',
         transform: "translate(-50%, -50%)", 
         zIndex: 10,
         fontSize: 20,
