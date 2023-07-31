@@ -21,7 +21,6 @@ const menuWrap = css(mq({
     display: 'flex',
     width: '100%',
     marginTop: '40px',
-    // border: 'solid 1px white',
     justifyContent: 'center',
     alignItems: ['center', 'start', 'start', 'start'],
     gap: ['0 0', '0 50px', '0 80px', '0 120px'],
@@ -30,14 +29,9 @@ const menuWrap = css(mq({
 }))
 
 const menuInner = css(mq({
-    // width: ['100%', '100%', '100%','300px'],
-    // width: '100%',
-    // maxWidth: 300,
-    // border: 'solid 1px white',
-    // marginLeft: [0, 20, 80, 120],
-    fontFamily: 'sans-serif',
+    // fontFamily: 'sans-serif',
+    // fontSize: '0.9em'
     letterSpacing: '0.15em',
-    fontSize: '0.9em'
 }))
 
 const logoStyle = css(mq({
@@ -54,9 +48,7 @@ const head = css(mq({
 const link = css({
     display: 'block',
     marginBottom: '8px',
-    // marginLeft: '5px',
     '&:hover': {
-        // textDecorationLine: 'underline',
         color: '#ccb37e',
     }
 })
