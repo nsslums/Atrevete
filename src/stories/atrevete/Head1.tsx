@@ -14,12 +14,12 @@ const Style = css(mq({
   position: 'relative',
   margin: '5px 5px 0.5em 5px',
   textAlign: 'center',
-  fontSize: '50px',
+  fontSize: [30,30,45,50],
   display: 'inline-block',
   background: 'linear-gradient(120deg, white 0%, white var(--p1), #a18153 var(--p1), #a18153 var(--p2), transparent var(--p2), transparent 100%)',
   backgroundClip: 'text',
   color: 'transparent',
-  transform: ['scale(0.7)', 'scale(0.8)', 'scale(1)'],
+  // transform: ['scale(0.7)', 'scale(0.8)', 'scale(1)'],
 }))
 
 const bgStyle = css({
