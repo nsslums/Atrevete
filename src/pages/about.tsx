@@ -133,6 +133,6 @@ export const query = graphql`
 export default Aboutage
 
 export const Head: HeadFC =  ({data}) => (
-    <Html_Head title={data.site.siteMetadata.title + " | About"} type="article" url={data.site.siteMetadata.siteURL + "/about"}>
+    <Html_Head title={data.site.siteMetadata.title + " | About"} type="article" url={data.site.siteMetadata.siteUrl + "/about"}>
     </Html_Head>
   )

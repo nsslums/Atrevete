@@ -199,6 +199,6 @@ export const query = graphql`
 export default PostPage
 
 export const Head: HeadFC  = ({data}) => (
-  <Html_Head title={data.site.siteMetadata.title + " | " + data.contentfulPost.title} type="article" url={data.site.siteMetadata.siteURL + "/event/" + data.contentfulPost.title}>
+  <Html_Head title={data.site.siteMetadata.title + " | " + data.contentfulPost.title} type="article" url={data.site.siteMetadata.siteUrl + "/event/" + data.contentfulPost.title}>
   </Html_Head>
 )

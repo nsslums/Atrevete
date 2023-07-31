@@ -57,6 +57,6 @@ export const query = graphql`
 export default NotFoundPage
 
 export const Head: HeadFC = ({ data }) => (
-  <Html_Head title={data.site.siteMetadata.title + " | 404 Not Found"} type="article" url={data.site.siteMetadata.siteURL + "/thanks"}>
+  <Html_Head title={data.site.siteMetadata.title + " | 404 Not Found"} type="article" url={data.site.siteMetadata.siteUrl + "/404"}>
   </Html_Head>
 )

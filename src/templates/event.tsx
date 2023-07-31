@@ -272,6 +272,6 @@ export const query = graphql`
 export default EventPage
 
 export const Head: HeadFC = ({data}) => (
-  <Html_Head title={data.site.siteMetadata.title + " | " + data.contentfulEvent.title} type="article" url={data.site.siteMetadata.siteURL + "/event/" + data.contentfulEvent.title}>
+  <Html_Head title={data.site.siteMetadata.title + " | " + data.contentfulEvent.title} type="article" url={data.site.siteMetadata.siteUrl + "/event/" + data.contentfulEvent.title}>
   </Html_Head>
 )
