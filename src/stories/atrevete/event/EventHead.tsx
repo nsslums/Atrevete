@@ -4,6 +4,10 @@ import { Head1 } from "../Head1"
 import { EventStatus } from './EventStatus';
 import {FaBullhorn} from "@react-icons/all-files/fa/FaBullhorn"
 import { css } from '@emotion/react';
+import facepaint from 'facepaint';
+
+const breakpoints = [520, 767, 1100];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
 
 interface EventHeadProps{
     title?: string,
@@ -31,23 +35,31 @@ export const EventHead = ({
     return(
         <div css={{
             margin: "50px auto",
+            width: "100%",
+            display: "flex",
+            contentAling: "center",
+            flexDirection: "column",
+            // border: "solid 1px white",
         }}>
-            <div css={{
+            <div css={mq({
                 position: "relative",
                 display: "flex",
-                flexDirection: "row",
-                height: HeadHeight,
-                width: 770,
+                flexDirection: ["column","column","column","row"],
+                // height: HeadHeight,
+                alignItems: "center",
+                width: "100%",
+                // border: "solid 1px white",
                 justifyContent: "space-between",
-            }}>
-                <div css={{width: "48%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+                
+            })}>
+                <div css={{minWidth: "48%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                     <Head1 text={title} />
                     <div css={{display: "flex", flexDirection: "row", alignItems: "center", marginTop: 5}}>
                         <EventStatus isActive={isActive} />
                         <p css={{marginLeft: 10}}>開催日 {date ? <span>{date}</span> : <span>未定</span>}</p>
                     </div>
                 </div>
-                <div css={{width: "50%", borderRadius: "5px", overflow: "hidden"}}>
+                <div css={mq({minWidth: "50%", maxWidth: " 500px", marginTop: [30,30,30,0], borderRadius: "5px", overflow: "hidden"})}>
                     {GatsbyImageData ? 
                         <GatsbyImage image={GatsbyImageData} alt='eyecatch' css={imageCss}/>
                         :
@@ -62,7 +74,7 @@ export const EventHead = ({
                     marginTop: (HeadHeight/3),
                 }}>
                     <div css={{
-                        width: "80%",
+                        width: "100%",
                         maxWidth: 778,
                         height: 88,
                         borderRadius: 10,
