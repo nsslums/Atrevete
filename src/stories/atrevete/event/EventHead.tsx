@@ -18,11 +18,13 @@ interface EventHeadProps{
     isActive?: boolean,
 }
 
-const imageCss = css({
+const imageCss = css(mq({
+    marginLeft: [0,0,0,40],
     height: "100%",
-    width: "100%",
+    // width: "100%",
     objectFit: "cover",
-})
+    borderRadius: "5px"
+}))
 
 export const EventHead = ({
     title = "イベント名",
@@ -52,20 +54,20 @@ export const EventHead = ({
                 justifyContent: "space-between",
                 
             })}>
-                <div css={{minWidth: "48%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+                <div css={{minWidth: "48%", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                     <Head1 text={title} />
                     <div css={{display: "flex", flexDirection: "row", alignItems: "center", marginTop: 5}}>
                         <EventStatus isActive={isActive} />
                         <p css={{marginLeft: 10}}>開催日 {date ? <span>{date}</span> : <span>未定</span>}</p>
                     </div>
                 </div>
-                <div css={mq({minWidth: "50%", maxWidth: " 500px", marginTop: [30,30,30,0], borderRadius: "5px", overflow: "hidden"})}>
+                <div css={mq({minWidth: "50%", maxWidth: " 500px", marginTop: [30,30,30,0], overflow: "hidden"})}>
                     {GatsbyImageData ? 
                         <GatsbyImage image={GatsbyImageData} alt='eyecatch' css={imageCss}/>
                         :
                         <StaticImage src='../../../images/noimage.png' alt='eyecatch' css={imageCss}/>
                     }
-                    <img src={imageURL} css={{width: "100%", height: "100%", objectFit: "cover"}} />
+                    
                 </div>
             </div>
 
