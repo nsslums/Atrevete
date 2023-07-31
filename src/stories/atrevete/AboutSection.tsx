@@ -21,7 +21,7 @@ const Style = css({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent:'center',
-  marginBottom: '150px',
+  marginBottom: '10em',
   width: '100%',
 })
 
@@ -97,7 +97,7 @@ export const AboutSection = ({
           initial={{'--p1': '0%','--p2':'0%'} as any}
           whileInView={{'--p1': '100%','--p2':'110%'} as any}
           viewport={{ once: true }}
-          transition={{ease: 'anticipate', delay: 0.01, duration: 3}}
+          transition={{ease: 'anticipate', duration: 3}}
         >
           <motion.p
             css={oneWordChildStyle}
