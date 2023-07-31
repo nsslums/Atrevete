@@ -54,13 +54,13 @@ export const Head1 = ({
         initial={{'--p1': '0%','--p2':'0%'} as any}
         whileInView={{'--p1': '100%','--p2':'110%'} as any}
         viewport={{ once: true }}
-        transition={{duration:1}}
+        transition={{ ease: 'anticipate',  duration:3 }}
         css={Style}
       >{text}<motion.span
         initial={{width:0}}
         whileInView={{width: 'calc(100% + 8px)'}}
         viewport={{ once: true }}
-        transition={{duration:1}}
+        transition={{ ease: 'anticipate', duration:2 }}
         css={bgStyle}
       ></motion.span></motion.h1>
     </div>
