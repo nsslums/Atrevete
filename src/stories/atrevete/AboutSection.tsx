@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { GatsbyImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
-import { Head1 } from './Head1';
+import { AboutHead1 } from './AboutHead1';
 import facepaint from 'facepaint';
 import { motion } from 'framer-motion';
 
@@ -9,6 +9,7 @@ const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
 
 interface AboutSectionProps {
   title?: string;
+  bgTitle: string;
   text: string;
   oneWord?: string;
   image: IGatsbyImageData;
@@ -82,12 +83,13 @@ export const AboutSection = ({
   reverse = 'row',
   image,
   fontSize,
+  bgTitle,
   ...props
 }: AboutSectionProps) => {
   return (
     <div css={Style}>
       {title ?
-        <Head1 text={title}></Head1>
+        <AboutHead1 text={title} bgText={bgTitle}></AboutHead1>
         :
         <div></div>
       }
