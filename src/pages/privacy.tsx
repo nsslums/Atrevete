@@ -101,6 +101,6 @@ export const query = graphql`
 export default PrivacyPage
   
 export const Head: HeadFC = ({data}) => (
-    <Html_Head title={data.site.siteMetadata.title + " | プライバシー・ポリシー"} type="article" url={data.site.siteMetadata.siteURL + "/contact"}>
+    <Html_Head title={data.site.siteMetadata.title + " | プライバシー・ポリシー"} type="article" url={data.site.siteMetadata.siteUrl + "/privacy"}>
     </Html_Head>
 )

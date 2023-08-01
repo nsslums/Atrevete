@@ -77,6 +77,6 @@ query{
 export default EventPage
 
 export const Head: HeadFC =  ({data}) => (
-  <Html_Head title={data.site.siteMetadata.title + " | イベント"} type="article" url={data.site.siteMetadata.siteURL + "/event"}>
+  <Html_Head title={data.site.siteMetadata.title + " | イベント"} type="article" url={data.site.siteMetadata.siteUrl + "/event"}>
   </Html_Head>
 )

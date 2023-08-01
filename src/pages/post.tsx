@@ -82,6 +82,6 @@ query {
 export default PostsPage
 
 export const Head: HeadFC = ({data}) => (
-  <Html_Head title={data.site.siteMetadata.title + " | 投稿"} type="article" url={data.site.siteMetadata.siteURL + "/post"}>
+  <Html_Head title={data.site.siteMetadata.title + " | 投稿"} type="article" url={data.site.siteMetadata.siteUrl + "/post"}>
   </Html_Head>
 )

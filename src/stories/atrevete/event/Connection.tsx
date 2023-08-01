@@ -59,7 +59,7 @@ export const Connection = ({
             {image ? 
               <GatsbyImage css={imageCss} image={image} alt='eyecatch'/>
             :
-              <StaticImage src='../../../images/noimage.png' css={imageCss} alt='eyecatch'/>
+              <StaticImage src='../../../../static/noimg.png' css={imageCss} alt='eyecatch'/>
             }
         </div>
       </Link>

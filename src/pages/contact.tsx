@@ -120,6 +120,6 @@ export const query = graphql`
 export default FormPage
 
 export const Head: HeadFC = ({ data }) => (
-    <Html_Head title={data.site.siteMetadata.title + " | お問い合わせ"} type="article" url={data.site.siteMetadata.siteURL + "/contact"}>
+    <Html_Head title={data.site.siteMetadata.title + " | お問い合わせ"} type="article" url={data.site.siteMetadata.siteUrl + "/contact"}>
     </Html_Head>
 )

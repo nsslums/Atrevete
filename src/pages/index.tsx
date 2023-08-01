@@ -204,6 +204,6 @@ export const query = graphql`
 export default IndexPage
 
 export const Head: HeadFC = ({ data }) => (
-  <Html_Head type="website" url={data.site.siteMetadata.siteURL}>
+  <Html_Head type="website" url={data.site.siteMetadata.siteUrl}>
   </Html_Head>
 )

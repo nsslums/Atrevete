@@ -54,6 +54,7 @@ const Aboutage: React.FC<PageProps> = ({ data }) => {
             <div css={rootStyle}>
             <AboutSection 
             title='Atreveteとは'
+            bgTitle='About us'
             text="
                 <p style='font-size:1.7em; line-height:70px; letter-spacing:0.2em'>迷いを確信に。<br/>夢を現実に。</p>
             "
@@ -76,6 +77,7 @@ const Aboutage: React.FC<PageProps> = ({ data }) => {
 
             <AboutSection 
             title='ミッション'
+            bgTitle='Mission'
             oneWord='人と人を繋ぎ、特別な価値を提供します。'
             text='
                 <p>夢や希望を持って生きる若者を応援し、一人ひとりの可能性を最大限に引き出します。<br/>
@@ -87,6 +89,7 @@ const Aboutage: React.FC<PageProps> = ({ data }) => {
 
             <AboutSection 
             title='ビジョン'
+            bgTitle='Vision'
             oneWord='人と人を繋ぎ、特別な価値を提供します。'
             text='
                 <p>20歳前後で将来やりたいことに迷いがある。または夢がない。と答える割合は40%~50%というのが今の現状である。<br/>
@@ -133,6 +136,6 @@ export const query = graphql`
 export default Aboutage
 
 export const Head: HeadFC =  ({data}) => (
-    <Html_Head title={data.site.siteMetadata.title + " | About"} type="article" url={data.site.siteMetadata.siteURL + "/about"}>
+    <Html_Head title={data.site.siteMetadata.title + " | About"} type="article" url={data.site.siteMetadata.siteUrl + "/about"}>
     </Html_Head>
   )
