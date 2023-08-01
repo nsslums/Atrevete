@@ -58,8 +58,6 @@ const textCss = css({
     }
 })
 
-type pageType = 'post' | 'event';
-
 interface EventCardProps {
   title: string;
   image?: IGatsbyImageData,
