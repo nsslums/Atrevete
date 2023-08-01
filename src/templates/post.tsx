@@ -9,6 +9,7 @@ import { PostHead } from "../stories/atrevete/PostHead"
 import { Connection } from "../stories/atrevete/event/Connection"
 import { Head2 } from "../stories/atrevete/Head2"
 import { Html_Head } from "../components/html-head"
+import { PostCard } from "../stories/atrevete/event/PostCard"
 
 const block = css({
   position: "relative",
@@ -123,12 +124,12 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
         {data.contentfulPost.related_event?
         <>
           <Head2 text="関連するイベント" />
-          <div css={{border: "1px solid white", borderRadius: 15}}>
+          <div>
               {data.contentfulPost.related_event?.map(event => (
                 event.eye_catch ? 
-                  <Connection key={event.contentful_id} title={event.title} mode="event" image={event.eye_catch.gatsbyImageData}/>
+                <div key={event.contentful_id}><PostCard title={event.title} image={event.eye_catch.gatsbyImageData} /></div>
                 :
-                  <Connection key={event.contentful_id} title={event.title} mode="event" />
+                <div key={event.contentful_id}><PostCard title={event.title} /></div>
               ))}
           </div>
         </>

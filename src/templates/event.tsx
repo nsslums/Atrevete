@@ -11,6 +11,7 @@ import { EventFormCard } from "../stories/atrevete/event/EventFormCard"
 import { Connection } from "../stories/atrevete/event/Connection"
 import { Html_Head } from "../components/html-head"
 import facepaint from 'facepaint';
+import { PostCard } from "../stories/atrevete/event/PostCard"
 
 const breakpoints = [520, 767, 1100];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
@@ -172,15 +173,12 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
           <div css={[block, {maxWidth: 770}]}>
             <Head2 text="イベントに関連する記事" />
             <div css={{
-              border: "1px solid white",
-              borderRadius: 15,
-              width: "100%"
               }}>
               {data.contentfulEvent.post?.map(post => (
                 post.eye_catch ? 
-                  <Connection key={post.contentful_id} title={post.title} mode="post" image={post.eye_catch.gatsbyImageData}/>
+                <div key={post.contentful_id}><PostCard title={post.title} image={post.eye_catch.gatsbyImageData} /></div>
                 :
-                  <Connection key={post.contentful_id} title={post.title} mode="post" />
+                <div key={post.contentful_id}><PostCard title={post.title} /></div>
               ))}
             </div>
           </div>
