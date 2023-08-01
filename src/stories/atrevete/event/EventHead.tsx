@@ -65,7 +65,7 @@ export const EventHead = ({
                     {GatsbyImageData ? 
                         <GatsbyImage image={GatsbyImageData} alt='eyecatch' css={imageCss}/>
                         :
-                        <StaticImage src='../../../images/noimage.png' alt='eyecatch' css={imageCss}/>
+                        <StaticImage src='../../../../static/noimg.png' alt='eyecatch' css={imageCss}/>
                     }
                     
                 </div>
