@@ -37,13 +37,14 @@ export const Html_Head = ({
         <>
             <title>{title}</title>
             <meta name="description" content={description} />
-            <head prefix="og: https://ogp.me/ns#"></head>
+            <head prefix="og: http://ogp.me/ns#"></head>
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
             <meta property="og:url" content={url} />
             <meta property="og:type" content={type} />
             <meta property="og:site_name" content={data.site.siteMetadata.title} />
-            <meta property="og:image" content={data.site.siteMetadata.siteUrl + '/Atrevete_ogp.png'} />
+            <meta property="og:image" content={data.site.siteMetadata.siteUrl + '/og.png'} />
+            <meta property="og:locate" content="ja_JP" />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
