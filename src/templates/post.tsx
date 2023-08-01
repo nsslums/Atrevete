@@ -127,9 +127,9 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
           <div>
               {data.contentfulPost.related_event?.map(event => (
                 event.eye_catch ? 
-                <div key={event.contentful_id}><PostCard title={event.title} image={event.eye_catch.gatsbyImageData} /></div>
+                <div key={event.contentful_id}><PostCard type="event" title={event.title} image={event.eye_catch.gatsbyImageData} /></div>
                 :
-                <div key={event.contentful_id}><PostCard title={event.title} /></div>
+                <div key={event.contentful_id}><PostCard type="event" title={event.title} /></div>
               ))}
           </div>
         </>

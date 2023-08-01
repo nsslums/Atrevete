@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import React from 'react';
 import { Link } from 'gatsby-link';
 import { GatsbyImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
+import { type } from 'os';
 
 const rootCss = css({
     position: "relative",
@@ -57,10 +58,12 @@ const textCss = css({
     }
 })
 
+type pageType = 'post' | 'event';
+
 interface EventCardProps {
   title: string;
   image?: IGatsbyImageData,
-  url?: string,
+  type?: 'post' | 'event';
 }
 
 /**
@@ -69,11 +72,11 @@ interface EventCardProps {
 export const PostCard = ({
   title,
   image,
-  url = "/post/"+title,
+  type = 'post',
 }: EventCardProps) => {
   return (
     <div css={rootCss}>
-      <Link to={url} css={linkCss} draggable={false}>
+      <Link to={`/${type}/`+ title} css={linkCss} draggable={false}>
         <div css={{height:"100%"}}>
             {image ? 
               <GatsbyImage css={imageCss} image={image} alt='eyecatch'/>
