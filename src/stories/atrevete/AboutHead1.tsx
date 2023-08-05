@@ -1,9 +1,7 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
-import { relative } from 'path';
 import facepaint from 'facepaint';
 import motif from '../../../static/motif.svg'
-import motif_white from '../../../static/motif_white.svg'
 
 const breakpoints = [520, 767, 1100];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
@@ -17,12 +15,11 @@ const Style = css(mq({
   position: 'relative',
   margin: '5px 5px 0.5em 5px',
   textAlign: 'center',
-  fontSize: [25,25,30,45],
+  fontSize: [25,30,45],
   display: 'inline-block',
   background: 'linear-gradient(120deg, white 0%, white var(--p1), #a18153 var(--p1), #a18153 var(--p2), transparent var(--p2), transparent 100%)',
   backgroundClip: 'text',
   color: 'transparent',
-  // transform: ['scale(0.7)', 'scale(0.8)', 'scale(1)'],
 }))
 
 const bgTextStyle = css({
@@ -41,10 +38,11 @@ const bgTextStyle = css({
 const motifStyle =css(mq({
     position: 'absolute',
     display: 'block',
-    top: -10,
-    right: -50,
+    bottom: [-50,-45,-40],
+    right: [-90,-70,-50],
     background: 'linear-gradient(120deg, transparent var(--p3), white var(--p3), white var(--p4), transparent var(--p4), transparent 100%)',
     fill: 'white',
+    transform: ['scale(calc(var(--sc) * 0.6))', 'scale(calc(var(--sc) * 0.7))', 'scale(var(--sc))'],
     zIndex: -2,
 }))
 
@@ -68,7 +66,7 @@ export const AboutHead1 = ({
         css={bgTextStyle}
       >{bgText}</motion.span></motion.h1>
       <motion.img
-        whileInView={{ opacity: [0,0,1], scale: [0,0,1] }}
+        whileInView={{ opacity: [0,0,1], '--sc': [0,0,1] }as any}
         viewport={{ once: true }}
         transition={{ ease: 'anticipate',  duration: 3 }}
         src={motif}
