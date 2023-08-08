@@ -66,7 +66,6 @@ const typoStyle = css(mq({
   lineHeight: '40px',
   textAlign: 'center',
   height: 'fit-content',
-  // '-webkit-text-stroke': '0.3px white',
   fontSize: ['16px','18px','20px'],
 }))
 const typoChildStyle = css({
