@@ -16,6 +16,7 @@ const Style = css(mq({
   margin: '5px 5px 0.5em 5px',
   textAlign: 'center',
   fontSize: [25,30,45],
+  fontWeight: '900',
   display: 'inline-block',
   background: 'linear-gradient(120deg, white 0%, white var(--p1), #a18153 var(--p1), #a18153 var(--p2), transparent var(--p2), transparent 100%)',
   backgroundClip: 'text',
