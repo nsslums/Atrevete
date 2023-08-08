@@ -50,6 +50,7 @@ const oneWordStyle = css(mq({
   margin:'70px 0', 
   maxWidth: '90%',
   textAlign: 'center',
+  fontWeight: '500',
   fontSize:['25px','30px','35px','40px'],
 }))
 const oneWordChildStyle = css({
@@ -73,7 +74,7 @@ const typoChildStyle = css({
   background: 'linear-gradient(120deg, white 0%, white var(--p1), #a18153 var(--p1), #a18153 var(--p2), transparent var(--p2), transparent 100%)',
   color: 'transparent',
   backgroundClip: 'text',
-  fontWeight: '700',
+  fontWeight: '500',
 })
 
 export const AboutSection = ({
