@@ -56,7 +56,7 @@ const Aboutage: React.FC<PageProps> = ({ data }) => {
             title='Atreveteとは'
             bgTitle='About us'
             text="
-                <p style='font-size:1.7em; line-height:70px; letter-spacing:0.2em'>迷いを確信に。<br/>夢を現実に。</p>
+                <p style='font-size:1.7em; line-height:70px; letter-spacing:0.2em; font-weight:700'>迷いを確信に。<br/>夢を現実に。</p>
             "
             image={data.img1.childImageSharp.gatsbyImageData}
             reverse='row-reverse'></AboutSection>
