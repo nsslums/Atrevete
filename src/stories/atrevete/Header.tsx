@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import React, { lazy, useState } from 'react';
-import {CgMenuRightAlt} from "@react-icons/all-files/cg/CgMenuRightAlt"
+import {CgMenu} from "@react-icons/all-files/cg/CgMenu"
 import {RiCloseLine} from "@react-icons/all-files/ri/RiCloseLine"
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby-link';
@@ -65,7 +65,7 @@ export const Header = ({
                         height: "30px",
                         cursor: "pointer",
                     }} onClick={onClick}>
-                    <CgMenuRightAlt css={{
+                    <CgMenu css={{
                         width: "30px",
                         height: "30px",
                     }} />
