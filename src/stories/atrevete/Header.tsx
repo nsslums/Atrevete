@@ -32,9 +32,18 @@ const block = css({
 const divider = css({
     width: "220px",
     height: "1px",
-    backgroundColor: "rgba(255, 255, 255, .5)",
-    margin: "1em 0",
+    backgroundColor: "rgba(255, 255, 255, .2)",
+    marginTop: "1em",
     marginRight: "3em"
+})
+
+const snsIcon = css({
+    fontSize: "30px",
+    marginRight: "0.3em",
+    '&:hover': {
+        color:'rgb(153, 116, 62)'
+    }
+
 })
 
 export const Header = ({
@@ -110,7 +119,7 @@ export const Header = ({
                     <div css={block} onClick={onClick}><GoldLink to='/post' text='投稿' /></div>
                     <div css={block} onClick={onClick}><GoldLink to='/contact' text='お問い合わせ' /></div>
                     <div css={divider} />
-                    <div css={block} onClick={onClick}><FaInstagram css={{fontSize: "30px", marginRight: "0.3em"}}/><GoldLink to='https://instagram.com' text='Instagram' /></div>
+                    <div css={block} onClick={onClick}><a href='https://www.instagram.com/atrevete__official/'><FaInstagram css={snsIcon}/></a></div>
                 </div>
             </div>
             : false }
