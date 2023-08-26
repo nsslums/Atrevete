@@ -181,7 +181,7 @@ const GlobalStyle = () => (
         color: white;
         font-display: swap;
         font-family: 'Zen Kaku Gothic New', sans-serif;
-        font-family: 'Zen Old Mincho', serif;
+        /* font-family: 'Zen Old Mincho', serif; */
         &:before {
           content: "";
           position: fixed;

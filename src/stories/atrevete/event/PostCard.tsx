@@ -83,7 +83,7 @@ export const PostCard = ({
             }
         </div>
         <div css={textCss}>
-            <p>{title}</p>
+            <p css={{fontWeight: '700'}}>{title}</p>
         </div>
       </Link>
 
