@@ -1,7 +1,8 @@
 import { css } from '@emotion/react';
 import React, { lazy, useState } from 'react';
-import {CgMenuRightAlt} from "@react-icons/all-files/cg/CgMenuRightAlt"
+import {CgMenu} from "@react-icons/all-files/cg/CgMenu"
 import {RiCloseLine} from "@react-icons/all-files/ri/RiCloseLine"
+import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby-link';
 import { GoldLink } from './GoldLink';
@@ -26,6 +27,23 @@ const block = css({
     fontSize: 40,
     padding: "5px 0",
     marginRight: "1em"
+})
+
+const divider = css({
+    width: "220px",
+    height: "1px",
+    backgroundColor: "rgba(255, 255, 255, .2)",
+    marginTop: "1em",
+    marginRight: "3em"
+})
+
+const snsIcon = css({
+    fontSize: "30px",
+    marginRight: "0.3em",
+    '&:hover': {
+        color:'rgb(153, 116, 62)'
+    }
+
 })
 
 export const Header = ({
@@ -65,7 +83,7 @@ export const Header = ({
                         height: "30px",
                         cursor: "pointer",
                     }} onClick={onClick}>
-                    <CgMenuRightAlt css={{
+                    <CgMenu css={{
                         width: "30px",
                         height: "30px",
                     }} />
@@ -100,6 +118,8 @@ export const Header = ({
                     <div css={block} onClick={onClick}><GoldLink to='/about' text='Atreveteとは' /></div>
                     <div css={block} onClick={onClick}><GoldLink to='/post' text='投稿' /></div>
                     <div css={block} onClick={onClick}><GoldLink to='/contact' text='お問い合わせ' /></div>
+                    <div css={divider} />
+                    <div css={block} onClick={onClick}><a href='https://www.instagram.com/atrevete__official/'><FaInstagram css={snsIcon}/></a></div>
                 </div>
             </div>
             : false }
