@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import React, { lazy, useState } from 'react';
 import {CgMenu} from "@react-icons/all-files/cg/CgMenu"
 import {RiCloseLine} from "@react-icons/all-files/ri/RiCloseLine"
+import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby-link';
 import { GoldLink } from './GoldLink';
@@ -26,6 +27,14 @@ const block = css({
     fontSize: 40,
     padding: "5px 0",
     marginRight: "1em"
+})
+
+const divider = css({
+    width: "220px",
+    height: "1px",
+    backgroundColor: "rgba(255, 255, 255, .5)",
+    margin: "1em 0",
+    marginRight: "3em"
 })
 
 export const Header = ({
@@ -100,6 +109,8 @@ export const Header = ({
                     <div css={block} onClick={onClick}><GoldLink to='/about' text='Atreveteとは' /></div>
                     <div css={block} onClick={onClick}><GoldLink to='/post' text='投稿' /></div>
                     <div css={block} onClick={onClick}><GoldLink to='/contact' text='お問い合わせ' /></div>
+                    <div css={divider} />
+                    <div css={block} onClick={onClick}><FaInstagram css={{fontSize: "30px", marginRight: "0.3em"}}/><GoldLink to='https://instagram.com' text='Instagram' /></div>
                 </div>
             </div>
             : false }
