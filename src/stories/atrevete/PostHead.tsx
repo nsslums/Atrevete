@@ -12,14 +12,17 @@ interface PostHeadProps{
 }
 
 const eyeCatch = css({
-    margin: '2em 0',
-    height: "200px",
+    margin: '1em 2em',
+    // height: "200px",
+    // width: "100%",
 })
 
 const imageCss = css({
     height: "100%",
     width: "100%",
     objectFit: "cover",
+    borderRadius: "4px",
+    boxShadow: "0 0 4px rgba(0, 0, 0, .4)",
 })
 
 const rootCss = css({
