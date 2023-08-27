@@ -45,6 +45,7 @@ const textStyle = css({
   letterSpacing: '0.1em',
   fontSize: '1.1em',
   fontFamily: "'Zen Kaku Gothic New', sans-serif",
+  wordBreak: 'keep-all',
   'h1': {
       fontSize: '30px',
   },
