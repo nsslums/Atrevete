@@ -61,7 +61,6 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
         if(!node.content[0].value.match(match)){
           return React.createElement("p", null, children);
         }
-        console.log(node, children)
         return (
           <p dangerouslySetInnerHTML={{ __html: node.content[0].value }} ></p>
         )
