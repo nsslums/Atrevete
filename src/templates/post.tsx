@@ -56,7 +56,17 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
 
   const options = {
     renderNode: {
-      [BLOCKS.EMBEDDED_ASSET]: ({data}) => {
+      [BLOCKS.PARAGRAPH] : (node:any, children:any) =>{
+        const match = "\<iframe.*|\<blockquote .*"
+        if(!node.content[0].value.match(match)){
+          return React.createElement("p", null, children);
+        }
+        console.log(node, children)
+        return (
+          <p dangerouslySetInnerHTML={{ __html: node.content[0].value }} ></p>
+        )
+      },
+      [BLOCKS.EMBEDDED_ASSET]: ({data}:any) => {
         const { gatsbyImageData } = data.target
         if (!gatsbyImageData) {
           // asset is not an image
@@ -64,7 +74,7 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
         }
         return <GatsbyImage image={gatsbyImageData} alt={""} />
       },
-      [BLOCKS.EMBEDDED_ENTRY]: ({data}) =>{
+      [BLOCKS.EMBEDDED_ENTRY]: ({data}:any) =>{
         let link;
         if(data.target.__typename == "ContentfulEvent")
           link = `/event/${data.target.title}`
@@ -78,7 +88,7 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
           </div>
         )
       },
-      [INLINES.ENTRY_HYPERLINK]: ({data}) =>{
+      [INLINES.ENTRY_HYPERLINK]: ({data}:any) =>{
         let link;
         if(data.target.__typename == "ContentfulEvent")
           link = `/event/${data.target.title}`
@@ -92,11 +102,11 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
           </div>
         )
       },
-      [INLINES.ASSET_HYPERLINK]: ({data}) =>{
+      [INLINES.ASSET_HYPERLINK]: ({data}:any) =>{
         return  (
           <a href={data.target.url} target="_blank" rel="noopener noreferrer nofollow">{data.target.title}</a>
         )
-      },[INLINES.EMBEDDED_ENTRY]: ({data}) =>{
+      },[INLINES.EMBEDDED_ENTRY]: ({data}:any) =>{
         let link;
         if(data.target.__typename == "ContentfulEvent")
           link = `/event/${data.target.title}`
