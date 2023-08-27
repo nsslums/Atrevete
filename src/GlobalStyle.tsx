@@ -228,6 +228,7 @@ const GlobalStyle = () => (
       .ReactModal__Overlay{
         z-index: 100;
         background-color: rgba(0,0,0,.5) !important;
+        backdrop-filter: blur(2px);
       }
 
       :root {

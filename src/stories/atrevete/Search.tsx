@@ -93,12 +93,16 @@ const resultfield = css({
   padding: "5px",
   borderRadius: 5,
   fontSize: "1em",
+  display: 'block',
 })
 
 const hover = css({
   "&:hover":{
     backgroundColor: "#efefef"
-  }
+  },
+  "&:focus-visible":{
+    backgroundColor: "#efefef"
+  },
 })
 
 export const Search = ({
@@ -207,7 +211,7 @@ export const Search = ({
                   {posts.length > 0 ? 
                   <div css={resultBlock}><p css={{fontSize: ".8em"}}>投稿</p>
                     {posts.map(post =>(
-                      <p key={post.title} css={[resultfield, hover]}><Link to={"/post/"+ post.title} css={{display: "block"}}>{post.title}</Link></p>
+                      <Link to={"/post/"+ post.title} css={[resultfield, hover]} key={post.title}>{post.title}</Link>
                     ))}
                   </div> 
                   :
@@ -215,7 +219,7 @@ export const Search = ({
                   {events.length > 0 ? 
                   <div css={resultBlock}><p css={{fontSize: ".8em"}}>イベント</p>
                     {events.map(event =>(
-                      <p key={event.title} css={[resultfield, hover]}><Link to={"/event/"+ event.title} css={{display: "block"}}>{event.title}</Link></p>
+                      <Link to={"/event/"+ event.title} css={[resultfield, hover]} key={event.title}>{event.title}</Link>
                     ))}
                   </div> 
                   :
