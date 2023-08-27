@@ -99,7 +99,7 @@ export const EventCard = ({
         {image ? 
           <GatsbyImage alt='' image={image.gatsbyImageData} css={image_css}/>
           : 
-          <StaticImage alt='eyeCatch' src='../../../images/noimage.png' css={image_css}/>
+          <StaticImage alt='eyeCatch' src='../../../../static/noimg.png' css={image_css}/>
         }
         <div css={status_css}>
           <span>{status}</span>
@@ -118,13 +118,15 @@ export const EventCard = ({
           }
         }}>
           <p css={{
-            marginBottom: "10px"
+            marginBottom: "10px",
+            textShadow: "0 0 5px black"
           }}>
             開催日 {date ? <span>{date}</span> : <span>未定</span>}
           </p>
           <p css={{
             fontWeight: "700",
             fontSize: "1.7em",
+            textShadow: "0 0 5px black"
           }}>
             {title}
           </p>

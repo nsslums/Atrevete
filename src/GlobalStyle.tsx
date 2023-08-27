@@ -1,8 +1,5 @@
 import { Global, css } from "@emotion/react";
-// import '@fontsource/zen-kaku-gothic-new/400.css'
-// import '@fontsource/zen-kaku-gothic-new/700.css'
-// import '@fontsource/zen-old-mincho/400.css'
-// import '@fontsource/zen-old-mincho/700.css'
+
 const GlobalStyle = () => (
   <Global
     styles={css`
@@ -184,7 +181,7 @@ const GlobalStyle = () => (
         color: white;
         font-display: swap;
         font-family: 'Zen Kaku Gothic New', sans-serif;
-        font-family: 'Zen Old Mincho', serif;
+        /* font-family: 'Zen Old Mincho', serif; */
         &:before {
           content: "";
           position: fixed;
@@ -231,6 +228,7 @@ const GlobalStyle = () => (
       .ReactModal__Overlay{
         z-index: 100;
         background-color: rgba(0,0,0,.5) !important;
+        backdrop-filter: blur(2px);
       }
 
       :root {

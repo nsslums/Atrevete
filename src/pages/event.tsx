@@ -31,7 +31,7 @@ const eventCss = css({
   margin: "1em 1em"
 })
 
-const EventPage: React.FC<PageProps> = ({ data }) => {
+const EventPage: React.FC<PageProps> = ({ data }:any) => {
 
   const events = data.allContentfulEvent.nodes
 
@@ -40,7 +40,7 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       <div css={rootCss}>
             <Head1 text="イベント"/>
             <div css={eventsCss}>
-              {events?.map(event =>(
+              {events?.map((event: { contentful_id: React.Key | null | undefined; title: string; date: string }) =>(
                 <div  key={event.contentful_id}  css={eventCss}>
                   <EventCard title={event.title} url={"/event/" + event.title} date={event.date}/>
                 </div>
@@ -76,7 +76,7 @@ query{
 
 export default EventPage
 
-export const Head: HeadFC =  ({data}) => (
-  <Html_Head title={data.site.siteMetadata.title + " | イベント"} type="article" url={data.site.siteMetadata.siteURL + "/event"}>
+export const Head: HeadFC =  ({data}:any) => (
+  <Html_Head title={data.site.siteMetadata.title + " | イベント"} type="article" url={data.site.siteMetadata.siteUrl + "/event"}>
   </Html_Head>
 )

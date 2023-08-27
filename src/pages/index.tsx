@@ -9,6 +9,9 @@ import { Head1 } from "../stories/atrevete/Head1";
 import { PostCard } from "../stories/atrevete/event/PostCard";
 import { Html_Head } from '../components/html-head'
 import facepaint from 'facepaint';
+import { motion } from 'framer-motion';
+import Logo from "../stories/atrevete/Logo";
+import logo from '../../static/Atrevete.svg';
 
 const breakpoints = [520, 767, 1100];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
@@ -27,9 +30,38 @@ const topPhrase = css({
   height: "100%",
   display: "flex",
   justifyContent: "center",
+  flexDirection: "column",
   alignItems: "center",
   zIndex: 10,
 })
+
+const topLogoWrap = css({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  zIndex: 10,
+})
+
+const topLogo = css(mq({
+  width: [250,300,600]
+}))
+
+const topPhraseText = css(mq({
+  maxWidth: "90%",
+  fontSize: ['20px', '30px', '50px'],
+  fontWeight: 700,
+  textAlign: "center",
+  textShadow: "0 0 10px rgba(255, 242, 210, var(--t1))",
+  display: 'inline-block',
+  background: 'linear-gradient(90deg, white 0%, white var(--p1), transparent var(--p2), transparent 100%)',
+  backgroundClip: 'text',
+  color: 'transparent',
+}))
 
 const typoWrap = css(mq({
   margin: ['90px 0', '120px 0', '240px 0'],
@@ -44,7 +76,10 @@ const typoStyle = css(mq({
   textAlign: 'center',
   fontSize: ['15px', '25px', '30px'],
   fontWeight: 700,
-  lineHeight: ['45px', '55px', '65px']
+  lineHeight: ['45px', '55px', '65px'],
+  background: 'linear-gradient(90deg, white 0%, white var(--p1), transparent var(--p2), transparent 100%)',
+  backgroundClip: 'text',
+  color: 'transparent',
 }))
 
 const categoryBlock = css({
@@ -57,7 +92,7 @@ const postCss = css({
   margin: "10px"
 })
 
-const IndexPage: React.FC<PageProps> = ({ data }) => {
+const IndexPage: React.FC<PageProps> = ({ data }:any) => {
 
   return (
     <Common>
@@ -67,19 +102,36 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
           height: "100vh",
           position: "relative",
           zIndex: 0,
-          backgroundColor: "#3e3e3e"
+          // backgroundColor: "#3e3e3e"
         }}>
-          <StaticImage src="../images/top.jpg" alt="TopImage" css={topImage} loading="eager"/>
+          {/* <StaticImage src="../images/top.jpg" alt="TopImage" css={topImage} loading="eager"/> */}
+          {/* --- top phrase --- */}
           <div css={topPhrase}>
-            <p css={{ fontSize: "40px", fontWeight: 700 }}>未来を創造する</p>
+            <img src={logo} css={topLogo}/>
+            <motion.p
+              initial={{'--p1': '-20%', '--p2': '0%'} as any}
+              whileInView={{'--p1': ['-20%','100%'], '--p2': ['0%','120%'], '--t1': [0,0,1] } as any}
+              viewport={{ once: true }}
+              transition={{ duration:1.5, delay: 1 }}
+              css={topPhraseText}
+            >Special Value for Special  Person</motion.p>
+          </div>
+
+          <div css={topLogoWrap}>
           </div>
         </div>
         <div css={typoWrap}>
-          <p css={typoStyle}>
+          <motion.p 
+            initial={{'--p1': '-20%', '--p2': '0%'} as any}
+            whileInView={{'--p1': ['-20%','100%'], '--p2': ['0%','120%']} as any}
+            viewport={{ once: true }}
+            transition={{ duration:1.5, delay: 1 }}
+            css={typoStyle}
+          >
             未来を切り開く若者に、最高の仲間とメンターを。<br />
             あなたの可能性を広げるプラットフォーム
-          </p>
-          <div css={{ marginTop: "5%" }}><GoldButton text="More" onClick={() => (async (e: any) => await navigate("/about"))} /></div>
+          </motion.p>
+          <div css={{ marginTop: "5%" }}><GoldButton text="詳しく見る" onClick={() => navigate("/about")} /></div>
         </div>
         <div css={categoryBlock}>
           <div css={{ textAlign: "center" }} ><Head1 text="イベント" /></div>
@@ -98,7 +150,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
             })}
           </div>
           <div css={{ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: 300 }}>
-            <GoldButton text="MORE" onClick={() => (async (e: any) => await navigate("/post"))} />
+            <GoldButton text="さらに表示" onClick={() => navigate("/post")} />
           </div>
         </div>
         <div css={categoryBlock}>
@@ -185,7 +237,7 @@ export const query = graphql`
 
 export default IndexPage
 
-export const Head: HeadFC = ({ data }) => (
-  <Html_Head type="website" url={data.site.siteMetadata.siteURL}>
+export const Head: HeadFC = ({ data }:any) => (
+  <Html_Head type="website" url={data.site.siteMetadata.siteUrl}>
   </Html_Head>
 )

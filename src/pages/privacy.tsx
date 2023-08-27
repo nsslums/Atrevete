@@ -51,7 +51,7 @@ const article = css({
 
 })
 
-const PrivacyPage: React.FC<PageProps> = ({data}) => {
+const PrivacyPage: React.FC<PageProps> = ({data}:any) => {
 
     return (
         <Common>
@@ -100,7 +100,7 @@ export const query = graphql`
   
 export default PrivacyPage
   
-export const Head: HeadFC = ({data}) => (
-    <Html_Head title={data.site.siteMetadata.title + " | プライバシー・ポリシー"} type="article" url={data.site.siteMetadata.siteURL + "/contact"}>
+export const Head: HeadFC = ({data}:any) => (
+    <Html_Head title={data.site.siteMetadata.title + " | プライバシー・ポリシー"} type="article" url={data.site.siteMetadata.siteUrl + "/privacy"}>
     </Html_Head>
 )

@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import facepaint from 'facepaint';
+import { motion } from 'framer-motion';
 
 const breakpoints = [520, 767, 1100];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
@@ -14,8 +15,9 @@ const Style = css(mq({
   padding: '15px 50px',
   minWidth: '250px',
   minHeight: '70',
-  fontSize: '32px',
-  color: 'black',
+  fontSize: '25px',
+  fontWeight:'700',
+  color: '#121212',
   background: 'white',
   backgroundImage: 'none',
   outline: 'none',
@@ -80,6 +82,14 @@ export const GoldButton = ({
   ...props 
 }: ButtonProps) => {
   return (
-    <button type='button' css={Style} {...props}>{text}</button>
+    <motion.button
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 } as any }
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 1 }}
+      type='button'
+      css={Style}
+      {...props}
+    >{text}</motion.button>
   )
 }

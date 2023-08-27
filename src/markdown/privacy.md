@@ -72,7 +72,6 @@ Atrevete（以下，「当団体」といいます。）は，本ウェブサイ
 |  |  |
 | --- | --- |
 | 団体名 | Atrevete |
-| 代表 |  |
 | Eメールアドレス | contact@atrvt2022.com |
 
 <p style="text-align: right">以上</p>

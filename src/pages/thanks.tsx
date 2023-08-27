@@ -61,7 +61,7 @@ query {
 
 export default ThanksPage
 
-export const Head: HeadFC = ({data}) => (
-  <Html_Head title={data.site.siteMetadata.title + " | Thanks"} type="article" url={data.site.siteMetadata.siteURL + "/thanks"}>
+export const Head: HeadFC = ({data}:any) => (
+  <Html_Head title={data.site.siteMetadata.title + " | Thanks"} type="article" url={data.site.siteMetadata.siteUrl + "/thanks"}>
   </Html_Head>
 )

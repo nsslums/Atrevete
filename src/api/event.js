@@ -70,7 +70,6 @@ export default async function sendMail(req, res){
       return res.status(422).json({status: "error", error: {code: 442, message: 'need file'}})
     }
 
-    console.log(req.body.event)
     const fname = req.files[0].originalname
     const buffer = req.files[0].buffer  // file
 
@@ -110,7 +109,7 @@ web: atrvt2022.com
       from: process.env.ADMIN_MAIL,
       to: process.env.ADMIN_MAIL,
       replyTo: req.body.email,
-      subject: `【新規】イベントお申し込み`,
+      subject: `【新規】イベントお申し込みのお知らせ`,
       text: plain,
       attachments:[{
         filename: fname,
@@ -121,7 +120,8 @@ web: atrvt2022.com
     const userData = {
       from: process.env.ADMIN_MAIL,
       to: req.body.email,
-      subject: `【新規】イベントお申し込み`,
+      replyTo: process.env.ADMIN_MAIL,
+      subject: `【Atrevete】イベントお申し込みのお知らせ`,
       text: plain,
       attachments:[{
         filename: fname,
