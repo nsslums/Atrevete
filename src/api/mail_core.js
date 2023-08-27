@@ -32,7 +32,8 @@ export class MailCore{
                 response.status = "success"
             })
             .catch(error => {
-                response.status = "error"
+                response.status = "error";
+                console.log(error);
             })
         return response
     }
@@ -43,12 +44,13 @@ export class MailCore{
         // 運営に送信
         await this.transporter.sendMail(adata)
             .then(result =>{
-                response.admin_sendedMail = true
+                response.admin_sendedMail = true;
                 response.status = "success"
             })
             .catch(error => {
-                response.admin_sendedMail = false
-                response.status = "error"
+                response.admin_sendedMail = false;
+                response.status = "error";
+                console.log(error);
             })
         if(response.status == "error"){
             return response
@@ -61,8 +63,9 @@ export class MailCore{
                 response.status = "success"
             })
             .catch(error => {
-                response.user_sendedMail = false
-                response.status = "error"
+                response.user_sendedMail = false;
+                response.status = "error";
+                console.log(error);
             })
 
         if(response.status == "error"){

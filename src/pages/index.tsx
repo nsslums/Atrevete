@@ -76,7 +76,10 @@ const typoStyle = css(mq({
   textAlign: 'center',
   fontSize: ['15px', '25px', '30px'],
   fontWeight: 700,
-  lineHeight: ['45px', '55px', '65px']
+  lineHeight: ['45px', '55px', '65px'],
+  background: 'linear-gradient(90deg, white 0%, white var(--p1), transparent var(--p2), transparent 100%)',
+  backgroundClip: 'text',
+  color: 'transparent',
 }))
 
 const categoryBlock = css({
@@ -89,7 +92,7 @@ const postCss = css({
   margin: "10px"
 })
 
-const IndexPage: React.FC<PageProps> = ({ data }) => {
+const IndexPage: React.FC<PageProps> = ({ data }:any) => {
 
   return (
     <Common>
@@ -118,10 +121,16 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
           </div>
         </div>
         <div css={typoWrap}>
-          <p css={typoStyle}>
+          <motion.p 
+            initial={{'--p1': '-20%', '--p2': '0%'} as any}
+            whileInView={{'--p1': ['-20%','100%'], '--p2': ['0%','120%']} as any}
+            viewport={{ once: true }}
+            transition={{ duration:1.5, delay: 1 }}
+            css={typoStyle}
+          >
             未来を切り開く若者に、最高の仲間とメンターを。<br />
             あなたの可能性を広げるプラットフォーム
-          </p>
+          </motion.p>
           <div css={{ marginTop: "5%" }}><GoldButton text="詳しく見る" onClick={() => navigate("/about")} /></div>
         </div>
         <div css={categoryBlock}>
@@ -228,7 +237,7 @@ export const query = graphql`
 
 export default IndexPage
 
-export const Head: HeadFC = ({ data }) => (
+export const Head: HeadFC = ({ data }:any) => (
   <Html_Head type="website" url={data.site.siteMetadata.siteUrl}>
   </Html_Head>
 )

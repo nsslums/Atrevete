@@ -64,19 +64,17 @@ web: atrvt2022.com
         from: process.env.ADMIN_MAIL,
         to: process.env.ADMIN_MAIL,
         replyTo: req.body.email,
-        subject: `【Atrevete】お問い合わせ受け付けのお知らせ`,
-        text: plain,
-    }
-
-
-    const userData = {
-        from: process.env.ADMIN_MAIL,
-        to: req.body.email,
         subject: `【新規】お問い合わせ受け付けのお知らせ`,
         text: plain,
     }
 
-    console.log(admData)
+    const userData = {
+        from: process.env.ADMIN_MAIL,
+        to: req.body.email,
+        replyTo: process.env.ADMIN_MAIL,
+        subject: `【Atrevete】お問い合わせ受け付けのお知らせ`,
+        text: plain,
+    }
 
     const mail = new MailCore()
     // const response = await mail.send_single(testData)
