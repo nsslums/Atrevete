@@ -1,6 +1,6 @@
 import * as React from "react"
 import { HeadFC, Link, PageProps, graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import { BLOCKS, INLINES } from "@contentful/rich-text-types"
 import { Common } from "../components/common"
 import { PostCard } from "../stories/atrevete/event/PostCard"
@@ -31,7 +31,7 @@ const postCss = css({
   margin: "10px"
 })
 
-const PostsPage: React.FC<PageProps> = ({ data }) => {
+const PostsPage: React.FC<PageProps> = ({ data }:any) => {
 
     const posts = data.allContentfulPost.nodes
 
@@ -40,7 +40,7 @@ const PostsPage: React.FC<PageProps> = ({ data }) => {
           <div css={rootCss}>
             <Head1 text="投稿"/>
             <div css={postsCss}>
-              {posts?.map(post => (
+              {posts?.map((post: { contentful_id: React.Key | null | undefined; eye_catch: { gatsbyImageData: IGatsbyImageData | undefined }; title: string }) => (
                 <div key={post.contentful_id} css={postCss}>
                   {post.eye_catch ? 
                   <PostCard title={post.title} image={post.eye_catch.gatsbyImageData}/>
@@ -81,7 +81,7 @@ query {
 `
 export default PostsPage
 
-export const Head: HeadFC = ({data}) => (
+export const Head: HeadFC = ({data}:any) => (
   <Html_Head title={data.site.siteMetadata.title + " | 投稿"} type="article" url={data.site.siteMetadata.siteUrl + "/post"}>
   </Html_Head>
 )
