@@ -47,7 +47,7 @@ const messageText = css({
 
 
 
-const Aboutage: React.FC<PageProps> = ({ data }) => {
+const Aboutage: React.FC<PageProps> = ({ data }:any) => {
 
     return (
         <Common>
@@ -152,7 +152,7 @@ export const query = graphql`
 
 export default Aboutage
 
-export const Head: HeadFC =  ({data}) => (
+export const Head: HeadFC =  ({data}:any) => (
     <Html_Head title={data.site.siteMetadata.title + " | About"} type="article" url={data.site.siteMetadata.siteUrl + "/about"}>
     </Html_Head>
   )
