@@ -89,7 +89,7 @@ const postCss = css({
   margin: "10px"
 })
 
-const IndexPage: React.FC<PageProps> = ({ data }) => {
+const IndexPage: React.FC<PageProps> = ({ data }:any) => {
 
   return (
     <Common>
@@ -228,7 +228,7 @@ export const query = graphql`
 
 export default IndexPage
 
-export const Head: HeadFC = ({ data }) => (
+export const Head: HeadFC = ({ data }:any) => (
   <Html_Head type="website" url={data.site.siteMetadata.siteUrl}>
   </Html_Head>
 )
