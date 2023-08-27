@@ -7,14 +7,19 @@ import { Html_Head } from '../components/html-head'
 import { StaticImage } from 'gatsby-plugin-image'
 import { AboutSection } from '../stories/atrevete/AboutSection'
 import { motion } from 'framer-motion';
+import facepaint from 'facepaint';
 
-const rootStyle = css({
+const breakpoints = [520, 767, 1100];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
+
+const rootStyle = css(mq({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-})
+    marginBottom: ['4em','6em','8em'],
+}))
 
 const Wrap = css({
     margin: '10em 0em',
@@ -34,16 +39,16 @@ const topText = css({
     textAlign: 'center',
 })
 
-const messageText = css({
-    marginBottom: '10em',
+const messageText = css(mq({
     fontWeight: 300,
     width: '90%',
     maxWidth: '660px',
     lineHeight: '40px',
-    fontSize: '20px',
+    fontSize: ['16px','18px','20px'],
     alignItems: 'center',
-    textAlign: 'center'
-})
+    textAlign: 'center',
+    wordBreak: 'keep-all',
+}))
 
 
 
@@ -67,11 +72,11 @@ const Aboutage: React.FC<PageProps> = ({ data }:any) => {
                 whileInView={{opacity: 1}}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5, duration: 2}}
-            >日本の課題でもある「若者の育成をどうしていくか」に着目し、<br/>
-            夢ある者、迷いながらも進もうとする者、何をしたらいいかわからない者をサポートします。<br/>
+            >日本の課題でもある「若者の育成をどうしていくか」
+            に着目し、夢ある者、迷いながらも進もうとする者、何をしたらいいかわからない者を　サポートします。<br/>
             迷いがある者は、迷いを確信へ。<br/>
-            何も決まってない者は、話を聞き少しでも視野を広げます。<br/>
-            希望に満ち溢れる若者が世の中の理不尽に振り回されず、自分自身が主体でいれるように全身全霊で「人×人」の場所を提供します。
+            希望に満ち溢れる若者が、世の中の理不尽に振り回されず<br/>
+            自分自身が主体でいれるよう、全身全霊で<br/>「人×人」の場所を提供します。
             </motion.p>
             </div>
 
@@ -106,7 +111,7 @@ const Aboutage: React.FC<PageProps> = ({ data }:any) => {
             text='
                 <p>私たちのロゴとして利用してる「Atrevete」という言葉は、スペイン語の「思い切って～をする」という動詞から来ています。<br>
                 「思い切って！」というメッセージを、ロゴに込めました。<br><br>
-                また、唯一アクセントのつくEを、優秀、信念のある学生という意味を持つEstudianteとかけています。
+                また、唯一アクセントのつくEを、特別という意味を持つEspecialとかけています。
                 </p>
             '
             image={data.img4.childImageSharp.gatsbyImageData}
