@@ -67,6 +67,7 @@ const FormPage: React.FC<PageProps> = (props) => {
         const formData = new FormData()
         formData.append("event", e.target.event.value,)
         formData.append("name", e.target.name.value)
+        formData.append("name_kana", e.target.name_kana.value)
         formData.append("birthday", e.target.birthday.value)
         formData.append("university", e.target.university.value)
         formData.append("email", e.target.email.value)
@@ -78,7 +79,7 @@ const FormPage: React.FC<PageProps> = (props) => {
         formData.append("twitter", e.target.twitter.value)
         formData.append("token", token)
 
-        formData.append("file", e.target.file.files[0])
+        // formData.append("file", e.target.file.files[0])
 
         const response = await window.fetch('/api/event', {
             method: 'POST',
@@ -108,16 +109,17 @@ const FormPage: React.FC<PageProps> = (props) => {
                 <form css={{ width: '85%', maxWidth: 600 }} action="/api/event" method="post" onSubmit={onSubmit}>
                     <Pulldown label="イベント" name="event" id="event" options={options} default_val={default_value} required={true} />
                     <Input label="お名前" type="text" name="name" id="name" required={true} />
-                    <Input label="誕生日" type="date" name="birthday" id="birthday" required={true} />
-                    <Input label="メール" type="email" name="email" id="email" required={true} />
-                    <TextArea label="自己PR" name="pr" id="pr" required={true} />
-                    <div css={css({
+                    <Input label="フリガナ" type="text" name="name_kana" id="name_kana" required={true} />
+                    <Input label="生年月日" type="date" name="birthday" id="birthday" required={true} />
+                    <Input label="メールアドレス" type="email" name="email" id="email" required={true} />
+                    <TextArea label="自己PR、参加目的など" name="pr" id="pr" required={true} />
+                    {/* <div css={css({
                         marginTop: 30,
                     })}>
                         <UploadFile required={true} />
-                    </div>
+                    </div> */}
                     <Input label="大学名" type="text" name="university" id="university" />
-                    <Certifications label="資格" name="certifications_hiddn" id="certifications" />
+                    <Certifications label="資格" name="certifications_hiddn" id="certifications" required={false} />
                     <TextArea label="経歴・学外活動" name="career" id="career" />
                     <Input label="Instagram ID" type="text" name="instagram" id="instagram" />
                     <Input label="TikTok ID" type="text" name="tiktok" id="tiktok" />
@@ -166,7 +168,7 @@ export const query = graphql`
 
 export default FormPage
 
-export const Head: HeadFC = ({ data }) => (
+export const Head: HeadFC = ({ data }:any) => (
     <Html_Head title={data.site.siteMetadata.title + " | イベント応募"} type="article" url={data.site.siteMetadata.siteUrl + "/eventForm"}>
     </Html_Head>
 )

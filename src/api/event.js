@@ -54,6 +54,9 @@ export default async function sendMail(req, res){
     if(!req.body.name){
       return res.status(422).json({status: "error", error: {code: 442, message: 'need name'}})
     }
+    if(!req.body.name_kana){
+      return res.status(422).json({status: "error", error: {code: 442, message: 'need name_kana'}})
+    }
     if(!req.body.birthday){
       return res.status(422).json({status: "error", error: {code: 442, message: 'need birthday'}})
     }
@@ -66,12 +69,12 @@ export default async function sendMail(req, res){
     if(!req.body.pr){
       return res.status(422).json({status: "error", error: {code: 442, message: 'need pr'}})
     }
-    if(!req.files){
-      return res.status(422).json({status: "error", error: {code: 442, message: 'need file'}})
-    }
+    // if(!req.files){
+    //   return res.status(422).json({status: "error", error: {code: 442, message: 'need file'}})
+    // }
 
-    const fname = req.files[0].originalname
-    const buffer = req.files[0].buffer  // file
+    // const fname = req.files[0].originalname
+    // const buffer = req.files[0].buffer  // file
 
     const certifications_enc = JSON.parse(req.body.certifications)
     let certifications = ''
@@ -83,11 +86,12 @@ const plain = `※このメールはシステムからの自動送信です
 イベントにご応募頂きありがとうございます。
 以下の内容で受け付けいたしました。
 
-詳細は改めてご連絡させていただきます。
+選考結果、および詳細は改めてご連絡させていただきます。
 
 ━━━━━━━━━━━━━━━ ご入力内容 ━━━━━━━━━━━━━━
 イベント名: ${req.body.event}
 お名前: ${req.body.name}
+フリガナ: ${req.body.name_kana}
 誕生日: ${req.body.birthday}
 大学: ${req.body.university}
 メールアドレス: ${req.body.email}
@@ -111,10 +115,10 @@ web: atrvt2022.com
       replyTo: req.body.email,
       subject: `【新規】イベントお申し込みのお知らせ`,
       text: plain,
-      attachments:[{
-        filename: fname,
-        content: buffer,
-      }]
+      // attachments:[{
+      //   filename: fname,
+      //   content: buffer,
+      // }]
     }
 
     const userData = {
@@ -123,10 +127,10 @@ web: atrvt2022.com
       replyTo: process.env.ADMIN_MAIL,
       subject: `【Atrevete】イベントお申し込みのお知らせ`,
       text: plain,
-      attachments:[{
-        filename: fname,
-        content: buffer,
-      }]
+      // attachments:[{
+      //   filename: fname,
+      //   content: buffer,
+      // }]
     }
 
     const mail = new MailCore()
