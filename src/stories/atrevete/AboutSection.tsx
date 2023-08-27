@@ -17,14 +17,14 @@ interface AboutSectionProps {
   fontSize?: string;
 }
 
-const Style = css({
+const Style = css(mq({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent:'center',
-  marginBottom: '10em',
+  marginBottom: ['4em','6em','8em'],
   width: '100%',
-})
+}))
 
 const WrapStyle = css(mq({
   display: 'flex',
@@ -52,6 +52,7 @@ const oneWordStyle = css(mq({
   textAlign: 'center',
   fontWeight: '500',
   fontSize:['25px','30px','35px','40px'],
+  wordBreak: 'keep-all',
 }))
 const oneWordChildStyle = css({
   background: 'linear-gradient(120deg, white 0%, white var(--p1), #a18153 var(--p1), #a18153 var(--p2), transparent var(--p2), transparent 100%)',
@@ -67,6 +68,7 @@ const typoStyle = css(mq({
   textAlign: 'center',
   height: 'fit-content',
   fontSize: ['16px','18px','20px'],
+  wordBreak: 'keep-all',
 }))
 const typoChildStyle = css({
   width: 'fit-content',
@@ -106,7 +108,7 @@ export const AboutSection = ({
           >{oneWord}</motion.p>
         </motion.div>
         :
-        <div css={{margin: '70px'}}></div>
+        <div css={mq({margin: [20, 30, 40]})}></div>
       }
       <div css={[WrapStyle,{flexDirection: `${reverse}`},]}>
         <GatsbyImage css={imageStyle} alt='image' image={image}/>
