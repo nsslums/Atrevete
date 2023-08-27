@@ -99,6 +99,18 @@ const Aboutage: React.FC<PageProps> = ({ data }) => {
             '
             image={data.img3.childImageSharp.gatsbyImageData}
             reverse='row-reverse'></AboutSection>
+            <AboutSection 
+            title='オリジン'
+            bgTitle='Origin'
+            oneWord='ロゴに込めた想い。'
+            text='
+                <p>私たちのロゴとして利用してる「Atrevete」という言葉は、スペイン語の「思い切って～をする」という動詞から来ています。<br>
+                「思い切って！」というメッセージを、ロゴに込めました。<br><br>
+                また、唯一アクセントのつくEを、優秀、信念のある学生という意味を持つEstudianteとかけています。
+                </p>
+            '
+            image={data.img4.childImageSharp.gatsbyImageData}
+            ></AboutSection>
         </Common>
     )
 }
@@ -126,6 +138,11 @@ export const query = graphql`
         }
     }
     img3: file(relativePath: {eq: "top.jpg"}) {
+        childImageSharp {
+          gatsbyImageData(formats: WEBP, placeholder: BLURRED)
+        }
+    }
+    img4: file(relativePath: {eq: "origin.png"}) {
         childImageSharp {
           gatsbyImageData(formats: WEBP, placeholder: BLURRED)
         }
