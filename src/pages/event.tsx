@@ -7,6 +7,7 @@ import { EventCard } from "../stories/atrevete/event/EventCard"
 import { css } from "@emotion/react"
 import { Head1 } from "../stories/atrevete/Head1"
 import { Html_Head } from "../components/html-head"
+import { GetSlug } from "../api/getSlug"
 
 const rootCss = css({
   display: "flex",
@@ -40,9 +41,9 @@ const EventPage: React.FC<PageProps> = ({ data }:any) => {
       <div css={rootCss}>
             <Head1 text="イベント"/>
             <div css={eventsCss}>
-              {events?.map((event: { contentful_id: React.Key | null | undefined; title: string; date: string }) =>(
+              {events?.map((event: { contentful_id: React.Key | null | undefined; title: string; date: string; slug: string }) =>(
                 <div  key={event.contentful_id}  css={eventCss}>
-                  <EventCard title={event.title} url={"/event/" + event.title} date={event.date}/>
+                  <EventCard title={event.title} url={"/event/" + GetSlug(event)} date={event.date}/>
                 </div>
               ))}
             </div>
@@ -69,6 +70,7 @@ query{
         date(formatString: "yyyy/M/D")
         title
         contentful_id
+        slug
       }
     }
 }

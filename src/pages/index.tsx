@@ -151,9 +151,9 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
           <div css={{ marginTop: "5em", display: "flex", flexDirection: "row", flexWrap: 'wrap', justifyContent: "center" }}>
             {data.allContentfulPost.nodes?.map((post: any) => {
               return post.eye_catch ?
-                <div css={postCss} key={post.contentful_id}><PostCard title={post.title} image={post.eye_catch.gatsbyImageData} /></div>
+                <div css={postCss} key={post.contentful_id}><PostCard node={post} image={post.eye_catch.gatsbyImageData} /></div>
                 :
-                <div css={postCss} key={post.contentful_id}><PostCard title={post.title} /></div>
+                <div css={postCss} key={post.contentful_id}><PostCard node={post} /></div>
             })}
           </div>
           <div css={{ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: 300 }}>
@@ -236,6 +236,7 @@ export const query = graphql`
       nodes {
         contentful_id
         title
+        slug
         eye_catch{
           gatsbyImageData
         }
