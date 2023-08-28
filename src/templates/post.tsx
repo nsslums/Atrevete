@@ -46,8 +46,14 @@ const contentStyle = css({
   'ul, li': {
       marginLeft: '1.2em',
       marginTop: '0.5em',
-  }
-
+  },
+  'a:hover': {
+    textDecoration: 'underline',
+  },
+  'iframe': {
+    width: '100%',
+    aspectRatio: "16 / 9",
+  }  
 })
 
 

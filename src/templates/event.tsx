@@ -68,6 +68,9 @@ const textStyle = css({
   'ul, li': {
       marginLeft: '1.2em',
       marginTop: '0.5em',
+  },
+  'a:hover': {
+    textDecoration: 'underline',
   }
 
 })
