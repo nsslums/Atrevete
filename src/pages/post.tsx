@@ -40,12 +40,12 @@ const PostsPage: React.FC<PageProps> = ({ data }:any) => {
           <div css={rootCss}>
             <Head1 text="投稿"/>
             <div css={postsCss}>
-              {posts?.map((post: { contentful_id: React.Key | null | undefined; eye_catch: { gatsbyImageData: IGatsbyImageData | undefined }; title: string }) => (
+              {posts?.map((post: { contentful_id: React.Key | null | undefined; eye_catch: { gatsbyImageData: IGatsbyImageData | undefined }; title: string; slug: string }) => (
                 <div key={post.contentful_id} css={postCss}>
                   {post.eye_catch ? 
-                  <PostCard title={post.title} image={post.eye_catch.gatsbyImageData}/>
+                  <PostCard node={post} image={post.eye_catch.gatsbyImageData}/>
                   :  
-                  <PostCard title={post.title}/>
+                  <PostCard node={post}/>
                   }
                 </div>
               ))}

@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'gatsby-link';
 import { GatsbyImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
 import { type } from 'os';
+import { GetSlug } from '../../../api/getSlug';
 
 const rootCss = css({
     position: "relative",
@@ -59,7 +60,7 @@ const textCss = css({
 })
 
 interface EventCardProps {
-  title: string;
+  node: any;
   image?: IGatsbyImageData,
   type?: 'post' | 'event';
 }
@@ -68,13 +69,13 @@ interface EventCardProps {
  * Primary UI component for user interaction
  */
 export const PostCard = ({
-  title,
+  node,
   image,
   type = 'post',
 }: EventCardProps) => {
   return (
     <div css={rootCss}>
-      <Link to={`/${type}/`+ title} css={linkCss} draggable={false}>
+      <Link to={`/${type}/`+ GetSlug(node)} css={linkCss} draggable={false}>
         <div css={{height:"100%"}}>
             {image ? 
               <GatsbyImage css={imageCss} image={image} alt='eyecatch'/>
@@ -83,7 +84,7 @@ export const PostCard = ({
             }
         </div>
         <div css={textCss}>
-            <p css={{fontWeight: '700'}}>{title}</p>
+            <p css={{fontWeight: '700'}}>{node.title}</p>
         </div>
       </Link>
 

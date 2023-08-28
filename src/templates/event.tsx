@@ -45,6 +45,7 @@ const textStyle = css({
   letterSpacing: '0.1em',
   fontSize: '1.1em',
   fontFamily: "'Zen Kaku Gothic New', sans-serif",
+  wordBreak: 'keep-all',
   'h1': {
       fontSize: '30px',
   },
@@ -176,9 +177,9 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
               }}>
               {data.contentfulEvent.post?.map(post => (
                 post.eye_catch ? 
-                <div key={post.contentful_id}><PostCard title={post.title} image={post.eye_catch.gatsbyImageData} /></div>
+                <div key={post.contentful_id}><PostCard node={post} image={post.eye_catch.gatsbyImageData} /></div>
                 :
-                <div key={post.contentful_id}><PostCard title={post.title} /></div>
+                <div key={post.contentful_id}><PostCard node={post} /></div>
               ))}
             </div>
           </div>
@@ -209,6 +210,7 @@ export const query = graphql`
       end_reception(formatString: "yyyy/M/D")
       start_reception(formatString: "yyyy/M/D")
       date(formatString: "yyyy/M/D")
+      slug
       overview {
         raw
         references {

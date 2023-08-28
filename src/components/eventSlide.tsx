@@ -8,6 +8,7 @@ import { css } from "@emotion/react";
 import { EventCard } from "../stories/atrevete/event/EventCard";
 import {FaChevronLeft} from "@react-icons/all-files/fa/FaChevronLeft"
 import {FaChevronRight} from "@react-icons/all-files/fa/FaChevronRight"
+import { GetSlug } from "../api/getSlug";
 
 const arrow_css = css({
     position: "absolute",
@@ -83,6 +84,7 @@ export const Events: React.FC = () => {
                     title
                     contentful_id,
                     date,
+                    slug
                     eye_catch {
                         gatsbyImageData
                     }
@@ -135,7 +137,7 @@ export const Events: React.FC = () => {
          <div>
              <Slider {...settings} css={sleeveCurtain}>
                  {result.allContentfulEvent.nodes?.map((event: any) => (
-                    <div key={event.contentful_id}><EventCard title={event.title} url={"/event/" + event.title} date={event.date} image={event.eye_catch}/></div>
+                    <div key={event.contentful_id}><EventCard title={event.title} url={"/event/" + GetSlug(event)} date={event.date} image={event.eye_catch}/></div>
                  ))}
              </Slider>
          </div>
