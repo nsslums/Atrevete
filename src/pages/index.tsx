@@ -94,6 +94,11 @@ const postCss = css({
   margin: "10px"
 })
 
+const innerCss = css(mq({
+  marginTop: ['1em', '2em', '3em'],
+  display: "flex", flexDirection: "row", flexWrap: 'wrap', justifyContent: "center"
+}))
+
 const IndexPage: React.FC<PageProps> = ({ data }:any) => {
 
   return (
@@ -125,7 +130,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
         {/* --- event --- */}
         <div css={categoryBlock}>
           <div css={{ textAlign: "center" }} ><Head1 text="Event" /></div>
-          <div css={{ marginTop: "5em" }}>
+          <div css={innerCss}>
             <Events />
           </div>
         </div>
@@ -148,7 +153,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
         {/* --- news --- */}
         <div css={categoryBlock}>
           <div css={{ textAlign: "center" }}><Head1 text="News" /></div>
-          <div css={{ marginTop: "5em", display: "flex", flexDirection: "row", flexWrap: 'wrap', justifyContent: "center" }}>
+          <div css={innerCss}>
             {data.allContentfulPost.nodes?.map((post: any) => {
               return post.eye_catch ?
                 <div css={postCss} key={post.contentful_id}><PostCard node={post} image={post.eye_catch.gatsbyImageData} /></div>
@@ -156,7 +161,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
                 <div css={postCss} key={post.contentful_id}><PostCard node={post} /></div>
             })}
           </div>
-          <div css={{ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: 300 }}>
+          <div css={mq({ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: [100,200,300]})}>
             <GoldButton text="さらに表示" onClick={() => navigate("/post")} />
           </div>
         </div>
@@ -166,17 +171,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
           <div css={{ textAlign: "center" }}>
             <Head1 text="Official Partner" />
           </div>
-          <div
-            css={{
-              maxWidth: 1200,
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
-              alignItems: "center",
-              margin: "auto",
-              marginTop: "5em",
-            }}
-          >
+          <div css={innerCss}>
             {data.allContentfulSponsor.nodes?.map((sponsor: any) => (
               <div
                 key={sponsor.contentful_id}
