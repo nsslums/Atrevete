@@ -12,6 +12,7 @@ import { Connection } from "../stories/atrevete/event/Connection"
 import { Html_Head } from "../components/html-head"
 import facepaint from 'facepaint';
 import { PostCard } from "../stories/atrevete/event/PostCard"
+import { GetSlug } from "../api/getSlug"
 
 const breakpoints = [520, 767, 1100];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
@@ -45,6 +46,7 @@ const textStyle = css({
   letterSpacing: '0.1em',
   fontSize: '1.1em',
   fontFamily: "'Zen Kaku Gothic New', sans-serif",
+  wordBreak: 'normal',
   'h1': {
       fontSize: '30px',
   },
@@ -66,6 +68,9 @@ const textStyle = css({
   'ul, li': {
       marginLeft: '1.2em',
       marginTop: '0.5em',
+  },
+  'a:hover': {
+    textDecoration: 'underline',
   }
 
 })
@@ -84,9 +89,9 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       [BLOCKS.EMBEDDED_ENTRY]: ({ data }) => {
         let link;
         if (data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if (data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return (
@@ -98,9 +103,9 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       [INLINES.ENTRY_HYPERLINK]: ({ data }) => {
         let link;
         if (data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if (data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return (
@@ -116,9 +121,9 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       }, [INLINES.EMBEDDED_ENTRY]: ({ data }) => {
         let link;
         if (data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if (data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return (
@@ -176,9 +181,9 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
               }}>
               {data.contentfulEvent.post?.map(post => (
                 post.eye_catch ? 
-                <div key={post.contentful_id}><PostCard title={post.title} image={post.eye_catch.gatsbyImageData} /></div>
+                <div key={post.contentful_id}><PostCard node={post} image={post.eye_catch.gatsbyImageData} /></div>
                 :
-                <div key={post.contentful_id}><PostCard title={post.title} /></div>
+                <div key={post.contentful_id}><PostCard node={post} /></div>
               ))}
             </div>
           </div>
@@ -209,6 +214,7 @@ export const query = graphql`
       end_reception(formatString: "yyyy/M/D")
       start_reception(formatString: "yyyy/M/D")
       date(formatString: "yyyy/M/D")
+      slug
       overview {
         raw
         references {
@@ -223,11 +229,13 @@ export const query = graphql`
             contentful_id
             __typename
             title
+            slug
           }
           ... on ContentfulPost {
             contentful_id
             __typename
             title
+            slug
           }
         }
       }
@@ -245,17 +253,20 @@ export const query = graphql`
             contentful_id
             __typename
             title
+            slug
           }
           ... on ContentfulPost {
             contentful_id
             __typename
             title
+            slug
           }
         }
       }
       post {
         contentful_id
         title
+        slug
         eye_catch{
           gatsbyImageData
         }

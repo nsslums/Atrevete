@@ -61,10 +61,11 @@ const topPhraseText = css(mq({
   background: 'linear-gradient(90deg, white 0%, white var(--p1), transparent var(--p2), transparent 100%)',
   backgroundClip: 'text',
   color: 'transparent',
+  wordBreak: 'normal',
 }))
 
 const typoWrap = css(mq({
-  margin: ['90px 0', '120px 0', '240px 0'],
+  margin: ['3em 0', '5em 0', '7em 0'],
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -80,11 +81,12 @@ const typoStyle = css(mq({
   background: 'linear-gradient(90deg, white 0%, white var(--p1), transparent var(--p2), transparent 100%)',
   backgroundClip: 'text',
   color: 'transparent',
+  wordBreak: 'normal',
 }))
 
 const categoryBlock = css({
   width: "100%",
-  minHeight: "60vh",
+  minHeight: "40vh",
   position: "relative"
 })
 
@@ -105,8 +107,10 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
           // backgroundColor: "#3e3e3e"
         }}>
           {/* <StaticImage src="../images/top.jpg" alt="TopImage" css={topImage} loading="eager"/> */}
+          
           {/* --- top phrase --- */}
           <div css={topPhrase}>
+            {/* --- top logo --- */}
             <img src={logo} css={topLogo}/>
             <motion.p
               initial={{'--p1': '-20%', '--p2': '0%'} as any}
@@ -116,10 +120,17 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
               css={topPhraseText}
             >Special Value for Special  Person</motion.p>
           </div>
-
-          <div css={topLogoWrap}>
+        </div>
+        
+        {/* --- event --- */}
+        <div css={categoryBlock}>
+          <div css={{ textAlign: "center" }} ><Head1 text="Event" /></div>
+          <div css={{ marginTop: "5em" }}>
+            <Events />
           </div>
         </div>
+        
+        {/* --- message --- */}
         <div css={typoWrap}>
           <motion.p 
             initial={{'--p1': '-20%', '--p2': '0%'} as any}
@@ -133,29 +144,27 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
           </motion.p>
           <div css={{ marginTop: "5%" }}><GoldButton text="詳しく見る" onClick={() => navigate("/about")} /></div>
         </div>
+
+        {/* --- news --- */}
         <div css={categoryBlock}>
-          <div css={{ textAlign: "center" }} ><Head1 text="イベント" /></div>
-          <div css={{ marginTop: "5em" }}>
-            <Events />
-          </div>
-        </div>
-        <div css={categoryBlock}>
-          <div css={{ textAlign: "center" }}><Head1 text="ニュース" /></div>
+          <div css={{ textAlign: "center" }}><Head1 text="News" /></div>
           <div css={{ marginTop: "5em", display: "flex", flexDirection: "row", flexWrap: 'wrap', justifyContent: "center" }}>
             {data.allContentfulPost.nodes?.map((post: any) => {
               return post.eye_catch ?
-                <div css={postCss} key={post.contentful_id}><PostCard title={post.title} image={post.eye_catch.gatsbyImageData} /></div>
+                <div css={postCss} key={post.contentful_id}><PostCard node={post} image={post.eye_catch.gatsbyImageData} /></div>
                 :
-                <div css={postCss} key={post.contentful_id}><PostCard title={post.title} /></div>
+                <div css={postCss} key={post.contentful_id}><PostCard node={post} /></div>
             })}
           </div>
           <div css={{ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: 300 }}>
             <GoldButton text="さらに表示" onClick={() => navigate("/post")} />
           </div>
         </div>
+
+        {/* --- official partner --- */}
         <div css={categoryBlock}>
           <div css={{ textAlign: "center" }}>
-            <Head1 text="協賛企業" />
+            <Head1 text="Official Partner" />
           </div>
           <div
             css={{
@@ -227,6 +236,7 @@ export const query = graphql`
       nodes {
         contentful_id
         title
+        slug
         eye_catch{
           gatsbyImageData
         }

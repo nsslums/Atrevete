@@ -1,5 +1,13 @@
 const path = require(`path`)
 
+const GetSlug = (node) => {
+    if (node.slug != null) {
+        return node.slug
+    } else {
+        return node.title
+    }
+}
+
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
     const PostTemplate = path.resolve(`src/templates/post.tsx`)
@@ -10,12 +18,14 @@ exports.createPages = async ({ graphql, actions }) => {
                 nodes {
                     title
                     contentful_id
+                    slug
                 }
             }
             allContentfulEvent(filter: {hidden: {ne: true}}) {
                 nodes {
                     title
                     contentful_id
+                    slug
                 }
             }
         }
@@ -23,7 +33,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     result.data.allContentfulPost.nodes.forEach(node => {
       createPage({
-            path: `post/${node.title}`,
+            path: `post/${GetSlug(node)}`,
             component: PostTemplate,
             context: {
                 contentful_id: node.contentful_id,
@@ -33,7 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     result.data.allContentfulEvent.nodes.forEach(node => {
         createPage({
-            path: `event/${node.title}`,
+            path: `event/${GetSlug(node)}`,
             component: EventTemplate,
             context: {
                 contentful_id: node.contentful_id,

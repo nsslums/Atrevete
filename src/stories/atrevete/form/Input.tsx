@@ -8,6 +8,7 @@ interface inputProps {
   id: string,
   required?: boolean,
   disabled?: boolean,
+  pattern?: string,
 }
 
 const rootCss = css({
@@ -64,6 +65,8 @@ export const Input = ({
     id,
     required = false,
     disabled = false,
+    pattern,
+    ...props
 }: inputProps) => {
   const [value, setValue] = React.useState("")
   const [isSelect, setIsSelect] = React.useState(false)
@@ -100,9 +103,9 @@ export const Input = ({
     <div css={rootCss}>
       {label ? <label htmlFor={id} css={labelStyle}>{label}</label> : false}
       {type == 'submit' ? 
-        <input type="submit" disabled={disabled} css={submitStyle}/>
+        <input type="submit" disabled={disabled} css={submitStyle} pattern={pattern} {...props}/>
         :  
-        <input type={type} name={name} id={id} value={value} required={required} css={InputStyle} onBlur={onBlurHandel} onSelect={onSelectHandel} onChange={changeHandle} autoComplete="off"/>
+        <input type={type} name={name} id={id} value={value} required={required} css={InputStyle} onBlur={onBlurHandel} onSelect={onSelectHandel} onChange={changeHandle} autoComplete="off" pattern={pattern} {...props}/>
       }
     </div>
   )

@@ -10,6 +10,7 @@ import { Connection } from "../stories/atrevete/event/Connection"
 import { Head2 } from "../stories/atrevete/Head2"
 import { Html_Head } from "../components/html-head"
 import { PostCard } from "../stories/atrevete/event/PostCard"
+import { GetSlug } from "../api/getSlug"
 
 const block = css({
   position: "relative",
@@ -46,8 +47,14 @@ const contentStyle = css({
   'ul, li': {
       marginLeft: '1.2em',
       marginTop: '0.5em',
-  }
-
+  },
+  'a:hover': {
+    textDecoration: 'underline',
+  },
+  'iframe': {
+    width: '100%',
+    aspectRatio: "16 / 9",
+  }  
 })
 
 
@@ -76,9 +83,9 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
       [BLOCKS.EMBEDDED_ENTRY]: ({data}:any) =>{
         let link;
         if(data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if(data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return  (
@@ -90,9 +97,9 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
       [INLINES.ENTRY_HYPERLINK]: ({data}:any) =>{
         let link;
         if(data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if(data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return  (
@@ -108,9 +115,9 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
       },[INLINES.EMBEDDED_ENTRY]: ({data}:any) =>{
         let link;
         if(data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if(data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return  (
@@ -136,9 +143,9 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
           <div>
               {data.contentfulPost.related_event?.map(event => (
                 event.eye_catch ? 
-                <div key={event.contentful_id}><PostCard type="event" title={event.title} image={event.eye_catch.gatsbyImageData} /></div>
+                <div key={event.contentful_id}><PostCard type="event" node={event} image={event.eye_catch.gatsbyImageData} /></div>
                 :
-                <div key={event.contentful_id}><PostCard type="event" title={event.title} /></div>
+                <div key={event.contentful_id}><PostCard type="event" node={event} /></div>
               ))}
           </div>
         </>
@@ -166,6 +173,7 @@ export const query = graphql`
         hidden: {ne: true}
       ) {
         title
+        slug
         createdAt(formatString: "yyyy/MM/DD")
         content {
           raw
@@ -181,11 +189,13 @@ export const query = graphql`
               contentful_id
               __typename
               title
+              slug
             }
             ... on ContentfulPost {
               contentful_id
               __typename
               title
+              slug
             }
           }
         }
