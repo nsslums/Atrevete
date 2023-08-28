@@ -61,7 +61,7 @@ const topPhraseText = css(mq({
   background: 'linear-gradient(90deg, white 0%, white var(--p1), transparent var(--p2), transparent 100%)',
   backgroundClip: 'text',
   color: 'transparent',
-  wordBreak: 'keep-all',
+  wordBreak: 'normal',
 }))
 
 const typoWrap = css(mq({
@@ -81,7 +81,7 @@ const typoStyle = css(mq({
   background: 'linear-gradient(90deg, white 0%, white var(--p1), transparent var(--p2), transparent 100%)',
   backgroundClip: 'text',
   color: 'transparent',
-  wordBreak: 'keep-all',
+  wordBreak: 'normal',
 }))
 
 const categoryBlock = css({

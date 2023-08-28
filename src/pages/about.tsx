@@ -47,7 +47,7 @@ const messageText = css(mq({
     fontSize: ['16px','18px','20px'],
     alignItems: 'center',
     textAlign: 'center',
-    wordBreak: 'keep-all',
+    wordBreak: 'normal',
 }))
 
 
@@ -73,9 +73,10 @@ const Aboutage: React.FC<PageProps> = ({ data }:any) => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.5, duration: 2}}
             >日本の課題でもある「若者の育成をどうしていくか」
-            に着目し、夢ある者、迷いながらも進もうとする者、何をしたらいいかわからない者を　サポートします。<br/>
+            に着目し、夢ある者、迷いながらも進もうとする者、何をしたらいいかわからない者をサポートします。<br/>
             迷いがある者は、迷いを確信へ。<br/>
-            希望に満ち溢れる若者が、世の中の理不尽に振り回されず<br/>
+            希望に満ち溢れる若者が<br/>
+            世の中の理不尽に振り回されず<br/>
             自分自身が主体でいれるよう、全身全霊で<br/>「人×人」の場所を提供します。
             </motion.p>
             </div>
