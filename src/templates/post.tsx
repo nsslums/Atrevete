@@ -10,6 +10,7 @@ import { Connection } from "../stories/atrevete/event/Connection"
 import { Head2 } from "../stories/atrevete/Head2"
 import { Html_Head } from "../components/html-head"
 import { PostCard } from "../stories/atrevete/event/PostCard"
+import { GetSlug } from "../api/getSlug"
 
 const block = css({
   position: "relative",
