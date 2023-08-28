@@ -23,7 +23,7 @@ const Wrap = css({
   justifyContent: 'center',
 })
 
-const block = css({
+const block = css(mq({
   position: "relative",
   display: "flex",
   maxWidth: '900px',
@@ -31,8 +31,8 @@ const block = css({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  margin: "3em auto"
-})
+  margin: ["0 auto", "1.2em auto", "3em auto"]
+}))
 
 const horizon = css(mq({
   display: 'flex',
@@ -162,16 +162,16 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
           <div css={textStyle}>{!data.contentfulEvent.requirements ? false : renderRichText(data.contentfulEvent.requirements, options)}</div>
         </div>
         <div css={horizon}>
-          <div css={[block, {width: "50%"}]}>
+          <div css={[block, {width: "100%"}]}>
             <Head2 text="場所" />
             <p css={textStyle}>該当者にメールにてご連絡いたします。</p>
           </div>
-          <div css={[block, {width: "50%"}]}>
+          <div css={[block, {width: "100%"}]}>
             <Head2 text="日時" />
             {date ? <p css={textStyle}>{date}</p> : <p css={textStyle}>未定</p>}
           </div>
         </div>
-        <div css={[block]}>
+        <div css={[block,{margin: "1.4em auto"}]}>
           <EventFormCard start_date={start_reception} end_date={end_reception} onClick={navigation}/>
         </div>
         {data.contentfulEvent.post ? 
