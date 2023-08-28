@@ -12,6 +12,7 @@ import facepaint from 'facepaint';
 import { motion } from 'framer-motion';
 import Logo from "../stories/atrevete/Logo";
 import logo from '../../static/Atrevete.svg';
+import PeopleProfile from "../stories/atrevete/peopleProfile";
 
 const breakpoints = [520, 767, 1100];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
@@ -268,6 +269,19 @@ export const query = graphql`
         title
         slug
         eye_catch{
+          gatsbyImageData
+        }
+      }
+    }
+    allContentfulPeople {
+      nodes {
+        contentful_id
+        name
+        description {
+          raw
+        }
+        profileType
+        profileImg {
           gatsbyImageData
         }
       }
