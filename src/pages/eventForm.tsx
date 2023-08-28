@@ -117,19 +117,19 @@ const FormPage: React.FC<PageProps> = (props) => {
                 <Head1 text="イベント申込" />
                 <form css={{ width: '85%', maxWidth: 600 }} action="/api/event" method="post" onSubmit={onSubmit}>
                     <Pulldown label="イベント" name="event" id="event" options={options} default_val={default_value} required={true} />
-                    <Input label="お名前" type="text" name="name" id="name" required={true} />
-                    <Input label="フリガナ" type="text" name="name_kana" id="name_kana" required={true} pattern={pattern.kana}/>
+                    <Input label="名前" type="text" name="name" id="name" required={true} />
+                    <Input label="カタカナ" type="text" name="name_kana" id="name_kana" required={true} pattern={pattern.kana}/>
                     <Input label="生年月日" type="date" name="birthday" id="birthday" required={true} />
                     <Input label="メールアドレス" type="email" name="email" id="email" required={true} pattern={pattern.mail}/>
+                    <Input label="大学名" type="text" name="university" id="university" />
+                    <TextArea label="経歴・学外活動" name="career" id="career" />
+                    <Certifications label="資格" name="certifications_hiddn" id="certifications" required={false} />
                     <TextArea label="自己PR、参加目的など" name="pr" id="pr" required={true} />
                     {/* <div css={css({
                         marginTop: 30,
                     })}>
                         <UploadFile required={true} />
                     </div> */}
-                    <Input label="大学名" type="text" name="university" id="university" />
-                    <Certifications label="資格" name="certifications_hiddn" id="certifications" required={false} />
-                    <TextArea label="経歴・学外活動" name="career" id="career" />
                     <Input label="Instagram ID" type="text" name="instagram" id="instagram" pattern={pattern.instagram} />
                     <Input label="TikTok ID" type="text" name="tiktok" id="tiktok" pattern={pattern.tiktok}/>
                     <Input label="Twitter ID" type="text" name="twitter" id="twitter" pattern={pattern.twitter}/>

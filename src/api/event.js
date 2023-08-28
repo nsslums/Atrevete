@@ -91,13 +91,13 @@ const plain = `※このメールはシステムからの自動送信です
 ━━━━━━━━━━━━━━━ ご入力内容 ━━━━━━━━━━━━━━
 イベント名: ${req.body.event}
 お名前: ${req.body.name}
-フリガナ: ${req.body.name_kana}
-誕生日: ${req.body.birthday}
-大学: ${req.body.university}
+カタカナ: ${req.body.name_kana}
+生年月日: ${req.body.birthday}
 メールアドレス: ${req.body.email}
+大学名: ${req.body.university}
+経歴・学外活動: ${req.body.career}
 資格: ${certifications}
 自己PR: ${req.body.pr}
-経歴・学外活動: ${req.body.career}
 Instagram ID: ${req.body.instagram}
 TikTok ID: ${req.body.tiktok}
 Twitter ID: ${req.body.twitter}
