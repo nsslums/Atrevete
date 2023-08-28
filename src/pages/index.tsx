@@ -99,6 +99,7 @@ const innerCss = css(mq({
   display: "flex", flexDirection: "row", flexWrap: 'wrap', justifyContent: "center"
 }))
 
+
 const IndexPage: React.FC<PageProps> = ({ data }:any) => {
 
   return (
@@ -163,6 +164,40 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
           </div>
           <div css={mq({ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: [100,200,300]})}>
             <GoldButton text="さらに表示" onClick={() => navigate("/post")} />
+          </div>
+        </div>
+
+        {/* --- staff --- */}
+        <div css={categoryBlock}>
+          <div css={{ textAlign: "center" }}>
+            <Head1 text="Staff" />
+          </div>
+          <div css={innerCss}>
+            {data.allContentfulPeople.nodes?.map((people: any) => {
+             return (
+               <div key={people.contentful_id} css={css({
+                 position: "relative",
+
+                 "&:after":{
+                   content: '""',
+                   width: 1,
+                   height: "80%",
+                   right: 0,
+                   top: "10%",
+                   position: 'absolute',
+                   background: "rgba(255,255,255,.2)",
+                 },
+
+                 "&:last-child": {
+                   "&:after":{
+                     content: "none",
+                   }
+                 }
+               })}>
+                 <PeopleProfile name={people.name} image={people.profileImg.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
+               </div>
+             )
+             })}
           </div>
         </div>
 
