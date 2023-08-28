@@ -12,6 +12,7 @@ import { Connection } from "../stories/atrevete/event/Connection"
 import { Html_Head } from "../components/html-head"
 import facepaint from 'facepaint';
 import { PostCard } from "../stories/atrevete/event/PostCard"
+import { GetSlug } from "../api/getSlug"
 
 const breakpoints = [520, 767, 1100];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
@@ -85,9 +86,9 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       [BLOCKS.EMBEDDED_ENTRY]: ({ data }) => {
         let link;
         if (data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if (data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return (
@@ -99,9 +100,9 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       [INLINES.ENTRY_HYPERLINK]: ({ data }) => {
         let link;
         if (data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if (data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return (
@@ -117,9 +118,9 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       }, [INLINES.EMBEDDED_ENTRY]: ({ data }) => {
         let link;
         if (data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if (data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return (
@@ -225,11 +226,13 @@ export const query = graphql`
             contentful_id
             __typename
             title
+            slug
           }
           ... on ContentfulPost {
             contentful_id
             __typename
             title
+            slug
           }
         }
       }
@@ -247,11 +250,13 @@ export const query = graphql`
             contentful_id
             __typename
             title
+            slug
           }
           ... on ContentfulPost {
             contentful_id
             __typename
             title
+            slug
           }
         }
       }

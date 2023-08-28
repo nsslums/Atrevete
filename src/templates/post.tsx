@@ -76,9 +76,9 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
       [BLOCKS.EMBEDDED_ENTRY]: ({data}:any) =>{
         let link;
         if(data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if(data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return  (
@@ -90,9 +90,9 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
       [INLINES.ENTRY_HYPERLINK]: ({data}:any) =>{
         let link;
         if(data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if(data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return  (
@@ -108,9 +108,9 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
       },[INLINES.EMBEDDED_ENTRY]: ({data}:any) =>{
         let link;
         if(data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if(data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return  (
@@ -182,11 +182,13 @@ export const query = graphql`
               contentful_id
               __typename
               title
+              slug
             }
             ... on ContentfulPost {
               contentful_id
               __typename
               title
+              slug
             }
           }
         }
