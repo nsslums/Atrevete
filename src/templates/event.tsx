@@ -258,6 +258,7 @@ export const query = graphql`
       post {
         contentful_id
         title
+        slug
         eye_catch{
           gatsbyImageData
         }

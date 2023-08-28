@@ -72,6 +72,7 @@ query {
     nodes {
       contentful_id
       title
+      slug
       eye_catch {
         gatsbyImageData
       }
