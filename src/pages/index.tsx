@@ -110,7 +110,7 @@ const peopleScrollCss = css(mq({
   marginLeft: 'Auto',
   marginRight: 'Auto',
   overflow: 'hidden',
-  overflowX: 'scroll',
+  overflowX: 'auto',
   textAlign: 'center',
   marginBottom: ['1em', '2em', '3em'],
 }))
