@@ -85,8 +85,6 @@ export const EventCard = ({
   isActive = new Date().getTime() < new Date(date).getTime() || date==null,
   ...props
 }: EventCardProps) => {
-
-  const status = isActive ? '募集中' : '募集終了';
   return (
     <div css={rootStyle}>
       <Link to={url} css={{
@@ -101,9 +99,15 @@ export const EventCard = ({
           : 
           <StaticImage alt='eyeCatch' src='../../../../static/noimg.png' css={image_css}/>
         }
-        <div css={status_css}>
-          <span>{status}</span>
+        {isActive? 
+          <div css={status_css}>
+            <span>募集中</span>
+          </div>
+        :  
+        <div css={[status_css, css({backgroundColor: '#3f3f3f'})]}>
+          <span>募集終了</span>
         </div>
+        }
         <div css={{
           width: "85%",
           zIndex: 10,
