@@ -244,6 +244,8 @@ const GlobalStyle = () => (
       ::-webkit-scrollbar-thumb{
         background-color: #3e3e3e;
         border-radius: 5px;
+      } ::-webkit-scrollbar-thumb:hover{
+        background-color: #5f5f5f;
       }
     `}
   />
