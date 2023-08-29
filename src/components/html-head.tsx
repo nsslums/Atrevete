@@ -37,7 +37,6 @@ export const Html_Head = ({
         <>
             <title>{title}</title>
             <meta name="description" content={description} />
-            <head prefix="og: http://ogp.me/ns#"></head>
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
             <meta property="og:url" content={url} />

@@ -12,6 +12,7 @@ import { Connection } from "../stories/atrevete/event/Connection"
 import { Html_Head } from "../components/html-head"
 import facepaint from 'facepaint';
 import { PostCard } from "../stories/atrevete/event/PostCard"
+import { GetSlug } from "../api/getSlug"
 
 const breakpoints = [520, 767, 1100];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
@@ -22,7 +23,7 @@ const Wrap = css({
   justifyContent: 'center',
 })
 
-const block = css({
+const block = css(mq({
   position: "relative",
   display: "flex",
   maxWidth: '900px',
@@ -30,8 +31,8 @@ const block = css({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  margin: "3em auto"
-})
+  margin: ["0 auto", "1.2em auto", "3em auto"]
+}))
 
 const horizon = css(mq({
   display: 'flex',
@@ -45,7 +46,7 @@ const textStyle = css({
   letterSpacing: '0.1em',
   fontSize: '1.1em',
   fontFamily: "'Zen Kaku Gothic New', sans-serif",
-  wordBreak: 'keep-all',
+  wordBreak: 'normal',
   'h1': {
       fontSize: '30px',
   },
@@ -67,6 +68,9 @@ const textStyle = css({
   'ul, li': {
       marginLeft: '1.2em',
       marginTop: '0.5em',
+  },
+  'a:hover': {
+    textDecoration: 'underline',
   }
 
 })
@@ -85,9 +89,9 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       [BLOCKS.EMBEDDED_ENTRY]: ({ data }) => {
         let link;
         if (data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if (data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return (
@@ -99,9 +103,9 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       [INLINES.ENTRY_HYPERLINK]: ({ data }) => {
         let link;
         if (data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if (data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return (
@@ -117,9 +121,9 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
       }, [INLINES.EMBEDDED_ENTRY]: ({ data }) => {
         let link;
         if (data.target.__typename == "ContentfulEvent")
-          link = `/event/${data.target.title}`
+          link = `/event/${GetSlug(data.target)}`
         else if (data.target.__typename == "ContentfulPost")
-          link = `/post/${data.target.title}`
+          link = `/post/${GetSlug(data.target)}`
         else
           return null
         return (
@@ -158,16 +162,16 @@ const EventPage: React.FC<PageProps> = ({ data }) => {
           <div css={textStyle}>{!data.contentfulEvent.requirements ? false : renderRichText(data.contentfulEvent.requirements, options)}</div>
         </div>
         <div css={horizon}>
-          <div css={[block, {width: "50%"}]}>
+          <div css={[block, {width: "100%"}]}>
             <Head2 text="場所" />
             <p css={textStyle}>該当者にメールにてご連絡いたします。</p>
           </div>
-          <div css={[block, {width: "50%"}]}>
+          <div css={[block, {width: "100%"}]}>
             <Head2 text="日時" />
             {date ? <p css={textStyle}>{date}</p> : <p css={textStyle}>未定</p>}
           </div>
         </div>
-        <div css={[block]}>
+        <div css={[block,{margin: "1.4em auto"}]}>
           <EventFormCard start_date={start_reception} end_date={end_reception} onClick={navigation}/>
         </div>
         {data.contentfulEvent.post ? 
@@ -225,11 +229,13 @@ export const query = graphql`
             contentful_id
             __typename
             title
+            slug
           }
           ... on ContentfulPost {
             contentful_id
             __typename
             title
+            slug
           }
         }
       }
@@ -247,11 +253,13 @@ export const query = graphql`
             contentful_id
             __typename
             title
+            slug
           }
           ... on ContentfulPost {
             contentful_id
             __typename
             title
+            slug
           }
         }
       }

@@ -52,7 +52,7 @@ const oneWordStyle = css(mq({
   textAlign: 'center',
   fontWeight: '500',
   fontSize:['25px','30px','35px','40px'],
-  wordBreak: 'keep-all',
+  wordBreak: 'normal',
 }))
 const oneWordChildStyle = css({
   background: 'linear-gradient(120deg, white 0%, white var(--p1), #a18153 var(--p1), #a18153 var(--p2), transparent var(--p2), transparent 100%)',
@@ -67,8 +67,8 @@ const typoStyle = css(mq({
   lineHeight: '40px',
   textAlign: 'center',
   height: 'fit-content',
-  fontSize: ['16px','18px','20px'],
-  wordBreak: 'keep-all',
+  fontSize: '1em',
+  wordBreak: 'normal',
 }))
 const typoChildStyle = css({
   width: 'fit-content',
