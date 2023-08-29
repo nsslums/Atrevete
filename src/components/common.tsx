@@ -23,6 +23,7 @@ export const Common = ({ children }: any) => {
                     content {
                         raw
                     }
+                    slug
                 }
             }
             allContentfulEvent(filter: {hidden: {ne: true}}) {
@@ -37,6 +38,7 @@ export const Common = ({ children }: any) => {
                     overview {
                         raw
                     }
+                    slug
                 }
             }
         }
