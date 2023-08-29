@@ -102,15 +102,17 @@ const innerCss = css(mq({
 
 const peopleInnerCss = css(mq({
   display: "inline-flex", flexDirection: "row", flexWrap: 'nowrap', justifyContent: "left",
+  marginBottom: ['1em', '2em', '3em'],
 }));
 
 const peopleScrollCss = css(mq({
-  maxWidth: [420, 620, 980],
+  maxWidth: "min(90vw, 980px)",
   marginLeft: 'Auto',
   marginRight: 'Auto',
   overflow: 'hidden',
   overflowX: 'scroll',
-  textAlign: 'center'
+  textAlign: 'center',
+  marginBottom: ['1em', '2em', '3em'],
 }))
 
 
@@ -245,7 +247,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
                     }
                   }
                 })}>
-                  <PeopleProfile name={people.name} image={people.profileImg.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
+                  <PeopleProfile name={people.name} image={people.profileImg?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
                 </div>
               )
               })}

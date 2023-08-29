@@ -31,7 +31,7 @@ const textStyle = css({
 
 interface peopleProps {
     name: string,
-    image: IGatsbyImageData,
+    image?: IGatsbyImageData,
     profile?: RenderRichTextData<ContentfulRichTextGatsbyReference>,
     isStaff: boolean,
 }
@@ -41,7 +41,11 @@ export const peopleProfile = ({
 ) =>{
     return(
         <div css={peopleStyle}>
-            <GatsbyImage css={avatarStyle} alt={"profile_icon"} image={image}/>
+            {!image ? 
+                <div css={avatarStyle}></div>
+            :
+                <GatsbyImage css={avatarStyle} alt={"profile_icon"} image={image}/>
+            }
             <p css={{fontWeight: '700',fontSize: '1.5em',margin: '30px 0',color: '#C5B286'}}>{name}</p>
             <div css={textStyle}>{!profile ? false : renderRichText(profile)}</div>
         </div>
