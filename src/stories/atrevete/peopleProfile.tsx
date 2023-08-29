@@ -14,6 +14,8 @@ const peopleStyle = css({
     alignItems: 'center',
     flexDirection: 'column',
     // border: 'solid 1px white',
+    padding: '0 2em',
+    boxSizing: 'border-box',
 });
 
 const avatarStyle = css({

@@ -100,6 +100,19 @@ const innerCss = css(mq({
   display: "flex", flexDirection: "row", flexWrap: 'wrap', justifyContent: "center"
 }))
 
+const peopleInnerCss = css(mq({
+  display: "inline-flex", flexDirection: "row", flexWrap: 'nowrap', justifyContent: "left",
+}));
+
+const peopleScrollCss = css(mq({
+  maxWidth: [420, 620, 980],
+  marginLeft: 'Auto',
+  marginRight: 'Auto',
+  overflow: 'hidden',
+  overflowX: 'scroll',
+  textAlign: 'center'
+}))
+
 
 const IndexPage: React.FC<PageProps> = ({ data }:any) => {
 
@@ -173,32 +186,70 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
           <div css={{ textAlign: "center" }}>
             <Head1 text="Staff" />
           </div>
-          <div css={innerCss}>
-            {data.allContentfulPeople.nodes?.map((people: any) => {
-             return (
-               <div key={people.contentful_id} css={css({
-                 position: "relative",
+          <div css={peopleScrollCss}>
+            <div css={[innerCss, peopleInnerCss]}>
+              {data.allContentfulStaff.nodes?.map((people: any) => {
+              return (
+                <div key={people.contentful_id} css={css({
+                  position: "relative",
 
-                 "&:after":{
-                   content: '""',
-                   width: 1,
-                   height: "80%",
-                   right: 0,
-                   top: "10%",
-                   position: 'absolute',
-                   background: "rgba(255,255,255,.2)",
-                 },
+                  "&:after":{
+                    content: '""',
+                    width: 1,
+                    height: "80%",
+                    right: 0,
+                    top: "10%",
+                    position: 'absolute',
+                    background: "rgba(255,255,255,.2)",
+                  },
 
-                 "&:last-child": {
-                   "&:after":{
-                     content: "none",
-                   }
-                 }
-               })}>
-                 <PeopleProfile name={people.name} image={people.profileImg.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
-               </div>
-             )
-             })}
+                  "&:last-child": {
+                    "&:after":{
+                      content: "none",
+                    }
+                  }
+                })}>
+                  <PeopleProfile name={people.name} image={people.profileImg.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
+                </div>
+              )
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* --- Attendee --- */}
+        <div css={categoryBlock}>
+          <div css={{ textAlign: "center" }}>
+            <Head1 text="Attendee" />
+          </div>
+          <div css={peopleScrollCss}>
+            <div css={[innerCss, peopleInnerCss]}>
+              {data.allContentfulAttendee.nodes?.map((people: any) => {
+              return (
+                <div key={people.contentful_id} css={css({
+                  position: "relative",
+
+                  "&:after":{
+                    content: '""',
+                    width: 1,
+                    height: "80%",
+                    right: 0,
+                    top: "10%",
+                    position: 'absolute',
+                    background: "rgba(255,255,255,.2)",
+                  },
+
+                  "&:last-child": {
+                    "&:after":{
+                      content: "none",
+                    }
+                  }
+                })}>
+                  <PeopleProfile name={people.name} image={people.profileImg.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
+                </div>
+              )
+              })}
+            </div>
           </div>
         </div>
 
@@ -273,7 +324,20 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPeople {
+    allContentfulStaff: allContentfulPeople(filter: {profileType: {eq: true}}) {
+      nodes {
+        contentful_id
+        name
+        description {
+          raw
+        }
+        profileType
+        profileImg {
+          gatsbyImageData
+        }
+      }
+    }
+    allContentfulAttendee: allContentfulPeople(filter: {profileType: {eq: false}}) {
       nodes {
         contentful_id
         name
