@@ -102,7 +102,6 @@ const innerCss = css(mq({
 
 const peopleInnerCss = css(mq({
   display: "inline-flex", flexDirection: "row", flexWrap: 'nowrap', justifyContent: "left",
-  marginBottom: ['1em', '2em', '3em'],
 }));
 
 const peopleScrollCss = css(mq({
@@ -112,7 +111,6 @@ const peopleScrollCss = css(mq({
   overflow: 'hidden',
   overflowX: 'auto',
   textAlign: 'center',
-  marginBottom: ['1em', '2em', '3em'],
 }))
 
 
@@ -217,6 +215,9 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
               })}
             </div>
           </div>
+          <div css={mq({ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: [100,150,200]})}>
+            <GoldButton text="一覧を表示" onClick={() => navigate("/staff")} />
+          </div>
         </div>
 
         {/* --- Attendee --- */}
@@ -252,6 +253,9 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
               )
               })}
             </div>
+          </div>
+          <div css={mq({ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: [100,150,200]})}>
+            <GoldButton text="一覧を表示" onClick={() => navigate("/attendee")} />
           </div>
         </div>
 
