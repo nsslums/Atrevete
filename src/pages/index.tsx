@@ -326,7 +326,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulStaff: allContentfulPeople(filter: {profileType: {eq: true}}) {
+    allContentfulStaff: allContentfulPeople(filter: {profileType: {eq: true}, hidden: {ne: true}}) {
       nodes {
         contentful_id
         name
@@ -339,7 +339,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulAttendee: allContentfulPeople(filter: {profileType: {eq: false}}) {
+    allContentfulAttendee: allContentfulPeople(filter: {profileType: {eq: false}, hidden: {ne: true}}) {
       nodes {
         contentful_id
         name
