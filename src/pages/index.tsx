@@ -211,7 +211,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
                     }
                   }
                 })}>
-                  <PeopleProfile name={people.name} image={people.profileImg.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
+                  <PeopleProfile name={people.name} image={people.profileImg?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
                 </div>
               )
               })}
