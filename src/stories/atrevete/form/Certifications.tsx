@@ -85,6 +85,7 @@ export const Certifications = ({
   }
 
   const onBlurHandel = (e: any) =>{
+    addData(e)
     setIsSelect(false)
   }
 
