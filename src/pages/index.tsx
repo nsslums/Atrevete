@@ -102,7 +102,7 @@ const innerCss = css(mq({
 
 const peopleInnerCss = css(mq({
   display: "inline-flex", flexDirection: "row", flexWrap: 'nowrap', justifyContent: "left",
-}));
+}))
 
 const peopleScrollCss = css(mq({
   maxWidth: "min(90vw, 980px)",
@@ -113,6 +113,10 @@ const peopleScrollCss = css(mq({
   textAlign: 'center',
 }))
 
+const partnerCss = css({
+  margin: 'auto',
+  maxWidth: "min(90vw, 980px)",
+})
 
 const IndexPage: React.FC<PageProps> = ({ data }:any) => {
 
@@ -264,14 +268,13 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
           <div css={{ textAlign: "center" }}>
             <Head1 text="Official Partner" />
           </div>
-          <div css={innerCss}>
+          <div css={[innerCss, partnerCss]}>
             {data.allContentfulSponsor.nodes?.map((sponsor: any) => (
               <div
                 key={sponsor.contentful_id}
                 css={{
-                  padding: "1em",
-                  flex: "0 0 calc(50% - 2em)",  // スマートフォン表示時の幅を50%に設定
                   margin: "1em",
+                  flex: "0 0 calc(50% - 2em)",  // スマートフォン表示時の幅を50%に設定
                   boxSizing: "border-box",
                   '@media (max-width: 767px)': {  // スマートフォン表示のメディアクエリ
                     flex: "0 0 calc(100% - 2em)",  // 幅を100%に設定
