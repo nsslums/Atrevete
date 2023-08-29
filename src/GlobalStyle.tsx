@@ -235,6 +235,18 @@ const GlobalStyle = () => (
         --gold-gradient: linear-gradient(20deg,#ccb37e,#7e4d16);
       }
       .grecaptcha-badge { visibility: hidden; }
+      
+      ::-webkit-scrollbar{
+        background: rgba(255,255,255,0);
+        width: 5px;
+        height: 5px;
+      }
+      ::-webkit-scrollbar-thumb{
+        background-color: #3e3e3e;
+        border-radius: 5px;
+      } ::-webkit-scrollbar-thumb:hover{
+        background-color: #5f5f5f;
+      }
     `}
   />
 );

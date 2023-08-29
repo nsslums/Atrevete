@@ -12,6 +12,7 @@ import facepaint from 'facepaint';
 import { motion } from 'framer-motion';
 import Logo from "../stories/atrevete/Logo";
 import logo from '../../static/Atrevete.svg';
+import PeopleProfile from "../stories/atrevete/peopleProfile";
 
 const breakpoints = [520, 767, 1100];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
@@ -94,6 +95,27 @@ const postCss = css({
   margin: "10px"
 })
 
+const innerCss = css(mq({
+  marginTop: ['1em', '2em', '3em'],
+  display: "flex", flexDirection: "row", flexWrap: 'wrap', justifyContent: "center"
+}))
+
+const peopleInnerCss = css(mq({
+  display: "inline-flex", flexDirection: "row", flexWrap: 'nowrap', justifyContent: "left",
+  marginBottom: ['1em', '2em', '3em'],
+}));
+
+const peopleScrollCss = css(mq({
+  maxWidth: "min(90vw, 980px)",
+  marginLeft: 'Auto',
+  marginRight: 'Auto',
+  overflow: 'hidden',
+  overflowX: 'auto',
+  textAlign: 'center',
+  marginBottom: ['1em', '2em', '3em'],
+}))
+
+
 const IndexPage: React.FC<PageProps> = ({ data }:any) => {
 
   return (
@@ -125,7 +147,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
         {/* --- event --- */}
         <div css={categoryBlock}>
           <div css={{ textAlign: "center" }} ><Head1 text="Event" /></div>
-          <div css={{ marginTop: "5em" }}>
+          <div css={innerCss}>
             <Events />
           </div>
         </div>
@@ -148,7 +170,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
         {/* --- news --- */}
         <div css={categoryBlock}>
           <div css={{ textAlign: "center" }}><Head1 text="News" /></div>
-          <div css={{ marginTop: "5em", display: "flex", flexDirection: "row", flexWrap: 'wrap', justifyContent: "center" }}>
+          <div css={innerCss}>
             {data.allContentfulPost.nodes?.map((post: any) => {
               return post.eye_catch ?
                 <div css={postCss} key={post.contentful_id}><PostCard node={post} image={post.eye_catch.gatsbyImageData} /></div>
@@ -156,8 +178,80 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
                 <div css={postCss} key={post.contentful_id}><PostCard node={post} /></div>
             })}
           </div>
-          <div css={{ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: 300 }}>
+          <div css={mq({ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: [100,200,300]})}>
             <GoldButton text="さらに表示" onClick={() => navigate("/post")} />
+          </div>
+        </div>
+
+        {/* --- staff --- */}
+        <div css={categoryBlock}>
+          <div css={{ textAlign: "center" }}>
+            <Head1 text="Staff" />
+          </div>
+          <div css={peopleScrollCss}>
+            <div css={[innerCss, peopleInnerCss]}>
+              {data.allContentfulStaff.nodes?.map((people: any) => {
+              return (
+                <div key={people.contentful_id} css={css({
+                  position: "relative",
+
+                  "&:after":{
+                    content: '""',
+                    width: 1,
+                    height: "80%",
+                    right: 0,
+                    top: "10%",
+                    position: 'absolute',
+                    background: "rgba(255,255,255,.2)",
+                  },
+
+                  "&:last-child": {
+                    "&:after":{
+                      content: "none",
+                    }
+                  }
+                })}>
+                  <PeopleProfile name={people.name} image={people.profileImg?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
+                </div>
+              )
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* --- Attendee --- */}
+        <div css={categoryBlock}>
+          <div css={{ textAlign: "center" }}>
+            <Head1 text="Attendee" />
+          </div>
+          <div css={peopleScrollCss}>
+            <div css={[innerCss, peopleInnerCss]}>
+              {data.allContentfulAttendee.nodes?.map((people: any) => {
+              return (
+                <div key={people.contentful_id} css={css({
+                  position: "relative",
+
+                  "&:after":{
+                    content: '""',
+                    width: 1,
+                    height: "80%",
+                    right: 0,
+                    top: "10%",
+                    position: 'absolute',
+                    background: "rgba(255,255,255,.2)",
+                  },
+
+                  "&:last-child": {
+                    "&:after":{
+                      content: "none",
+                    }
+                  }
+                })}>
+                  <PeopleProfile name={people.name} image={people.profileImg?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
+                </div>
+              )
+              })}
+            </div>
           </div>
         </div>
 
@@ -166,17 +260,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
           <div css={{ textAlign: "center" }}>
             <Head1 text="Official Partner" />
           </div>
-          <div
-            css={{
-              maxWidth: 1200,
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
-              alignItems: "center",
-              margin: "auto",
-              marginTop: "5em",
-            }}
-          >
+          <div css={innerCss}>
             {data.allContentfulSponsor.nodes?.map((sponsor: any) => (
               <div
                 key={sponsor.contentful_id}
@@ -238,6 +322,32 @@ export const query = graphql`
         title
         slug
         eye_catch{
+          gatsbyImageData
+        }
+      }
+    }
+    allContentfulStaff: allContentfulPeople(filter: {profileType: {eq: true}, hidden: {ne: true}}) {
+      nodes {
+        contentful_id
+        name
+        description {
+          raw
+        }
+        profileType
+        profileImg {
+          gatsbyImageData
+        }
+      }
+    }
+    allContentfulAttendee: allContentfulPeople(filter: {profileType: {eq: false}, hidden: {ne: true}}) {
+      nodes {
+        contentful_id
+        name
+        description {
+          raw
+        }
+        profileType
+        profileImg {
           gatsbyImageData
         }
       }
