@@ -26,7 +26,8 @@ const menu = css({
 const block = css({
     fontSize: 40,
     padding: "5px 0",
-    marginRight: "1em"
+    marginRight: "1em",
+    fontWeight: "bold"
 })
 
 const divider = css({
