@@ -90,7 +90,7 @@ const Aboutage: React.FC<PageProps> = ({ data }:any) => {
             <AboutSection
                 title='ミッション'
                 bgTitle='Mission'
-                oneWord='人と人を繋ぎ、特別な価値を提供します。'
+                oneWord='全てのクライアントに特別体験を。'
                 image={data.img2.childImageSharp.gatsbyImageData}
             >
                 <p css={mq({textAlign:['center','center','center','left']})}>
@@ -104,7 +104,7 @@ const Aboutage: React.FC<PageProps> = ({ data }:any) => {
             <AboutSection
                 title='ビジョン'
                 bgTitle='Vision'
-                oneWord='若き起業家の舞台。'
+                oneWord='世界で活躍する人材の輩出。'
                 image={data.img3.childImageSharp.gatsbyImageData}
                 reverse='row-reverse'
             >
