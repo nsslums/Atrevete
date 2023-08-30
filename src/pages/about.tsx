@@ -1,10 +1,8 @@
 import { css } from '@emotion/react'
 import * as React from "react"
-import { HeadFC, Link, PageProps, graphql } from "gatsby"
+import { HeadFC, PageProps, graphql } from "gatsby"
 import { Common } from "../components/common"
-import { Head1 } from "../stories/atrevete/Head1"
 import { Html_Head } from '../components/html-head'
-import { StaticImage } from 'gatsby-plugin-image'
 import { AboutSection } from '../stories/atrevete/AboutSection'
 import { motion } from 'framer-motion';
 import facepaint from 'facepaint';
