@@ -91,11 +91,15 @@ export const AboutSection = ({
 }: AboutSectionProps) => {
   return (
     <div css={Style}>
+
+      {/* --- section title --- */}
       {title ?
         <AboutHead1 text={title} bgText={bgTitle}></AboutHead1>
         :
         <div></div>
       }
+
+      {/* --- section phrase --- */}
       {oneWord ?
         <motion.div
           css={oneWordStyle}
@@ -111,9 +115,12 @@ export const AboutSection = ({
         :
         <div css={mq({margin: [20, 30, 40]})}></div>
       }
+
+      {/* --- section image --- */}
       <div css={[WrapStyle,{flexDirection: `${reverse}`},]}>
         <GatsbyImage css={imageStyle} alt='image' image={image}/>
 
+        {/* --- section message --- */}
         <div css={typoStyle}>
           <motion.div 
           initial={{'--p1': '0%','--p2':'0%'} as any}

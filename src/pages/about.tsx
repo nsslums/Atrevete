@@ -56,6 +56,8 @@ const Aboutage: React.FC<PageProps> = ({ data }:any) => {
     return (
         <Common>
             <div css={rootStyle}>
+
+                {/* --- about us (top title) --- */}
                 <AboutSection
                     title='Atreveteとは'
                     bgTitle='About us'
@@ -68,6 +70,7 @@ const Aboutage: React.FC<PageProps> = ({ data }:any) => {
                     </p>
                 </AboutSection>
 
+                {/* --- top message --- */}
                 <motion.p
                     css={messageText}
                     initial={{opacity: 0}}
