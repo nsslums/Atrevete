@@ -3,6 +3,7 @@ import { GatsbyImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image'
 import { AboutHead1 } from './AboutHead1';
 import facepaint from 'facepaint';
 import { motion } from 'framer-motion';
+import React from "react";
 
 const breakpoints = [520, 767, 1100];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
@@ -10,11 +11,11 @@ const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
 interface AboutSectionProps {
   title?: string;
   bgTitle: string;
-  text: string;
   oneWord?: string;
   image: IGatsbyImageData;
   reverse?: 'row' | 'row-reverse';
   fontSize?: string;
+  children: React.ReactNode,
 }
 
 const Style = css(mq({
@@ -52,7 +53,6 @@ const oneWordStyle = css(mq({
   textAlign: 'center',
   fontWeight: '500',
   fontSize:['25px','30px','35px','40px'],
-  wordBreak: 'normal',
 }))
 const oneWordChildStyle = css({
   background: 'linear-gradient(120deg, white 0%, white var(--p1), #a18153 var(--p1), #a18153 var(--p2), transparent var(--p2), transparent 100%)',
@@ -61,14 +61,12 @@ const oneWordChildStyle = css({
 })
 
 const typoStyle = css(mq({
-  display: 'dlex',
+  display: 'flex',
   justifyContent: 'center',
   width: ['80%','70%', '60%', '40%'],
   lineHeight: '40px',
-  textAlign: 'center',
+  // textAlign: 'center',
   height: 'fit-content',
-  fontSize: '1em',
-  wordBreak: 'normal',
 }))
 const typoChildStyle = css({
   width: 'fit-content',
@@ -76,11 +74,14 @@ const typoChildStyle = css({
   color: 'transparent',
   backgroundClip: 'text',
   fontWeight: '500',
+  wordBreak: 'keep-all',
+  fontSize: '1em',
+  whiteSpace: 'pre-wrap',
+  overflowWrap: 'break-word'
 })
 
 export const AboutSection = ({
   title,
-  text = '',
   oneWord,
   reverse = 'row',
   image,
@@ -119,7 +120,7 @@ export const AboutSection = ({
           whileInView={{'--p1': '100%','--p2':'110%'} as any}
           viewport={{ once: true }}
           transition={{ease: 'anticipate', delay: 0.3, duration:3.5}}
-          css={[typoChildStyle,{fontSize: `${fontSize}`}]} {...props} dangerouslySetInnerHTML={{__html: text}}></motion.div>
+          css={[typoChildStyle,{fontSize: `${fontSize}`}]}>{props.children}</motion.div>
         </div>
       </div>
     </div>

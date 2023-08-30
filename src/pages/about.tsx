@@ -47,7 +47,8 @@ const messageText = css(mq({
     fontSize: ['16px','18px','20px'],
     alignItems: 'center',
     textAlign: 'center',
-    wordBreak: 'normal',
+    wordBreak: 'keep-all',
+    overflowWrap: 'break-word'
 }))
 
 
@@ -57,66 +58,75 @@ const Aboutage: React.FC<PageProps> = ({ data }:any) => {
     return (
         <Common>
             <div css={rootStyle}>
-            <AboutSection 
-            title='Atreveteとは'
-            bgTitle='About us'
-            text="
-                <p style='font-size:1.7em; line-height:70px; letter-spacing:0.2em; font-weight:700'>迷いを確信に。<br/>夢を現実に。</p>
-            "
-            image={data.img1.childImageSharp.gatsbyImageData}
-            reverse='row-reverse'></AboutSection>
+                <AboutSection
+                    title='Atreveteとは'
+                    bgTitle='About us'
+                    image={data.img1.childImageSharp.gatsbyImageData}
+                    reverse='row-reverse'
+                >
+                    <p css={{fontSize:'1.7em', lineHeight:'70px', letterSpacing:'0.2em', fontWeight:700}}>
+                        迷いを確信に。<br/>
+                        夢を現実に。
+                    </p>
+                </AboutSection>
 
-            <motion.p 
-                css={messageText}
-                initial={{opacity: 0}}
-                whileInView={{opacity: 1}}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 2}}
-            >日本の課題でもある「若者の育成をどうしていくか」
-            に着目し、夢ある者、迷いながらも進もうとする者、何をしたらいいかわからない者をサポートします。<br/>
-            迷いがある者は、迷いを確信へ。<br/>
-            希望に満ち溢れる若者が<br/>
-            世の中の理不尽に振り回されず<br/>
-            自分自身が主体でいれるよう、全身全霊で<br/>「人×人」の場所を提供します。
-            </motion.p>
+                <motion.p
+                    css={messageText}
+                    initial={{opacity: 0}}
+                    whileInView={{opacity: 1}}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 2}}
+                >
+                    日本の課題でもある<wbr/>「若者の育成をどうしていくか」<wbr/>に着目し、<wbr/>夢ある者、<wbr/>迷いながらも<wbr/>進もうとする者、<wbr/>
+                    何をしたらいいか<wbr/>わからない者をサポートします。<br/>
+                    迷いがある者は、<wbr/>迷いを確信へ。<br/>
+                    希望に満ち溢れる<wbr/>若者が<wbr/>世の中の<wbr/>理不尽に<wbr/>振り回されず、<wbr/>
+                    自分自身が主体でいれるよう、<wbr/>全身全霊で<wbr/>「人×人」<wbr/>の場所を提供します。
+                </motion.p>
             </div>
 
-            <AboutSection 
-            title='ミッション'
-            bgTitle='Mission'
-            oneWord='人と人を繋ぎ、特別な価値を提供します。'
-            text='
-                <p>夢や希望を持って生きる若者を応援し、一人ひとりの可能性を最大限に引き出します。<br/>
-                若者の夢と可能性を最大化することが、私たちのミッションです。
-                日本の未来に貢献できる人材を育成するために、必要なサポートを提供します。</p>
-            '
-            image={data.img2.childImageSharp.gatsbyImageData}
-            ></AboutSection>
-
-            <AboutSection 
-            title='ビジョン'
-            bgTitle='Vision'
-            oneWord='若き起業家の舞台。'
-            text='
-                <p>20歳前後で「将来やりたいことに迷いがある」「夢がない」と答える割合は40%~50%というのが今の日本の現状。<br/>
-                そこで、優秀な学生や能力ある若者を起業家、投資家や社会人、様々な業種な方との交友する場所を提供します。<br/>
-                アドバイスをもらったり、投資を受けたり、対等にお話をし、
-                夢ある若者の育成を図ります。</p>
-            '
-            image={data.img3.childImageSharp.gatsbyImageData}
-            reverse='row-reverse'></AboutSection>
-            <AboutSection 
-            title='オリジン'
-            bgTitle='Origin'
-            oneWord='ロゴに込めた想い。'
-            text='
-                <p>私たちのロゴとして利用してる「Atrevete」という言葉は、スペイン語の「思い切って～をする」という動詞から来ています。<br>
-                「思い切って！」というメッセージを、ロゴに込めました。<br><br>
-                また、唯一アクセントのつくEを、特別という意味を持つEspecialとかけています。
+            {/* --- mission --- */}
+            <AboutSection
+                title='ミッション'
+                bgTitle='Mission'
+                oneWord='人と人を繋ぎ、特別な価値を提供します。'
+                image={data.img2.childImageSharp.gatsbyImageData}
+            >
+                <p css={mq({textAlign:['center','center','center','left']})}>
+                    夢や<wbr/>希望を持って<wbr/>生きる若者を<wbr/>応援し、<wbr/>一人ひとりの<wbr/>可能性を<wbr/>最大限に<wbr/>引き出します。<br/>
+                    若者<wbr/>の夢と可能性を<wbr/>最大化することが、<wbr/>私たちの<wbr/>ミッションです。<br/>
+                    日本の未来に<wbr/>貢献できる<wbr/>人材を<wbr/>育成するために、<wbr/>必要な<wbr/>サポートを<wbr/>提供します。
                 </p>
-            '
-            image={data.img4.childImageSharp.gatsbyImageData}
-            ></AboutSection>
+            </AboutSection>
+
+            {/* --- vision --- */}
+            <AboutSection
+                title='ビジョン'
+                bgTitle='Vision'
+                oneWord='若き起業家の舞台。'
+                image={data.img3.childImageSharp.gatsbyImageData}
+                reverse='row-reverse'
+            >
+                <p css={mq({textAlign:['center','center','center','right']})}>
+                    20歳前後で<wbr/>「将来やりたいこと迷いがある」<wbr/>「夢がない」<wbr/>と答える割合は<wbr/>40%~50%<wbr/>というのが<wbr/>今の日本の現状。<br/>
+                    そこで、<wbr/>優秀な学生や<wbr/>能力ある<wbr/>若者<wbr/>を起業家、<wbr/>投資家<wbr/>や社会人、<wbr/>様々な<wbr/>業種の方との<wbr/>交友する<wbr/>場所を<wbr/>提供します。<br/>
+                    アドバイスを<wbr/>もらったり、<wbr/>投資を受けたり、<wbr/>対等にお話をし、<wbr/>夢ある<wbr/>若者の<wbr/>育成を<wbr/>図ります。
+                </p>
+            </AboutSection>
+
+            {/* --- origin --- */}
+            <AboutSection
+                title='オリジン'
+                bgTitle='Origin'
+                oneWord='ロゴに込めた想い。'
+                image={data.img4.childImageSharp.gatsbyImageData}
+            >
+                <p css={mq({textAlign:['center','center','center','left']})}>
+                    私たちの<wbr/>ロゴとして<wbr/>利用している<wbr/>「Atrevete」<wbr/>という言葉は、<wbr/>スペイン語の<wbr/>「思い切って～をする」<wbr/>という<wbr/>動詞から<wbr/>来ています。<br/>
+                    「思い切って！」<wbr/>という<wbr/>メッセージを、<wbr/>ロゴに<wbr/>込めました。<br/><br/>
+                    また、<wbr/>唯一<wbr/>アクセントのつくEを、<wbr/>特別という<wbr/>意味を持つ<wbr/>Especialと<wbr/>かけています。
+                </p>
+            </AboutSection>
         </Common>
     )
 }
