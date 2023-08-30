@@ -96,7 +96,7 @@ export const AboutSection = ({
       {title ?
         <AboutHead1 text={title} bgText={bgTitle}></AboutHead1>
         :
-        <div></div>
+        <></>
       }
 
       {/* --- section phrase --- */}
@@ -123,11 +123,11 @@ export const AboutSection = ({
         {/* --- section message --- */}
         <div css={typoStyle}>
           <motion.div 
-          initial={{'--p1': '0%','--p2':'0%'} as any}
-          whileInView={{'--p1': '100%','--p2':'110%'} as any}
-          viewport={{ once: true }}
-          transition={{ease: 'anticipate', delay: 0.3, duration:3.5}}
-          css={[typoChildStyle,{fontSize: `${fontSize}`}]}>{props.children}</motion.div>
+            initial={{'--p1': '0%','--p2':'0%'} as any}
+            whileInView={{'--p1': '100%','--p2':'110%'} as any}
+            viewport={{ once: true }}
+            transition={{ease: 'anticipate', delay: 0.3, duration:3.5}}
+            css={[typoChildStyle,{fontSize: `${fontSize}`}]}>{props.children}</motion.div>
         </div>
       </div>
     </div>
