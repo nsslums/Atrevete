@@ -144,17 +144,17 @@ export const query = graphql`
             }
         }
     }
-    img1: file(relativePath: {eq: "top.jpg"}) {
+    img1: file(relativePath: {eq: "smile_woman.jpg"}) {
         childImageSharp {
           gatsbyImageData(formats: WEBP, placeholder: BLURRED)
         }
     }
-    img2: file(relativePath: {eq: "top.jpg"}) {
+    img2: file(relativePath: {eq: "handshake.jpg"}) {
         childImageSharp {
           gatsbyImageData(formats: WEBP, placeholder: BLURRED)
         }
     }
-    img3: file(relativePath: {eq: "top.jpg"}) {
+    img3: file(relativePath: {eq: "people.jpg"}) {
         childImageSharp {
           gatsbyImageData(formats: WEBP, placeholder: BLURRED)
         }
