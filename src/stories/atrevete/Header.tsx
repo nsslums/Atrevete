@@ -26,7 +26,8 @@ const menu = css({
 const block = css({
     fontSize: 40,
     padding: "5px 0",
-    marginRight: "1em"
+    marginRight: "1em",
+    fontWeight: "bold"
 })
 
 const divider = css({
@@ -116,6 +117,8 @@ export const Header = ({
                     </div>
                     <div css={block} onClick={onClick}><GoldLink to='/' text='トップページ'/></div>
                     <div css={block} onClick={onClick}><GoldLink to='/about' text='Atreveteとは' /></div>
+                    <div css={block} onClick={onClick}><GoldLink to='/staff' text='運営メンバー' /></div>
+                    <div css={block} onClick={onClick}><GoldLink to='/attendee' text='参加者一覧' /></div>
                     <div css={block} onClick={onClick}><GoldLink to='/post' text='投稿' /></div>
                     <div css={block} onClick={onClick}><GoldLink to='/contact' text='お問い合わせ' /></div>
                     <div css={divider} />
