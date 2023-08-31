@@ -14,7 +14,7 @@ const warpper = css({
     minHeight: "100vh",
 })
 
-export const Common = ({ children }: any) => {
+export const Common = ({ children, path }: any) => {
 
     const data = useStaticQuery(graphql`
         query {
@@ -45,17 +45,21 @@ export const Common = ({ children }: any) => {
         }
     `)
 
+    let href = "/"
+    if (typeof window !== `undefined`) {
+        href = window.location.href
+    }
     return (
         <div css={warpper}>
             <GlobalStyle />
             <Header />
             <AnimatePresence mode="wait">
                 <motion.div
-                    key={location.pathname}
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    exit={{opacity: 0}}
-                    transition={{duration: 1}}
+                    key={href}
+                    initial={{opacity: 0, y: 20}}
+                    animate={{opacity: 1, y: 0}}
+                    exit={{opacity: 0, y: 20}}
+                    transition={{duration: 0.7}}
                     css={{marginTop: 98, flexGrow: 1}}>
                     {children}
                 </motion.div>
