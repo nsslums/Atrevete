@@ -2,6 +2,7 @@ import * as React from "react"
 import { HeadFC, PageProps, graphql, navigate } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Events } from "../components/eventSlide";
+import { Posts } from "../components/postSlide";
 import { Common } from "../components/common"
 import { GoldButton } from "../stories/atrevete/GoldButton";
 import { css } from "@emotion/react";
@@ -170,14 +171,9 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
 
         {/* --- news --- */}
         <div css={categoryBlock}>
-          <div css={{ textAlign: "center" }}><Head1 text="News" /></div>
+          <div css={{ textAlign: "center" }} ><Head1 text="News" /></div>
           <div css={innerCss}>
-            {data.allContentfulPost.nodes?.map((post: any) => {
-              return post.eye_catch ?
-                <div css={postCss} key={post.contentful_id}><PostCard node={post} image={post.eye_catch.gatsbyImageData} /></div>
-                :
-                <div css={postCss} key={post.contentful_id}><PostCard node={post} /></div>
-            })}
+            <Posts />
           </div>
           <div css={mq({ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: [100,200,300]})}>
             <GoldButton text="さらに表示" onClick={() => navigate("/post")} />
