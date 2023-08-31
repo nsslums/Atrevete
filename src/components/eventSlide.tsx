@@ -27,27 +27,27 @@ const arrow_css = css({
 })
 
 const sleeveCurtain = css({
-    "&::before": {
-        content: '""',
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "50px",
-        height: "100%",
-        background: "linear-gradient(90deg, #121212 0%, rgba(18, 18, 18, 0.713542) 47.4%, rgba(18, 18, 18, 0) 100%)",
-        zIndex: 10
-    },
-
-    "&::after": {
-        content: '""',
-        position: "absolute",
-        top: 0,
-        right: 0,
-        width: "50px",
-        height: "100%",
-        background: "linear-gradient(-90deg, #121212 0%, rgba(18, 18, 18, 0.713542) 47.4%, rgba(18, 18, 18, 0) 100%)",
-        zIndex: 10
-    }
+    // "&::before": {
+    //     content: '""',
+    //     position: "absolute",
+    //     top: 0,
+    //     left: 0,
+    //     width: "50px",
+    //     height: "100%",
+    //     background: "linear-gradient(90deg, #121212 0%, rgba(18, 18, 18, 0.713542) 47.4%, rgba(18, 18, 18, 0) 100%)",
+    //     zIndex: 10
+    // },
+    //
+    // "&::after": {
+    //     content: '""',
+    //     position: "absolute",
+    //     top: 0,
+    //     right: 0,
+    //     width: "50px",
+    //     height: "100%",
+    //     background: "linear-gradient(-90deg, #121212 0%, rgba(18, 18, 18, 0.713542) 47.4%, rgba(18, 18, 18, 0) 100%)",
+    //     zIndex: 10
+    // }
 })
 
 function NextArrow(props: any) {
