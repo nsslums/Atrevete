@@ -1,6 +1,6 @@
 import * as React from "react"
 import { HeadFC, PageProps, graphql, navigate } from "gatsby"
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { Events } from "../components/eventSlide";
 import { Common } from "../components/common"
 import { GoldButton } from "../stories/atrevete/GoldButton";
@@ -10,7 +10,6 @@ import { PostCard } from "../stories/atrevete/event/PostCard";
 import { Html_Head } from '../components/html-head'
 import facepaint from 'facepaint';
 import { motion } from 'framer-motion';
-import Logo from "../stories/atrevete/Logo";
 import logo from '../../static/Atrevete.svg';
 import PeopleProfile from "../stories/atrevete/peopleProfile";
 
@@ -138,7 +137,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
             <img src={logo} css={topLogo}/>
             <motion.p
               initial={{'--p1': '-20%', '--p2': '0%'} as any}
-              whileInView={{'--p1': ['-20%','100%'], '--p2': ['0%','120%'], '--t1': [0,0,1] } as any}
+              whileInView={{'--p1': ['-20%','100%'], '--p2': ['0%','120%'], '--t1': [0,0,0.7] } as any}
               viewport={{ once: true }}
               transition={{ duration:1.5, delay: 1 }}
               css={topPhraseText}
@@ -328,6 +327,7 @@ export const query = graphql`
         contentful_id
         title
         slug
+        createdAt(formatString: "yyyy/MM/DD")
         eye_catch{
           gatsbyImageData
         }
