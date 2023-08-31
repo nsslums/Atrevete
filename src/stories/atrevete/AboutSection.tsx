@@ -118,7 +118,14 @@ export const AboutSection = ({
 
       {/* --- section image --- */}
       <div css={[WrapStyle,{flexDirection: `${reverse}`},]}>
-        <GatsbyImage css={imageStyle} alt='image' image={image}/>
+        <motion.div
+          initial={{opacity:0}}
+          whileInView={{opacity:1}}
+          viewport={{ once: true }}
+          transition={{ease: 'anticipate', delay: 0.1, duration: 1}}
+        >
+          <GatsbyImage css={imageStyle} alt='image' image={image}/>
+        </motion.div>
 
         {/* --- section message --- */}
         <div css={typoStyle}>
