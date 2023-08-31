@@ -102,11 +102,11 @@ const FormPage: React.FC<PageProps> = (props) => {
     
     // --- input pattern match --- //
     const pattern = {
-        kana: "[\u30A1-\u30F6]*",
-        mail: "/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]$/",
-        instagram: "^[0-9a-zA-Z._]{3,30}$",
-        tiktok: "^@[0-9a-z._]{2,24}$",
-        twitter: "^@[0-9a-zA-Z._]{1,15}$"
+        kana: /[\u30A1-\u30F6]*/,
+        mail: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]$/,
+        instagram: /^[0-9a-zA-Z._]{3,30}$/,
+        tiktok: /^@[0-9a-z._]{2,24}$/,
+        twitter: /^@[0-9a-zA-Z._]{1,15}$/
     }
 
     return (
