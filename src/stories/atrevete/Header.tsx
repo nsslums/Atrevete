@@ -1,10 +1,8 @@
 import { css } from '@emotion/react';
-import React, { lazy, useState } from 'react';
+import React, { lazy } from 'react';
 import {CgMenu} from "@react-icons/all-files/cg/CgMenu"
 import {RiCloseLine} from "@react-icons/all-files/ri/RiCloseLine"
 import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
-import { StaticImage } from 'gatsby-plugin-image';
-import { Link } from 'gatsby-link';
 import { GoldLink } from './GoldLink';
 
 const Logo = lazy(() => import("./Logo"));
@@ -61,7 +59,7 @@ export const Header = ({
         <header css={{
             width: "100%",
             position: "fixed",
-            background: "linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0));",
+            background: "linear-gradient(black,transparent);",
             top: 0,
             left: 0,
             zIndex: 100,
