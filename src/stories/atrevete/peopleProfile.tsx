@@ -27,6 +27,20 @@ const avatarStyle = css({
     borderRadius: 100,
 })
 
+const nameStyle = css({
+    fontWeight: '700',
+    fontSize: '1.5em',
+    marginBottom: '30px',
+    color: '#C5B286'
+})
+
+const nameSubStyle = css({
+    marginTop: '20px',
+    marginBottom: '5px',
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase',
+})
+
 const textStyle = css({
     maxWidth: '90%',
     textAlign: 'left',
@@ -34,22 +48,28 @@ const textStyle = css({
 
 interface peopleProps {
     name: string,
+    nameSub?: string,
     image?: IGatsbyImageData,
     profile?: RenderRichTextData<ContentfulRichTextGatsbyReference>,
     isStaff: boolean,
 }
 
 export const peopleProfile = ({
-    name, image, profile, isStaff}:peopleProps
+    name, nameSub, image, profile, isStaff}:peopleProps
 ) =>{
     return(
         <div css={peopleStyle}>
-            {!image ? 
+            {!image ?
                 <div css={avatarStyle}></div>
             :
                 <GatsbyImage css={avatarStyle} alt={"profile_icon"} image={image}/>
             }
-            <p css={{fontWeight: '700',fontSize: '1.5em',margin: '30px 0',color: '#C5B286'}}>{name}</p>
+            {nameSub != null ?
+                <p css={nameSubStyle}>{nameSub}</p>
+            :
+                <div css={{height:23}} />
+            }
+            <p css={nameStyle}>{name}</p>
             <div css={textStyle}>{!profile ? false : renderRichText(profile)}</div>
         </div>
     )

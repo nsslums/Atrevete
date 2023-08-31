@@ -247,7 +247,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
                     }
                   }
                 })}>
-                  <PeopleProfile name={people.name} image={people.avatar?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
+                  <PeopleProfile name={people.name} nameSub={people.nameSub} image={people.avatar?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
                 </div>
               )
               })}
@@ -333,6 +333,7 @@ export const query = graphql`
       nodes {
         contentful_id
         name
+        nameSub
         description {
           raw
         }
@@ -346,6 +347,7 @@ export const query = graphql`
       nodes {
         contentful_id
         name
+        nameSub
         description {
           raw
         }
