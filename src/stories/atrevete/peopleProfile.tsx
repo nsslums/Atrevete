@@ -8,7 +8,8 @@ import {
 } from "gatsby-source-contentful/rich-text";
 
 const peopleStyle = css({
-    width: 300,
+    width: 400,
+    maxWidth: '90vw',
     // minHeight: 300,
     display: 'flex',
     alignItems: 'center',

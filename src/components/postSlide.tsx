@@ -32,6 +32,10 @@ const arrow_css = css({
             transform: "translate(0, -50%) scale(0.95)",
         }
     },
+    "&.slick-disabled": {
+        opacity: 0.1,
+        pointerEvents: "none",
+    }
 })
 
 const sleeveCurtain = css({
@@ -60,9 +64,11 @@ const sleeveCurtain = css({
 
 function NextArrow(props: any) {
     const { className, style, onClick } = props;
+    const classArr = className.split(" ")
     return (
       <div
         css={[arrow_css, { right: "-20px",}]}
+        className={classArr.includes("slick-disabled") ? "slick-disabled" : ""}
         onClick={onClick}
       >
         <FaChevronRight />
@@ -72,9 +78,11 @@ function NextArrow(props: any) {
 
   function PrevArrow(props: any) {
     const { className, style, onClick } = props
+    const classArr = className.split(" ")
     return (
       <div
         css={[arrow_css, { left: "-20px",}]}
+        className={classArr.includes("slick-disabled") ? "slick-disabled" : ""}
         onClick={onClick}
       >
         <FaChevronLeft />
@@ -83,17 +91,21 @@ function NextArrow(props: any) {
   }
   
 
-export const Events: React.FC = () => {
+export const Posts: React.FC = () => {
 
     const result = useStaticQuery(graphql`
         query{
-            allContentfulEvent(filter: {hidden: {ne: true}}) {
+            allContentfulPost(
+              sort: {createdAt: DESC}
+              limit: 3
+              filter: {hidden: {ne: true}}
+            ) {
                 nodes {
+                    contentful_id
                     title
-                    contentful_id,
-                    date,
                     slug
-                    eye_catch {
+                    createdAt(formatString: "yyyy/MM/DD")
+                    eye_catch{
                         gatsbyImageData
                     }
                 }
@@ -101,27 +113,27 @@ export const Events: React.FC = () => {
         }
     `)
 
-    const eventCount = result.allContentfulEvent.nodes?.length || 0
+    const eventCount = result.allContentfulPost.nodes?.length || 0
     
     let width = 900
     if (typeof window !== `undefined`) {
         width = window.innerWidth
     }
     const settings = (width > 1000 ? {
-        infinite: true,
+        infinite: false,
         initialSlide: 0,
         speed: 500,
         dots: false,
         arrows: true,
         slidesToShow: eventCount >=2 ? 2 : 1,
-        slidesToScroll: 2,
+        slidesToScroll: 1,
         centerMode: false,
         centerPadding: "50px",
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
     }
     : {
-        infinite: true,
+        infinite: false,
         initialSlide: 0,
         speed: 500,
         dots: false,
@@ -133,6 +145,7 @@ export const Events: React.FC = () => {
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
     })
+    // slick-disabled
 
 
     const Contener = styled.div({
@@ -144,8 +157,8 @@ export const Events: React.FC = () => {
     <Contener>
          <div>
              <Slider {...settings} css={sleeveCurtain}>
-                 {result.allContentfulEvent.nodes?.map((event: any) => (
-                    <div key={event.contentful_id}><EventCard title={event.title} url={"/event/" + GetSlug(event)} date={event.date} image={event.eye_catch}/></div>
+                 {result.allContentfulPost.nodes?.map((event: any) => (
+                    <div key={event.contentful_id}><EventCard title={event.title} url={"/post/" + GetSlug(event)} date={event.date} image={event.eye_catch}/></div>
                  ))}
              </Slider>
          </div>
