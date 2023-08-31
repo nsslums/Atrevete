@@ -1,3 +1,4 @@
+import { error } from "console";
 import { MailCore } from "./mail_core";
 import request from "request";
 
@@ -27,47 +28,62 @@ export const config = {
 export default async function sendMail(req, res){
 
     if(!req.body.token){
-        return res.status(422).json({status: "error", error: {code: 442, message: 'need reCAPTCHA'}})
+        const error = {status: "error", error: {code: 442, message: 'need reCAPTCHA'}};
+        console.log(error);
+        return res.status(422).json(error)
     }
 
     const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRETKEY}&response=${req.body.token}`
     
     request(verificationUrl, (err, response, body) => {
         if (err) {
+            const error = {code: 401, message: 'reCAPTCHA request error.'};
+            console.log(error);
             return res.status(401).json({
                 status: "error",
-                error: {code: 401, message: 'reCAPTCHA request error.'}
+                error: error
             })
         }
         const { success, score } = JSON.parse(body)
         if (!success || score <= 0.5) {
+            const error = {code: 400, message: 'reCAPTCHA judge failed. Are you robot..?'};
+            console.log(error);
             return res.status(400).json({
                 status: "error",
-                error: {code: 400, message: 'reCAPTCHA judge failed. Are you robot..?'}
+                error: error
             })
         }
     })
 
     if(!req.body.event){
-      return res.status(422).json("{status: error, error: {code: 442, message: 'need event'}}")
+      const error = {status: "error", error: {code: 442, message: 'need event'}}
+      console.log(error);
+      return res.status(422).json(error)
     }
     if(!req.body.name){
-      return res.status(422).json({status: "error", error: {code: 442, message: 'need name'}})
+      const error = {status: "error", error: {code: 442, message: 'need name'}}
+      console.log(error);
+      return res.status(422).json(error)
     }
     if(!req.body.name_kana){
-      return res.status(422).json({status: "error", error: {code: 442, message: 'need name_kana'}})
+      const error = {status: "error", error: {code: 442, message: 'need name_kana'}}
+      console.log(error);
+      return res.status(422).json(error)
     }
     if(!req.body.birthday){
-      return res.status(422).json({status: "error", error: {code: 442, message: 'need birthday'}})
-    }
-    if(!req.body.university){
-      return res.status(422).json({status: "error", error: {code: 442, message: 'need university'}})
+      const error = {status: "error", error: {code: 442, message: 'need birthday'}}
+      console.log(error);
+      return res.status(422).json(error)
     }
     if(!req.body.email){
-      return res.status(422).json({status: "error", error: {code: 442, message: 'need email'}})
+      const error = {status: "error", error: {code: 442, message: 'need email'}}
+      console.log(error);
+      return res.status(422).json(error)
     }
     if(!req.body.pr){
-      return res.status(422).json({status: "error", error: {code: 442, message: 'need pr'}})
+      const error = {status: "error", error: {code: 442, message: 'need pr'}}
+      console.log(error);
+      return res.status(422).json(error)
     }
     // if(!req.files){
     //   return res.status(422).json({status: "error", error: {code: 442, message: 'need file'}})
