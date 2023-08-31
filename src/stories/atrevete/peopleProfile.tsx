@@ -25,6 +25,7 @@ const avatarStyle = css({
     height: 120,
     border: 'solid 4px white',
     borderRadius: 100,
+    overflow: 'hidden',
 })
 
 const nameStyle = css({
