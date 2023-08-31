@@ -32,11 +32,13 @@ const rootStyle = css(mq({
   borderLeftColor: 'rgba(255,255,255,0.25)',
   borderRightColor: 'rgba(255,255,255,0.1)',
   borderBottomColor: 'rgba(255,255,255,0.1)',
-  boxShadow: '0 0 20px rgba(0,0,0,0.5)',
   margin: "auto",
+  transition: 'all 0.2s ease',
   "&:hover": {
-    border: "solid 1px rgba(255,2555,255,0.7)",
+    border: "solid .7px rgba(255,2555,255,0.7)",
+    boxShadow: '0 0 20px rgba(0,0,0,0.5)',
     "&:active": {
+      boxShadow: '0 0 20px rgba(0,0,0,0)',
       borderColor: "rgba(255,255,255,0.4)",
     }
   },
