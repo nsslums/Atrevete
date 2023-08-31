@@ -9,6 +9,7 @@ import { EventCard } from "../stories/atrevete/event/EventCard";
 import {FaChevronLeft} from "@react-icons/all-files/fa/FaChevronLeft"
 import {FaChevronRight} from "@react-icons/all-files/fa/FaChevronRight"
 import { GetSlug } from "../api/getSlug";
+import { PostCard } from "../stories/atrevete/event/PostCard";
 
 const arrow_css = css({
     position: "absolute",
@@ -113,7 +114,7 @@ export const Posts: React.FC = () => {
         }
     `)
 
-    const eventCount = result.allContentfulPost.nodes?.length || 0
+    const newsCount = result.allContentfulPost.nodes?.length || 0
     
     let width = 900
     if (typeof window !== `undefined`) {
@@ -125,7 +126,7 @@ export const Posts: React.FC = () => {
         speed: 500,
         dots: false,
         arrows: true,
-        slidesToShow: eventCount >=2 ? 2 : 1,
+        slidesToShow: newsCount >=2 ? 2 : 1,
         slidesToScroll: 1,
         centerMode: false,
         centerPadding: "50px",
@@ -157,9 +158,18 @@ export const Posts: React.FC = () => {
     <Contener>
          <div>
              <Slider {...settings} css={sleeveCurtain}>
-                 {result.allContentfulPost.nodes?.map((event: any) => (
-                    <div key={event.contentful_id}><EventCard title={event.title} url={"/post/" + GetSlug(event)} date={event.date} image={event.eye_catch}/></div>
-                 ))}
+                 {result.allContentfulPost.nodes?.map((post: any) => {
+                return (
+                    <div css={css({margin: 10,     display: 'flex !important',
+                    justifyContent: 'center',})} key={post.contentful_id}>
+                        {post.eye_catch ?
+                            <PostCard node={post} image={post.eye_catch.gatsbyImageData} />
+                        :
+                            <PostCard node={post} />
+                        }
+                    </div>
+                 )
+                })}
              </Slider>
          </div>
     </Contener>
