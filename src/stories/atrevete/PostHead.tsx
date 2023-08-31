@@ -46,8 +46,8 @@ export const PostHead = ({
                 {date}
                 {tags ? 
                 <div>
-                {tags.map(tag => (
-                    <span key={tag.contentful_id}>{tag.name}</span>
+                {tags.map((tag,index) => (
+                    <span key={tag.contentful_id}>{0 < index ? ` / ${tag.name}`  : tag.name}</span>
                 ))}   
                 </div>
                  : false}
