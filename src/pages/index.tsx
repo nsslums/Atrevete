@@ -13,6 +13,7 @@ import facepaint from 'facepaint';
 import { motion } from 'framer-motion';
 import logo from '../../static/Atrevete.svg';
 import PeopleProfile from "../stories/atrevete/peopleProfile";
+import { StaffSlide } from "../components/staffSlide";
 
 const breakpoints = [520, 767, 1100];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
@@ -185,35 +186,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
           <div css={{ textAlign: "center" }}>
             <Head1 text="Staff" />
           </div>
-          <div css={peopleScrollCss}>
-            <div css={[innerCss, peopleInnerCss]}>
-              {data.allContentfulStaff.nodes?.map((people: any) => {
-              return (
-                <div key={people.contentful_id} css={css({
-                  position: "relative",
-
-                  "&:after":{
-                    content: '""',
-                    width: 1,
-                    height: "80%",
-                    right: 0,
-                    top: "10%",
-                    position: 'absolute',
-                    background: "rgba(255,255,255,.2)",
-                  },
-
-                  "&:last-child": {
-                    "&:after":{
-                      content: "none",
-                    }
-                  }
-                })}>
-                  <PeopleProfile name={people.name} image={people.avatar?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
-                </div>
-              )
-              })}
-            </div>
-          </div>
+          <StaffSlide data={data.allContentfulStaff} />
           <div css={mq({ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: [100,150,200]})}>
             <GoldButton text="一覧を表示" onClick={() => navigate("/staff")} />
           </div>
@@ -224,35 +197,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
           <div css={{ textAlign: "center" }}>
             <Head1 text="Attendee" />
           </div>
-          <div css={peopleScrollCss}>
-            <div css={[innerCss, peopleInnerCss]}>
-              {data.allContentfulAttendee.nodes?.map((people: any) => {
-              return (
-                <div key={people.contentful_id} css={css({
-                  position: "relative",
-
-                  "&:after":{
-                    content: '""',
-                    width: 1,
-                    height: "80%",
-                    right: 0,
-                    top: "10%",
-                    position: 'absolute',
-                    background: "rgba(255,255,255,.2)",
-                  },
-
-                  "&:last-child": {
-                    "&:after":{
-                      content: "none",
-                    }
-                  }
-                })}>
-                  <PeopleProfile name={people.name} nameSub={people.nameSub} image={people.avatar?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
-                </div>
-              )
-              })}
-            </div>
-          </div>
+          <StaffSlide data={data.allContentfulAttendee} />
           <div css={mq({ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: [100,150,200]})}>
             <GoldButton text="一覧を表示" onClick={() => navigate("/attendee")} />
           </div>
