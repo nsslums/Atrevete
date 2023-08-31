@@ -92,7 +92,10 @@ const FormPage: React.FC<PageProps> = (props) => {
         if (response?.status === "success") {
             await navigate('/thanks')
         } else {
-            alert("エラーが発生しました．")
+            response.error.message ? 
+                alert(response.error.message)
+                :
+                alert("エラーが発生しました．")
         }
         setSubmitdis(false)
     }
