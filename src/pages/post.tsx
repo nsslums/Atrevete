@@ -37,7 +37,7 @@ const PostsPage: React.FC<PageProps> = ({ data }:any) => {
     return (
         <Common>
           <div css={rootCss}>
-            <Head1 text="投稿"/>
+            <Head1 text="POST"/>
             <div css={postsCss}>
               {posts?.map((post: { contentful_id: React.Key | null | undefined; eye_catch: { gatsbyImageData: IGatsbyImageData | undefined }; title: string; slug: string }) => (
                 <div key={post.contentful_id} css={postCss}>

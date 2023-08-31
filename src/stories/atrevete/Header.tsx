@@ -117,7 +117,7 @@ export const Header = ({
                     <div css={block} onClick={onClick}><GoldLink to='/about' text='Atreveteとは' /></div>
                     <div css={block} onClick={onClick}><GoldLink to='/staff' text='運営メンバー' /></div>
                     <div css={block} onClick={onClick}><GoldLink to='/attendee' text='参加者一覧' /></div>
-                    <div css={block} onClick={onClick}><GoldLink to='/post' text='ニュース' /></div>
+                    <div css={block} onClick={onClick}><GoldLink to='/post' text='投稿' /></div>
                     <div css={block} onClick={onClick}><GoldLink to='/contact' text='お問い合わせ' /></div>
                     <div css={divider} />
                     <div css={block} onClick={onClick}><a href='https://www.instagram.com/atrevete__official/'><FaInstagram css={snsIcon}/></a></div>

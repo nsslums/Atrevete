@@ -77,7 +77,7 @@ const FormPage: React.FC<PageProps> = () => {
                 <Head1 text="お問い合わせ" />
                 <form css={{ width: '85%', maxWidth: 600 }} action="/api/contact" method="post" onSubmit={onSubmit}>
                     <Input label="お名前" type="text" name="name" id="name" required={true} />
-                    <Input label="メール" type="email" name="email" id="email" required={true} />
+                    <Input label="メール（半角英数字）" type="email" name="email" id="email" required={true} />
                     <Input label="件名" type="text" name="subject" id="subject" required={true} />
                     <Input label="電話" type="tel" name="phone" id="phone" />
                     <TextArea label="内容" name="content" id="content" required={true} />
