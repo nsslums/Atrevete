@@ -42,7 +42,7 @@ const attendeePage: React.FC<PageProps> = ({ data }:any) => {
             <div key={people.contentful_id} css={css({
               position: "relative",
             })}>
-              <PeopleProfile name={people.name} image={people.profileImg?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
+              <PeopleProfile name={people.name} image={people.avatar?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
             </div>
           )
           })}
@@ -73,7 +73,7 @@ query{
           raw
         }
         profileType
-        profileImg {
+        avatar {
           gatsbyImageData
         }
       }
