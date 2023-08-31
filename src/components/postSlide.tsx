@@ -158,7 +158,7 @@ export const Posts: React.FC = () => {
          <div>
              <Slider {...settings} css={sleeveCurtain}>
                  {result.allContentfulPost.nodes?.map((event: any) => (
-                    <div key={event.contentful_id}><EventCard title={event.title} url={"/event/" + GetSlug(event)} date={event.date} image={event.eye_catch}/></div>
+                    <div key={event.contentful_id}><EventCard title={event.title} url={"/post/" + GetSlug(event)} date={event.date} image={event.eye_catch}/></div>
                  ))}
              </Slider>
          </div>
