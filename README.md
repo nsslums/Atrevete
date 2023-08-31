@@ -1,4 +1,4 @@
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5c454ba4-ecc6-4590-811e-44c3ffc6f537/deploy-status?branch=main)](https://app.netlify.com/sites/atrevete/deploys)
 ## first setup
 ```
 git clone https://github.com/nsslums/Atrevete.git

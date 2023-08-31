@@ -76,6 +76,11 @@ query {
       eye_catch {
         gatsbyImageData
       }
+      metadata {
+        tags {
+            name
+        }
+      }
     }
   }
 }
