@@ -1,7 +1,6 @@
 import * as React from "react"
-import { HeadFC, Link, PageProps, graphql } from "gatsby"
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
-import { BLOCKS, INLINES } from "@contentful/rich-text-types"
+import { HeadFC, PageProps, graphql } from "gatsby"
+import { IGatsbyImageData } from "gatsby-plugin-image"
 import { Common } from "../components/common"
 import { PostCard } from "../stories/atrevete/event/PostCard"
 import { css } from "@emotion/react"
@@ -73,6 +72,7 @@ query {
       contentful_id
       title
       slug
+      createdAt(formatString: "yyyy/MM/DD")
       eye_catch {
         gatsbyImageData
       }
