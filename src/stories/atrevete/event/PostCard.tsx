@@ -4,13 +4,18 @@ import { Link } from 'gatsby-link';
 import { GatsbyImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
 import { type } from 'os';
 import { GetSlug } from '../../../api/getSlug';
+import facepaint from "facepaint";
 
-const rootCss = css({
+const breakpoints = [520, 767, 1100];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
+
+
+const rootCss = css(mq({
     position: "relative",
-    width: 320,
-    height: 200,
+    width: [320, 395],
+    height: 207,
     // padding: 10,
-    border: '1px solid',
+    border: '.7px solid',
     borderTopColor: 'rgba(255,255,255,0.25)',
     borderLeftColor: 'rgba(255,255,255,0.25)',
     borderRightColor: 'rgba(255,255,255,0.1)',
@@ -24,7 +29,7 @@ const rootCss = css({
         borderColor: "rgba(255,255,255,0.4)",
       }
     },
-})
+}))
 
 const linkCss = css({
     width: "100%",

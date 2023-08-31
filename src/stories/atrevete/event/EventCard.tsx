@@ -19,14 +19,14 @@ const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
 
 const rootStyle = css(mq({
   width: [320, 395],
-  height: [300 ,207],
+  height: 207,
   borderRadius: "5px",
   overflow: 'hidden',
   background: "black",
   position: "relative",
   color: "white",
-  fontSize: 16,
-  borderWidth: "1px",
+  fontSize: [12,14,16],
+  borderWidth: ".7px",
   borderStyle: "solid",
   borderTopColor: 'rgba(255,255,255,0.25)',
   borderLeftColor: 'rgba(255,255,255,0.25)',
@@ -48,7 +48,7 @@ const rootStyle = css(mq({
     height: "100%",
     top: 0,
     left: 0,
-    background: "linear-gradient(90.24deg, #000000 0.23%, rgba(0, 0, 0, 0.82) 39.72%, rgba(0, 0, 0, 0) 78.39%)",
+    background: "linear-gradient(90.24deg, rgba(0,0,0,.9) 0.23%, rgba(0, 0, 0, 0.82) 30%, rgba(0, 0, 0, 0) 78.39%)",
     zIndex: 10,
   }
 }))
