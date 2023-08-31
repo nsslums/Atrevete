@@ -16,7 +16,8 @@ const arrow_css = css({
     height: "40px",
     top: "50%",
     transform: "translate(0, -50%)",
-    backgroundColor: "rgba(255,255,255, .4)",
+    backgroundColor: "rgba(255,255,255, .6)",
+    boxShadow: "0 0 10px rgba(0,0,0,0.5)",
     borderRadius: "90px",
     cursor: "pointer",
     display: "flex",
@@ -24,6 +25,13 @@ const arrow_css = css({
     alignItems: "center",
     color: "#1E1E1E",
     zIndex: 20,
+    transition: "all 0.2s ease",
+    "&:hover": {
+        backgroundColor: "white",
+        "&:active": {
+            transform: "translate(0, -50%) scale(0.95)",
+        }
+    },
 })
 
 const sleeveCurtain = css({
