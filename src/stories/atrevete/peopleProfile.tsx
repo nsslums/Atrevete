@@ -8,14 +8,16 @@ import {
 } from "gatsby-source-contentful/rich-text";
 
 const peopleStyle = css({
-    width: 300,
+    width: 400,
+    maxWidth: '90vw',
     // minHeight: 300,
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
     // border: 'solid 1px white',
-    padding: '0 2em',
+    padding: '2em',
     boxSizing: 'border-box',
+    textAlign: 'center',
 });
 
 const avatarStyle = css({
@@ -26,7 +28,8 @@ const avatarStyle = css({
 })
 
 const textStyle = css({
-    maxWidth: '90%'
+    maxWidth: '90%',
+    textAlign: 'left',
 })
 
 interface peopleProps {

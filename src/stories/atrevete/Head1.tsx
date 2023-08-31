@@ -20,6 +20,7 @@ const Style = css(mq({
   backgroundClip: 'text',
   color: 'transparent',
   // transform: ['scale(0.7)', 'scale(0.8)', 'scale(1)'],
+  textTransform: 'uppercase',
 }))
 
 const bgStyle = css({

@@ -16,7 +16,8 @@ const arrow_css = css({
     height: "40px",
     top: "50%",
     transform: "translate(0, -50%)",
-    backgroundColor: "rgba(255,255,255, .4)",
+    backgroundColor: "rgba(255,255,255, .6)",
+    boxShadow: "0 0 10px rgba(0,0,0,0.5)",
     borderRadius: "90px",
     cursor: "pointer",
     display: "flex",
@@ -24,30 +25,37 @@ const arrow_css = css({
     alignItems: "center",
     color: "#1E1E1E",
     zIndex: 20,
+    transition: "all 0.2s ease",
+    "&:hover": {
+        backgroundColor: "white",
+        "&:active": {
+            transform: "translate(0, -50%) scale(0.95)",
+        }
+    },
 })
 
 const sleeveCurtain = css({
-    "&::before": {
-        content: '""',
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "50px",
-        height: "100%",
-        background: "linear-gradient(90deg, #121212 0%, rgba(18, 18, 18, 0.713542) 47.4%, rgba(18, 18, 18, 0) 100%)",
-        zIndex: 10
-    },
-
-    "&::after": {
-        content: '""',
-        position: "absolute",
-        top: 0,
-        right: 0,
-        width: "50px",
-        height: "100%",
-        background: "linear-gradient(-90deg, #121212 0%, rgba(18, 18, 18, 0.713542) 47.4%, rgba(18, 18, 18, 0) 100%)",
-        zIndex: 10
-    }
+    // "&::before": {
+    //     content: '""',
+    //     position: "absolute",
+    //     top: 0,
+    //     left: 0,
+    //     width: "50px",
+    //     height: "100%",
+    //     background: "linear-gradient(90deg, #121212 0%, rgba(18, 18, 18, 0.713542) 47.4%, rgba(18, 18, 18, 0) 100%)",
+    //     zIndex: 10
+    // },
+    //
+    // "&::after": {
+    //     content: '""',
+    //     position: "absolute",
+    //     top: 0,
+    //     right: 0,
+    //     width: "50px",
+    //     height: "100%",
+    //     background: "linear-gradient(-90deg, #121212 0%, rgba(18, 18, 18, 0.713542) 47.4%, rgba(18, 18, 18, 0) 100%)",
+    //     zIndex: 10
+    // }
 })
 
 function NextArrow(props: any) {

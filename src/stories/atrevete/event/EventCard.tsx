@@ -19,24 +19,26 @@ const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
 
 const rootStyle = css(mq({
   width: [320, 395],
-  height: [300 ,207],
+  height: 207,
   borderRadius: "5px",
   overflow: 'hidden',
   background: "black",
   position: "relative",
   color: "white",
-  fontSize: 16,
-  borderWidth: "1px",
+  fontSize: [12,14,16],
+  borderWidth: ".7px",
   borderStyle: "solid",
   borderTopColor: 'rgba(255,255,255,0.25)',
   borderLeftColor: 'rgba(255,255,255,0.25)',
   borderRightColor: 'rgba(255,255,255,0.1)',
   borderBottomColor: 'rgba(255,255,255,0.1)',
-  boxShadow: '0 0 20px rgba(0,0,0,0.5)',
   margin: "auto",
+  transition: 'all 0.2s ease',
   "&:hover": {
-    border: "solid 1px rgba(255,2555,255,0.7)",
+    border: "solid .7px rgba(255,2555,255,0.7)",
+    boxShadow: '0 0 20px rgba(0,0,0,0.5)',
     "&:active": {
+      boxShadow: '0 0 20px rgba(0,0,0,0)',
       borderColor: "rgba(255,255,255,0.4)",
     }
   },
@@ -48,7 +50,7 @@ const rootStyle = css(mq({
     height: "100%",
     top: 0,
     left: 0,
-    background: "linear-gradient(90.24deg, #000000 0.23%, rgba(0, 0, 0, 0.82) 39.72%, rgba(0, 0, 0, 0) 78.39%)",
+    background: "linear-gradient(90.24deg, rgba(0,0,0,.9) 0.23%, rgba(0, 0, 0, 0.82) 30%, rgba(0, 0, 0, 0) 78.39%)",
     zIndex: 10,
   }
 }))
@@ -85,8 +87,6 @@ export const EventCard = ({
   isActive = new Date().getTime() < new Date(date).getTime() || date==null,
   ...props
 }: EventCardProps) => {
-
-  const status = isActive ? '募集中' : '募集終了';
   return (
     <div css={rootStyle}>
       <Link to={url} css={{
@@ -101,9 +101,15 @@ export const EventCard = ({
           : 
           <StaticImage alt='eyeCatch' src='../../../../static/noimg.png' css={image_css}/>
         }
-        <div css={status_css}>
-          <span>{status}</span>
+        {isActive? 
+          <div css={status_css}>
+            <span>募集中</span>
+          </div>
+        :  
+        <div css={[status_css, css({backgroundColor: '#3f3f3f'})]}>
+          <span>募集終了</span>
         </div>
+        }
         <div css={{
           width: "85%",
           zIndex: 10,

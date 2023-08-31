@@ -114,8 +114,12 @@ const FormPage: React.FC<PageProps> = (props) => {
                 alignItems: "center",
                 marginBottom: "5em",
             }}>
+
+                {/* --- form --- */}
                 <Head1 text="イベント申込" />
                 <form css={{ width: '85%', maxWidth: 600 }} action="/api/event" method="post" onSubmit={onSubmit}>
+
+                    {/* --- form input --- */}
                     <Pulldown label="イベント" name="event" id="event" options={options} default_val={default_value} required={true} />
                     <Input label="名前" type="text" name="name" id="name" required={true} />
                     <Input label="カタカナ" type="text" name="name_kana" id="name_kana" required={true} pattern={pattern.kana}/>
@@ -125,11 +129,14 @@ const FormPage: React.FC<PageProps> = (props) => {
                     <TextArea label="経歴・学外活動" name="career" id="career" />
                     <Certifications label="資格" name="certifications_hiddn" id="certifications" required={false} />
                     <TextArea label="自己PR、参加目的など" name="pr" id="pr" required={true} />
+
+                    {/* --- file upload form --- */}
                     {/* <div css={css({
                         marginTop: 30,
                     })}>
                         <UploadFile required={true} />
                     </div> */}
+
                     <Input label="Instagram ID" type="text" name="instagram" id="instagram" pattern={pattern.instagram} />
                     <Input label="TikTok ID" type="text" name="tiktok" id="tiktok" pattern={pattern.tiktok}/>
                     <Input label="Twitter ID" type="text" name="twitter" id="twitter" pattern={pattern.twitter}/>
@@ -140,7 +147,11 @@ const FormPage: React.FC<PageProps> = (props) => {
                         alignItems: "center",
                         marginBottom: "5em",
                     })}>
+
+                        {/* --- privacy policy notification --- */}
                         <p css={{ fontSize: '13px', textAlign: 'center', fontFamily: "'Zen Kaku Gothic New', sans-serif",}}>「Submit」を押す前に<Link css={linkStyle} to="/privacy">プライバシーポリシー</Link>に同意する必要があります。</p>
+
+                        {/* --- submit button --- */}
                         <div css={recapcha}>
                             <p>This site is protected by reCAPTCHA and the Google</p>
                             <p><a css={linkStyle} href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and<a css={linkStyle} href="https://policies.google.com/terms" starget="_blank">Terms of Service</a> apply.</p>

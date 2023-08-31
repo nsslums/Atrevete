@@ -1,4 +1,5 @@
 import type { GatsbyConfig } from "gatsby";
+import { GetSlug } from "./src/api/getSlug";
 require('dotenv').config();
 
 const config: GatsbyConfig = {
@@ -55,12 +56,14 @@ const config: GatsbyConfig = {
         allContentfulPost {
           nodes {
             title
+            slug
             updatedAt(formatString: "YYYY-MM-DDTHH:mm:ssZ")
           }
         }
         allContentfulEvent {
           nodes {
             title
+            slug
             updatedAt(formatString: "YYYY-MM-DDTHH:mm:ssZ")
           }
         }
@@ -74,14 +77,14 @@ const config: GatsbyConfig = {
       }) => {
         let postMap = posts.reduce((acc, post) => {
           const { title, updatedAt } = post
-          acc[`/post/${title}/`] = {updatedAt}
+          acc[`/post/${GetSlug(post)}/`] = {updatedAt}
 
           return acc
         }, {})
 
         const allMap = events.reduce((acc, post) => {
           const { title, updatedAt } = post
-          acc[`/event/${title}/`] = {updatedAt}
+          acc[`/event/${GetSlug(post)}/`] = {updatedAt}
 
           return acc
         }, postMap)
@@ -105,18 +108,26 @@ const config: GatsbyConfig = {
         }
       },
     },
-  }, 'gatsby-plugin-robots-txt',{
-    resolve: `gatsby-plugin-canonical-urls`,
+  }, {
+    resolve: 'gatsby-plugin-robots-txt',
     options: {
-      siteUrl: process.env.SITEURL,
+      host: process.env.SITEURL,
+      sitemap: `${process.env.SITEURL}/sitemap-index.xml`,
       env: {
         development: {
           policy: [{userAgent: '*', disallow: ['/']}]
         },
         production: {
-          policy: [{userAgent: '*', allow: '/', disallow: ['/thanks','/404?(.*)']}]
+          policy: [{userAgent: '*', allow: '/', disallow: ['/thanks','/404?(.*)', '/api']}]
         }
-      }
+      },
+    }
+  },
+    {
+    resolve: `gatsby-plugin-canonical-urls`,
+    options: {
+      siteUrl: process.env.SITEURL,
+      stripQueryString: true,
     },
   },
   {

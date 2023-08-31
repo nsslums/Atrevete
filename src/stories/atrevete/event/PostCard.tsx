@@ -4,27 +4,34 @@ import { Link } from 'gatsby-link';
 import { GatsbyImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
 import { type } from 'os';
 import { GetSlug } from '../../../api/getSlug';
+import facepaint from "facepaint";
 
-const rootCss = css({
+const breakpoints = [520, 767, 1100];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
+
+
+const rootCss = css(mq({
     position: "relative",
-    width: 320,
-    height: 200,
+    width: [320, 395],
+    height: 207,
     // padding: 10,
-    border: '1px solid',
+    border: '.7px solid',
     borderTopColor: 'rgba(255,255,255,0.25)',
     borderLeftColor: 'rgba(255,255,255,0.25)',
     borderRightColor: 'rgba(255,255,255,0.1)',
     borderBottomColor: 'rgba(255,255,255,0.1)',
-    boxShadow: '0 0 20px rgba(0,0,0,0.5)',
     borderRadius: 5,
     overflow: 'hidden',
+    transition: 'all 0.2s ease',
     "&:hover": {
-      border: "solid 1px rgba(255,2555,255,0.7)",
+      border: "solid .7px rgba(255,2555,255,0.7)",
+      boxShadow: '0 0 20px rgba(0,0,0,0.5)',
       "&:active": {
+        boxShadow: '0 0 20px rgba(0,0,0,0)',
         borderColor: "rgba(255,255,255,0.4)",
       }
     },
-})
+}))
 
 const linkCss = css({
     width: "100%",
@@ -37,13 +44,13 @@ const imageCss = css({
     height: "100%",
     objectFit: "cover",
     "&:after": {
-      content: '""',
-      background: 'linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1))',
-      position: 'absolute',
-      width: '100%',
-      height: 70,
-      left: 0,
-      bottom: 0,
+        content: '""',
+        background: 'linear-gradient(transparent,black)',
+        position: 'absolute',
+        width: '100%',
+        height: 80,
+        left: 0,
+        bottom: 0,
     }
 })
 
@@ -85,6 +92,7 @@ export const PostCard = ({
         </div>
         <div css={textCss}>
             <p css={{fontWeight: '700'}}>{node.title}</p>
+            <p css={{fontSize: '.6em'}}>{node.createdAt}</p>
         </div>
       </Link>
 

@@ -3,6 +3,7 @@ import React from 'react';
 import {GrSearch} from '@react-icons/all-files/gr/GrSearch'
 import Modal from 'react-modal'
 import { Link } from 'gatsby-link';
+import { GetSlug } from '../../api/getSlug';
 
 let root
 if(typeof document !== `undefined`){
@@ -211,7 +212,7 @@ export const Search = ({
                   {posts.length > 0 ? 
                   <div css={resultBlock}><p css={{fontSize: ".8em"}}>投稿</p>
                     {posts.map(post =>(
-                      <Link to={"/post/"+ post.title} css={[resultfield, hover]} key={post.title}>{post.title}</Link>
+                      <Link to={"/post/"+ GetSlug(post)} css={[resultfield, hover]} key={post.title}>{post.title}</Link>
                     ))}
                   </div> 
                   :
@@ -219,7 +220,7 @@ export const Search = ({
                   {events.length > 0 ? 
                   <div css={resultBlock}><p css={{fontSize: ".8em"}}>イベント</p>
                     {events.map(event =>(
-                      <Link to={"/event/"+ event.title} css={[resultfield, hover]} key={event.title}>{event.title}</Link>
+                      <Link to={"/event/"+ GetSlug(event)} css={[resultfield, hover]} key={event.title}>{event.title}</Link>
                     ))}
                   </div> 
                   :

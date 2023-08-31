@@ -1,7 +1,8 @@
 import * as React from "react"
 import { HeadFC, PageProps, graphql, navigate } from "gatsby"
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { Events } from "../components/eventSlide";
+import { Posts } from "../components/postSlide";
 import { Common } from "../components/common"
 import { GoldButton } from "../stories/atrevete/GoldButton";
 import { css } from "@emotion/react";
@@ -10,7 +11,6 @@ import { PostCard } from "../stories/atrevete/event/PostCard";
 import { Html_Head } from '../components/html-head'
 import facepaint from 'facepaint';
 import { motion } from 'framer-motion';
-import Logo from "../stories/atrevete/Logo";
 import logo from '../../static/Atrevete.svg';
 import PeopleProfile from "../stories/atrevete/peopleProfile";
 
@@ -102,8 +102,7 @@ const innerCss = css(mq({
 
 const peopleInnerCss = css(mq({
   display: "inline-flex", flexDirection: "row", flexWrap: 'nowrap', justifyContent: "left",
-  marginBottom: ['1em', '2em', '3em'],
-}));
+}))
 
 const peopleScrollCss = css(mq({
   maxWidth: "min(90vw, 980px)",
@@ -112,9 +111,12 @@ const peopleScrollCss = css(mq({
   overflow: 'hidden',
   overflowX: 'auto',
   textAlign: 'center',
-  marginBottom: ['1em', '2em', '3em'],
 }))
 
+const partnerCss = css({
+  margin: 'auto',
+  maxWidth: "min(90vw, 980px)",
+})
 
 const IndexPage: React.FC<PageProps> = ({ data }:any) => {
 
@@ -136,7 +138,7 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
             <img src={logo} css={topLogo}/>
             <motion.p
               initial={{'--p1': '-20%', '--p2': '0%'} as any}
-              whileInView={{'--p1': ['-20%','100%'], '--p2': ['0%','120%'], '--t1': [0,0,1] } as any}
+              whileInView={{'--p1': ['-20%','100%'], '--p2': ['0%','120%'], '--t1': [0,0,0.7] } as any}
               viewport={{ once: true }}
               transition={{ duration:1.5, delay: 1 }}
               css={topPhraseText}
@@ -169,14 +171,9 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
 
         {/* --- news --- */}
         <div css={categoryBlock}>
-          <div css={{ textAlign: "center" }}><Head1 text="News" /></div>
+          <div css={{ textAlign: "center" }} ><Head1 text="News" /></div>
           <div css={innerCss}>
-            {data.allContentfulPost.nodes?.map((post: any) => {
-              return post.eye_catch ?
-                <div css={postCss} key={post.contentful_id}><PostCard node={post} image={post.eye_catch.gatsbyImageData} /></div>
-                :
-                <div css={postCss} key={post.contentful_id}><PostCard node={post} /></div>
-            })}
+            <Posts />
           </div>
           <div css={mq({ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: [100,200,300]})}>
             <GoldButton text="さらに表示" onClick={() => navigate("/post")} />
@@ -211,11 +208,14 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
                     }
                   }
                 })}>
-                  <PeopleProfile name={people.name} image={people.profileImg?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
+                  <PeopleProfile name={people.name} image={people.avatar?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
                 </div>
               )
               })}
             </div>
+          </div>
+          <div css={mq({ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: [100,150,200]})}>
+            <GoldButton text="一覧を表示" onClick={() => navigate("/staff")} />
           </div>
         </div>
 
@@ -247,11 +247,14 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
                     }
                   }
                 })}>
-                  <PeopleProfile name={people.name} image={people.profileImg?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
+                  <PeopleProfile name={people.name} image={people.avatar?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
                 </div>
               )
               })}
             </div>
+          </div>
+          <div css={mq({ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: [100,150,200]})}>
+            <GoldButton text="一覧を表示" onClick={() => navigate("/attendee")} />
           </div>
         </div>
 
@@ -260,14 +263,13 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
           <div css={{ textAlign: "center" }}>
             <Head1 text="Official Partner" />
           </div>
-          <div css={innerCss}>
+          <div css={[innerCss, partnerCss]}>
             {data.allContentfulSponsor.nodes?.map((sponsor: any) => (
               <div
                 key={sponsor.contentful_id}
                 css={{
-                  padding: "1em",
-                  flex: "0 0 calc(50% - 2em)",  // スマートフォン表示時の幅を50%に設定
                   margin: "1em",
+                  flex: "0 0 calc(50% - 2em)",  // スマートフォン表示時の幅を50%に設定
                   boxSizing: "border-box",
                   '@media (max-width: 767px)': {  // スマートフォン表示のメディアクエリ
                     flex: "0 0 calc(100% - 2em)",  // 幅を100%に設定
@@ -321,6 +323,7 @@ export const query = graphql`
         contentful_id
         title
         slug
+        createdAt(formatString: "yyyy/MM/DD")
         eye_catch{
           gatsbyImageData
         }
@@ -334,7 +337,7 @@ export const query = graphql`
           raw
         }
         profileType
-        profileImg {
+        avatar {
           gatsbyImageData
         }
       }
@@ -347,7 +350,7 @@ export const query = graphql`
           raw
         }
         profileType
-        profileImg {
+        avatar {
           gatsbyImageData
         }
       }
