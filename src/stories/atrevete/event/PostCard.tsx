@@ -45,10 +45,10 @@ const imageCss = css({
     objectFit: "cover",
     "&:after": {
         content: '""',
-        background: 'linear-gradient(transparent,black)',
+        background: 'linear-gradient(90deg, black, transparent, transparent)',
         position: 'absolute',
         width: '100%',
-        height: 80,
+        height: '100%',
         left: 0,
         bottom: 0,
     }
@@ -56,13 +56,18 @@ const imageCss = css({
 
 const textCss = css({
     width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "start",
     position: 'absolute',
     bottom: 0,
     textAlign: 'center',
-    fontSize: '20px',
-    marginBottom: "1em",
+    fontSize: [12,14,16],
     "> p": {
       textShadow: "0 0 5px black",
+      marginLeft: 20,
     }
 })
 
@@ -91,8 +96,12 @@ export const PostCard = ({
             }
         </div>
         <div css={textCss}>
-            <p css={{fontWeight: '700'}}>{node.title}</p>
-            <p css={{fontSize: '.6em'}}>{node.createdAt}</p>
+            <p>投稿：{node.createdAt}</p>
+            <p css={{fontSize: "1.7em",fontWeight: '700'}}>{node.title}</p>
+            <p css={{fontSize:'.9em',opacity:'.7',marginTop:'.4em'}}>{node.metadata.tags?.map((tag,index) => {
+
+                return 0 < index ? ` / ${tag.name}`  : tag.name
+            })}</p>
         </div>
       </Link>
 

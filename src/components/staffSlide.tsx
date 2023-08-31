@@ -10,6 +10,12 @@ import {FaChevronLeft} from "@react-icons/all-files/fa/FaChevronLeft"
 import {FaChevronRight} from "@react-icons/all-files/fa/FaChevronRight"
 import { GetSlug } from "../api/getSlug";
 import { PostCard } from "../stories/atrevete/event/PostCard";
+import PeopleProfile from "../stories/atrevete/peopleProfile";
+import facepaint from "facepaint";
+
+const breakpoints = [520, 767, 1100];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
+
 
 const arrow_css = css({
     position: "absolute",
@@ -92,34 +98,10 @@ function NextArrow(props: any) {
   }
   
 
-export const Posts: React.FC = () => {
+export const StaffSlide = ({data}:any) => {
+    console.log(data)
 
-    const result = useStaticQuery(graphql`
-        query{
-            allContentfulPost(
-              sort: {createdAt: DESC}
-              limit: 3
-              filter: {hidden: {ne: true}}
-            ) {
-                nodes {
-                    contentful_id
-                    title
-                    slug
-                    createdAt(formatString: "yyyy/MM/DD")
-                    eye_catch{
-                        gatsbyImageData
-                    }
-                    metadata {
-                        tags {
-                            name
-                        }
-                    }
-                }
-            }
-        }
-    `)
-
-    const newsCount = result.allContentfulPost.nodes?.length || 0
+    const newsCount = data.nodes?.length || 0
     
     let width = 900
     if (typeof window !== `undefined`) {
@@ -131,14 +113,26 @@ export const Posts: React.FC = () => {
         speed: 500,
         dots: false,
         arrows: true,
-        slidesToShow: newsCount >=2 ? 2 : 1,
+        slidesToShow: newsCount >=3 ? 3 : 1,
         slidesToScroll: 1,
         centerMode: false,
         centerPadding: "50px",
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
     }
-    : {
+    : (width > 766 ? {
+        infinite: false,
+        initialSlide: 0,
+        speed: 500,
+        dots: false,
+        arrows: true,
+        slidesToShow: newsCount >=2 ? 2 : 1,
+        slidesToScroll: 1,
+        centerMode: false,
+        centerPadding: "0px",
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
+    } : {
         infinite: false,
         initialSlide: 0,
         speed: 500,
@@ -150,7 +144,7 @@ export const Posts: React.FC = () => {
         centerPadding: "0px",
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
-    })
+    }))
     // slick-disabled
 
 
@@ -163,18 +157,34 @@ export const Posts: React.FC = () => {
     <Contener>
          <div>
              <Slider {...settings} css={sleeveCurtain}>
-                 {result.allContentfulPost.nodes?.map((post: any) => {
+             {data.nodes?.map((people: any) => {
                 return (
-                    <div css={css({margin: 10,     display: 'flex !important',
-                    justifyContent: 'center',})} key={post.contentful_id}>
-                        {post.eye_catch ?
-                            <PostCard node={post} image={post.eye_catch.gatsbyImageData} />
-                        :
-                            <PostCard node={post} />
+                    <div key={people.contentful_id} css={css({
+                    position: "relative",
+
+                    display: 'flex !important',
+                    justifyContent: 'center',
+
+                    "&:after":{
+                        content: '""',
+                        width: 1,
+                        height: "80%",
+                        right: 0,
+                        top: "10%",
+                        position: 'absolute',
+                        background: "rgba(255,255,255,.2)",
+                    },
+
+                    "&:last-child": {
+                        "&:after":{
+                        content: "none",
                         }
+                    }
+                    })}>
+                    <PeopleProfile name={people.name} image={people.avatar?.gatsbyImageData} profile={people.description}  isStaff={people.profileType} />
                     </div>
-                 )
-                })}
+                )
+              })}
              </Slider>
          </div>
     </Contener>
