@@ -11,6 +11,7 @@ import { Head2 } from "../stories/atrevete/Head2"
 import { Html_Head } from "../components/html-head"
 import { PostCard } from "../stories/atrevete/event/PostCard"
 import { GetSlug } from "../api/getSlug"
+import {EventCard} from "../stories/atrevete/event/EventCard";
 
 const block = css({
   position: "relative",
@@ -146,9 +147,9 @@ const PostPage: React.FC<PageProps> = ({ data }) => {
           <div>
               {data.contentfulPost.related_event?.map(event => (
                 event.eye_catch ? 
-                <div key={event.contentful_id}><PostCard type="event" node={event} image={event.eye_catch.gatsbyImageData} /></div>
+                <div key={event.contentful_id}><EventCard title={event.title} date={event.date} url={`/event/${GetSlug(event)}`} image={event.eye_catch.gatsbyImageData} /></div>
                 :
-                <div key={event.contentful_id}><PostCard type="event" node={event} /></div>
+                <div key={event.contentful_id}><EventCard title={event.title} date={event.date} url={`/event/${GetSlug(event)}`}/></div>
               ))}
           </div>
         </>
@@ -211,6 +212,7 @@ export const query = graphql`
         related_event {
           contentful_id
           title
+          date(formatString: "yyyy/M/D")
         }
         eye_catch{
           gatsbyImageData

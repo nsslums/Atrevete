@@ -267,6 +267,12 @@ export const query = graphql`
         contentful_id
         title
         slug
+        createdAt(formatString: "yyyy/MM/DD")
+        metadata {
+            tags {
+                name
+            }
+        }
         eye_catch{
           gatsbyImageData
         }
