@@ -109,6 +109,11 @@ export const Posts: React.FC = () => {
                     eye_catch{
                         gatsbyImageData
                     }
+                    metadata {
+                        tags {
+                            name
+                        }
+                    }
                 }
             }
         }
