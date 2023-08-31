@@ -3,6 +3,7 @@ import { Header } from "../stories/atrevete/Header";
 import GlobalStyle from "../GlobalStyle";
 import { graphql, useStaticQuery } from "gatsby";
 import { css } from "@emotion/react";
+import { motion, AnimatePresence} from "framer-motion";
 
 const Footer = lazy(() => import('../stories/atrevete/Footer'));
 const Search = lazy(() => import('../stories/atrevete/Search'));
@@ -48,9 +49,17 @@ export const Common = ({ children }: any) => {
         <div css={warpper}>
             <GlobalStyle />
             <Header />
-            <div css={{marginTop: 98, flexGrow: 1}}>
-                {children}
-            </div>
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={location.pathname}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
+                    transition={{duration: 1}}
+                    css={{marginTop: 98, flexGrow: 1}}>
+                    {children}
+                </motion.div>
+            </AnimatePresence>
             <Suspense fallback={null}>
                 <Search data={data}/>
                 <Footer />
