@@ -63,7 +63,7 @@ const textCss = css({
     alignItems: "start",
     position: 'absolute',
     bottom: 0,
-    textAlign: 'center',
+    textAlign: 'left',
     fontSize: [12,14,16],
     "> p": {
       textShadow: "0 0 5px black",
