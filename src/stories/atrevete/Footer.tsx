@@ -84,9 +84,9 @@ export const Footer = ({
                                 <p css={head}>メニュー</p>
                                 <Link to='/' css={link}>トップページ</Link>
                                 <Link to='/about' css={link}>Atreveteとは</Link>
-                                <Link to='/about' css={link}>運営メンバー</Link>
-                                <Link to='/about' css={link}>参加者一覧</Link>
-                                <Link to='/post' css={link}>ニュース</Link>
+                                <Link to='/staff' css={link}>運営メンバー</Link>
+                                <Link to='/attendee' css={link}>参加者一覧</Link>
+                                <Link to='/post' css={link}>投稿</Link>
                                 <Link to='/privacy' css={link}>プライバシーポリシー</Link>
                             </div>
                             <div css={menuInner}>
