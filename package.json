@@ -15,7 +15,9 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "format": "prettier --write src/**/*.{tsx,ts,css}",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^11.11.0",
@@ -73,6 +75,10 @@
     "@types/react-dom": "^18.2.6",
     "@types/react-modal": "^3.16.0",
     "@types/react-slick": "^0.23.10",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-react-app": "^7.0.1",
+    "husky": "^8.0.0",
+    "prettier": "^3.0.3",
     "prop-types": "^15.8.1",
     "storybook": "^7.0.20",
     "typescript": "^5.1.3"
