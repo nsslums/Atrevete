@@ -15,6 +15,7 @@ const rootCss = css(mq({
     width: [320, 395],
     height: 207,
     // padding: 10,
+    marginBottom: 15,
     border: '.7px solid',
     borderTopColor: 'rgba(255,255,255,0.25)',
     borderLeftColor: 'rgba(255,255,255,0.25)',
@@ -54,7 +55,7 @@ const imageCss = css({
     }
 })
 
-const textCss = css({
+const textCss = css(mq({
     width: "100%",
     height: "100%",
     display: "flex",
@@ -63,13 +64,13 @@ const textCss = css({
     alignItems: "start",
     position: 'absolute',
     bottom: 0,
-    textAlign: 'center',
+    textAlign: 'left',
     fontSize: [12,14,16],
     "> p": {
       textShadow: "0 0 5px black",
       marginLeft: 20,
     }
-})
+}))
 
 interface EventCardProps {
   node: any;
@@ -98,7 +99,7 @@ export const PostCard = ({
         <div css={textCss}>
             <p>投稿：{node.createdAt}</p>
             <p css={{fontSize: "1.7em",fontWeight: '700'}}>{node.title}</p>
-            <p css={{fontSize:'.9em',opacity:'.7',marginTop:'.4em'}}>{node.metadata.tags?.map((tag,index) => {
+            <p css={{opacity:'.7',marginTop:'.4em'}}>{node.metadata.tags?.map((tag,index) => {
 
                 return 0 < index ? ` / ${tag.name}`  : tag.name
             })}</p>

@@ -16,7 +16,7 @@ const rootCss = css({
   position: "relative",
   fontSize: 16,
   marginTop: '1.5em',
-  zIndex: 100,
+  // zIndex: 100,
 })
 
 const labelBase = css({
