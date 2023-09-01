@@ -99,7 +99,7 @@ export const PostCard = ({
         <div css={textCss}>
             <p>投稿：{node.createdAt}</p>
             <p css={{fontSize: "1.7em",fontWeight: '700'}}>{node.title}</p>
-            <p css={{fontSize:'.9em',opacity:'.7',marginTop:'.4em'}}>{node.metadata.tags?.map((tag,index) => {
+            <p css={{opacity:'.7',marginTop:'.4em'}}>{node.metadata.tags?.map((tag,index) => {
 
                 return 0 < index ? ` / ${tag.name}`  : tag.name
             })}</p>
