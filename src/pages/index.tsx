@@ -193,45 +193,59 @@ const IndexPage: React.FC<PageProps> = ({ data }:any) => {
         </div>
 
         {/* --- Attendee --- */}
-        <div css={categoryBlock}>
-          <div css={{ textAlign: "center" }}>
-            <Head1 text="Attendee" />
+        {data.allContentfulSponsor.nodes?
+          <div css={categoryBlock}>
+            <div css={{textAlign: "center"}}>
+              <Head1 text="Attendee"/>
+            </div>
+            <StaffSlide data={data.allContentfulAttendee}/>
+            <div css={mq({
+              textAlign: "center",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: [100, 150, 200]
+            })}>
+              <GoldButton text="一覧を表示" onClick={() => navigate("/attendee")}/>
+            </div>
           </div>
-          <StaffSlide data={data.allContentfulAttendee} />
-          <div css={mq({ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: [100,150,200]})}>
-            <GoldButton text="一覧を表示" onClick={() => navigate("/attendee")} />
-          </div>
-        </div>
+        :
+          <></>
+        }
 
         {/* --- official partner --- */}
-        <div css={categoryBlock}>
-          <div css={{ textAlign: "center" }}>
-            <Head1 text="Official Partner" />
+        {data.allContentfulSponsor.nodes?
+          <div css={categoryBlock}>
+            <div css={{ textAlign: "center" }}>
+              <Head1 text="Official Partner" />
+            </div>
+            <div css={[innerCss, partnerCss]}>
+              {data.allContentfulSponsor.nodes?.map((sponsor: any) => (
+                <div
+                  key={sponsor.contentful_id}
+                  css={{
+                    margin: "1em",
+                    flex: "0 0 calc(50% - 2em)",  // スマートフォン表示時の幅を50%に設定
+                    boxSizing: "border-box",
+                    '@media (max-width: 767px)': {  // スマートフォン表示のメディアクエリ
+                      flex: "0 0 calc(100% - 2em)",  // 幅を100%に設定
+                    },
+                  }}
+                >
+                  <a href={sponsor.url} target="_blank" rel="noopener noreferrer">
+                    <GatsbyImage
+                      css={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      image={sponsor.logo.gatsbyImageData}
+                      alt={sponsor.name}
+                    />
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
-          <div css={[innerCss, partnerCss]}>
-            {data.allContentfulSponsor.nodes?.map((sponsor: any) => (
-              <div
-                key={sponsor.contentful_id}
-                css={{
-                  margin: "1em",
-                  flex: "0 0 calc(50% - 2em)",  // スマートフォン表示時の幅を50%に設定
-                  boxSizing: "border-box",
-                  '@media (max-width: 767px)': {  // スマートフォン表示のメディアクエリ
-                    flex: "0 0 calc(100% - 2em)",  // 幅を100%に設定
-                  },
-                }}
-              >
-                <a href={sponsor.url} target="_blank" rel="noopener noreferrer">
-                  <GatsbyImage
-                    css={{ width: "100%", height: "100%", objectFit: "cover" }}
-                    image={sponsor.logo.gatsbyImageData}
-                    alt={sponsor.name}
-                  />
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
+        :
+          <></>
+        }
       </div>
     </Common>
   )

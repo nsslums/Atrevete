@@ -46,6 +46,11 @@ const attendeePage: React.FC<PageProps> = ({ data }:any) => {
             </div>
           )
           })}
+          {!data.allContentfulAttendee.nodes ?
+              <p>公開をお待ちください。</p>
+              :
+              <></>
+          }
         </div>
       </div>
     </Common>
