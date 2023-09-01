@@ -15,6 +15,7 @@ const rootCss = css(mq({
     width: [320, 395],
     height: 207,
     // padding: 10,
+    marginBottom: 15,
     border: '.7px solid',
     borderTopColor: 'rgba(255,255,255,0.25)',
     borderLeftColor: 'rgba(255,255,255,0.25)',
