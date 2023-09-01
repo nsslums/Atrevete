@@ -55,7 +55,7 @@ const imageCss = css({
     }
 })
 
-const textCss = css({
+const textCss = css(mq({
     width: "100%",
     height: "100%",
     display: "flex",
@@ -70,7 +70,7 @@ const textCss = css({
       textShadow: "0 0 5px black",
       marginLeft: 20,
     }
-})
+}))
 
 interface EventCardProps {
   node: any;
