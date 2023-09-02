@@ -29,7 +29,7 @@ const eventsCss = css({
 });
 
 const eventCss = css({
-	margin: "1em",
+	margin: "1em 1em",
 });
 
 const EventPage: React.FC<PageProps> = ({ data }: any) => {

@@ -1,7 +1,12 @@
 import * as React from "react";
-import { HeadFC, PageProps, graphql } from "gatsby";
+import { HeadFC, Link, PageProps, graphql, navigate } from "gatsby";
+import { GatsbyImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image";
+import { Events } from "../components/eventSlide";
 import { Common } from "../components/common";
+import { GoldButton } from "../stories/atrevete/GoldButton";
 import { css } from "@emotion/react";
+import { Head1 } from "../stories/atrevete/Head1";
+import { PostCard } from "../stories/atrevete/event/PostCard";
 import { Html_Head } from "../components/html-head";
 import facepaint from "facepaint";
 

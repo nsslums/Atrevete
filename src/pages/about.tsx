@@ -22,7 +22,7 @@ const rootStyle = css(
 );
 
 const Wrap = css({
-	margin: "10em 0",
+	margin: "10em 0em",
 	width: "90%",
 	maxWidth: "900px",
 	display: "flex",
@@ -53,7 +53,6 @@ const messageText = css(
 	}),
 );
 
-// prettier-ignore
 const Aboutage: React.FC<PageProps> = ({ data }: any) => {
 	return (
 		<Common>
@@ -88,11 +87,51 @@ const Aboutage: React.FC<PageProps> = ({ data }: any) => {
 					viewport={{ once: true }}
 					transition={{ delay: 0.5, duration: 2 }}
 				>
-					日本の<wbr />課題でもある<wbr />「若者の育成をどうしていくか」<wbr />に着目し、<wbr />夢ある者、<wbr />迷いながらも<wbr />進もうとする者、
-					<wbr />何をしたらいいか<wbr />わからない者を<wbr />サポートします。<br />
-					迷いがある者は、<wbr />迷いを確信へ。<br />
-					希望に<wbr />満ち溢れる<wbr />若者が<wbr />世の中の<wbr />理不尽に<wbr />振り回されず、
-					<wbr />自分自身が<wbr />主体でいれるよう、<wbr />全身全霊で<wbr />「人×人」<wbr />の場所を提供します。
+					日本の
+					<wbr />
+					課題でもある
+					<wbr />
+					「若者の育成をどうしていくか」
+					<wbr />
+					に着目し、
+					<wbr />
+					夢ある者、
+					<wbr />
+					迷いながらも
+					<wbr />
+					進もうとする者、
+					<wbr />
+					何をしたらいいか
+					<wbr />
+					わからない者を
+					<wbr />
+					サポートします。
+					<br />
+					迷いがある者は、
+					<wbr />
+					迷いを確信へ。
+					<br />
+					希望に
+					<wbr />
+					満ち溢れる
+					<wbr />
+					若者が
+					<wbr />
+					世の中の
+					<wbr />
+					理不尽に
+					<wbr />
+					振り回されず、
+					<wbr />
+					自分自身が
+					<wbr />
+					主体でいれるよう、
+					<wbr />
+					全身全霊で
+					<wbr />
+					「人×人」
+					<wbr />
+					の場所を提供します。
 				</motion.p>
 			</div>
 
@@ -104,9 +143,45 @@ const Aboutage: React.FC<PageProps> = ({ data }: any) => {
 				image={data.img2.childImageSharp.gatsbyImageData}
 			>
 				<p css={mq({ textAlign: ["center", "center", "center", "left"] })}>
-					夢や<wbr />希望を持って<wbr />生きる若者を<wbr />応援し、<wbr />一人ひとりの<wbr />可能性を<wbr />最大限に<wbr />引き出します。<br />
-					若者<wbr />の夢と可能性を<wbr />最大化することが、<wbr />私たちの<wbr />ミッションです。<br />
-					日本の未来に<wbr />貢献できる<wbr />人材を<wbr />育成するために、<wbr />必要な<wbr />サポートを<wbr />提供します。
+					夢や
+					<wbr />
+					希望を持って
+					<wbr />
+					生きる若者を
+					<wbr />
+					応援し、
+					<wbr />
+					一人ひとりの
+					<wbr />
+					可能性を
+					<wbr />
+					最大限に
+					<wbr />
+					引き出します。
+					<br />
+					若者
+					<wbr />
+					の夢と可能性を
+					<wbr />
+					最大化することが、
+					<wbr />
+					私たちの
+					<wbr />
+					ミッションです。
+					<br />
+					日本の未来に
+					<wbr />
+					貢献できる
+					<wbr />
+					人材を
+					<wbr />
+					育成するために、
+					<wbr />
+					必要な
+					<wbr />
+					サポートを
+					<wbr />
+					提供します。
 				</p>
 			</AboutSection>
 
@@ -119,10 +194,61 @@ const Aboutage: React.FC<PageProps> = ({ data }: any) => {
 				reverse="row-reverse"
 			>
 				<p css={mq({ textAlign: ["center", "center", "center", "right"] })}>
-					20歳前後で<wbr />「将来やりたいこと迷いがある」<wbr />「夢がない」<wbr />と答える<wbr />割合は<wbr />40%~50%<wbr />というのが<wbr />今の日本の現状。<br />
-					そこで、<wbr />優秀な学生や<wbr />能力あ<wbr />若者を<wbr />起業家、<wbr />投資家や
-					<wbr />社会人、<wbr />様々な<wbr />業種の方との<wbr />交友する<wbr />場所を<wbr />提供します。<br />
-					アドバイスを<wbr />もらったり、<wbr />投資を受けたり、<wbr />対等にお話をし、<wbr />夢ある<wbr />若者の<wbr />育成を<wbr />図ります。
+					20歳前後で
+					<wbr />
+					「将来やりたいこと迷いがある」
+					<wbr />
+					「夢がない」
+					<wbr />
+					と答える
+					<wbr />
+					割合は
+					<wbr />
+					40%~50%
+					<wbr />
+					というのが
+					<wbr />
+					今の日本の現状。
+					<br />
+					そこで、
+					<wbr />
+					優秀な学生や
+					<wbr />
+					能力ある
+					<wbr />
+					若者を
+					<wbr />
+					起業家、
+					<wbr />
+					投資家や
+					<wbr />
+					社会人、
+					<wbr />
+					様々な
+					<wbr />
+					業種の方との
+					<wbr />
+					交友する
+					<wbr />
+					場所を
+					<wbr />
+					提供します。
+					<br />
+					アドバイスを
+					<wbr />
+					もらったり、
+					<wbr />
+					投資を受けたり、
+					<wbr />
+					対等にお話をし、
+					<wbr />
+					夢ある
+					<wbr />
+					若者の
+					<wbr />
+					育成を
+					<wbr />
+					図ります。
 				</p>
 			</AboutSection>
 
@@ -134,10 +260,50 @@ const Aboutage: React.FC<PageProps> = ({ data }: any) => {
 				image={data.img4.childImageSharp.gatsbyImageData}
 			>
 				<p css={mq({ textAlign: ["center", "center", "center", "left"] })}>
-					私たちの<wbr />ロゴとして<wbr />利用している<wbr />「Atrevete」<wbr />という言葉は、<wbr />スペイン語の<wbr />
-					「思い切って～をする」<wbr />という<wbr />動詞から<wbr />来ています。<br />
-					「思い切って！」<wbr />という<wbr />メッセージを、<wbr />ロゴに<wbr />込めました。<br /><br />
-					また、<wbr />唯一<wbr />アクセントのつくEを、<wbr />特別という<wbr />意味を持つ<wbr />Especialと<wbr />かけています。
+					私たちの
+					<wbr />
+					ロゴとして
+					<wbr />
+					利用している
+					<wbr />
+					「Atrevete」
+					<wbr />
+					という言葉は、
+					<wbr />
+					スペイン語の
+					<wbr />
+					「思い切って～をする」
+					<wbr />
+					という
+					<wbr />
+					動詞から
+					<wbr />
+					来ています。
+					<br />
+					「思い切って！」
+					<wbr />
+					という
+					<wbr />
+					メッセージを、
+					<wbr />
+					ロゴに
+					<wbr />
+					込めました。
+					<br />
+					<br />
+					また、
+					<wbr />
+					唯一
+					<wbr />
+					アクセントのつくEを、
+					<wbr />
+					特別という
+					<wbr />
+					意味を持つ
+					<wbr />
+					Especialと
+					<wbr />
+					かけています。
 				</p>
 			</AboutSection>
 		</Common>
