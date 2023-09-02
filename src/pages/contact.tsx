@@ -84,6 +84,7 @@ const FormPage: React.FC<PageProps> = () => {
 				}}
 			>
 				<Head1 text="お問い合わせ" />
+				<p css={{ marginTop: "20px" }}>アスタリスク（*）は必須項目です。</p>
 				<form
 					css={{ width: "85%", maxWidth: 600 }}
 					action="/api/contact"
