@@ -162,6 +162,7 @@ const IndexPage: React.FC<PageProps> = ({ data }: any) => {
 						<img
 							src={logo}
 							css={topLogo}
+							alt="Atrevete logo"
 						/>
 						<motion.p
 							initial={{ "--p1": "-20%", "--p2": "0%" } as any}
