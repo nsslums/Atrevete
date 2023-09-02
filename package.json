@@ -17,7 +17,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "format": "prettier --write src/**/*.{tsx,ts,css}",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "stylelint": "stylelint --ignore-path .gitignore \"src/**/*.+(css|ts|tsx)\"",
+    "stylelintfix": "npm run stylelint -- --fix"
   },
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^11.11.0",
@@ -69,6 +71,7 @@
     "@storybook/react": "^7.0.20",
     "@storybook/react-webpack5": "^7.0.20",
     "@storybook/testing-library": "^0.1.0",
+    "@stylelint/postcss-css-in-js": "^0.38.0",
     "@types/facepaint": "^1.2.2",
     "@types/node": "^20.3.1",
     "@types/react": "^18.2.13",
@@ -81,6 +84,10 @@
     "prettier": "^3.0.3",
     "prop-types": "^15.8.1",
     "storybook": "^7.0.20",
+    "stylelint": "^15.10.3",
+    "stylelint-config-idiomatic-order": "^9.0.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-prettier": "^4.0.2",
     "typescript": "^5.1.3"
   }
 }
