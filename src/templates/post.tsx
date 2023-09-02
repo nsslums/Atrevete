@@ -27,37 +27,45 @@ const contentStyle = css({
 	letterSpacing: "0.1em",
 	fontSize: "1.1em",
 	fontFamily: "'Zen Kaku Gothic New', sans-serif",
+
 	h1: {
 		fontSize: "30px",
 	},
+
 	h2: {
 		marginTop: "1em",
 		fontSize: "20px",
 	},
+
 	p: {
 		marginTop: "0.5em",
 	},
+
 	table: {
 		marginTop: "1em",
 		borderCollapse: "collapse",
 	},
+
 	td: {
 		padding: "4px 15px",
-		borderBottom: "solid 1px rgba(255,255,255,0.5)",
+		borderBottom: "solid 1px rgb(255 255 255 / 50%)",
 	},
+
 	"ul, li": {
-		marginLeft: "1.2em",
 		marginTop: "0.5em",
+		marginLeft: "1.2em",
 	},
+
 	"a:hover": {
 		textDecoration: "underline",
 	},
+
 	iframe: {
-		aspectRatio: "16/9",
-		height: "auto",
-		width: "90%",
 		display: "block",
+		width: "90%",
+		height: "auto",
 		margin: "auto",
+		aspectRatio: "16/9",
 	},
 });
 

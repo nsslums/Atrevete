@@ -22,8 +22,8 @@ const arrow_css = css({
 	height: "40px",
 	top: "50%",
 	transform: "translate(0, -50%)",
-	backgroundColor: "rgba(255,255,255, .6)",
-	boxShadow: "0 0 10px rgba(0,0,0,0.5)",
+	backgroundColor: "rgb(255 255 255 / 60%)",
+	boxShadow: "0 0 10px rgb(0 0 0 / 50%)",
 	borderRadius: "90px",
 	cursor: "pointer",
 	display: "flex",
@@ -32,12 +32,15 @@ const arrow_css = css({
 	color: "#1E1E1E",
 	zIndex: 20,
 	transition: "all 0.2s ease",
+
 	"&:hover": {
 		backgroundColor: "white",
+
 		"&:active": {
 			transform: "translate(0, -50%) scale(0.95)",
 		},
 	},
+
 	"&.slick-disabled": {
 		opacity: 0.1,
 		pointerEvents: "none",
@@ -171,18 +174,18 @@ export const StaffSlide = ({ data }: any) => {
 									display: "flex !important",
 									justifyContent: "center",
 
-									"&:after": {
-										content: '""',
+									"&::after": {
+										position: "absolute",
+										top: "10%",
+										right: 0,
 										width: 1,
 										height: "80%",
-										right: 0,
-										top: "10%",
-										position: "absolute",
-										background: "rgba(255,255,255,.2)",
+										background: "rgb(255 255 255 / 20%)",
+										content: '""',
 									},
 
 									"&:last-child": {
-										"&:after": {
+										"&::after": {
 											content: "none",
 										},
 									},

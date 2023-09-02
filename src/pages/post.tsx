@@ -38,28 +38,21 @@ const PostsPage: React.FC<PageProps> = ({ data }: any) => {
 			<div css={rootCss}>
 				<Head1 text="POST" />
 				<div css={postsCss}>
-					{posts?.map(
-						(post: {
-							contentful_id: React.Key | null | undefined;
-							eye_catch: { gatsbyImageData: IGatsbyImageData | undefined };
-							title: string;
-							slug: string;
-						}) => (
-							<div
-								key={post.contentful_id}
-								css={postCss}
-							>
-								{post.eye_catch ? (
-									<PostCard
-										node={post}
-										image={post.eye_catch.gatsbyImageData}
-									/>
-								) : (
-									<PostCard node={post} />
-								)}
-							</div>
-						),
-					)}
+					{posts?.map(post => (
+						<div
+							key={post.contentful_id}
+							css={postCss}
+						>
+							{post.eye_catch ? (
+								<PostCard
+									node={post}
+									image={post.eye_catch.gatsbyImageData}
+								/>
+							) : (
+								<PostCard node={post} />
+							)}
+						</div>
+					))}
 				</div>
 			</div>
 		</Common>
