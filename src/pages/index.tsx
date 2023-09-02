@@ -7,12 +7,10 @@ import { Common } from "../components/common";
 import { GoldButton } from "../stories/atrevete/GoldButton";
 import { css } from "@emotion/react";
 import { Head1 } from "../stories/atrevete/Head1";
-import { PostCard } from "../stories/atrevete/event/PostCard";
 import { Html_Head } from "../components/html-head";
 import facepaint from "facepaint";
 import { motion } from "framer-motion";
 import logo from "../../static/Atrevete.svg";
-import PeopleProfile from "../stories/atrevete/peopleProfile";
 import { StaffSlide } from "../components/staffSlide";
 
 const breakpoints = [520, 767, 1100];
