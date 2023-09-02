@@ -207,10 +207,10 @@ const IndexPage: React.FC<PageProps> = ({ data }: any) => {
 					</div>
 				</div>
 
-				{/* --- news --- */}
+				{/* --- post --- */}
 				<div css={categoryBlock}>
 					<div css={{ textAlign: "center" }}>
-						<Head1 text="News" />
+						<Head1 text="Post" />
 					</div>
 					<div css={innerCss}>
 						<Posts />
