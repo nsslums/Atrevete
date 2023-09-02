@@ -120,6 +120,7 @@ const FormPage: React.FC<PageProps> = props => {
 			>
 				{/* --- form --- */}
 				<Head1 text="イベント申込" />
+				<p css={{ marginTop: "20px" }}>アスタリスク（*）は必須項目です。</p>
 				<form
 					css={{ width: "85%", maxWidth: 600 }}
 					action="/api/event"
