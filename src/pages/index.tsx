@@ -7,10 +7,12 @@ import { Common } from "../components/common";
 import { GoldButton } from "../stories/atrevete/GoldButton";
 import { css } from "@emotion/react";
 import { Head1 } from "../stories/atrevete/Head1";
+import { PostCard } from "../stories/atrevete/event/PostCard";
 import { Html_Head } from "../components/html-head";
 import facepaint from "facepaint";
 import { motion } from "framer-motion";
 import logo from "../../static/Atrevete.svg";
+import PeopleProfile from "../stories/atrevete/peopleProfile";
 import { StaffSlide } from "../components/staffSlide";
 
 const breakpoints = [520, 767, 1100];
@@ -160,7 +162,6 @@ const IndexPage: React.FC<PageProps> = ({ data }: any) => {
 						<img
 							src={logo}
 							css={topLogo}
-							alt="Atrevete logo"
 						/>
 						<motion.p
 							initial={{ "--p1": "-20%", "--p2": "0%" } as any}
@@ -293,8 +294,7 @@ const IndexPage: React.FC<PageProps> = ({ data }: any) => {
 										margin: "1em",
 										flex: "0 0 calc(50% - 2em)", // スマートフォン表示時の幅を50%に設定
 										boxSizing: "border-box",
-
-										"@media (width <= 767px)": {
+										"@media (max-width: 767px)": {
 											// スマートフォン表示のメディアクエリ
 											flex: "0 0 calc(100% - 2em)", // 幅を100%に設定
 										},

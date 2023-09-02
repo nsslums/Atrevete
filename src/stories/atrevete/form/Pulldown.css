@@ -1,16 +1,18 @@
-.react-select__control {
-	height: 40px;
-	border: white solid !important;
-	border-width: 0 0 1px !important;
-	border-radius: 5px 5px 0 0 !important;
-	background-color: #202020 !important;
+.react-select__control{
+    background-color: #202020 !important;
+    border: white solid !important;
+    border-top-width: 0 !important;
+    border-right-width: 0 !important;
+    border-left-width: 0 !important;
+    border-bottom-width: 1px !important;
+    border-radius: 5px 5px 0 0 !important;
+    height: 40px;
+}
+.react-select__single-value{
+    color: white !important;
 }
 
-.react-select__single-value {
-	color: white !important;
-}
-
-.react-select__menu {
-	z-index: 20;
-	background-color: #202020 !important;
+.react-select__menu{
+    background-color: #202020 !important;
+    z-index: 20;
 }
