@@ -16,8 +16,8 @@ const arrow_css = css({
 	height: "40px",
 	top: "50%",
 	transform: "translate(0, -50%)",
-	backgroundColor: "rgba(255,255,255, .6)",
-	boxShadow: "0 0 10px rgba(0,0,0,0.5)",
+	backgroundColor: "rgb(255 255 255 / 60%)",
+	boxShadow: "0 0 10px rgb(0 0 0 / 50%)",
 	borderRadius: "90px",
 	cursor: "pointer",
 	display: "flex",
@@ -26,8 +26,10 @@ const arrow_css = css({
 	color: "#1E1E1E",
 	zIndex: 20,
 	transition: "all 0.2s ease",
+
 	"&:hover": {
 		backgroundColor: "white",
+
 		"&:active": {
 			transform: "translate(0, -50%) scale(0.95)",
 		},

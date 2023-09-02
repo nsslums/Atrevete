@@ -293,7 +293,8 @@ const IndexPage: React.FC<PageProps> = ({ data }: any) => {
 										margin: "1em",
 										flex: "0 0 calc(50% - 2em)", // スマートフォン表示時の幅を50%に設定
 										boxSizing: "border-box",
-										"@media (max-width: 767px)": {
+
+										"@media (width <= 767px)": {
 											// スマートフォン表示のメディアクエリ
 											flex: "0 0 calc(100% - 2em)", // 幅を100%に設定
 										},

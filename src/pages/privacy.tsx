@@ -25,28 +25,34 @@ const statusStyle = css({
 });
 const article = css({
 	display: "block",
+
 	h1: {
 		fontSize: "30px",
 	},
+
 	h2: {
 		marginTop: "1em",
 		fontSize: "20px",
 	},
+
 	p: {
 		marginTop: "0.5em",
 	},
+
 	table: {
 		marginTop: "1em",
 		borderCollapse: "collapse",
 	},
+
 	td: {
 		padding: "4px 15px",
-		borderBottom: "solid 1px rgba(255,255,255,0.5)",
+		borderBottom: "solid 1px rgb(255 255 255 / 50%)",
 	},
+
 	"ul, li": {
-		listStyle: "number",
-		marginLeft: "1em",
 		marginTop: "0.5em",
+		marginLeft: "1em",
+		listStyle: "number",
 	},
 });
 
