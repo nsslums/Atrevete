@@ -33,7 +33,7 @@ const bgTextStyle = css({
 	transform: "translate(-50%, -50%)",
 	fontSize: "2em",
 	color: "transparent",
-	webkitTextStroke: "0.5px rgb(255 255 255 / 20%)",
+	WebkitTextStroke: "0.5px rgb(255 255 255 / 20%)",
 	lineHeight: "normal",
 	whiteSpace: "nowrap",
 	zIndex: -1,
