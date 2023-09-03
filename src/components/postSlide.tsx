@@ -164,7 +164,7 @@ export const Posts: React.FC = () => {
 					{result.allContentfulPost.nodes?.map((post: any) => {
 						return (
 							<div
-								css={css({ margin: 10, display: "flex !important", justifyContent: "center" })}
+								css={css({ display: "flex !important", justifyContent: "center" })}
 								key={post.contentful_id}
 							>
 								{post.eye_catch ? (
