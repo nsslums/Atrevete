@@ -69,8 +69,8 @@ const FormPage: React.FC<PageProps> = () => {
 
 	// --- input pattern match --- //
 	const pattern = {
-		kana: /[\u30A1-\u30F6]*/,
-		mail: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]$/,
+		mail: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*.[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]$",
+		phone: "^[0-9]+[+]?[0-9]*$",
 	};
 
 	return (
@@ -118,6 +118,7 @@ const FormPage: React.FC<PageProps> = () => {
 						type="tel"
 						name="phone"
 						id="phone"
+						pattern={pattern.phone}
 					/>
 					<TextArea
 						label="内容"
