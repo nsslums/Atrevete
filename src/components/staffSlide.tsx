@@ -190,6 +190,7 @@ export const StaffSlide = ({ data }: any) => {
 							>
 								<PeopleProfile
 									name={people.name}
+									nameSub={people.nameSub}
 									image={people.avatar?.gatsbyImageData}
 									profile={people.description}
 									isStaff={people.profileType}
