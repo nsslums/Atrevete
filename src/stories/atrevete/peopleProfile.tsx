@@ -27,6 +27,7 @@ const avatarStyle = css({
 	border: "solid 4px white",
 	borderRadius: 100,
 	overflow: "hidden",
+	isolation: "isolate", // for iOS ~16.3's bug
 });
 
 const nameStyle = css({
