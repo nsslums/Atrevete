@@ -1,15 +1,11 @@
-import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { EventCard } from "../stories/atrevete/event/EventCard";
 import { FaChevronLeft } from "@react-icons/all-files/fa/FaChevronLeft";
 import { FaChevronRight } from "@react-icons/all-files/fa/FaChevronRight";
-import { GetSlug } from "../api/getSlug";
-import { PostCard } from "../stories/atrevete/event/PostCard";
 import PeopleProfile from "../stories/atrevete/peopleProfile";
 import facepaint from "facepaint";
 
@@ -190,6 +186,7 @@ export const StaffSlide = ({ data }: any) => {
 							>
 								<PeopleProfile
 									name={people.name}
+									nameSub={people.nameSub}
 									image={people.avatar?.gatsbyImageData}
 									profile={people.description}
 									isStaff={people.profileType}
