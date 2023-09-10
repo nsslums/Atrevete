@@ -1,10 +1,8 @@
 import * as React from "react";
 import { HeadFC, Link, PageProps, graphql, navigate } from "gatsby";
-import Select from "react-select";
 import { Pulldown } from "../stories/atrevete/form/Pulldown";
 import { Input } from "../stories/atrevete/form/Input";
 import { TextArea } from "../stories/atrevete/form/TextArea";
-import { UploadFile } from "../stories/atrevete/form/UploadFile";
 import { Certifications } from "../stories/atrevete/form/Certifications";
 import { Common } from "../components/common";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
