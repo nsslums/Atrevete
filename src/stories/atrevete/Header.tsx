@@ -19,6 +19,7 @@ const menu = css({
 	height: "100vh",
 	backgroundColor: "rgba(0, 0, 0, .7)",
 	backdropFilter: "blur(2px)",
+	overflowY: "auto",
 });
 
 const block = css({
