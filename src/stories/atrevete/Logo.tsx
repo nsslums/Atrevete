@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-import { motion } from "framer-motion";
 import { Link } from "gatsby-link";
 import logo from "../../../static/Atrevete.svg";
 

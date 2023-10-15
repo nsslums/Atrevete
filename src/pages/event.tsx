@@ -1,7 +1,5 @@
 import * as React from "react";
-import { HeadFC, Link, PageProps, graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
-import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { HeadFC, PageProps, graphql } from "gatsby";
 import { Common } from "../components/common";
 import { EventCard } from "../stories/atrevete/event/EventCard";
 import { css } from "@emotion/react";

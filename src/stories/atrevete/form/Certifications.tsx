@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-import styled from "@emotion/styled";
 import React from "react";
 import { TfiTrash } from "react-icons/tfi";
 import { GoPlusSmall } from "@react-icons/all-files/go/GoPlusSmall";

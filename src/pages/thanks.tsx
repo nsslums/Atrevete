@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, HeadFC, PageProps, graphql, navigate } from "gatsby";
+import { HeadFC, PageProps, graphql, navigate } from "gatsby";
 import { Common } from "../components/common";
 import { Html_Head } from "../components/html-head";
 import { css } from "@emotion/react";

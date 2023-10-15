@@ -8,7 +8,6 @@ import { EventHead } from "../stories/atrevete/event/EventHead";
 import { Head2 } from "../stories/atrevete/Head2";
 import { css } from "@emotion/react";
 import { EventFormCard } from "../stories/atrevete/event/EventFormCard";
-import { Connection } from "../stories/atrevete/event/Connection";
 import { Html_Head } from "../components/html-head";
 import facepaint from "facepaint";
 import { PostCard } from "../stories/atrevete/event/PostCard";

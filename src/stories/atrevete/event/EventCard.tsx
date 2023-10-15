@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import React from "react";
-import { GatsbyImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby-link";
 import facepaint from "facepaint";
 

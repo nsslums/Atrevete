@@ -1,13 +1,9 @@
 import * as React from "react";
 import { HeadFC, Link, PageProps, graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
-import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { Common } from "../components/common";
-import { EventCard } from "../stories/atrevete/event/EventCard";
 import { css } from "@emotion/react";
 import { Head1 } from "../stories/atrevete/Head1";
 import { Html_Head } from "../components/html-head";
-import { GetSlug } from "../api/getSlug";
 import PeopleProfile from "../stories/atrevete/peopleProfile";
 
 const rootCss = css({
