@@ -1,10 +1,9 @@
 import * as React from "react";
-import { HeadFC, Link, PageProps, graphql, navigate } from "gatsby";
+import { Link, navigate } from "gatsby";
 import { Input } from "../stories/atrevete/form/Input";
 import { TextArea } from "../stories/atrevete/form/TextArea";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { css } from "@emotion/react";
-import { Html_Head } from "../components/html-head";
 import { Head1 } from "../stories/atrevete/Head1";
 import facepaint from "facepaint";
 

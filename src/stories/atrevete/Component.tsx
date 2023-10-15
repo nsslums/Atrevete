@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-import { motion } from "framer-motion";
 
 interface ComponentProps {
 	text: string;

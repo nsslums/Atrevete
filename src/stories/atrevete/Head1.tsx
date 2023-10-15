@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
 import { motion } from "framer-motion";
-import { relative } from "path";
 import facepaint from "facepaint";
 
 const breakpoints = [520, 767, 1100];

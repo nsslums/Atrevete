@@ -2,7 +2,6 @@ import * as React from "react";
 import { HeadFC, PageProps, graphql } from "gatsby";
 import { Common } from "../components/common";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
-import { css } from "@emotion/react";
 import { Html_Head } from "../components/html-head";
 import EventForm from "../components/evebtForm";
 

@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { GatsbyImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { AboutHead1 } from "./AboutHead1";
 import facepaint from "facepaint";
 import { motion } from "framer-motion";

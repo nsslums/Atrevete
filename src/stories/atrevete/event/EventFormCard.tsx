@@ -2,7 +2,6 @@ import { css } from "@emotion/react";
 import React from "react";
 import { Head2 } from "../Head2";
 import { GoldButton } from "../GoldButton";
-import { Transform } from "stream";
 import facepaint from "facepaint";
 
 const breakpoints = [520, 767, 1100];
