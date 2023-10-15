@@ -93,8 +93,6 @@ function PrevArrow(props: any) {
 }
 
 export const StaffSlide = ({ data }: any) => {
-	console.log(data);
-
 	const newsCount = data.nodes?.length || 0;
 
 	let width = 900;
