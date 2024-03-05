@@ -112,8 +112,6 @@ export const Pulldown = ({
 		: labelBase;
 	const labelStyle = isSelect || value.value ? [labelreq, label_up] : labelreq;
 
-	console.log(default_val);
-
 	return (
 		<div css={rootCss}>
 			{label ? (

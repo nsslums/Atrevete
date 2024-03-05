@@ -1,8 +1,4 @@
 import { HeadFC, PageProps, graphql, navigate } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
-import { GoldButton } from "../stories/atrevete/GoldButton";
-import { Events } from "../components/eventSlide";
-import { Head1 } from "../stories/atrevete/Head1";
 import { Html_Head } from "../components/html-head";
 import { Common } from "../components/common";
 import { css } from "@emotion/react";

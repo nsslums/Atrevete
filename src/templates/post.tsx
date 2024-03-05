@@ -6,10 +6,8 @@ import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { Common } from "../components/common";
 import { css } from "@emotion/react";
 import { PostHead } from "../stories/atrevete/PostHead";
-import { Connection } from "../stories/atrevete/event/Connection";
 import { Head2 } from "../stories/atrevete/Head2";
 import { Html_Head } from "../components/html-head";
-import { PostCard } from "../stories/atrevete/event/PostCard";
 import { GetSlug } from "../api/getSlug";
 import { EventCard } from "../stories/atrevete/event/EventCard";
 
@@ -233,6 +231,7 @@ export const query = graphql`
 				contentful_id
 				title
 				date(formatString: "yyyy/M/D")
+				slug
 			}
 			eye_catch {
 				gatsbyImageData
@@ -247,6 +246,6 @@ export const Head: HeadFC = ({ data }) => (
 	<Html_Head
 		title={data.site.siteMetadata.title + " | " + data.contentfulPost.title}
 		type="article"
-		url={data.site.siteMetadata.siteUrl + "/event/" + data.contentfulPost.title}
+		url={data.site.siteMetadata.siteUrl + "/event/" + GetSlug(data.contentfulPost)}
 	></Html_Head>
 );

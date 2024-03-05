@@ -1,3 +1,4 @@
+![atrevete_github_header](https://github.com/nsslums/Atrevete/assets/20297254/4a7cc492-7c01-4a28-9ef0-91ea862b5d10)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5c454ba4-ecc6-4590-811e-44c3ffc6f537/deploy-status?branch=main)](https://app.netlify.com/sites/atrevete/deploys)
 ## first setup
 ```

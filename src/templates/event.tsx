@@ -8,7 +8,6 @@ import { EventHead } from "../stories/atrevete/event/EventHead";
 import { Head2 } from "../stories/atrevete/Head2";
 import { css } from "@emotion/react";
 import { EventFormCard } from "../stories/atrevete/event/EventFormCard";
-import { Connection } from "../stories/atrevete/event/Connection";
 import { Html_Head } from "../components/html-head";
 import facepaint from "facepaint";
 import { PostCard } from "../stories/atrevete/event/PostCard";
@@ -319,6 +318,6 @@ export const Head: HeadFC = ({ data }) => (
 	<Html_Head
 		title={data.site.siteMetadata.title + " | " + data.contentfulEvent.title}
 		type="article"
-		url={data.site.siteMetadata.siteUrl + "/event/" + data.contentfulEvent.title}
+		url={data.site.siteMetadata.siteUrl + "/event/" + GetSlug(data.contentfulEvent)}
 	></Html_Head>
 );
