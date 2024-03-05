@@ -231,6 +231,7 @@ export const query = graphql`
 				contentful_id
 				title
 				date(formatString: "yyyy/M/D")
+				slug
 			}
 			eye_catch {
 				gatsbyImageData
