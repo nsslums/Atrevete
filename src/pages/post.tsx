@@ -78,7 +78,7 @@ export const query = graphql`
 				}
 			}
 		}
-		allContentfulPost(filter: { hidden: { ne: true } }) {
+		allContentfulPost(filter: { hidden: { ne: true } }, sort: { createdAt: DESC }) {
 			nodes {
 				contentful_id
 				title

@@ -231,6 +231,7 @@ export const query = graphql`
 				contentful_id
 				title
 				date(formatString: "yyyy/M/D")
+				slug
 			}
 			eye_catch {
 				gatsbyImageData
@@ -245,6 +246,6 @@ export const Head: HeadFC = ({ data }) => (
 	<Html_Head
 		title={data.site.siteMetadata.title + " | " + data.contentfulPost.title}
 		type="article"
-		url={data.site.siteMetadata.siteUrl + "/event/" + data.contentfulPost.title}
+		url={data.site.siteMetadata.siteUrl + "/event/" + GetSlug(data.contentfulPost)}
 	></Html_Head>
 );

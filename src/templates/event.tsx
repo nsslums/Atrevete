@@ -318,6 +318,6 @@ export const Head: HeadFC = ({ data }) => (
 	<Html_Head
 		title={data.site.siteMetadata.title + " | " + data.contentfulEvent.title}
 		type="article"
-		url={data.site.siteMetadata.siteUrl + "/event/" + data.contentfulEvent.title}
+		url={data.site.siteMetadata.siteUrl + "/event/" + GetSlug(data.contentfulEvent)}
 	></Html_Head>
 );
