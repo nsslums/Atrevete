@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,visualstudiocode,node,yarn,gatsby
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,visualstudiocode,node,yarn,gatsby
+# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,node,yarn,visualstudiocode,gatsby
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,node,yarn,visualstudiocode,gatsby
 
 ### Gatsby ###
 node_modules/
@@ -242,4 +242,4 @@ $RECYCLE.BIN/
 # and uncomment the following lines
 # .pnp.*
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,windows,visualstudiocode,node,yarn,gatsby
+# End of https://www.toptal.com/developers/gitignore/api/macos,windows,node,yarn,visualstudiocode,gatsby
