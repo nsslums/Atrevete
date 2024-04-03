@@ -1,0 +1,9 @@
+services:
+  gatsby-develop:
+    container_name: gatsby-dev
+    image: nsslums/atrevete
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
