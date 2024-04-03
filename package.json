@@ -14,8 +14,6 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
     "format": "prettier --write src/**/*.{tsx,ts,css}",
     "prepare": "husky install"
   },
